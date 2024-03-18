@@ -1,27 +1,17 @@
+#
+#server:
+#  port: 8085
+#  servlet: 
+#    context-path: /
+#  
+#spring: 
+#
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://15.165.140.203:54909/mydb?serverTimezone=Asia/Seoul
+#    username: captainviggle
+#    password: 1234
 
-server:
-  port: 8085
-  servlet: 
-    context-path: /
-  
-spring: 
-
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://15.165.140.203:54909/mydb?serverTimezone=Asia/Seoul
-    username: captainviggle
-    password: 1234
-    
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
-    open-in-view: true
-    hibernate:
-#      ddl-auto: create
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-  
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
+#  jackson:
+#    serialization:
+#      fail-on-empty-beans: false
