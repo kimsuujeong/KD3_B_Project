@@ -19,7 +19,7 @@ public class UserController {
 	
 	@RequestMapping("joinForm") // 회원가입 From
 	public String joinForm(UserDTO userDTO) {
-		return "joinForm";
+		return "JoinForm";
 	}
 
 }
