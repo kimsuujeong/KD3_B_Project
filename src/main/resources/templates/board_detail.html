@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Detail</title>
+</head>
+<body>
+    <h1>Post Detail</h1>
+	<p>Title: <span th:text="${post.postName}"></span></p>
+	<p>Category: <span th:text="${post.categoryName != null ? (post.categoryName !=null ? post.categoryName : 'Unknown') : 'Unknown'}"></span></p>
+	<p>Author: <span th:text="${post.user_userID != null ? (post.user_userID.userID != null ? post.user_userID.userID : 'Unknown') : 'Unknown'}"></span></p>	
+    <p>eventDate: <span th:text="${post.eventStart}"></span> ~ <span th:text="${post.eventEnd}"></span></p>
+    <p>Content: <span th:text="${post.content}"></span></p>
+</body>
+</html>
