@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.board.BoardMapper">
-
+	<!-- board and category mapping -->
 	<resultMap id="CategoryResultMap" type="com.example.demo.category.Category">
 	    <id property="categoryID" column="category_categoryID"/>
 	    <result property="categoryName" column="categoryName"/>
 	</resultMap>
+	<!-- board colum mapping -->
 	<resultMap id="BoardResultMap" type="com.example.demo.board.Board">
         <id property="postID" column="postID"/>
         <result property="authorName" column="authorName"/>
@@ -18,24 +19,26 @@
         <result property="eventStart" column="eventStart"/>
         <result property="eventEnd" column="eventEnd"/>
         
+        <!-- board foreign key and user primary key useID mapping-->
         <association property="user_userID" javaType="com.example.demo.user.User">
         <result property="userID" column="user_userID"/>
-	        <!-- 추가적인 사용자 정보 컬럼들에 대한 매핑 -->
+	        
 	    </association>
+	    <!-- board FK and category PK categoryID mapping -->
 	    <association property="category_categoryID" javaType="com.example.demo.category.Category">
 	        <result property="categoryID" column="category_categoryID"/>
-	        <!-- 추가적인 카테고리 정보 컬럼들에 대한 매핑 -->
+	        <!-- using categoryID get categoryName-->
 	        <result property="categoryName" column="categoryName"/>
 	    </association>
 	    
     </resultMap>
-
+	<!-- sql findall board -->
     <select id="findAll" resultMap="BoardResultMap">
         SELECT b.*, c.categoryName
     	FROM board b
     	JOIN category c ON b.category_categoryID = c.categoryID
     </select>
-
+	<!-- find categoryID board -->
    <select id="findByCategoryId" resultMap="BoardResultMap" parameterType="int">
         SELECT b.postName, c.categoryName, b.authorName, b.content
 	    FROM board b
@@ -43,7 +46,7 @@
 	    JOIN category c ON b.category_categoryID = c.categoryID
 	    WHERE b.category_categoryID = #{categoryID}
     </select>
-
+	<!-- find userID board -->
     <select id="findById" resultMap="BoardResultMap" parameterType="int">
         SELECT b.*, u.userID, c.categoryName
 		FROM board b

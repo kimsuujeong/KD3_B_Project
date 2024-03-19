@@ -21,16 +21,21 @@ public class BoardController {
 	@Autowired
 	UserService userService;
 	
+//	main page
 	@GetMapping("/")
 	public String main(Model model) {
 		List<Board> posts = boardService.getAllPosts();
         model.addAttribute("posts", posts);
 		return "main";
 	}
+	
+//	board page
 	@GetMapping("/board")
     public String showBoard(@RequestParam(name = "categoryId", required = false) Integer categoryId, Model model) {
+//		all post view
 		List<Board> posts = boardService.getAllPosts(); 
 	    for (Board post : posts) {
+//	    	post author userID
 	    	String userID = post.getUser_userID().getUserID();
 	    	User user = userService.getUserById(post.getUser_userID());
 	        post.setUser_userID(user); 
@@ -40,6 +45,7 @@ public class BoardController {
         return "board";
     }
 	
+//	post detail 
 	@GetMapping("/board/{postID}")
     public String showPostDetail(@PathVariable(name="postID") Integer postID, Model model) {
         Board post = (Board) boardService.getPostById(postID);
