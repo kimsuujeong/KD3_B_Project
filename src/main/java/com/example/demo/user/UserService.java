@@ -8,18 +8,18 @@ import org.springframework.stereotype.Service;
 import com.example.demo.DAO.UserDAO;
 import com.example.demo.DTO.UserDTO;
 
-@Service
-public class UserService {
+public interface UserService {
 	
-	// 서비스단 따로 인터페이스로 만들어서 상속받자
+	// Join_Form PAGE
+	public void InsertUser (UserDTO userDTO); // Join(insert)
+//	public void FindID (String usermail); // FindID (for e-mail)
+//	public void FindPW (String usermail, String userID);// FindPW (for e-mail + ID )
+//	public void Login (String userID, String userPW); // Login (ID,PW) + kakaoAPI, GoogleAPI...
+//	
+//	// MY PAGE_Form
+//	public void UpdatePW(String UserPWcurrent, String UserPWnext);// UpdatePW (UserPWcurrent -> UserPWnext)
+//	// deleteUser
+//	public void DeleteUser(String UserPW);
 	
-	@Autowired
-	UserDAO userDAO;
 	
-	public List<UserDTO> getAll() {
-		
-        return userDAO.getAll();
-        
-    }
-
 }
