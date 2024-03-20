@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>게시물 작성</title>
+<link rel="stylesheet" href="../board_post.css">
+
+</head>
+<body>
+<form class="form-horizontal" th:action="@{/board/register}" th:object="${board}" method="post" onsubmit="return registerBoard(this)">
+							<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
+							<input type="hidden" th:if="*{postID != null and postID > 0}" th:field="*{postID}" />
+    <h2>게시물 작성</h2><br> 
+	<th:block layout:fragment="content">
+					<div class="card-content">
+						
+							
+    <div class="header">Title</div> 
+    <input type="text" th:field="*{postName}" placeholder="제목을 입력하세요" name="title">
+    <div class="header">Comment</div>
+    <!-- <input type="content" placeholder="내용을 입력하세요" name="detail"> -->
+    <textarea th:field="*{content}" placeholder="내용을 입력하세요" name="detail"></textarea>
+    <div class="header">작성자 정보</div>
+    <input type="text" th:field="*{authorName}" placeholder="이름" name="author_name">
+    <input type="text" 	th:field="*{authorLink}" placeholder="링크" name="author_email">
+	<input type="text" th:field="*{user_userID}" placeholder="유저아이디" name="user_userID">
+	<input type="text" th:field="*{category_categoryID}" placeholder="카테고리" name="	category_categoryID">
+    <div class="filebox">
+      <!-- <input class="upload-name" value="첨부파일" placeholder="첨부파일"> -->
+      <!-- <label for="file">파일찾기</label>  -->
+      <input type="file" id="file">
+  </div>
+  <div class="btn_wrap text-center">
+  							<a th:href="@{/board}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
+  							<button type="submit" class="btn btn-primary waves-effect waves-light">저장하기</button>
+
+  </div>
+</form>
+
+<th:block layout:fragment="script">
+				<script th:inline="javascript">
+					/*<![CDATA[*/
+		
+					function registerBoard(form) {
+		
+						var result = (
+								   isValid(form.postName, "제목", null, null)
+								&& isValid(form.authorName, "이름", null, null)
+								&& isValid(form.content, "내용", null, null)
+						);
+		
+						if ( result == false ) {
+							return false;
+						}
+
+					}
+
+					
+				</script>
+			</th:block>
+			
+</body>
+</html>
