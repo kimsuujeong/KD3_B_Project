@@ -11,6 +11,7 @@
             <tr>
                 <th>게시물 제목</th>
                 <th>작성자</th>
+				<th>조회수</th>
                 <th>작성일</th>
             </tr>
         </thead>
@@ -18,7 +19,8 @@
             <tr th:each="post : ${posts}">
 				<td><a th:href="@{/board/{postID}(postID=${post.postID})}" th:text="${post.postName}"></a></td>
 				<td th:text="${post.user_userID != null ? post.user_userID.userName : 'Unknown'}"></td>
-                <td th:text="${post.writeDate}"></td>
+				<td th:text="${post.visitCnt}"></td>
+				<td th:text="${post.writeDate}"></td>
             </tr>
         </tbody>
     </table>

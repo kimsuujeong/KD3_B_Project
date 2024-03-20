@@ -98,7 +98,7 @@ public class BoardController {
 	@GetMapping("/board/{postID}")
     public String showPostDetail(@PathVariable(name="postID") Integer postID, Model model) {
         Board post = (Board) boardService.getPostById(postID);
-        
+        boardService.visitCnt(postID);
 //        System.out.println("컨트롤러" + post.getCategoryName());
         model.addAttribute("post", post);
         return "board_detail";
