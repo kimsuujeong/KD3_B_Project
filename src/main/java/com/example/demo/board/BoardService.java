@@ -84,7 +84,7 @@ public class BoardService {
 
 // <<<<<<< main
 	
-파일 
+// 파일 충돌 
 	
 // =======
 // 	public void visitCnt(Integer postID) {

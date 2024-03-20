@@ -17,6 +17,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
+	
+	// 이거 뭐하는 코드?!?!
 
 	// 시큐리티 활성화 제어 메서드
 	@Bean

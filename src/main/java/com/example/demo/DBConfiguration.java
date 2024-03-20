@@ -19,7 +19,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @PropertySource("classpath:/application.properties")
 public class DBConfiguration {
 
-	
+	// 이건 무슨 코드 인가요??
 
 		@Autowired
 		private ApplicationContext applicationContext;
