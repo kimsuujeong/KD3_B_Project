@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.category.Category;
 import com.example.demo.user.User;
 import com.example.demo.user.UserService;
+import com.example.demo.user.UserServiceImpl;
 
 @Controller
 public class BoardController {
@@ -22,7 +23,7 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
-	@Autowired
+//	@Autowired
 	UserService userService;
 	
 //	main page

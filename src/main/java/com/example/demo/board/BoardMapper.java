@@ -3,13 +3,11 @@ package com.example.demo.board;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.repository.query.Param;
-
-import com.example.demo.board.Board;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface BoardMapper {
-
+	
 	List<Board> findAll();
 
     List<Board> findByCategoryId(@Param("categoryID") Integer categoryID);

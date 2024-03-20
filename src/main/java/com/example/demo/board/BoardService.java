@@ -15,8 +15,8 @@ public class BoardService {
 	@Autowired
     private BoardMapper boardMapper;
 	
-	@Autowired
-    private CategoryService categoryService;
+//	@Autowired
+//    private CategoryService categoryService;
 	
 	public List<Board> getAllPosts() {
 		return boardMapper.findAll();

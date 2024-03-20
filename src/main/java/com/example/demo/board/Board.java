@@ -22,7 +22,6 @@ public class Board {
     private Date writeDate;
     private Date endDate;
     private Date eventStart;
-    private Date eventEnd;
     
     private User user_userID;
     private Category category_categoryID;

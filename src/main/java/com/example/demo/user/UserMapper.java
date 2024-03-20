@@ -1,14 +1,36 @@
 package com.example.demo.user;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.springframework.data.repository.query.Param;
+import java.util.HashMap;
+import java.util.Map;
 
-@Mapper
-public interface UserMapper {
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-    String findUserNameById(@Param("userId") String userID);
-
-	User findById(@Param("userID") User userID);
+@Repository
+public class UserMapper {
 	
+	@Autowired
+	SqlSession sqlSession;
+	
+
+	public void InsertUser(User userDTO) {
+		sqlSession.insert("InsertUser", userDTO);
+		// Join(insert)
+	}
+
+
+//	public void InsertUser(String usermail) {
+//		sqlSession.selectOne("InsertUser", usermail);
+//		// FindID (for e-mail)
+//	}
+
+
+	public User Login(String userID, String password) {
+		Map<String, String> loginInfo = new HashMap<>();
+	    loginInfo.put("userID", userID);
+	    loginInfo.put("password", password);
+		return sqlSession.selectOne("Login", loginInfo);
+	}
+
 }
