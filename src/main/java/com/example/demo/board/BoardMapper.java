@@ -17,5 +17,7 @@ public interface BoardMapper {
     Board findById(@Param("postID") Integer postID);
 
     void save(Board board);
+
+	void visitCnt(@Param("postID") Integer postID);
     
 }
