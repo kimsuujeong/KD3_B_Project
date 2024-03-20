@@ -17,5 +17,15 @@ public interface BoardMapper {
     Board findById(@Param("postID") Integer postID);
 
     void save(Board board);
+
+	Board selectBoardDetail(Integer postID);
+
+	void insert(Board board);
+
+	int updateBoard(Board params);
+
+	int selectBoardTotalCount();
+
+	List<Board> selectBoardList();
     
 }

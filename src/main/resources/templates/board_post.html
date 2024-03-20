@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<form class="form-horizontal" th:action="@{/board/register.do}" th:object="${board}" method="post" onsubmit="return registerBoard(this)">
+<form class="form-horizontal" th:action="@{/board/register}" th:object="${board}" method="post" onsubmit="return registerBoard(this)">
 							<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
 							<input type="hidden" th:if="*{postID != null and postID > 0}" th:field="*{postID}" />
     <h2>게시물 작성</h2><br> 
@@ -23,7 +23,9 @@
     <textarea th:field="*{content}" placeholder="내용을 입력하세요" name="detail"></textarea>
     <div class="header">작성자 정보</div>
     <input type="text" th:field="*{authorName}" placeholder="이름" name="author_name">
-    <input type="text" placeholder="이메일" name="author_email">
+    <input type="text" 	th:field="*{authorLink}" placeholder="링크" name="author_email">
+	<input type="text" th:field="*{user_userID}" placeholder="유저아이디" name="user_userID">
+	<input type="text" th:field="*{category_categoryID}" placeholder="카테고리" name="	category_categoryID">
     <div class="filebox">
       <!-- <input class="upload-name" value="첨부파일" placeholder="첨부파일"> -->
       <!-- <label for="file">파일찾기</label>  -->
@@ -41,9 +43,6 @@
 					/*<![CDATA[*/
 		
 					function registerBoard(form) {
-		
-						form.noticeYn.value = form.noticeYn.checked == false ? 'N' : 'Y';
-						form.secretYn.value = form.secretYn.checked == false ? 'N' : 'Y';
 		
 						var result = (
 								   isValid(form.postName, "제목", null, null)

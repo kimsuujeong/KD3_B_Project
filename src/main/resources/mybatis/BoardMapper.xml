@@ -56,4 +56,9 @@
     </select>
 
 
+	<insert id="insert" parameterType="com.example.demo.board.Board">
+    INSERT INTO board (postName, content, authorName, authorLink, user_userID, category_categoryID)
+    VALUES (#{postName}, #{content}, #{authorName}, #{authorLink}, #{user_userID}, #{category_categoryID})
+	</insert>
 </mapper>
+

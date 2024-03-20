@@ -1,5 +1,6 @@
 package com.example.demo.board;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,42 @@ public class BoardService {
 		return boardMapper.findAll();
 	}
 
+	// board register
+//	public boolean registerBoard(Board params) {
+//		int queryResult = 0;
+//
+//		if (params.getPostID() == null) {
+//			queryResult = boardMapper.insertBoard(params);
+//		} else {
+//			queryResult = boardMapper.updateBoard(params);
+//		}
+//
+//		return (queryResult == 1) ? true : false;
+//	}
+	
+	public void saveBoard(Board board) {
+		// TODO Auto-generated method stub
+		boardMapper.insert(board);
+	}
+	
+	// board detail
+	public Board getBoardDetail(Integer postID) {
+		// TODO Auto-generated method stub
+		return boardMapper.selectBoardDetail(postID);
+	}
+	
+	public List<Board> getBoardList() {
+		List<Board> boardList = Collections.emptyList();
+
+		int boardTotalCount = boardMapper.selectBoardTotalCount();
+
+		if (boardTotalCount > 0) {
+			boardList = boardMapper.selectBoardList();
+		}
+
+		return boardList;
+	}
+	
 //	get post's categoryID from category
 	public List<Board> getPostsByCategoryId(Integer categoryId) {
        
@@ -44,4 +81,8 @@ public class BoardService {
         }
     	return post;
     }
+
+	
+
+	
 }
