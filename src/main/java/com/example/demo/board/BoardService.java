@@ -44,4 +44,8 @@ public class BoardService {
         }
     	return post;
     }
+
+	public void visitCnt(Integer postID) {
+		boardMapper.visitCnt(postID);
+	}
 }

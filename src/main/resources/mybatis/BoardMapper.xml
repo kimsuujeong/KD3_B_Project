@@ -55,5 +55,8 @@
 		WHERE b.postID = #{postID}
     </select>
 
-
+	<update id="visitCnt">
+    	update board set visitCnt=visitCnt+1 where postID=#{postID};
+    </update>
+    
 </mapper>
