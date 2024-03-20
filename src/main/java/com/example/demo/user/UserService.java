@@ -18,8 +18,9 @@ public interface UserService {
 //	// deleteUser
 //	public void DeleteUser(String password);;
 	
-//	public String getUserNameById(String userId);
-//	public User getUserById(User user);
+	// Bord page
+	public String getUserNameById(String userId);
+	public User getUserById(User user);
 
 	
 	

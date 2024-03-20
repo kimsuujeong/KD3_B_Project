@@ -16,7 +16,6 @@ public class UserMapper {
 
 	public void InsertUser(User userDTO) {
 		sqlSession.insert("InsertUser", userDTO);
-		// Join(insert)
 	}
 
 

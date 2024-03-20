@@ -87,8 +87,8 @@ public class BoardService {
 // 파일 충돌 
 	
 // =======
-// 	public void visitCnt(Integer postID) {
-// 		boardMapper.visitCnt(postID);
-// 	}
+ 	public void visitCnt(Integer postID) {
+ 		boardMapper.visitCnt(postID);
+ 	}
 // >>>>>>> develop
 }
