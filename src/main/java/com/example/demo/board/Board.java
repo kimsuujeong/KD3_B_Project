@@ -17,7 +17,7 @@ public class Board {
     private String authorLink;
     private String postName;
     private String content;
-    private String visitCnt;
+    private int visitCnt;
     private Date writeDate;
     private Date endDate;
     private Date eventStart;
