@@ -9,17 +9,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserMapper userMapper;
 	
-	@Override
-	public String getUserNameById(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User getUserById(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public void InsertUser(User userDTO) {

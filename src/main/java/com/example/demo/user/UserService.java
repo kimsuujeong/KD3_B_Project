@@ -17,10 +17,6 @@ public interface UserService {
 //	public void UpdatePW(String UserPWcurrent, String UserPWnext);// UpdatePW (UserPWcurrent -> UserPWnext)
 //	// deleteUser
 //	public void DeleteUser(String password);;
-	
-	// Bord page
-	public String getUserNameById(String userId);
-	public User getUserById(User user);
 
 	
 	
