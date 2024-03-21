@@ -55,18 +55,20 @@
 		WHERE b.postID = #{postID}
     </select>
 
-  <!-- 파일 충돌 -->
+ 
   
-  <!-- 	
+   	<!-- board insert post error -->
   <insert id="insert" parameterType="com.example.demo.board.Board">
     INSERT INTO board (postName, content, authorName, authorLink, user_userID, category_categoryID)
     VALUES (#{postName}, #{content}, #{authorName}, #{authorLink}, #{user_userID}, #{category_categoryID})
 	</insert>
-</mapper>
+	
+	</mapper>
 
+	<!-- post visit count -->
 	<update id="visitCnt">
     	update board set visitCnt=visitCnt+1 where postID=#{postID};
     </update> 
-    -->
+    
     
 </mapper>
