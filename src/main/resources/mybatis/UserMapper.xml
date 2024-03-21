@@ -5,6 +5,16 @@
         SELECT * FROM user WHERE userID = #{userID}
     </select>
     
+    <select id="FindID" >
+    	select userID from user
+    	where userName = #{userName} and email = #{email}
+    </select>
+    
+    <select id="FindPW" >
+    	select password from user
+    	where email = #{email} and userID = #{userID}
+    </select>
+    
     <insert id="InsertUser">
     	insert into user (userID, email, password, userName, date)
 		values(#{userID}, #{email},#{password},#{userName}, NOW())
@@ -14,5 +24,7 @@
     	select * from user
 		where userID = #{userID} and password = #{password}
 	</insert>
+	
+	
     
 </mapper>

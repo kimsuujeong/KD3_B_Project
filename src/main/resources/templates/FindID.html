@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>findID</title>
+</head>
+<body>
+<form method="post" th:action="@{/FindID}">
+    userName : <input type="text" name="userName">
+    email : <input type="text" name="email">
+    <!-- 나중에 이메일 토큰 일치 하면 가입 되는걸로 변경-->
+    <button>이메일 찾기</button>
+</form>
+</body>
+</html>

@@ -20,6 +20,16 @@ public class UserServiceImpl implements UserService {
 		return userMapper.Login(userID, password);
 	}
 
+	@Override
+	public User FindID(String userName, String email) {
+		return userMapper.FindID(userName, email);
+	}
+
+	@Override
+	public User FindPW(String usermail, String userID) {
+		return userMapper.FindPW(usermail, userID);
+	}
+
 
 
 }
