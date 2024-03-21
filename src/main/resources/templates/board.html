@@ -18,7 +18,7 @@
         <tbody>
             <tr th:each="post : ${posts}">
 				<td><a th:href="@{/board/{postID}(postID=${post.postID})}" th:text="${post.postName}"></a></td>
-				<td th:text="${post.user_userID != null ? post.user_userID.userName : 'Unknown'}"></td>
+				<td th:text="${post.authorName != null ? post.authorName : 'Unknown'}"></td>
 				<td th:text="${post.visitCnt}"></td>
 				<td th:text="${post.writeDate}"></td>
             </tr>
