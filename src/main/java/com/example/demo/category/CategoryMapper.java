@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 @Mapper
 public interface CategoryMapper {
 
-	String findCategoryNameById(@Param("categoryID") Long categoryID);
+	String findCategoryNameById(@Param("categoryID") Integer categoryID);
 
 }
