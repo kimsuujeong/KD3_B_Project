@@ -9,7 +9,7 @@ public class CategoryService {
 	@Autowired
 	private CategoryMapper categoryMapper;
 	
-	public String getCategoryNameById(Long categoryID) {
+	public String getCategoryNameById(Integer categoryID) {
         return categoryMapper.findCategoryNameById(categoryID);
     }
 }

@@ -82,13 +82,8 @@ public class BoardService {
     	return post;
     }
 
-// <<<<<<< main
-	
-// 파일 충돌 
-	
-// =======
  	public void visitCnt(Integer postID) {
  		boardMapper.visitCnt(postID);
  	}
-// >>>>>>> develop
+
 }
