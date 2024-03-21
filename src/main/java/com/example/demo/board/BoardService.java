@@ -15,8 +15,8 @@ public class BoardService {
 	@Autowired
     private BoardMapper boardMapper;
 	
-	@Autowired
-    private CategoryService categoryService;
+//	@Autowired
+//    private CategoryService categoryService;
 	
 	public List<Board> getAllPosts() {
 		return boardMapper.findAll();
@@ -82,13 +82,8 @@ public class BoardService {
     	return post;
     }
 
-// <<<<<<< main
-	
-파일 
-	
-// =======
-// 	public void visitCnt(Integer postID) {
-// 		boardMapper.visitCnt(postID);
-// 	}
-// >>>>>>> develop
+ 	public void visitCnt(Integer postID) {
+ 		boardMapper.visitCnt(postID);
+ 	}
+
 }

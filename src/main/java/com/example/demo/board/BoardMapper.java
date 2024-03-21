@@ -3,13 +3,11 @@ package com.example.demo.board;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.repository.query.Param;
-
-import com.example.demo.board.Board;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface BoardMapper {
-
+	
 	List<Board> findAll();
 
     List<Board> findByCategoryId(@Param("categoryID") Integer categoryID);
@@ -18,18 +16,17 @@ public interface BoardMapper {
 
     void save(Board board);
 
-// <<<<<<< main 파일 
-// 	Board selectBoardDetail(Integer postID);
+ 	Board selectBoardDetail(Integer postID);
 
-// 	void insert(Board board);
+ 	void insert(Board board);
 
-// 	int updateBoard(Board params);
+ 	int updateBoard(Board params);
 
-// 	int selectBoardTotalCount();
+ 	int selectBoardTotalCount();
 
-// 	List<Board> selectBoardList();
-// =======
-// 	void visitCnt(@Param("postID") Integer postID);
-// >>>>>>> develop
+ 	List<Board> selectBoardList();
+
+ 	void visitCnt(@Param("postID") Integer postID);
+
     
 }

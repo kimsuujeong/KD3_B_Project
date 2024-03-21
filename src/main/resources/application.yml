@@ -1,0 +1,17 @@
+#
+#server:
+#  port: 8085
+#  servlet: 
+#    context-path: /
+#  
+#spring: 
+#
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://15.165.140.203:54909/mydb?serverTimezone=Asia/Seoul
+#    username: captainviggle
+#    password: 1234
+
+#  jackson:
+#    serialization:
+#      fail-on-empty-beans: false
