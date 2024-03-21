@@ -1,10 +1,5 @@
 package com.example.demo.user;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 public interface UserService {
 	
 	// Join_Form PAGE
