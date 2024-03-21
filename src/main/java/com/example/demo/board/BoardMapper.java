@@ -16,7 +16,6 @@ public interface BoardMapper {
 
     void save(Board board);
 
-// <<<<<<< main 파일  -- 파일 충돌
  	Board selectBoardDetail(Integer postID);
 
  	void insert(Board board);
@@ -26,8 +25,8 @@ public interface BoardMapper {
  	int selectBoardTotalCount();
 
  	List<Board> selectBoardList();
-// =======
+
  	void visitCnt(@Param("postID") Integer postID);
-// >>>>>>> develop
+
     
 }

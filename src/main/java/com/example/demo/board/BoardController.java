@@ -3,7 +3,6 @@ package com.example.demo.board;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.category.Category;
-import com.example.demo.user.User;
 import com.example.demo.user.UserService;
-import com.example.demo.user.UserServiceImpl;
 
 @Controller
 public class BoardController {
@@ -42,8 +38,8 @@ public class BoardController {
 	    for (Board post : posts) {
 //	    	post author userID
 	    	String userID = post.getUser_userID().getUserID();
-	    	User user = userService.getUserById(post.getUser_userID());
-	        post.setUser_userID(user); 
+//	    	User user = userService.getUserById(post.getUser_userID());
+//	        post.setUser_userID(user); 
 	    }
 
         model.addAttribute("posts", posts);
@@ -66,9 +62,9 @@ public class BoardController {
 		return "board_post";
 	}
 	
-//  post register
-	@PostMapping(value = "/board/register")
-	public String registerBoard(@ModelAttribute Board board, Model model) {
+//  post register userID,categoryID error
+//	@PostMapping(value = "/board/register")
+//	public String registerBoard(@ModelAttribute Board board, Model model) {
 //		try {
 //			boolean isRegistered = boardService.registerBoard(params);
 //			if (isRegistered == false) {
@@ -90,10 +86,10 @@ public class BoardController {
 //		 board.setUser_userID(userID);
 //		 board.setCategory_categoryID(category);
 //		    
-		boardService.saveBoard(board);
-		
-		return "redirect:/board";
-	}
+//		boardService.saveBoard(board);
+//		
+//		return "redirect:/board";
+//	}
 	
 //	post detail 
 	@GetMapping("/board/{postID}")
