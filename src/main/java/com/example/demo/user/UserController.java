@@ -20,23 +20,23 @@ public class UserController {
 
 	@GetMapping("/Testmain") // test home
 	public String Testmain() {
-		return "Testmain";
+		return "TestHtml/User/Testmain";
 	}
 
 	@GetMapping("/joinForm")
 	public String joinForm() {
-		return "joinForm";
+		return "TestHtml/User/joinForm";
 	}
 
 	@PostMapping("/joinForm") // test join
 	public String joinForm(@ModelAttribute User userDTO) {
 		userService.InsertUser(userDTO);
-		return "joinForm";
+		return "TestHtml/User/joinForm";
 	}
 
 	@GetMapping("/login") // login
 	public String loginForm() {
-		return "login";
+		return "TestHtml/User/login";
 	}
 
 	@PostMapping("/login")
@@ -63,14 +63,14 @@ public class UserController {
 		} else {
 			// 로그인 실패
 			System.out.println("실패입니다");
-			return "login";
+			return "TestHtml/User/login";
 		}
 		
 	}
 	
 	@GetMapping("/FindID")
 	public String FindID() {
-		return "FindID";
+		return "TestHtml/User/FindID";
 	}
 
 	@PostMapping("/FindID") // test FindID
@@ -80,12 +80,12 @@ public class UserController {
 		// 같은 이메일이 있으면 이메일 인증 토큰을 보내 id를 출력 할 예정.
 		// test code
 		System.out.println(usermapper.FindID(userName, email));
-		return "FindID";
+		return "TestHtml/User/FindID";
 	}
 	
 	@GetMapping("/FindPW")
 	public String FindPW() {
-		return "FindPW";
+		return "TestHtml/User/FindPW";
 	}
 	
 	@PostMapping("/FindPW") // test FindPW
@@ -94,7 +94,7 @@ public class UserController {
 		
 		System.out.println(usermapper.FindPW(email, userID));
 		
-		return "FindPW";
+		return "TestHtml/User/FindPW";
 	}
 	
 	

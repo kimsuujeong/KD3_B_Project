@@ -1,4 +1,4 @@
-package com.example.demo.mypage;
+package com.example.demo.myPage;
 
 //public class MypageServiceImpl implements MypageService{
 //
