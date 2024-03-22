@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="Setting.css">
-    <link rel="stylesheet" href="Main.css">
+    <link rel="stylesheet" th:href="@{Setting.css}">
+    <link rel="stylesheet" th:href="@{mainpage/Main.css}">
 </head>
     <!-- after merge, replace sheetlink  -->
 <body>
@@ -169,7 +169,7 @@
         </div>
     </footer>
 
-    <script src="Main.js"></script>
+    <script th:src="@{mainpage/Main.js}"></script>
 </body>
 
 </html>
