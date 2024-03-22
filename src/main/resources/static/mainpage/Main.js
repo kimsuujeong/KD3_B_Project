@@ -1,14 +1,12 @@
 // img slider
 let list = document.querySelector('.slider .list');
-let items = document.querySelector('.slider .list . item');
+let items = document.querySelector('.slider .list .item');
 let dots = document.querySelector('.slider .dots li')
 let prev = document.getElementById('prev');
 let next = document.getElementById('next');
 
 let active = 0;
 let lengthItems = items.length - 1;
-
-console.log("123");
 
 next.onclick = function(){
     if(active + 1 > lengthItems){
@@ -34,7 +32,7 @@ let refreshSlider = setInterval(() => {next.click()}, 5000);
 
 function reloadSlider(){
     let checkLeft = items[active].offsetLeft;
-    list.style.left = -checkLeft + 'px';
+    list.style.left = -checkLeft + 'rem';
 
     let lastActiveDot = querySelector('.slider .dots li.active');
     lastActiveDot.classList.remove('active');
