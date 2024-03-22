@@ -5,12 +5,9 @@ import java.sql.Date;
 import com.example.demo.category.Category;
 import com.example.demo.user.User;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class Board {
 
 	private Integer postID;
