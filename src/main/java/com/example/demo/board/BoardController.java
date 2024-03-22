@@ -49,15 +49,15 @@ public class BoardController {
 //  post write
 	@GetMapping(value = "/board/post")
 	public String writePost(@RequestParam(value = "postID", required=false) Integer postID, Model model) {
-		if (postID == null) {
-			model.addAttribute("board", new Board());
-		} else {
-			Board board = boardService.getBoardDetail(postID);
-			if (board == null) {
-				return "redirect:/board";
-			}
-			model.addAttribute("board", board);
-		}
+//		if (postID == null) {
+//			model.addAttribute("board", new Board());
+//		} else {
+//			Board board = boardService.getBoardDetail(postID);
+//			if (board == null) {
+//				return "redirect:/board";
+//			}
+//			model.addAttribute("board", board);
+//		}
 
 		return "board_post";
 	}
