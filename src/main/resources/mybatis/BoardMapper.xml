@@ -60,10 +60,9 @@
    	<!-- board insert post error -->
   <insert id="insert" parameterType="com.example.demo.board.Board">
     INSERT INTO board (postName, content, authorName, authorLink, user_userID, category_categoryID)
-    VALUES (#{postName}, #{content}, #{authorName}, #{authorLink}, #{user_userID}, #{category_categoryID})
+    VALUES (#{postName}, #{content}, #{authorName}, #{authorLink}, #{user.userID}, #{category.categoryID})
 	</insert>
 	
-	</mapper>
 
 	<!-- post visit count -->
 	<update id="visitCnt">
