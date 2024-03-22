@@ -21,8 +21,8 @@ public class Board {
     private Date eventStart;
     private Date eventEnd;
     
-    private User user_userID;
-    private Category category_categoryID;
+    private User user;
+    private Category category;
 
     private String categoryName;
 	
