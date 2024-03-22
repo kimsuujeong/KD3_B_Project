@@ -1,0 +1,22 @@
+:root{
+    /* color */
+    --green-color:#00ce80;
+    --grey-color:#9C9C9C;
+    --white-color:#ffffff;
+    --black-color:#171717;   
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+html{
+    font-size:62.5%;
+    scroll-behavior: smooth;
+}
