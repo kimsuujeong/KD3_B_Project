@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.category.CategoryMapper">
+	<!-- category mapping -->
+	<resultMap id="CategoryResultMap" type="com.example.demo.category.Category">
+	    <id property="categoryID" column="category_categoryID"/>
+	    <result property="categoryName" column="categoryName"/>
+	</resultMap>
+	
 	<select id="findById" resultType="com.example.demo.category.Category">
         SELECT * FROM category WHERE categoryID = #{categoryID}
     </select>
