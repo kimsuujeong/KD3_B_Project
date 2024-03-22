@@ -2,31 +2,56 @@ package com.example.demo.board;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
-@Mapper
-public interface BoardMapper {
+@Repository
+public class BoardMapper {
+
+	@Autowired
+	SqlSession sqlSession;
 	
-	List<Board> findAll();
+	public List<Board> findAll() {
+		return sqlSession.selectList("findAll");
+	}
 
-    List<Board> findByCategoryId(@Param("categoryID") Integer categoryID);
+	public List<Board> findAllPage(RowBounds rowBounds) {
+		return sqlSession.selectList("findAllPage",rowBounds);
+	}
 
-    Board findById(@Param("postID") Integer postID);
+	public List<Board> findByCategoryId(@Param("categoryID") Integer categoryID) {
+		return sqlSession.selectList("findByCategoryId",categoryID);
+	}
+	
+	public Board findPostById(Integer postId) {
+        return sqlSession.selectOne("findByPostId", postId);
+    }
 
-    void save(Board board);
+//	Board findById(@Param("postID") Integer postID) {
+//		return sqlSession.selectOne("findByPostId",postID);
+//	}
 
- 	Board selectBoardDetail(Integer postID);
+	public void visitCnt(@Param("postID") Integer postID) {
+		sqlSession.update("visitCnt",postID);
+	}
 
- 	void insert(Board board);
+	public int countAll() {
+		return sqlSession.selectOne("countAll");
+	}
+// 	List<Board> getBoardList(Search search);
+	public Page<Board> getList(Pageable page) {
+        int total = countAll();
+        int offset = page.getPageNumber() * page.getPageSize();
 
- 	int updateBoard(Board params);
+        RowBounds rowBounds = new RowBounds(offset, page.getPageSize());
+        List<Board> content = sqlSession.selectList("findAllPage", null, rowBounds);
 
- 	int selectBoardTotalCount();
-
- 	List<Board> selectBoardList();
-
- 	void visitCnt(@Param("postID") Integer postID);
-
-    
+        return new PageImpl<>(content, page, total);
+    }
 }
