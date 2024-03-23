@@ -6,10 +6,11 @@
     <title>findID</title>
 </head>
 <body>
-<form method="post" th:action="@{/FindPW}">
-    email : <input type="text" name="email">
-    userID : <input type="text" name="userID">
-    
+<form method="post" th:action="@{/userUpdate}">
+    현재 비밀번호 : <input type="text" name="pwNow">
+
+    새 비밀번호 : <input type="text" name="pwNew">
+    <!--새 비밀번호 확인 추후에 만들거!-->
     <button>이메일 찾기</button>
 </form>
 </body>
