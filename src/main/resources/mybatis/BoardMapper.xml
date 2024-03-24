@@ -14,10 +14,9 @@
     	JOIN category c ON b.category_categoryID = c.categoryID
     </select>
 	<!-- find categoryID board -->
-   <select id="findByCategoryId" resultType="com.example.demo.board.Board" parameterType="int">
-        SELECT b.postName, c.categoryName, b.authorName, b.content
+   <select id="findByCategoryId" resultType="com.example.demo.board.Board" >
+        SELECT b.*, c.categoryName
 	    FROM board b
-	    JOIN user u ON u.userID = b.user_userID
 	    JOIN category c ON b.category_categoryID = c.categoryID
 	    WHERE b.category_categoryID = #{categoryID}
     </select>
@@ -43,8 +42,8 @@
     <select id="countAll">
     	select count(*) from board;
     </select>
-    
-    <select id="getBoardList" resultType="com.example.demo.board.Board">
+    <!-- search post -->
+    <select id="search" resultType="com.example.demo.board.Board">
     	select * from board
     	<trim prefix="WHERE" prefixOverrides="AND|OR">			
 	    	<if test="searchType=='postName' and keyword != null and keyword != '' ">
@@ -57,7 +56,20 @@
 	    		AND authorName like CONCAT('%', #{keyword}, '%')			
 	    	</if>			
     	</trim>
-    	LIMIT #{startList}, #{listSize}
     </select>
-    
+    <!-- count searched post -->
+    <select id="countSearchResults" resultType="integer">
+    	select count(*) from board
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">			
+	    	<if test="searchType=='postName' and keyword != null and keyword != '' ">
+	    		AND postName like CONCAT('%', #{keyword}, '%')
+	    	</if>
+	    	<if test="searchType=='content' and keyword != null and keyword != '' ">				
+	    		AND content like CONCAT('%', #{keyword}, '%')			
+	    	</if>
+	    	<if test="searchType=='authorName' and keyword != null and keyword != '' ">				
+	    		AND authorName like CONCAT('%', #{keyword}, '%')			
+	    	</if>			
+    	</trim>
+    </select>
 </mapper>
