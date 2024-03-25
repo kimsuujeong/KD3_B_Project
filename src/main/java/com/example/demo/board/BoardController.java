@@ -38,7 +38,7 @@ public class BoardController {
 		Page<Board> posts = this.boardService.getPostsByCategoryId(categoryID, page);
 
 		model.addAttribute("posts", posts);
-		return "board";
+		return "board/board";
 	}
 
 //	post detail 
@@ -48,7 +48,7 @@ public class BoardController {
 		boardService.visitCnt(postID);
 //        System.out.println("컨트롤러" + post.getCategoryName());
 		model.addAttribute("post", post);
-		return "board_detail";
+		return "board/board_detail";
 	}
 
 	@RequestMapping("/board/search")
@@ -56,6 +56,6 @@ public class BoardController {
 		Page<Board> searchPost = boardService.search(search, pageable);
 		model.addAttribute("posts", searchPost);
 
-		return "board";
+		return "board/board";
 	}
 }
