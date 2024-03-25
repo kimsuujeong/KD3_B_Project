@@ -11,7 +11,7 @@ form {
    margin: 0 auto; /* 페이지를 가운데 정렬하고 왼쪽으로 이동 */
   /* float:right; */
 }
-input[type="text"], textarea {
+input[type="text"], input[type="date"], textarea {
   border: 1.5px #00ce80 solid;
   width: 100%;
   border-radius: 5px;
