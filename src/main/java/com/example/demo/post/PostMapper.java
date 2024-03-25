@@ -2,6 +2,7 @@ package com.example.demo.post;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -40,5 +41,9 @@ public class PostMapper {
 
 	public List<Board> selectBoardList() {
 		return sqlSession.selectList("selectBoardList");
+	}
+	
+	public void visitCnt(@Param("postID") Integer postID) {
+		sqlSession.update("visitCnt",postID);
 	}
 }

@@ -31,6 +31,16 @@ public class BoardController {
 		return "main";
 	}
 
+//	board page
+	@GetMapping("/board")
+    public String showBoard(Model model, Pageable page) {
+//		all post view
+		Page<Board> posts=this.boardService.getList(page);
+
+        model.addAttribute("posts", posts);
+        return "board/board";
+    }
+	
 //	board page separate categoryId
 	@GetMapping("/board/{categoryID}")
 	public String showBoard(@PathVariable(name = "categoryID") Integer categoryID, Model model, Pageable page) {
