@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원가입</title>
+<link rel="stylesheet" href="../static/join.css">
+
+</head>
+<body>
+    
+</div>
+     <div class="container">
+        <h2>회원가입</h2>
+    <h3>일반 회원가입</h3>
+    <!-- 일반 회원가입 폼 -->
+    <form action="#" method="post" id="signup-form">
+        <label class="q" for="username">아이디:</label> 
+        <input type="text" id="username" name="username"placeholder="아이디">
+        <button class="qq" onclick="checkUsername()">아이디 중복 확인</button>
+        <p id="usernameMessage"></p>
+        <!-- <input type="text" class="username_input" name="username" check_result="fail" required />
+        <button type="button" class="id_overlap_button" onclick="id_overlap_check()">중복검사</button> 
+        <img id="id_check_sucess" style="display: none;"> -->
+        <!-- <br> <input type="text" name="nickname" placeholder="닉네임" required> -->
+        <label class="q" for="nickname">닉네임:</label>
+        <input type="text" id="nickname" name="nickname"placeholder="닉네임">
+        <button class="qq" onclick="checkNickname()">닉네임 중복 확인</button>
+        <p id="nicknameMessage"></p>
+        <!-- <input type="email" name="email" id="email" placeholder="이메일 주소" required>
+        <span id="email-error" style="color: red; display: none;">이미 사용 중인 이메일입니다.</span> -->
+        <label class="q"for="email">이메일:</label>
+        <input type="email" id="email" name="email"placeholder="이메일">
+        <button class="qq"onclick="checkEmail()">이메일 중복 확인</button>
+        <p id="emailMessage"></p>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <input type="password" name="confirm_password" placeholder="비밀번호 확인" required>
+       
+      
+        <div class="c">
+        <input type="checkbox" id="id_a" name="all" required>
+        <label for="agree">전체동의</label> <br> 
+        <input type="checkbox" id="id_b" name="agree" required>
+        <label for="agree">[필수] 만 14세 이상입니다.</label> <br> 
+        <input type="checkbox" id="id_c" name="agree" required>
+        <label for="agree">[필수] 이용약관 
+            <a href="../00은아/c.html" target="_blank" >보기</a>
+        </label><br>        
+        <input type="checkbox" id="id_d" name="agree" required>
+        <label for="agree"> [필수] 개인정보 수집·이용 동의서
+            <a href="../00은아/d.html" target="_blank">보기</a>
+        </label><br> 
+        <input type="checkbox" id="id_e" name="agree" required>
+        <label for="agree">[선택] 마케팅 정보 수신동의
+            <a href="../00은아/e.html" target="_blank">보기</a>
+        </label><br>    
+          <input type="checkbox" id="id_f" name="agree" required>
+          <label for="agree">[선택] 개인정보 수집·이용 동의서
+            <a href="../00은아/d.html" target="_blank">보기</a>
+        </label><br>  
+            </div>
+            <button class="submit">
+        <input type="submit" value="가입하기"></button>
+    </form>
+</div>
+<div class="jump">
+    <p>또는</p>
+    <hr /> <br>
+  </div>
+<div class="container">
+    <h3>간편 회원가입</h3>
+    <div class="social-login-buttons">
+        <!-- 구글 로그인 버튼 -->
+        <button class="social-login-button google" onclick="location.href='https://accounts.google.com'">
+          <img src="https://mblogthumb-phinf.pstatic.net/MjAyNDAzMTRfMTA3/MDAxNzEwNDE1MDA3ODA4.BojKW05K-ezNUun178f6GI7ivSak2B_Xp_r77tYmERAg.No5u4HwYC627n29dN3sBPeEOKd2XUQKFry7hSkqtS1Ug.PNG/2048px-Google__G__logo.svg-removebg-preview.png?type=w800" alt="Google 아이콘">
+            구글 회원가입
+        </button>
+        <!-- 네이버 로그인 버튼 -->
+        <button class="social-login-button naver" onclick="location.href='https://nid.naver.com/oauth2.0/authorize'">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaPmU64Oyd54B54AUfP0VFCv7_p8IAZgYk1g&usqp=CAU" alt="네이버 아이콘">
+            네이버 회원가입
+        </button>
+        <!-- 카카오톡 로그인 버튼 -->
+        <button class="social-login-button kakao" onclick="location.href='https://kauth.kakao.com/oauth/authorize'">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoQzZidS00wQAWO5Q2ehhI55lgpqIj79l-pg&usqp=CAU" alt="카카오톡 아이콘">
+            카카오톡 회원가입
+        </button>
+<script>
+//     function id_overlap_check() {
+
+// $('.username_input').change(function () {
+//   $('#id_check_sucess').hide();
+//   $('.id_overlap_button').show();
+//   $('.username_input').attr("check_result", "fail");
+// })
+
+
+// if ($('.username_input').val() == '') {
+//   alert('이메일을 입력해주세요.')
+//   return;
+// }
+
+// id_overlap_input = document.querySelector('input[name="username"]');
+
+// $.ajax({
+//   url: "{% url 'lawyerAccount:id_overlap_check' %}",
+//   data: {
+//     'username': id_overlap_input.value
+//   },
+//   datatype: 'json',
+//   success: function (data) {
+//     console.log(data['overlap']);
+//     if (data['overlap'] == "fail") {
+//       alert("이미 존재하는 아이디 입니다.");
+//       id_overlap_input.focus();
+//       return;
+//     } else {
+//       alert("사용가능한 아이디 입니다.");
+//       $('.username_input').attr("check_result", "success");
+//       $('#id_check_sucess').show();
+//       $('.id_overlap_button').hide();
+//       return;
+//     }
+//   }
+// });
+//}
+
+function checkUsername() {
+      var username = document.getElementById("username").value;
+      // 여기에서는 예시로 간단히 길이가 5 이상인 경우에만 유효한 것으로 가정합니다.
+      if (username.length < 5) {
+        document.getElementById("usernameMessage").innerHTML = "<strong style='color: red;'>아이디는 5자 이상이어야 합니다.</strong>";
+        return;
+      }
+
+      // 간단히 아이디가 "admin"인 경우에만 중복된 것으로 처리합니다.
+      if (username === "admin") {
+        document.getElementById("usernameMessage").innerHTML = "<strong style='color: red;'>이미 사용 중인 아이디입니다.</strong>";
+      } else {
+        document.getElementById("usernameMessage").innerHTML = "<strong style='color: green;'>사용 가능한 아이디입니다.</strong>";
+      }
+    }
+
+    function checkNickname() {
+      var nickname = document.getElementById("nickname").value;
+      // 여기에서는 예시로 간단히 길이가 3 이상인 경우에만 유효한 것으로 가정합니다.
+      if (nickname.length < 3) {
+        document.getElementById("nicknameMessage").innerHTML = "<strong style='color: red;'>닉네임은 3자 이상이어야 합니다.</strong>";
+        return;
+      }
+
+      // 간단히 닉네임이 "user"인 경우에만 중복된 것으로 처리합니다.
+      if (nickname === "user") {
+        document.getElementById("nicknameMessage").innerHTML = "<strong style='color: red;'>이미 사용 중인 닉네임입니다.</strong>";
+      } else {
+        document.getElementById("nicknameMessage").innerHTML = "<strong style='color: green;'>사용 가능한 닉네임입니다.</strong>";
+      }
+    }
+    function checkEmail() {
+      var email = document.getElementById("email").value;
+      // 간단히 이메일 형식을 체크합니다.
+      if (!isValidEmail(email)) {
+        document.getElementById("emailMessage").innerHTML = "<strong style='color:red;'>유효한 이메일 주소를 입력하세요.</strong>";
+        return;
+      }
+
+      // 간단히 이메일이 "admin@example.com"일 때만 중복된 것으로 처리합니다.
+      if (email === "admin@example.com") {
+        document.getElementById("emailMessage").innerHTML = "<strong style='color:red;'>이미 사용 중인 이메일 주소입니다.</strong>";
+      } else {
+        document.getElementById("emailMessage").innerHTML = "<strong style='color:green;'>사용 가능한 이메일 주소입니다.</strong>";
+      }
+    }
+
+    // 이메일 형식을 체크하는 함수
+    function isValidEmail(email) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+    // document.getElementById('signup-form').addEventListener('submit', function(event) {
+    //     event.preventDefault(); // 기본 이벤트 동작 방지
+
+    //     var email = document.getElementById('email').value;
+
+    //     // 이메일 중복 체크
+    //     if (checkDuplicateEmail(email)) {
+    //         // 중복된 이메일이 없으면 가입 처리
+    //         alert("회원가입이 완료되었습니다!");
+    //         // 여기서 실제 서버로 데이터를 전송하거나 다음 작업을 수행할 수 있습니다.
+    //     } else {
+    //         // 중복된 이메일이 있으면 에러 메시지 표시
+    //         document.getElementById('email-error').style.display = 'inline';
+    //     }
+    // });
+
+    // function checkDuplicateEmail(email) {
+    //     // 실제 서버와 통신하여 이메일 중복 여부를 확인해야 합니다.
+    //     // 이 예제에서는 단순히 입력된 이메일이 'test@example.com'인 경우만 중복되었다고 가정합니다.
+    //     return email !== 'test@example.com'; // 중복되지 않은 경우 true를 반환
+    // }
+    document.addEventListener('DOMContentLoaded', () => {
+        const ckTag = document.getElementById('id_a')
+        const evtBtnTag1 = document.getElementById('id_b')
+        const evtBtnTag2 = document.getElementById('id_c')
+        const evtBtnTag3 = document.getElementById('id_d')
+        const evtBtnTag4 = document.getElementById('id_e')
+        const evtBtnTag5 = document.getElementById('id_f')
+        
+        ckTag.addEventListener('click', (event) => {
+
+            const chckValue = event.currentTarget.checked;
+
+            evtBtnTag1.checked = chckValue
+            evtBtnTag2.checked = chckValue
+            evtBtnTag3.checked = chckValue
+            evtBtnTag4.checked = chckValue
+            evtBtnTag5.checked = chckValue
+
+        })
+
+        evtBtnTag1.addEventListener('click', (event) => {
+            if(event.currentTarget.checked == false){
+                ckTag.checked = false;
+            }
+        })
+        evtBtnTag1.addEventListener('click', (event) => {
+            if(event.currentTarget.checked == false){
+                ckTag.checked = false;
+            }
+        })
+        evtBtnTag3.addEventListener('click', (event) => {
+            if(event.currentTarget.checked == false){
+                ckTag.checked = false;
+            }
+        })
+        evtBtnTag4.addEventListener('click', (event) => {
+            if(event.currentTarget.checked == false){
+                ckTag.checked = false;
+            }    
+        })
+        evtBtnTag5.addEventListener('click', (event) => {
+            if(event.currentTarget.checked == false){
+                ckTag.checked = false;
+            }    
+        })
+    })
+
+</script>
+
+</body>
+</html>

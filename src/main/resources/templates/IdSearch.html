@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>비밀번호찾기</title>
+  <style>
+    .contents {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 415px;
+      padding: 40px;
+      box-sizing: border-box;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: transparent;
+      border: 1px solid #9c9c9c;
+      box-shadow: 2px 2px 2px 2px #9c9c9c;
+    }
+    .contents > h3, p {
+      text-align: center;
+    }
+    .contents > input {
+      background-color: transparent;
+      width: 100%;
+      height: 48px;
+      padding: 0 10px;
+      box-sizing: border-box;
+      margin-top: 5px;
+      margin-bottom: 16px;
+      border-radius: 6px;
+      background-color: #fff;
+      border: 1px solid #9c9c9c;
+    }
+    .contents > input[type="submit"] {
+      width: 100%;
+      height: 48px;
+      color: #fff;
+      font-size: 16px;
+      background-color: #00ce80;
+      border: 1px solid #9c9c9c;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"> 
+    <div class="header"></div>
+    <div class="contents">
+      <h3>아이디 찾기</h3>
+      <br>
+      <p>가입하신 이메일로 인증번호를 전송해드립니다</p>
+      <br>
+      이메일(ID) <input type="email" id="emailInput" placeholder="Email"> <br>
+      <input type="submit" value="인증번호 받기" onclick="checkEmail()">
+    </div>
+    <div class="footer"></div>
+    <script>
+      function checkEmail() {
+        var email = document.getElementById("emailInput").value;
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (!emailPattern.test(email)) {
+          alert("올바른 이메일 형식으로 입력해주세요.");
+          return false;
+        } else {
+          alert("메일 전송 완료!");
+          window.location.href = "cerId.html";
+          // 여기에 이메일 전송하는 로직을 추가할 수 있습니다.
+        }
+      }
+    </script>
+  </body>
+</html>
