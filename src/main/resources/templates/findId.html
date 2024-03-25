@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>비밀번호 재설정</title>
+  <title>아이디 알려주깁</title>
   <style>
     .contents {
       position: absolute;
@@ -52,31 +52,31 @@
   <div class="container"> 
     <div class="header"></div>
     <div class="contents">
-      <h3>비밀번호 재설정</h3>
+      <h3>등록된 아이디는</h3>
       <br>
-      <p>비밀번호를 재입력해주세요.</p>
+      <p>gaeun****@naver.com입니다.</p>
       <br>
-      비밀번호 입력 <input type="password" id="password1">
+      <!-- 비밀번호 입력 <input type="password" id="password1">
       비밀번호 확인 <input type="password" id="password2">
-      <input type="submit" value="확인" onclick="checkPasswords()">
+      <input type="submit" value="확인" onclick="checkPasswords()"> -->
     </div>
     <div class="footer"></div>
     <script>
-      function checkPasswords() {
-        var password1 = document.getElementById("password1").value;
-        var password2 = document.getElementById("password2").value;
-        if (password1.trim() === '' || password2.trim() === '') {
-      alert("비밀번호를 입력해주세요.");
-      return false;
-        }
-        if (password1 !== password2) {
-          alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-          return false;
-        } else {
-          alert("비밀번호 변경 완료!");
-          window.location.href = "login.html";
-        }
-      }
+      // function checkPasswords() {
+      //   var password1 = document.getElementById("password1").value;
+      //   var password2 = document.getElementById("password2").value;
+      //   if (password1.trim() === '' || password2.trim() === '') {
+      // alert("비밀번호를 입력해주세요.");
+      // return false;
+      //   }
+      //   if (password1 !== password2) {
+      //     alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+      //     return false;
+      //   } else {
+      //     alert("비밀번호 변경 완료!");
+      //     window.location.href = "../00은아/login.html";
+      //   }
+      // }
     </script>
   </body>
 </html>

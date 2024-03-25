@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>비밀번호 재설정</title>
+  <title>비밀번호찾기</title>
   <style>
     .contents {
       position: absolute;
@@ -11,7 +11,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 400px;
-      height: auto;
+      height: 415px;
       padding: 40px;
       box-sizing: border-box;
       position: fixed;
@@ -52,29 +52,26 @@
   <div class="container"> 
     <div class="header"></div>
     <div class="contents">
-      <h3>비밀번호 재설정</h3>
+      <h3>아이디 찾기</h3>
       <br>
-      <p>비밀번호를 재입력해주세요.</p>
+      <p>가입하신 이메일로 인증번호를 전송해드립니다</p>
       <br>
-      비밀번호 입력 <input type="password" id="password1">
-      비밀번호 확인 <input type="password" id="password2">
-      <input type="submit" value="확인" onclick="checkPasswords()">
+      이메일(ID) <input type="email" id="emailInput" placeholder="Email"> <br>
+      <input type="submit" value="인증번호 받기" onclick="checkEmail()">
     </div>
     <div class="footer"></div>
     <script>
-      function checkPasswords() {
-        var password1 = document.getElementById("password1").value;
-        var password2 = document.getElementById("password2").value;
-        if (password1.trim() === '' || password2.trim() === '') {
-      alert("비밀번호를 입력해주세요.");
-      return false;
-        }
-        if (password1 !== password2) {
-          alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+      function checkEmail() {
+        var email = document.getElementById("emailInput").value;
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (!emailPattern.test(email)) {
+          alert("올바른 이메일 형식으로 입력해주세요.");
           return false;
         } else {
-          alert("비밀번호 변경 완료!");
-          window.location.href = "login.html";
+          alert("메일 전송 완료!");
+          window.location.href = "cerId.html";
+          // 여기에 이메일 전송하는 로직을 추가할 수 있습니다.
         }
       }
     </script>

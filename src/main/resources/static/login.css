@@ -41,6 +41,7 @@ body{
 
 .search{
 float: right;
+padding-left: 20%;
 }
 
 #login-form > input{
