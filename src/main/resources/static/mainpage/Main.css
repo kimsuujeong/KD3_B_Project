@@ -122,31 +122,27 @@ body{
 }
 
 
-/* section img slide */
-.slider{
-    width: 130rem;
-    max-width: 100vw;
-    height: 70rem;
-    margin: auto;
-    position: relative;
+/* banner img slider */
+section{
+    background-color: lightblue;
+}
+
+.banner-img-slider{
     overflow: hidden;
 }
 
-.list{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    display: flex;
-    width: max-content;
-    transition: 1s;
+.banner-img-slider-container{
+    width: 500vw;
+    transition: transform 0.5s;
 }
 
-.list img{
-    width: 130rem;
-    max-width: 100vw;
-    height: 70%;
-    object-fit: cover;
+.inner{
+    width: 100vw;
+    float: left;
+}
+
+.inner img{
+    width: 100%;
 }
 
 .buttons{
@@ -161,11 +157,9 @@ body{
 .buttons button{
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    background-color: var(--grey-color);
     color: var(--white-color);
-    border: none;
-    font-weight: bold;
+    background-color: rgba(99, 98, 98, 0.521);
+    font-size: 3rem;
 }
 
 .dots{
@@ -194,9 +188,117 @@ body{
     width: 30px;
 }
 
-section{
-    background-color: blue;
+/* editor pick */
+.editors-pick{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
 }
+
+.bordelist{
+    padding: 0 10rem;
+    font-size: 1.8rem;
+    font-weight: bolder;
+}
+
+.bordelist div:last-child{
+    padding-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: var(--grey-color);
+}
+
+.readmore{
+    display: flex;
+    align-items: center;
+    padding: 0 10rem;
+    font-size: 1.5rem;
+}
+
+.readmore a{
+    color: var(--grey-color);
+}
+
+.readmore a:hover{
+    color: var(--green-color);
+}
+
+
+/* draggable images slider */
+.scroll-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30vh;
+    background-color: var(--grey-color);
+    padding: 0 10rem;
+}
+
+.wrapper{
+    max-width: 1200vw;
+    position: relative;
+}
+
+/* .wrapper i{
+    top: 50%;
+    height: 4.6rem;
+    width: 4.6rem;
+    font-size: 1.2rem;
+    position: absolute;
+    text-align: center;
+    cursor: pointer;
+    line-height: 4.6rem;
+    border-radius: 50%;
+    background-color: var(--white-color);
+    transform: translateY(-50%);
+}
+
+.wrapper i:first-child{
+    left: -2.3rem;
+}
+
+.wrapper i:last-child{
+    right: -2.3rem;
+} */
+
+.wrapper .carousel{
+    font-size: 0rem;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* 이쪽부근에 설명까지 넣어서 작동하도록 */
+
+.carousel img{
+    height: 24rem;
+    width: calc(100% / 4.5);
+    object-fit: cover;
+    margin-left: 1.4rem;
+}
+
+.carousel img:first-child{
+    margin-left: 0rem;
+}
+
+/* 웹사이트의 사이즈가 줄면 보이는 갯수가 줆 */
+@media screen and (max-width:90rem){
+    .carousel img{
+        width: calc(100% / 4);
+    }
+}
+
+@media screen and (max-width:55rem){
+    .carousel img{
+        width: calc(100% / 3);
+    }
+}
+
+/* draggable images slider END */
+/* editor pick END*/
+
+
+
 
 footer{
     background-color: yellow;
