@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../static/Setting.css">
+    <link rel="stylesheet" href="../../static/mainpage/Main.css">
+</head>
+    <!-- after merge, replace sheetlink  -->
+    <!-- th확인하고 나중에 링크 바꿔야함 -->
+    
+<body>
+    <header class="header">
+
+        <nav class="navbar">
+            <!-- upper (logo, searchbar, login, acount, likelist) -->
+            <div class="container">
+                <!-- logo -->
+                <a href="#" class="logo">
+                    <img src="../../static/images/logo-01.png" alt="">
+                </a>
+                <div>
+                    <form action="" class="search-bar">
+                        <input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
+                        <div class="fas fa-search" id="search-btn"></div>
+                    </form>
+                </div>
+                <div class="link1">
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                    <a href="#">관심목록</a>
+                </div>
+            </div>
+
+            <!-- category -->
+            <div class="category">
+                <div class="category-list">
+                    <span>카테고리</span>
+                    <div class="fas fa-solid fa-chevron-down"></div>
+
+                    <!-- dropdown menu -->
+                <ul class="dropdown">
+                    <li><a href="#">컨퍼런스</a></li>
+                    <li><a href="#">세미나</a></li>
+                    <li><a href="#">펀딩</a></li>
+                </ul>
+                </div>
+                
+
+                <a href="#">기업행사</a>
+                <a href="#">예술인 펀딩</a>
+                <a href="#">서비스 소개</a>
+                <a href="#">Q & A</a>
+                <a href="#">행사개설</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- img header -->
+    <section>
+        <div class="slider">
+            <div class="list">
+                <div class="item">
+                    <img src="../../static/images/headerSlideImgExam/header-img1.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="../../static/images/headerSlideImgExam/header-img2.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="../../static/images/headerSlideImgExam/header-img3.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="../../static/images/headerSlideImgExam/header-img4.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="../../static/images/headerSlideImgExam/header-img5.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- button prev and next -->
+        <div class="buttons">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+
+        <!-- dots (if 5 items => 5dot) -->
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+            
+        
+    </section>
+
+    <!-- scroll content -->
+    <section>
+        <div>
+            <!-- swipe img section -->
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <h2>에디터의 PICK</h2>
+        </div>
+        <div>
+            저희가 지금 가장 추천하는 행사를 만나보세요!
+        </div>
+        <div>
+            <a href="#">
+                <span>더 많은 행사 보기</span>
+            </a>
+        </div>
+    </section>
+
+
+
+    <!-- footer start -->
+    <footer>
+        <div>
+            <a href="#"><span>서비스소개</span></a>
+            <a href="#"><span>자주 묻는 질문</span></a>
+            <a href="#"><span>공지사항</span></a>
+        </div>
+        <div>
+            <div>서비스 이용 문의</div>
+            <div>채팅상담</div>
+            <div>(평일 10:00~17:00)</div>
+        </div>
+        <div>
+            <div>사업 제휴 문의</div>
+            <div>whiosemail@event-tree.kr</div>
+        </div>
+
+        <div>
+            <span>(주)이벤트리 | 사업자등록번호 000-00-00000
+            </span>
+        </div>
+        <div>
+            <span>통신판매업 신고번호 제0000-0000-0000호</span>
+        </div>
+        <div>
+            <span>대표 신유경 | 개인정보책임자 DB관리자 </span>
+        </div>
+        <div>
+            <span>광주특별시 광산구 무진대로 무역회관 7층</span>
+        </div>
+        <div>
+            <span>이벤트리는 통신판매중개자이며 행사에 대한 당사자 및 주최자가 아닙니다. 따라서 이벤트리는 등록된 행사에 대해 책임지지 않습니다</span>
+        </div>
+        <div>
+            <a href="#"><span>서비스 이용 약관</span></a>
+            <a href="#"><span>개인정보처리방침</span></a>
+            <a href="#"><span>이메일 주소 무단수집 거부</span></a>
+        </div>
+        <div>
+            <div>
+                <a href="#"><svg>X</svg></a>
+                <a href="#"><svg>인스타</svg></a>
+                <a href="#"><svg>카카오톡</svg></a>
+            </div>
+            <div>
+                Copyright ⓒ EVENTREE Co.,Ltd. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../static/mainpage/Main.js"></script>
+</body>
+
+</html>

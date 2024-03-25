@@ -3,13 +3,14 @@ package com.example.demo.board;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.user.UserService;
 
@@ -18,86 +19,43 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
-	
+
 //	@Autowired
 	UserService userService;
-	
+
 //	main page
 	@GetMapping("/")
 	public String main(Model model) {
 		List<Board> posts = boardService.getAllPosts();
-        model.addAttribute("posts", posts);
+		model.addAttribute("posts", posts);
 		return "main";
 	}
-	
-//	board page
-	@GetMapping("/board")
-    public String showBoard(@RequestParam(name = "categoryId", required = false) Integer categoryId, Model model) {
+
+//	board page separate categoryId
+	@GetMapping("/board/{categoryID}")
+	public String showBoard(@PathVariable(name = "categoryID") Integer categoryID, Model model, Pageable page) {
 //		all post view
-		List<Board> posts = boardService.getAllPosts(); 
-	    for (Board post : posts) {
-//	    	post author userID
-	    	String userID = post.getUser_userID().getUserID();
-//	    	User user = userService.getUserById(post.getUser_userID());
-//	        post.setUser_userID(user); 
-	    }
+		Page<Board> posts = this.boardService.getPostsByCategoryId(categoryID, page);
 
-        model.addAttribute("posts", posts);
-        return "board";
-    }
-	
-//  post write
-	@GetMapping(value = "/board/post")
-	public String writePost(@RequestParam(value = "postID", required=false) Integer postID, Model model) {
-//		if (postID == null) {
-//			model.addAttribute("board", new Board());
-//		} else {
-//			Board board = boardService.getBoardDetail(postID);
-//			if (board == null) {
-//				return "redirect:/board";
-//			}
-//			model.addAttribute("board", board);
-//		}
-
-		return "board_post";
+		model.addAttribute("posts", posts);
+		return "board";
 	}
-	
-//  post register userID,categoryID error
-//	@PostMapping(value = "/board/register")
-//	public String registerBoard(@ModelAttribute Board board, Model model) {
-//		try {
-//			boolean isRegistered = boardService.registerBoard(params);
-//			if (isRegistered == false) {
-//				// TODO => 게시글 등록에 실패하였다는 메시지를 전달
-//			}
-//		} catch (DataAccessException e) {
-//			// TODO => 데이터베이스 처리 과정에 문제가 발생하였다는 메시지를 전달
-//
-//		} catch (Exception e) {
-//			// TODO => 시스템에 문제가 발생하였다는 메시지를 전달
-//		}
 
-//		 User userID = board.getUser_userID();
-//		 Category category = board.getCategory_categoryID();
-//		    
-//		    // 필요한 작업 수행 (예: 변환, 유효성 검사 등)
-//		    
-//		    // 변환된 값으로 다시 설정
-//		 board.setUser_userID(userID);
-//		 board.setCategory_categoryID(category);
-//		    
-//		boardService.saveBoard(board);
-//		
-//		return "redirect:/board";
-//	}
-	
 //	post detail 
-	@GetMapping("/board/{postID}")
-    public String showPostDetail(@PathVariable(name="postID") Integer postID, Model model) {
-        Board post = (Board) boardService.getPostById(postID);
-        boardService.visitCnt(postID);
+	@GetMapping("/board/{categoryID}/{postID}")
+	public String showPostDetail(@PathVariable(name = "postID") Integer postID, Model model) {
+		Board post = (Board) boardService.getPostById(postID);
+		boardService.visitCnt(postID);
 //        System.out.println("컨트롤러" + post.getCategoryName());
-        model.addAttribute("post", post);
-        return "board_detail";
-    }
+		model.addAttribute("post", post);
+		return "board_detail";
+	}
+
+	@RequestMapping("/board/search")
+	public String search(Model model, @ModelAttribute Search search, Pageable pageable) {
+		Page<Board> searchPost = boardService.search(search, pageable);
+		model.addAttribute("posts", searchPost);
+
+		return "board";
+	}
 }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>findID</title>
+</head>
+<body>
+<form method="post" th:action="@{/userUpdate}">
+    현재 비밀번호 : <input type="text" name="pwNow">
+
+    새 비밀번호 : <input type="text" name="pwNew">
+    <!--새 비밀번호 확인 추후에 만들거!-->
+    <button>이메일 찾기</button>
+</form>
+</body>
+</html>

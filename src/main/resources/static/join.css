@@ -1,120 +1,89 @@
-* {
-  box-sizing: border-box; 
-  font-family: Arial, sans-serif;
-}
-body {
+*{
+  padding: 0;
+  margin: 0;
+  border: none;    
   background-color: #fff;
 }
-.container {
-text-align: center;
-/* background-color: #fff; */
-border-radius: 5px;
-/* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-max-width: 500px;
-margin: 50px auto;
-padding: 20px;
-  /* background-color: #fff; */
-  /* border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-background-color: transparent; 
+body{
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
 }
 
-.social-login-buttons {
-display: flex;
-flex-direction: column;
-align-items: center;
-}
-
-.social-login-button {
-margin: 10px;
-padding: 10px 20px;
-border: none;
-border-radius: 5px;
-font-size: 16px;
-cursor: pointer;
-transition: background-color 0.3s;
-display: flex;
-align-items: center;
-}
-
-.social-login-button img {
-width: 30px;
-margin-right: 10px;
-}
-
-.social-login-button.google {
-background-color: #fff;
-color: #171717;
-}
-
-.social-login-button.naver {
-background-color: #fff;
-color: #171717;
-}
-
-.social-login-button.kakao {
-background-color: #fff;
-color: #171717;
-}
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+.login-wrapper{
+  width: 400px;
+  height: auto;
+  padding: 40px;
+  box-sizing: border-box;
+  position: fixed; /* 상대적인 위치 설정 */
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%);
+  /* 투명도 */
+  background-color: transparent; 
   border: 1px solid #9c9c9c;
-  border-radius: 5px;
+   box-shadow: 2px 2px 2px 2px #9c9c9c;
 }
-input[type="checkbox"] {
-  margin-bottom: 15px;
+.login-wrapper img {
+  width: 200px;
+  height: auto;
+  display: flex; /* 이미지를 블록 요소로 설정하여 가운데 정렬 가능하도록 함 */
+  margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 수평 가운데 정렬 */
 }
-input[type="submit"],.submit {
-  /* width: 100%; */
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #00ce80;
+
+.login-wrapper > h2{
+  font-size: 25px;
+  color: #00ce80;
+  /* margin-top: 20px; */
+  margin-bottom: 20px;
+  background-color: transparent;
+  
+}
+
+.search{
+float: right;
+}
+
+#login-form > input{
+  background-color: transparent;
+  width: 100%;
+  height: 48px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  background-color: #fff;
+  border: 1px solid #9c9c9c;
+}
+#login-form > input::placeholder{
+  color: #9c9c9c;
+  background-color: transparent;
+}
+#login-form > input[type="submit"]{
   color: #fff;
-  /* border: 1px solid #9c9c9c; */
-  border-radius: 5px;
-  /* cursor: pointer; */
-}
-input[type="submit"]:hover {
-  background-color: #00ce80;
-}
-.social-login-buttons {
-  display: flex;
-  justify-content: space-between;
-
-}
-.social-login-button {
-  width: 40%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #00ce80;
-  cursor: pointer;
-  outline: 1.5px #00ce80 solid; 
-}
-.jump {
-text-align: center;
+  font-size: 16px;
+  background-color:#00ce80;
+  border: 1px solid #9c9c9c;
+  /* margin: 10px; */
+   margin-top: 5px; 
 }
 
-.jump hr {
-width: 50%;
+/* 추가된 로그인 버튼 스타일 */
+.login-btn-container {
+  margin-top: 20px;
+  text-align: center;
 }
-.c {
-text-align: left;
-/* background-color: #fff; */
-border-radius: 5px;
-/* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-max-width: 500px;
-margin: 50px auto;
-padding: 20px;
-  /* background-color: #fff; */
-  /* border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-background-color: transparent; 
+.login-btn-container a {
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
 }
-
+.login-btn-container img {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 10px;
+  border-radius: 50%; /* 동그라미 모양 */
+  background-color: #fff; /* 배경색 */
+  padding: 10px; /* 아이콘 주변 간격 */
+  box-sizing: content-box;
+}

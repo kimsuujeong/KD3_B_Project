@@ -1,89 +1,25 @@
 package com.example.demo.board;
 
-import java.util.Collections;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import com.example.demo.category.Category;
-import com.example.demo.category.CategoryService;
+public interface BoardService {
 
-@Service
-public class BoardService {
-
-	@Autowired
-    private BoardMapper boardMapper;
+	public List<Board> getAllPosts();
 	
-//	@Autowired
-//    private CategoryService categoryService;
+    Page<Board> getPostsByCategoryId(Integer categoryId, Pageable pageable);
 	
-	public List<Board> getAllPosts() {
-		return boardMapper.findAll();
-	}
-
-	// board register
-//	public boolean registerBoard(Board params) {
-//		int queryResult = 0;
-//
-//		if (params.getPostID() == null) {
-//			queryResult = boardMapper.insertBoard(params);
-//		} else {
-//			queryResult = boardMapper.updateBoard(params);
-//		}
-//
-//		return (queryResult == 1) ? true : false;
-//	}
+	public Board getPostById(Integer postID);
 	
-	public void saveBoard(Board board) {
-		// TODO Auto-generated method stub
-		boardMapper.insert(board);
-	}
+	public void visitCnt(Integer postID);
 	
-	// board detail
-	public Board getBoardDetail(Integer postID) {
-		// TODO Auto-generated method stub
-		return boardMapper.selectBoardDetail(postID);
-	}
+	public int countAll();
 	
-	public List<Board> getBoardList() {
-		List<Board> boardList = Collections.emptyList();
-
-		int boardTotalCount = boardMapper.selectBoardTotalCount();
-
-		if (boardTotalCount > 0) {
-			boardList = boardMapper.selectBoardList();
-		}
-
-		return boardList;
-	}
+	public Page<Board> getList(Pageable page);
 	
-//	get post's categoryID from category
-	public List<Board> getPostsByCategoryId(Integer categoryId) {
-       
-//		System.out.println("서비스 카테고리"+boardMapper.findByCategoryId(categoryId));
-//		boardmapper.xml findByCategoryId
-		return boardMapper.findByCategoryId(categoryId);
-    }
-
-//	get postID 
-//	
-    public Board getPostById(Integer postID) {
-//    	boardmapper.xml findById
-    	Board post = boardMapper.findById(postID);
-//    	post is not null start
-    	if (post != null) {
-            Category category = post.getCategory_categoryID();
-            if (category != null) {
-                post.setCategoryName(category.getCategoryName());
-//                System.out.println("서비스 포스트" + post.getCategoryName());
-            }
-        }
-    	return post;
-    }
-
- 	public void visitCnt(Integer postID) {
- 		boardMapper.visitCnt(postID);
- 	}
-
+	public Page<Board> search(Search search,Pageable pageable);
+	
+	
 }
