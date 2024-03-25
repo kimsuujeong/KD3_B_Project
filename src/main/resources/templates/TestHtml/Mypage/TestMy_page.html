@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>mypage</title>
+</head>
+
+<body>
+	<h1>mypage입니다.</h1>
+	<form method="post" th:action="@{/mypage}">
+		<button class="w-100 btn btn-dark btn-lg" onclick="location.href='items.html'"
+			th:onclick="|location.href='@{/savelist}'|" type="button">
+			관심목록
+		</button>
+		<button class="w-100 btn btn-dark btn-lg" onclick="location.href='items.html'"
+			th:onclick="|location.href='@{/authn}'|" type="button">
+			관계자 인증
+		</button>
+		<button class="w-100 btn btn-dark btn-lg" onclick="location.href='items.html'"
+			th:onclick="|location.href='@{/userUpdate}'|" type="button">
+			개인정보 수정
+		</button>
+		<button class="w-100 btn btn-dark btn-lg" onclick="location.href='items.html'"
+			th:onclick="|location.href='@{/logout}'|" type="button">
+			로그아웃
+		</button>
+	</form>
+</body>
+
+</html>
