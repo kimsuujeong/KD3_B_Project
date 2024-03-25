@@ -44,6 +44,7 @@ public class UserController {
 			System.out.println("비밀번호를 입력해 주세요");
 			return "login";
 		}
+		
 
 		if (user != null) {
 			// 로그인 성공

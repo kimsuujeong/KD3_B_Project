@@ -1,8 +1,13 @@
-<div class="container" style="max-width: 600px">
-	<div class="py-5 text-center">
-		<h2>Test 페이지 입니다.</h2>
-	</div>
-	<div class="row">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>findID</title>
+</head>
+<body>
+<form method="post" th:action="@{/Testmain}">
+    	<div class="row">
 		<div class="col">
 			<button class="w-100 btn btn-secondary btn-lg" type="button" 
 				th:onclick="|location.href='@{/joinForm}'|">
@@ -24,5 +29,6 @@
 			</button>
 		</div>
 	</div>
-	<hr class="my-4">
-</div>
+</form>
+</body>
+</html>

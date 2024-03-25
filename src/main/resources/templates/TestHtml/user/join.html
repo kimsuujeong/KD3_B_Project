@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
         <h2>회원가입</h2>
     <h3>일반 회원가입</h3>
     <!-- 일반 회원가입 폼 -->
-    <form action="#" method="post" id="signup-form">
+    <form method="post" id="signup-form" th:action="@{/joinForm}">
         <input type="text" name="username" placeholder="사용자 이름" required>
          <input type="date" name="birthdate" placeholder="생년월일" required>
         <input type="email" name="email" id="email" placeholder="이메일 주소" required>
