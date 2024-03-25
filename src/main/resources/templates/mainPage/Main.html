@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="../../static/Setting.css">
     <link rel="stylesheet" href="../../static/mainpage/Main.css">
 </head>
@@ -47,8 +47,6 @@
                     <li><a href="#">펀딩</a></li>
                 </ul>
                 </div>
-                
-
                 <a href="#">기업행사</a>
                 <a href="#">예술인 펀딩</a>
                 <a href="#">서비스 소개</a>
@@ -58,35 +56,33 @@
         </nav>
     </header>
 
-    <!-- img header -->
+    <!-- banner img slider -->
     <section>
-        <div class="slider">
-            <div class="list">
-                <div class="item">
+        <div class="banner-img-slider">
+            <div class="banner-img-slider-container">
+                <div class="inner">
                     <img src="../../static/images/headerSlideImgExam/header-img1.png" alt="">
                 </div>
-                <div class="item">
+                <div class="inner">
                     <img src="../../static/images/headerSlideImgExam/header-img2.png" alt="">
                 </div>
-                <div class="item">
+                <div class="inner">
                     <img src="../../static/images/headerSlideImgExam/header-img3.png" alt="">
                 </div>
-                <div class="item">
+                <div class="inner">
                     <img src="../../static/images/headerSlideImgExam/header-img4.png" alt="">
                 </div>
-                <div class="item">
+                <div class="inner">
                     <img src="../../static/images/headerSlideImgExam/header-img5.png" alt="">
                 </div>
             </div>
         </div>
-
-        <!-- button prev and next -->
+        
         <div class="buttons">
             <button id="prev"><</button>
             <button id="next">></button>
         </div>
 
-        <!-- dots (if 5 items => 5dot) -->
         <ul class="dots">
             <li class="active"></li>
             <li></li>
@@ -94,30 +90,131 @@
             <li></li>
             <li></li>
         </ul>
+
+        <button class="btn1">1</button>
+        <button class="btn2">2</button>
+        <button class="btn3">3</button>
             
+    </section>
+
+    <section class="editors-pick">
+        <div class="bordelist">
+            <div>에디터의 PICK</div>
+            <div class="bordelist-explain">
+                저희가 지금 가장 추천하는 행사를 만나보세요!
+            </div>
+        </div>
         
-    </section>
-
-    <!-- scroll content -->
-    <section>
-        <div>
-            <!-- swipe img section -->
-        </div>
-    </section>
-
-    <section>
-        <div>
-            <h2>에디터의 PICK</h2>
-        </div>
-        <div>
-            저희가 지금 가장 추천하는 행사를 만나보세요!
-        </div>
-        <div>
+        <div class="readmore">
             <a href="#">
-                <span>더 많은 행사 보기</span>
+                <span>더 많은 행사 보기 </span><i class="fa-solid fa-angle-right"></i>
             </a>
         </div>
     </section>
+
+    <!-- scroll content -->
+    <section class="scroll-content">
+        <div class="wrapper">
+            <!-- <i class="fa-solid fa-angle-left"></i> -->
+            <div class="carousel">
+                <!-- <div class="carousel-content">
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-1.png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div>
+                <div class="carousel-content">
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-2.png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div>
+                <div class="carousel-content">
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-4.png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div>
+                <div class="carousel-content">
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-5.png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div>
+                <div class="carousel-content">
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div>
+                <div class="carousel-content">
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-7.png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div>
+                <div class="carousel-content">
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-8 .png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div>
+                <div class="carousel-content">
+                    <a href="#">
+                        <img src="../../static/images/scrollImgExam/scroll-9 .png" alt="img">
+                        <div class="date">03월 27일 (수)</div>
+                        <div class="title">제 7회 서울인구심포지엄</div>
+                        <div class="cost">무료</div>
+                        <div class="visitCnt">조회 324</div>
+                    </a>
+                </div> -->
+
+                
+                <img src="../../static/images/scrollImgExam/scroll-1.png" alt="img">
+                <img src="../../static/images/scrollImgExam/scroll-2.png" alt="img">
+                <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                <img src="../../static/images/scrollImgExam/scroll-4.png" alt="img">
+                <img src="../../static/images/scrollImgExam/scroll-5.png" alt="img">
+                <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+                <img src="../../static/images/scrollImgExam/scroll-7.png" alt="img">
+                <img src="../../static/images/scrollImgExam/scroll-8 .png" alt="img">
+                <img src="../../static/images/scrollImgExam/scroll-9 .png" alt="img">
+            </div>
+            <!-- <i class="fa-solid fa-angle-right"></i> -->
+        </div>
+    </section>
+
+    
 
 
 
