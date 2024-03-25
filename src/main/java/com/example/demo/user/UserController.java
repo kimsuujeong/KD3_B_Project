@@ -23,17 +23,7 @@ public class UserController {
 		return "TestHtml/user/Testmain";
 	}
 
-	@GetMapping("/joinForm")
-	public String joinForm() {
-		return "TestHtml/user/joinForm";
-	}
-
-	@PostMapping("/joinForm") // test join
-	public String joinForm(@ModelAttribute User userDTO) {
-		userService.InsertUser(userDTO);
-		return "TestHtml/user/joinForm";
-	}
-
+	// Login
 	@GetMapping("/login") // login
 	public String loginForm() {
 		return "TestHtml/user/login";
@@ -68,13 +58,14 @@ public class UserController {
 		
 	}
 	
+	// FindID
 	@GetMapping("/FindID")
 	public String FindID() {
 		return "TestHtml/user/FindID";
 	}
 
 	@PostMapping("/FindID") // test FindID
-	// user의 name도 받는 기능으로 업그레이드 예정.
+	// 아이디 찾기도 이메일로만 보내서 토큰받는걸로 바꾸기
 	public String FindID (@RequestParam("userName") String userName, @RequestParam("email") String email) {
 		User user = userService.FindID(userName,email);
 		// 같은 이메일이 있으면 이메일 인증 토큰을 보내 id를 출력 할 예정.
@@ -83,12 +74,14 @@ public class UserController {
 		return "TestHtml/user/FindID";
 	}
 	
+	
+	// FindPassword
 	@GetMapping("/FindPW")
 	public String FindPW() {
 		return "TestHtml/user/FindPW";
 	}
 	
-	@PostMapping("/FindPW") // test FindPW
+	@PostMapping("/FindPW") // test FindPW 아이디랑 이메일로 보내서 토큰받는걸로 바꾸기
 	public String FindPW (@RequestParam("email") String email,@RequestParam("userID") String userID) {
 		User user = userService.FindPW(email,userID);
 		

@@ -12,11 +12,6 @@ public class UserMapper {
 	
 	@Autowired
 	SqlSession sqlSession;
-	
-
-	public void InsertUser(User userDTO) {
-		sqlSession.insert("InsertUser", userDTO);
-	}
 
 
 	public User Login(String userID, String password) {
