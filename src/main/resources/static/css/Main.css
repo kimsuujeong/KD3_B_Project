@@ -126,8 +126,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
-    background-color: var(--green-color);
+    padding-bottom: 5rem;
+    /* background-color: var(--green-color); */
 }
 
 .slider{
@@ -238,73 +238,8 @@ body{
 #radio5:checked ~ .navigation-auto .auto-btn5{
     background: var(--green-color);
 }
+/* img slider END */
 
-
-/* banner img slider */
-section{
-    background-color: lightblue;
-}
-
-.banner-img-slider{
-    overflow: hidden;
-}
-
-.banner-img-slider-container{
-    width: 500vw;
-    transition: transform 0.5s;
-}
-
-.inner{
-    width: 100vw;
-    float: left;
-}
-
-.inner img{
-    width: 100%;
-}
-
-.buttons{
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.buttons button{
-    width: 50px;
-    height: 50px;
-    color: var(--white-color);
-    background-color: rgba(99, 98, 98, 0.521);
-    font-size: 3rem;
-}
-
-.dots{
-    position: absolute;
-    bottom: 10px;
-    color: var(--white-color);
-    left: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.dots li{
-    list-style: none;
-    width: 10px;
-    height: 10px;
-    background-color: var(--green-color);
-    margin: 20px;
-    border-radius: 20px;
-    transition: 1s;
-}
-
-.dots li.active{
-    width: 30px;
-}
 
 /* editor pick */
 .editors-pick{
@@ -348,7 +283,7 @@ section{
     align-items: center;
     justify-content: center;
     min-height: 30vh;
-    background-color: var(--grey-color);
+    /* background-color: greenyellow; */
     padding: 0 10rem;
 }
 
@@ -380,15 +315,46 @@ section{
 } */
 
 .wrapper .carousel{
-    font-size: 0rem;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
+    display: flex;
+    max-width: 85vw;
 }
 
-/* 이쪽부근에 설명까지 넣어서 작동하도록 */
+.carousel .carousel-box{
+    width: calc(100% / 4.5);
+    margin-left: 3rem;
+}
 
-.carousel img{
+.carousel .carousel-box:first-child{
+    margin-left: 0rem;
+}
+
+.carousel-box img{
+    height: 14rem;
+    width: 26rem;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.carousel-box div{
+    font-size: 1.3rem;
+    color: var(--black-color);
+}
+
+.carousel-box .startDate{
+    color: var(--grey-color);
+    padding-top: 1.5rem;
+}
+
+.carousel-box .title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 0;
+}
+
+/* .carousel img{
     height: 24rem;
     width: calc(100% / 4.5);
     object-fit: cover;
@@ -397,17 +363,17 @@ section{
 
 .carousel img:first-child{
     margin-left: 0rem;
-}
+} */
 
 /* 웹사이트의 사이즈가 줄면 보이는 갯수가 줆 */
 @media screen and (max-width:90rem){
-    .carousel img{
+    .carousel-box{
         width: calc(100% / 4);
     }
 }
 
 @media screen and (max-width:55rem){
-    .carousel img{
+    .carousel-box{
         width: calc(100% / 3);
     }
 }
@@ -415,7 +381,9 @@ section{
 /* draggable images slider END */
 /* editor pick END*/
 
-
+.empty{
+    height: 5rem;
+}
 
 
 footer{
