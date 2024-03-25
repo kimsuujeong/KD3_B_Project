@@ -24,6 +24,9 @@ public class Board {
     private User user;
     private Category category;
 
+    private String user_userID;
+    private Integer category_categoryID;
+    
     private String categoryName;
 	
 }
