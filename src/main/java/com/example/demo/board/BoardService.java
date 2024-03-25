@@ -9,7 +9,7 @@ public interface BoardService {
 
 	public List<Board> getAllPosts();
 	
-	public List<Board> getPostsByCategoryId(Integer categoryId);
+    Page<Board> getPostsByCategoryId(Integer categoryId, Pageable pageable);
 	
 	public Board getPostById(Integer postID);
 	
@@ -19,7 +19,7 @@ public interface BoardService {
 	
 	public Page<Board> getList(Pageable page);
 	
-//	public List<Board> getBoardList(Search search);
+	public Page<Board> search(Search search,Pageable pageable);
 	
 	
 }
