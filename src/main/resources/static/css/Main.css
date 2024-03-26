@@ -1,6 +1,7 @@
 
 body{
-    background-color: var(--white-color);
+    background-color: #e1e4e631;;
+    overflow-x: hidden;
 }
 
 .header{
@@ -385,7 +386,48 @@ body{
     height: 5rem;
 }
 
-
 footer{
-    background-color: yellow;
+    background-color: #e1e4e67a;
+    font-size: 1.6rem;
+    padding-left: 10rem;
+    color: var(--black-color);
+}
+
+.footer > div{
+    padding-top: 2rem;
+}
+
+.link-title{
+    font-weight: bold;
+}
+
+.company{
+    font-size: 2rem;
+}
+
+.link-list{
+    justify-content: center;
+    font-weight: bold;
+}
+
+.link-list a{
+    padding-right: 4rem;
+    color: var(--black-color);
+}
+
+.warning{
+    padding-top: 1rem;
+    font-weight: bold;
+    color: #c54949;
+}
+
+.footer-down{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10rem;
+    padding-bottom: 4rem;
+}
+
+.sns a{
+    padding: 0 2rem;
 }
