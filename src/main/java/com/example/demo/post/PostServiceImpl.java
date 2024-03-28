@@ -37,16 +37,13 @@ public class PostServiceImpl implements PostService {
 		return postMapper.selectBoardDetail(postID);
 	}
 
-	// board register
-//	public boolean registerBoard(Board params) {
-//		int queryResult = 0;
-//
-//		if (params.getPostID() == null) {
-//			queryResult = postMapper.insertBoard(params);
-//		} else {
-//			queryResult = postMapper.updateBoard(params);
-//		}
-//
-//		return (queryResult == 1) ? true : false;
-//	}
+	// board delete
+	public void delete(Integer postID) {
+		postMapper.delete(postID);
+	}
+
+	public void updateBoard(Board board) {
+		// TODO Auto-generated method stub
+		postMapper.update(board);
+	}
 }

@@ -12,5 +12,7 @@ public interface PostService {
 	
 	public Board getBoardDetail(Integer postID);
 	
-//	public boolean registerBoard(Board params);
+	public void delete(Integer postID);
+	
+	public void updateBoard(Board board);
 }
