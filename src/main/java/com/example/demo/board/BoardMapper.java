@@ -1,6 +1,7 @@
 package com.example.demo.board;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
@@ -56,13 +57,14 @@ public class BoardMapper {
 		return new PageImpl<>(content, page, total);
 	}
 
-	public Page<Board> search(@Param("search") Search search, Pageable pageable) {
+	public Page<Board> searchCtg(Integer categoryID, Search search, Pageable pageable) {
 		int offset = pageable.getPageNumber() * pageable.getPageSize();
 		RowBounds rowBounds = new RowBounds(offset, pageable.getPageSize());
-		List<Board> searchResults = sqlSession.selectList("search", search, rowBounds);
+		List<Board> searchCResults = sqlSession.selectList("searchCtg",
+				Map.of("categoryID", categoryID, "search", search), rowBounds);
+	    int total = sqlSession.selectOne("countSCR", 
+	    		Map.of("categoryID", categoryID, "search", search));
 
-		int total = sqlSession.selectOne("countSearchResults", search);
-
-		return new PageImpl<>(searchResults, pageable, total);
+		return new PageImpl<>(searchCResults, pageable, total);
 	}
 }
