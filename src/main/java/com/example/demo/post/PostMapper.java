@@ -31,8 +31,8 @@ public class PostMapper {
 		sqlSession.insert("insert", board);
 	}
 
-	public int updateBoard(Board params) {
-		return sqlSession.update("updateBoard", params);
+	public void update(Board board) {
+		sqlSession.update("update", board);
 	}
 
 	public int selectBoardTotalCount() {
@@ -45,5 +45,10 @@ public class PostMapper {
 	
 	public void visitCnt(@Param("postID") Integer postID) {
 		sqlSession.update("visitCnt",postID);
+	}
+
+	public void delete(@Param("postID") Integer postID) {
+		// TODO Auto-generated method stub
+		sqlSession.delete("delete", postID);
 	}
 }

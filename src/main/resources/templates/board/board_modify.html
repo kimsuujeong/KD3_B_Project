@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>게시물 수정</title>
+<link rel="stylesheet" href="../../board_post.css">
+
+</head>
+<body>
+<form class="form-horizontal" th:action="@{|/board/modify/${postID}|}" th:object="${board}" method="post" onsubmit="return registerBoard(this)">
+							<!--/* update의 경우 서버로 전달할 게시글 번호 (PK) */-->
+							<input type="hidden" th:if="*{postID != null and postID > 0}" th:field="*{postID}"/>
+    <h2>게시물 수정</h2><br> 
+	<th:block layout:fragment="content">
+					<div class="card-content">
+						
+							
+    <div class="header">Title</div> 
+    <input type="text" th:value="${board.postName}" placeholder="제목을 입력하세요" name="postName">
+    <div class="header">Comment</div>
+    <!-- <input type="content" placeholder="내용을 입력하세요" name="detail"> -->
+    <textarea th:text="${board.content}" placeholder="내용을 입력하세요" name="content"></textarea>
+    <div class="header">작성자 정보</div>
+    <input type="text" th:value="${board.authorName}" placeholder="이름" name="authorName">
+    <input type="text" th:value="${board.authorLink}" placeholder="링크" name="authorLink">
+	<input type="text" th:value="${board.user_userID}" placeholder="유저아이디" name="user_userID">
+	<input type="text" th:value="${board.category_categoryID}" placeholder="카테고리" name="category_categoryID">
+	시작날짜<input type="date" th:value="${board.eventStart}" name="eventStart">
+	끝 날짜<input type="date" th:value="${board.eventEnd}" name="eventEnd">
+    <div class="filebox">
+      <!-- <input class="upload-name" value="첨부파일" placeholder="첨부파일"> -->
+      <!-- <label for="file">파일찾기</label>  -->
+      <input type="file" id="file">
+  </div>
+  <div class="btn_wrap text-center">
+  							<a th:href="@{/board}" class="btn btn-default waves-effect waves-light">뒤로가기</a>
+  							<button type="submit" class="btn btn-primary waves-effect waves-light">수정하기</button>
+
+  </div>
+</form>
+
+
+			
+</body>
+</html>
