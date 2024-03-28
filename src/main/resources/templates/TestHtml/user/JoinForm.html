@@ -1,17 +1,152 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
+	<meta charset="UTF-8">
+	<title>회원가입</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
-<form method="post" th:action="@{/joinForm}">
-    id : <input type="text" name="userID">
-    email : <input type="text" name="email">
-    password : <input type="password" name="password">
-    name : <input type="text" name="userName">
-    <button>가입하기</button>
-</form>
+	<p th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></p>
+	<form id="joinForm" method="post" th:action="@{/joinForm}">
+		id : <input type="text" name="userID" id="userID">
+		<button class="idchk" id="idchk" name="idchk" onclick="fn_idchk();" value="N">중복확인</button><br>
+		email : <input type="text" name="email" id="email">
+		<button class="emailchk" id="emailchk" name="emailchk" onclick="fn_emailchk();" value="N">중복확인</button><br>
+		password : <input type="password" name="password" id="password"><br>
+		password comfirm: <input type="password" name="password2" id="password2"><br>
+		nickname : <input type="text" name="userName" id="userName">
+		<button class="namechk" id="namechk" name="namechk" onclick="fn_namechk();" value="N">중복확인</button><br>
+		<button type="button" onclick="submitBtn()">가입하기</button>
+	</form>
+
+	<script>
+		var idc = false;
+		var emc = false;
+		var nac = false;
+		var idv = "";
+		var emv = "";
+		var nav = "";
+
+
+		function fn_idchk() {
+			event.preventDefault();
+			var userID = $('#userID').val();
+			if (userID.trim() === '' || userID.trim() == '') {
+				alert("아이디를 입력해주세요")
+				return;
+			}
+			idv = userID;
+			$.ajax({
+				url: "/idchk?userID=" + userID,
+				type: "get",
+				success: function (response) {
+					if (response == 1) {
+						alert("중복된 아이디입니다");
+					} else if (response == 0) {
+						$("#idcnk").attr("value", "Y");
+						alert("사용가능한 아이디입니다");
+						idc = true;
+					}
+				},
+				error: function () {
+					alert("중복체크 중 오류 발생");
+				}
+
+			});
+		}
+
+		function fn_emailchk() {
+			event.preventDefault();
+			var email = $('#email').val();
+			if (email.trim() === ''||email.trim()=='') {
+				alert("이메일을 입력해주세요");
+				return;
+			}
+			emv = email;
+			$.ajax({
+				url: "/emailchk?email=" + email,
+				type: "get",
+				success: function (response) {
+					if (response == 1) {
+						alert("중복된 이메일입니다");
+					} else if (response == 0) {
+						$("#emailcnk").attr("value", "Y");
+						alert("사용가능한 이메일입니다");
+						emc = true;
+					}
+				},
+				error: function () {
+					alert("중복체크 중 오류 발생");
+				}
+			});
+		}
+
+		function fn_namechk() {
+			event.preventDefault();
+			var name = $('#userName').val();
+			if (name.trim() === ''||name.trim=='') {
+				alert("닉네임을 입력해주세요");
+				return;
+			}
+			nav = name;
+			$.ajax({
+				url: "/namechk?userName=" + name,
+				type: "get",
+				success: function (response) {
+					if (response == 1) {
+						alert("중복된 닉네임입니다");
+					} else if (response == 0) {
+						$("#namecnk").attr("value", "Y");
+						alert("사용가능한 닉네임입니다");
+						nac = true;
+					}
+				},
+				error: function () {
+					alert("중복체크 중 오류 발생");
+				}
+			});
+		}
+
+		function submitBtn() {
+			var password = $('#password').val();
+			var password2 = $('#password2').val();
+			if (password !== password2) {
+				alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+				return;
+			}
+			if (idc && emc && nac) {
+				$.ajax({
+					url: "/joinForm",
+					type: "post",
+					data: $('#joinForm').serialize(),
+					success: function (response) {
+						alert("가입 완료");
+						window.location.href = "/login";
+					},
+					error: function () {
+						alert("오류 발생");
+					}
+
+				})
+			} else if (!idc) {
+				alert("아이디의 중복 확인을 완료하십시오");
+				$('#email').val(emv);
+				$('#userName').val(nav);
+			} else if (!emc) {
+				alert("이메일의 중복 확인을 완료하십시오");
+				$('#userID').val(idv);
+				$('#userName').val(nav);
+			} else if (!nac) {
+				alert("닉네임의 중복 확인을 완료하십시오");
+				$('#userID').val(idv);
+				$('#email').val(emv);
+			} else {
+				alert("모든 중복 확인을 완료하십시오");
+			}
+		}
+	</script>
 </body>
+
 </html>
