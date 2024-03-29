@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Name Modify</title>
+</head>
+
+<body>
+	<h2>Modify Name</h2>
+	<form th:action="@{/userUpdate/namemodify}" method="post">
+		<p th:if="${errorMessage}" class="error" style="color: red" th:text="${errorMessage}"></p>
+		<label for="newName">새로운 이름:</label>
+		<input type="text" id="newName" name="userName">
+		<input type="submit" value="Change name">
+	</form>
+
+	
+</body>
+
+</html>

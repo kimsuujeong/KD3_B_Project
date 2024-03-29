@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>findID</title>
+    <title>change</title>
 </head>
-<body>
-<form method="post" th:action="@{/userUpdate}">
-    현재 비밀번호 : <input type="text" name="pwNow">
 
-    새 비밀번호 : <input type="text" name="pwNew">
-    <!--새 비밀번호 확인 추후에 만들거!-->
-    <button>이메일 찾기</button>
-</form>
+<body>
+    <h1>개인정보.</h1>
+    <div id="userInfo">
+        <h2>사용자 정보</h2>
+        <p>userID: <span th:text="${loggedUser.userID}"></span></p>
+    <form th:action="@{/userUpdate/namemodify}" method="post">
+        <p>이름: <span th:text="${loggedUser.userName}"></span></p>
+		<input type="hidden" name="userName" th:value="${loggedUser.userName}" />
+        <button class="btn btn-dark" type="submit">이름 변경</button>
+    </form>
+    <form th:action="@{/userUpdate/emmodify}" method="post">
+        <p>이메일: <span th:text="${loggedUser.email}"></span></p>
+		<input type="hidden" name="email" th:value="${loggedUser.email}" />
+        <button class="btn btn-dark" type="submit">이메일 변경</button>
+    </form>
+    <form th:action="@{/userUpdate/pwmodify}" method="post">
+        <button class="btn btn-dark" type="submit">비밀번호 변경</button>
+    </form>
+    </div>
+
+	
 </body>
 </html>
