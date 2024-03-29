@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.chinfo.ChanInfoMapper">
+
+	<update id="nmodi">
+		update user set userName=#{userName}
+		where
+		userID=#{userID}
+		and userName !=#{userName}
+	</update>
+
+	<update id="emodi">
+		update user set email=#{email}
+		where userID=#{userID}
+		and email !=#{email}
+	</update>
+
+	<update id="pwmodi">
+		update user set password=#{password}
+		where
+		userID=#{userID}
+	</update>
+
+	<select id="checkpw" resultType="int">
+		select count(*)
+		from user
+		where
+		userID=#{userID}
+		and password=#{oldPw}
+	</select>
+</mapper>
