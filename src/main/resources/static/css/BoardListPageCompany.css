@@ -238,11 +238,16 @@ body{
     float: left;
 }
 
+.filter-announcement{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6rem;
+}
 /* filter category End */
 
 
 /* search text Start */
-.search-text{
+.content-list{
     background-color: goldenrod;
     width: 65vw;
     height: 100vh;
