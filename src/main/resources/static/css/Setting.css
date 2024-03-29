@@ -1,3 +1,5 @@
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+
 :root{
     /* color */
     --green-color:#00ce80;
@@ -10,7 +12,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'SUIT','Roboto', sans-serif;
     outline: none;
     border: none;
     text-decoration: none;
