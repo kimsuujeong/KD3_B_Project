@@ -38,7 +38,7 @@ public class BoardController {
 		Page<Board> posts = this.boardService.getList(page);
 
 		model.addAttribute("posts", posts);
-		return "board/board";
+		return "/TestHtml/board/board";
 	}
 
 //	board page separate categoryId
@@ -48,7 +48,7 @@ public class BoardController {
 		Page<Board> posts = this.boardService.getPostsByCategoryId(categoryID, page);
 
 		model.addAttribute("posts", posts);
-		return "board/board";
+		return "/TestHtml/board/board";
 	}
 
 //	post detail 
@@ -58,7 +58,7 @@ public class BoardController {
 		boardService.visitCnt(postID);
 //        System.out.println("컨트롤러" + post.getCategoryName());
 		model.addAttribute("post", post);
-		return "board/board_detail";
+		return "/TestHtml/board/board_detail";
 	}
 
 	@RequestMapping("/board/{categoryID}/search")
@@ -67,6 +67,6 @@ public class BoardController {
 		Page<Board> searchPost = boardService.searchCtg(categoryID, search, pageable);
 		model.addAttribute("posts", searchPost);
 
-		return "board/board";
+		return "/TestHtml/board/board";
 	}
 }
