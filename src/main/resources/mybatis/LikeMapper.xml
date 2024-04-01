@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="like">
+	
+	<select id="list" resultType="com.example.demo.like.Like">
+	
+		select l.likeID, u.userID, p.postID, l.userID
+		from user u, board p, mydb.like l
+		where u.userID = l.userID
+        and p.postID = l.postID
+		and l.userID = #{userID}
+		order by l.likeID;
+	
+	</select>
+
+	<insert id="insert">
+		insert into mydb.like(likeID, userID, postID)
+		values(#{likeID}, #{userID}, #{postID})
+	</insert>
+
+
+
+</mapper>
