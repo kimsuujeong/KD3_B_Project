@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MypageController {
+public class MypageController { // 관심목록, 인증, 개인정보 수정(비밀번호 수정), 로그아웃 
 	
 //	@Autowired
 //	private UserService userService;

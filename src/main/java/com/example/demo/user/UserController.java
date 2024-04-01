@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller
 @RequiredArgsConstructor
-public class UserController {
+public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@Autowired
 	private UserService userService;
