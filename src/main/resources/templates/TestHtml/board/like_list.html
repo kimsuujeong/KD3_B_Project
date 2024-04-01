@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>관심 목록</title>
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+   $("#btnList").click(function(){
+      location.href="/board";
+   });
+
+   $("#btnDelete").click(function(){
+      if(confirm("관심 목록을 삭제하시겠습니까?")){
+         location.href="/like/deleteAll";
+      }
+   });
+
+   $("a.deleteLink").click(function(e){
+      if(!confirm("삭제하시겠습니까?")){
+         e.preventDefault();
+      }
+   });
+});
+</script>
+</head>
+
+<body>
+	
+<h2>관심목록</h2>
+<c:choose>
+   <!--<c:when test="${map.count == 0 }">
+      관심목록이 비었습니다.
+   </c:when>-->
+   <c:otherwise>
+      <form id="form1" name="form1" method="post" action="/like/list">
+      <table border="1" width="400px">
+         <tr>
+            <th>게시물 제목</th>
+            <th>작성자</th>
+            <th>&nbsp;</th>
+         </tr>
+         <c:forEach var="like" items="${map.list}">
+         <tr>
+			<td th:text="${postName}"></td>
+			<td th:text="${authorName}"></td>
+            <!-- <td>
+               <input type="hidden" name="like_id" value="${like_id}">
+            </td> -->
+            <td><a href="/like/delete?like_id=${like_id}" class="deleteLink">삭제</a></td>
+         </tr>
+         </c:forEach>
+         
+      </table>
+      <button id="btnUpdate">수정</button>
+      <button type="button" id="btnDelete">관심목록 비우기</button>
+      </form>
+   </c:otherwise>
+</c:choose>
+<button type="button" id="btnList">목록</button>
+</body>
+</html>
