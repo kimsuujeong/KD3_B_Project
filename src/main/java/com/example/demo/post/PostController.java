@@ -45,7 +45,7 @@ public class PostController {
 	public String writePost(Model model) {
 
 		model.addAttribute("board", new Board());
-		return "board/board_post";
+		return "/TestHtml/board/board_post";
 	}
 	
 //  post save
@@ -79,7 +79,7 @@ public class PostController {
 		model.addAttribute("board", board);
 		model.addAttribute("postID", postID);
 		
-		return "board/board_modify";
+		return "/TestHtml/board/board_modify";
 	}
 	
 	@PostMapping(value = "/modify/{postID}")
