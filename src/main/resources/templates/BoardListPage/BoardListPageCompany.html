@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BoardListPageCompany</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="../../static/css/Setting.css">
     <link rel="stylesheet" href="../../static/css/BoardListPageCompany.css">
@@ -99,39 +99,289 @@
     </section>
     
 
-    <!-- filter category Start-->
-    <section class="filter-category">
-        <div class="filter-announcement">
-            <div>필터 태그</div>
-            <div>
+    <!-- tagAndContent Start-->
+    <section class="tagAndContent">
+        <!-- tag Start -->
+        <div class="filter-reset">
+            <div class="filter-announcement">
+                <div class="filter-tag">필터 태그</div>
                 <a href="#">태그 초기화</a>
             </div>
-            
+
+            <div class="select-tag">
+                <div class="time-tag">
+                    <div class="time-btn bold">일시</div>
+                    <input type="radio" name="time" value="time-1" checked><span>모든 날</span>
+                    <br>
+                    <input type="radio" name="time" value="time-2"><span>오늘</span>
+                    <br>
+                    <input type="radio" name="time" value="time-3"><span>이번주</span>
+                    <br>
+                    <input type="radio" name="time" value="time-4"><span>이번달</span>
+                    <br>
+                    <input type="checkbox" name="time" value="time-5"><span>종료된 행사</span>
+                </div><br>
+                
+                <div class="location-tag">
+                    <div class="location-btn bold">지역</div>
+                    <input type="checkbox" name="location" value="location-1"><span>서울/경기/인천</span>
+                    <br>
+                    <input type="checkbox" name="location" value="location-2"><span>부산/울산/경남</span>
+                    <br>
+                    <input type="checkbox" name="location" value="location-3"><span>대구/경북</span>
+                    <br>
+                    <input type="checkbox" name="location" value="location-4"><span>충청/대전/세종</span>
+                    <br>
+                    <input type="checkbox" name="location" value="location-5"><span>전라/광주</span>
+                    <br>
+                    <input type="checkbox" name="location" value="location-6"><span>강원</span>
+                    <br>
+                    <input type="checkbox" name="location" value="location-7"><span>제주</span>
+                    <br>
+                </div> <br>
+
+                <div class="field-tag">
+                    <div class="field-btn bold">행사분야</div>
+                    <input type="checkbox" name="field" value="field-1"><span>창업</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-2"><span>IT/프로그래밍</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-3"><span>라이프</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-4"><span>경제/금융</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-5"><span>경영</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-6"><span>인문/사회</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-7"><span>마케팅</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-8"><span>커리어</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-9"><span>과학기술</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-10"><span>의료/의학</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-11"><span>예술/디자인/영상</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-12"><span>관광/여행</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-13"><span>기획</span>
+                    <br>
+                    <input type="checkbox" name="field" value="field-14"><span>기타</span>
+                    <br>
+                </div><br>
+
+                <div class="type-tag">
+                    <div class="type-btn bold">지역</div>
+                    <input type="checkbox" name="type" value="type-1"><span>강연/세미나</span>
+                    <br>
+                    <input type="checkbox" name="type" value="type-2"><span>멘토링/대외활동</span>
+                    <br>
+                    <input type="checkbox" name="type" value="type-3"><span>대회/공모전</span>
+                    <br>
+                    <input type="checkbox" name="type" value="type-4"><span>워크샵/클리닉</span>
+                    <br>
+                    <input type="checkbox" name="type" value="type-5"><span>콘테스트/콩쿠르</span>
+                    <br>
+                    <input type="checkbox" name="type" value="type-6"><span>박람회/페어/축제</span>
+                    <br>
+                    <input type="checkbox" name="type" value="type-7"><span>기타</span>
+                    <br>
+                </div><br>
+
+                <div class="participation-tag">
+                    <div class="time-btn bold">일시</div>
+                    <input type="radio" name="participation" value="participation-1" checked><span>전체</span>
+                    <br>
+                    <input type="radio" name="participationp" value="participation-2"><span>온라인</span>
+                    <br>
+                    <input type="radio" name="participation" value="participation-3"><span>오프라인</span>
+                </div><br>
+
+                <div class="cost-tag">
+                    <div class="cost-btn bold">가격</div>
+                    <input type="radio" name="cost" value="cost-1" checked>전체
+                    <br>
+                    <input type="radio" name="cost" value="cost-2"><span>무료</span>
+                    <br>
+                    <input type="radio" name="cost" value="cost-3"><span>유료</span>
+                </div><br>
+
+            </div>
 
         </div>
 
-        <div class="filter-box">
-            
+        <!-- tag End -->
+        
+
+        <!-- content-list Start -->
+        <div class="content-list">
+            <div class="search-result">
+                <div><span class="content-cnt">132 </span><span>개의 행사가 검색되었습니다</span></div>
+                <div class="list-btn">
+                    <a href="#">추천순</a>
+                    <a href="#">업데이트순</a>
+                    <a href="#">모집 마감일순</a>
+                </div>
+                
+            </div>
+    
+            <div class="board-content">
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                <div class="carousel-box">
+                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                    <div class="space-between">
+                        <div class="cost">무료</div>
+                        <div class="visit"><span>조회</span><span>500</span></div>
+                    </div>
+                </div>
+                
+            </div>
+    
+            <div class="pagination">
+                <button class="btn1" onclick="backBtn()"><i class="fa-solid fa-angle-left"></i>이전</button>
+                <ul class="pagination-ul">
+                    <li class="link active" value="1" onclick="activeLink()">1</li>
+                    <li class="link" value="2" onclick="activeLink()">2</li>
+                    <li class="link" value="3" onclick="activeLink()">3</li>
+                    <li class="link" value="4" onclick="activeLink()">4</li>
+                    <li class="link" value="5" onclick="activeLink()">5</li>
+                </ul>
+                <button class="btn2" onclick="nextBtn()">다음<i class="fa-solid fa-angle-right"></i></button>
+            </div>
         </div>
+        <!-- content-list End -->
+
     </section>
-    <!-- filter category End-->
-
-
-    <!-- contents list Start -->
-    <section class="content-list">
-        <div class="search-result">
-
-        </div>
-
-        <div class="board-content">
-
-        </div>
-
-        <div class="paging">
-
-        </div>
-    </section>
-    <!-- contents list End -->
+    <!-- tagAndContent End-->
 
 
 
@@ -144,6 +394,7 @@
                 <a href="#">예술인 펀딩</a>
                 <a href="#">서비스 소개</a>
                 <a href="#">Q & A</a>
+                <a href="#">공지사항</a>
             </div>
         </div>
 
