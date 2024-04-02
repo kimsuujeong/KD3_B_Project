@@ -23,11 +23,8 @@ public class UserMapper {
 
 
 
-	public User FindID(String userName, String email) {
-		Map<String, String> FindIDInfo = new HashMap<>();
-		FindIDInfo.put("userName", userName);
-		FindIDInfo.put("email", email);
-		 return sqlSession.selectOne("FindID",FindIDInfo);
+	public User FindID(String email) {
+		 return sqlSession.selectOne("FindID",email);
 	}
 
 

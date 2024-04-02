@@ -7,10 +7,16 @@
 </head>
 <body>
 <form method="post" th:action="@{/FindID}">
-    userName : <input type="text" name="userName">
-    email : <input type="text" name="email">
+
+    <h1>아이디 찾기</h1>
+    <h3>가입하신 이메일로 인증번호를 전송해드립니다.</h3>
+    이메일 : <input type="text" name="email"><button type="submit">이메일 전송</button>
+    <br>
+    인증번호 : <input type="text" name="emailToken">
+
+
     <!-- 나중에 이메일 토큰 일치 하면 가입 되는걸로 변경-->
-    <button>이메일 찾기</button>
+    
 </form>
 </body>
 </html>

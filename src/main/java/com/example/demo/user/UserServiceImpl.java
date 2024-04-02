@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User FindID(String userName, String email) {
-		return userMapper.FindID(userName, email);
+	public User FindID(String email) {
+		return userMapper.FindID(email);
 	}
 
 	@Override
