@@ -24,7 +24,6 @@ public class RedisUtil {
         return valueOperations.get(key);
     }
 
-
     public void setData(Integer key, String value) {
         ValueOperations<Integer ,String> valueOperations = redisTemplate.opsForValue();
         valueOperations.set(key, value);
@@ -38,6 +37,8 @@ public class RedisUtil {
             valueOperations.set(key, value, expireDuration);
             
             System.out.println("데이터를 Redis에 성공적으로 저장했습니다.");
+            
+            System.out.println("키값test: "+ getData(key)); // 키값 test (value = mail값 성공적으로 가져옴)
             
         } catch (Exception e) {
         	
