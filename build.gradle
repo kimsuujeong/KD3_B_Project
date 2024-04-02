@@ -36,6 +36,8 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	// mail Authentication
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.0.5'
+	// Redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 tasks.named('test') {
