@@ -30,6 +30,9 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	@Autowired
 	private MailController mailController;
 	
+	@Autowired
+	private MailService mailService;
+	
 
 	@GetMapping("/Testmain") // test home
 	public String Testmain() {
@@ -86,13 +89,12 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 		System.out.println(usermapper.FindID(email).getUserID());
 		System.out.println(usermapper.FindID(email).getEmail());
 		
+		
 		if (usermapper.FindID(email).getEmail() != null) {
 //			System.out.println("있는 이메일 입니다.");
-//			mailController.mailSend(email);
-			
+			mailController.mailSend(email);
 			
 		}
-		
 		
 		return "TestHtml/user/FindID";
 	}

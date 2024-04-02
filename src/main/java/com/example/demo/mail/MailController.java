@@ -4,22 +4,24 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.redis.RedisUtil;
+
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 public class MailController {
-	
-	private final MailService mailService; 
 
 	@Autowired
-	public MailController(MailService mailService) {
-		this.mailService = mailService;
-	}
+	private final MailService mailService; 
+	
 	
     private int number; 
 
@@ -35,13 +37,12 @@ public class MailController {
 
             map.put("success", Boolean.TRUE);
             map.put("number", num);
-            System.out.println("메일 보내기에 성공했습니다.");
+            
             
         } catch (Exception e) {
         	
             map.put("success", Boolean.FALSE);
             map.put("error", e.getMessage());
-            System.out.println("메일 보내기에 실패했습니다.");
             
         }
 
@@ -49,16 +50,16 @@ public class MailController {
         
     }
 
-//	// 인증번호 일치여부 확인
-//    @GetMapping("/mailCheck")
-//    public ResponseEntity<?> mailCheck(@RequestParam("userNumber") String userNumber) {
-//
-//        boolean isMatch = userNumber.equals(String.valueOf(number));
-//        
-//        System.out.println("성공했습니다.");
-//
-//        return ResponseEntity.ok(isMatch);
-//        
-//    }
+	// 인증번호 일치여부 확인
+    @GetMapping("/mailCheck")
+    public ResponseEntity<?> mailCheck(@RequestParam("userNumber") String userNumber) {
+
+        boolean isMatch = userNumber.equals(String.valueOf(number));
+        
+        System.out.println("성공했습니다.");
+
+        return ResponseEntity.ok(isMatch);
+        
+    }
 
 }
