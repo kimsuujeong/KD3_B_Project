@@ -1,21 +1,25 @@
 package com.example.demo.user;
 
+import java.lang.ProcessBuilder.Redirect;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.mapping.Embedded.Empty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.mail.MailController;
-import com.example.demo.mail.MailService;
+import com.example.demo.redis.RedisUtil;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,13 +30,12 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@Autowired
 	private UserMapper usermapper; // test
-	
+
 	@Autowired
 	private MailController mailController;
-	
+
 	@Autowired
-	private MailService mailService;
-	
+	private RedisUtil redisUtil;
 
 	@GetMapping("/Testmain") // test home
 	public String Testmain() {
@@ -77,27 +80,51 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	// FindID
 	@GetMapping("/FindID")
 	public String FindID() {
-		return "TestHtml/user/FindID";
+		return "LogIn/IdSearch";
 	}
 
 	@PostMapping("/FindID") // test FindID
-	// 아이디 찾기도 이메일로만 보내서 토큰받는걸로 바꾸기
-	public String FindID(@RequestParam("email") String email) {
-		userService.FindID(email);
-		
-		
-		System.out.println(usermapper.FindID(email).getUserID());
-		System.out.println(usermapper.FindID(email).getEmail());
-		
-		
-		if (usermapper.FindID(email).getEmail() != null) {
-//			System.out.println("있는 이메일 입니다.");
-			mailController.mailSend(email);
+	public ResponseEntity<Map<String, Object>> FindID(@RequestParam("email") String email) {
+
+		Map<String, Object> response = new HashMap<>();
+//		userService.FindID(email); 
+
+		try {
+
+			if (usermapper.FindID(email).getEmail() != null) {
+
+//				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
+												// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
+				response.put("redirectUrl", "http://localhost:8085/cerId");
+				response.put("message", "인증번호가 전송 되었습니다.");
+
+				return ResponseEntity.ok().body(response); // 페이지 넘어가면서 ID가 보이는 형식
+
+			} 
+ 
+		} catch (Exception e) {
 			
+			response.put("redirectUrl", "http://localhost:8085/FindID");
+			response.put("message", "존재하지 않는 이메일 입니다.");
+
+			return ResponseEntity.ok().body(response);
+
 		}
-		
-		return "TestHtml/user/FindID";
+
+		return ResponseEntity.badRequest().body(response);
 	}
+
+	@GetMapping("/cerId")
+	public String IdEmailToken() {
+		return "LogIn/cerId";
+	}
+
+	@PostMapping("/cerId")
+	public String IdEmailToken(@RequestParam("token") int token) {
+		return "LogIn/cerId";
+	}
+
+	// 아이디 띄워주는 페이지
 
 	// FindPassword
 	@GetMapping("/FindPW")
@@ -106,6 +133,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	}
 
 	@PostMapping("/FindPW") // test FindPW 아이디랑 이메일로 보내서 토큰받는걸로 바꾸기
+							// 바로 비밀번호 바꾸는 페이지로 넘어가기
 	public String FindPW(@RequestParam("email") String email, @RequestParam("userID") String userID) {
 		User user = userService.FindPW(email, userID);
 

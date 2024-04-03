@@ -5,6 +5,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.redis.RedisUtil;
+import com.example.demo.user.UserController;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
