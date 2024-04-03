@@ -1,9 +1,3 @@
-
-body{
-    background-color: #e1e4e631;;
-    overflow-x: hidden;
-}
-
 /* header Start */
 .header{
     /* background-color: crimson; */
@@ -122,126 +116,84 @@ body{
 .category-list:hover{
     color: var(--green-color);
 }
-/* header End */
 
-/* img slider start */
-.img-slider{
+
+/* background img and trailer Start */
+.trailer-vowel{
+    background-color: #c54949;
+    width: 100%;
+    height: 75vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding-bottom: 5rem;
-    /* background-color: var(--green-color); */
 }
 
-.slider{
-    width: 100vw;
-    height: 500px;
-    overflow: hidden;
+
+/* trailer img cousel Start */
+
+/* trailer img cousel End */
+
+/* background img and trailer End */
+
+
+/* contens explain Start */
+.contents-explain{
+    background-color: aqua;
+    width: 85vw;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;   
+    display: flex; 
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
-.slides{
-    width: 500%;
-    height: 500px;
+.explain-container{
+    background-color: blueviolet;
+    width: 64%;
+    height: 100vh;
+}
+
+.tag-container{
+    width: 80%;
+    font-size: 1.6rem;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #c54949;
+    margin: auto;
 }
 
-.slides input{
-    display: none;
-}
-
-.slide{
-    width: 20%;
-    transition: 2s;
-}
-
-.slide img{
-    width: 100vw;
-    height: 500px;
-    object-fit: cover;
-}
-
-/* css for manual slide navigator */
-.navigation-manual{
-    position: absolute;
-    width: 100vw;
-    margin-top: -40px;
+.box-1{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    width: 80%;
+    margin: auto;
 }
 
-.manual-btn{
-    border: 2px solid var(--green-color);
-    padding: 5px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 1s;
+.content-tittle{
+    font-size: 2.2rem;
+    font-weight: bold;
 }
 
-.manual-btn:not(:last-child){
-    margin-right: 40px;
+.visit-cnt{
+    font-size: 1.6rem;
 }
 
-.manual-btn:hover{
-    background: var(--green-color);
+.visit-cnt span{
+    padding: 0 1rem;
 }
 
-#radio1:checked ~ .first{
-    margin-left: 0;
+.user-container{
+    background-color: yellow;
+    width: 34%;
+    height: 100vh;
 }
 
-#radio2:checked ~ .first{
-    margin-left: -20%;
-}
 
-#radio3:checked ~ .first{
-    margin-left: -40%;
-}
-
-#radio4:checked ~ .first{
-    margin-left: -60%;
-}
-
-#radio5:checked ~ .first{
-    margin-left: -80%;
-}
-
-/* css for automatic navigation */
-
-.navigation-auto{
-    position: absolute;
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    margin-top: 460px;
-}
-
-.navigation-auto div{
-    border: 2px solid var(--grey-color);
-    padding: 5px;
-    border-radius: 10px;
-    transition: 1s;
-}
-
-.navigation-auto div:not(:last-child){
-    margin-right: 40px;
-}
-
-#radio1:checked ~ .navigation-auto .auto-btn1{
-    background: var(--green-color);
-}
-#radio2:checked ~ .navigation-auto .auto-btn2{
-    background: var(--green-color);
-}
-#radio3:checked ~ .navigation-auto .auto-btn3{
-    background: var(--green-color);
-}
-#radio4:checked ~ .navigation-auto .auto-btn4{
-    background: var(--green-color);
-}
-#radio5:checked ~ .navigation-auto .auto-btn5{
-    background: var(--green-color);
-}
-/* img slider END */
+/* contens explain End */
 
 
 /* editor pick */
@@ -335,16 +287,6 @@ body{
     padding: 1rem 0;
 }
 
-/* .carousel img{
-    height: 24rem;
-    width: calc(100% / 4.5);
-    object-fit: cover;
-    margin-left: 1.4rem;
-}
-
-.carousel img:first-child{
-    margin-left: 0rem;
-} */
 
 /* 웹사이트의 사이즈가 줄면 보이는 갯수가 줆 */
 @media screen and (max-width:90rem){
@@ -362,10 +304,8 @@ body{
 /* draggable images slider END */
 /* editor pick END*/
 
-.empty{
-    height: 5rem;
-}
 
+/* footer Start */
 footer{
     background-color: #e1e4e67a;
     font-size: 1.6rem;

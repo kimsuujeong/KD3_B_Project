@@ -1,6 +1,7 @@
 package com.example.demo.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.mapping.Embedded.Empty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,19 +11,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.mail.MailController;
+import com.example.demo.mail.MailService;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller
 @RequiredArgsConstructor
-public class UserController {
+public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@Autowired
 	private UserService userService;
 
 	@Autowired
 	private UserMapper usermapper; // test
+	
+	@Autowired
+	private MailController mailController;
+	
 
 	@GetMapping("/Testmain") // test home
 	public String Testmain() {
@@ -72,11 +79,21 @@ public class UserController {
 
 	@PostMapping("/FindID") // test FindID
 	// 아이디 찾기도 이메일로만 보내서 토큰받는걸로 바꾸기
-	public String FindID(@RequestParam("userName") String userName, @RequestParam("email") String email) {
-		User user = userService.FindID(userName, email);
-		// 같은 이메일이 있으면 이메일 인증 토큰을 보내 id를 출력 할 예정.
-		// test code
-		System.out.println(usermapper.FindID(userName, email));
+	public String FindID(@RequestParam("email") String email) {
+		userService.FindID(email);
+		
+		
+		System.out.println(usermapper.FindID(email).getUserID());
+		System.out.println(usermapper.FindID(email).getEmail());
+		
+		if (usermapper.FindID(email).getEmail() != null) {
+//			System.out.println("있는 이메일 입니다.");
+//			mailController.mailSend(email);
+			
+			
+		}
+		
+		
 		return "TestHtml/user/FindID";
 	}
 

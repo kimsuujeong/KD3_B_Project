@@ -12,13 +12,13 @@ import lombok.RequiredArgsConstructor;
 public class MailService {
 
 	private final JavaMailSender javaMailSender;
-	private static final String senderEmail= "메일을 보낼 구글 이메일";
+	private static final String senderEmail= "gsujeong91@gmail.com";
     private static int number;
     
  // 랜덤으로 숫자 생성
     public static void createNumber() {
     	
-        number = (int)(Math.random() * (90000)) + 100000; //(int) Math.random() * (최댓값-최소값+1) + 최소값
+        number = (int)(Math.random() * (90000)) + 100000 ;
         
     }
     
@@ -27,6 +27,7 @@ public class MailService {
     public MimeMessage CreateMail(String mail) {
         
     	createNumber();
+    	
         MimeMessage message = javaMailSender.createMimeMessage();
 
         try {
@@ -64,5 +65,7 @@ public class MailService {
         return number;
         
     }
+
+    
 	
 }
