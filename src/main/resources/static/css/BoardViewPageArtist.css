@@ -118,9 +118,82 @@
 }
 
 
+/* background img and trailer Start */
+.trailer-vowel{
+    background-color: #c54949;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+}
 
 
+/* trailer img cousel Start */
 
+/* trailer img cousel End */
+
+/* background img and trailer End */
+
+
+/* contens explain Start */
+.contents-explain{
+    background-color: aqua;
+    width: 85vw;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;   
+    display: flex; 
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.explain-container{
+    background-color: blueviolet;
+    width: 64%;
+    height: 100vh;
+}
+
+.tag-container{
+    width: 80%;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #c54949;
+    margin: auto;
+}
+
+.box-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    width: 80%;
+    margin: auto;
+}
+
+.content-tittle{
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.visit-cnt{
+    font-size: 1.6rem;
+}
+
+.visit-cnt span{
+    padding: 0 1rem;
+}
+
+.user-container{
+    background-color: yellow;
+    width: 34%;
+    height: 100vh;
+}
+
+
+/* contens explain End */
 
 
 /* editor pick */
@@ -214,16 +287,6 @@
     padding: 1rem 0;
 }
 
-/* .carousel img{
-    height: 24rem;
-    width: calc(100% / 4.5);
-    object-fit: cover;
-    margin-left: 1.4rem;
-}
-
-.carousel img:first-child{
-    margin-left: 0rem;
-} */
 
 /* 웹사이트의 사이즈가 줄면 보이는 갯수가 줆 */
 @media screen and (max-width:90rem){
@@ -240,25 +303,6 @@
 
 /* draggable images slider END */
 /* editor pick END*/
-
-
-/* background img and trailer Start */
-.trailer-vowel{
-    background-color: #c54949;
-    width: 100%;
-    height: 75vh;
-}
-
-
-
-
-/* background img and trailer End */
-
-
-
-
-
-
 
 
 /* footer Start */
