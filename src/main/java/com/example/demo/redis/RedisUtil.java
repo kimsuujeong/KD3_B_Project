@@ -7,18 +7,20 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @RequiredArgsConstructor
 @Component
 public class RedisUtil {
-
 	@Autowired
 	private final RedisTemplate<Integer, String> redisTemplate;
 	
 	// key: 인증코드
 	// Value : 이메일
 
+	
     public String getData(Integer key) {
         ValueOperations<Integer ,String> valueOperations = redisTemplate.opsForValue();
         return valueOperations.get(key);
