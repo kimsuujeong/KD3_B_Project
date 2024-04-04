@@ -6,4 +6,6 @@ public interface LikeService {
 
 	List<Like> list(String userID);
 	void insert(Like like);
+	void delete(Integer likeID);
+	int countLike(Integer postID, String userID);
 }
