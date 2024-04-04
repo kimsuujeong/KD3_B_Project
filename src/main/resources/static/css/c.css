@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: none;    
+  background-color: #fff;
+}
+
+body {
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  position: fixed;
+  top: 50%; /* 화면 상단으로부터 50% 위치에 고정 */
+  left: 50%; /* 화면 좌측으로부터 50% 위치에 고정 */
+  transform: translate(-50%, -50%); /* 중앙 정렬을 위해 이동 */
+}
+
+h1, h2 {
+  color: #00ce80;
+  text-align: center;
+  margin: 20px;
+}
+h2 {
+  color: #00ce80;
+  text-align: center;
+}
+.contents {
+  width: 800px;
+  height: 300px;
+  overflow: auto;  
+  border: 1px solid black;
+  padding: 10px;
+}
+
