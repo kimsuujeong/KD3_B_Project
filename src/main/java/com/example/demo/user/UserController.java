@@ -80,7 +80,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	// FindID
 	@GetMapping("/FindID")
 	public String FindID() {
-		return "LogIn/IdSearch";
+		return "LogIn/searchId";
 	}
 
 	@PostMapping("/FindID") // test FindID
@@ -95,7 +95,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (usermapper.FindID(email).getEmail() != null) {
 
-				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
+//				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
 				// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
 
 				response.put("redirectUrl", "http://localhost:8085/cerid");
@@ -190,7 +190,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			model.addAttribute("data", id);
 			
-		} catch (Exception e) {
+		} catch (Exception e) { //null값
 			// TODO: handle exception
 		}
 
