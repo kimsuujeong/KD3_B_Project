@@ -21,4 +21,15 @@ public class LikeServiceImpl implements LikeService{
 		likeMapper.insert(like);
 	}
 
+	@Override
+	public void delete(Integer likeID) {
+		// TODO Auto-generated method stub
+		likeMapper.delete(likeID);
+	}
+
+	@Override
+	public int countLike(Integer postID, String userID) {
+		// TODO Auto-generated method stub
+		return likeMapper.countLike(postID, userID);
+	}
 }
