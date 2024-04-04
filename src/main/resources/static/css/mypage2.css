@@ -1,0 +1,374 @@
+body{
+  background-color: #e1e4e631;;
+  overflow-x: hidden;
+}
+
+/* header Start*/
+.header{
+  /* background-color: crimson; */
+  display: flex;
+  justify-content: space-between;
+  padding:1.5rem 7%;
+  border-bottom: var(--border);
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+}
+
+.header .logo img{
+  height: 8rem;
+  padding-right: 4rem;
+}
+
+.search-bar{
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60px;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--white-color);
+  margin-bottom: 1rem;
+  border: 1px var(--grey-color) solid;
+}
+
+.search-bar input{
+  padding: 0.2rem 0.5rem;
+  background-color: transparent;
+  width: 40rem;
+  flex: 1;
+  outline: none;
+  font-size: 1.6rem;
+  color: var(--grey-color);
+}
+
+.search-bar .fa-search{
+  margin-right: 1rem;
+  font-size: 1.6rem;
+}
+
+.header .navbar .link1{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding:4.5rem 7%;
+  font-size: 1.6rem;
+  color: var(--black-color);
+}
+
+.header .navbar .link1 a{
+  padding-right: 1rem;
+
+}
+
+.header .navbar a{
+  color: var(--black-color);
+}
+
+.header .navbar a:hover{
+  color: var(--green-color);
+  transition: all 0.3s;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  /* padding: 1rem; */
+  font-size: 1.6rem; 
+}
+
+.category div {
+  padding-right: 1rem;
+}
+
+.category a {
+  padding: 1rem;
+}
+
+.category .category-list{
+  cursor: pointer;
+  padding: 1rem;
+  /* background-color: rgb(235, 235, 235); */
+}
+
+/* dropdown-menu */
+/* 좀 더 괜찮게 다듬을 필요 있음 */
+.dropdown li{
+  display: block;
+  background-color: var(--white-color);
+  margin: 2rem 0rem;
+}
+
+.dropdown{
+  width: auto;
+  background-color: var(--white-color);
+  position: absolute;
+  z-index: 999;
+  display: none;
+  padding: 1rem;
+  margin-right: 2rem;
+}
+
+.category-list:hover .dropdown{
+  display: block;
+}
+
+.category-list:hover{
+  color: var(--green-color);
+}
+/* header End*/
+
+
+
+
+/* tagAndContent Start */
+
+.sidebar{
+  background-color: #f2f2f2;
+  font-size: 2rem;
+  width: 20vw;
+  height: 1000px; 
+  padding: 40px; /* 내부 패딩 설정 */
+  float: left; /* 왼쪽으로 부유 */
+  box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
+  
+}
+
+.sidebar .sidebar-list{
+  font-size: 2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.list{
+  list-style-type: none;
+  width: 1000px;
+}
+.sidebar .A, .C{
+   color: black;
+}
+.sidebar .B{
+  color: #00ce80;
+}
+.sidebar >a{
+  float: left;
+  color: #fff;
+  font-size: 16px;
+  background-color:#00ce80;
+  border: 1px solid #9c9c9c;
+  margin-top: 600px; 
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #9c9c9c;
+}
+/* select-tag Start */
+.Contents{
+  background-color: #fff;
+  width: 85vw;
+  margin: 0 auto;
+  height: auto;
+  align-items: center;   
+  display: flex; 
+  align-items: flex-start;
+}
+
+.content .list {
+  font-size: 2rem;
+  margin: 10px;
+  padding: 30px;
+}
+.content .list-list >div {
+  padding: 2rem 3.5rem 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  /* border-top: 2px solid var(--light_gray); */
+}
+.box{
+  font-size: 1.5rem;
+  padding: 30px;
+  /* border-top:2px solid #9c9c9c; */
+}
+.list-list{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px; 
+}
+
+.input-container-email {
+  display: none;
+}
+.nickname{
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.btn{
+  background-color: #00ce80;
+  color: #fff;
+  border: 1px solid #9c9c9c;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+.font-bold{
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 10px;
+}
+.text-gray{
+  color: #9c9c9c;
+  font-weight : 300;
+  font-size:1.5rem;
+}
+.list-con {
+  flex: 0 0 100px; /* 라벨의 너비 조정 */
+  font-weight: bold;
+}
+
+input[type="password"] {
+  flex: 1; /* 입력 필드가 가능한 최대 너비를 차지하도록 설정 */
+  margin-right: 10px; /* 입력 필드 사이 간격 조정 */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  letter-spacing:10px'
+}
+.down .submit{
+  float: right;
+  background-color: #00ce80;
+  color: #fff;
+  border: 1px solid #9c9c9c;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+/* pagination */
+.pagination{
+  display: flex;
+  align-items: center;
+  /* background-color: var(--white-color); */
+  color: var(--black-color);
+  padding: 3rem 4rem;
+  border-radius: 6px;
+  justify-content: center;
+}
+
+.pagination-ul{
+  margin: 2rem 3rem;
+}
+
+.pagination-ul li{
+  display: inline-block;
+  margin: 0 1rem;
+  /* background: #ccc; */
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 4.5rem;
+  cursor: pointer;
+}
+
+ul li.active{
+  color: var(--white-color);
+  background-image: linear-gradient(#00ce80, #00ce80);
+  background-repeat: no-repeat;
+}
+
+.btn1, .btn2{
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--black-color);
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+}
+
+.btn1 i{
+  margin-right: 1.5rem;
+}
+
+.btn2 i{
+  margin-left: 1.5rem;
+}
+
+
+/* tagAndContent End */
+
+.dowm hr{
+  width: 1300px;
+}
+
+
+
+/* footer Start */
+footer{
+  background-color: #e1e4e67a;
+  font-size: 1.6rem;
+  padding-left: 10rem;
+  color: var(--black-color);
+  clear: both;
+}
+hr{
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 0;
+  border-top: 1px solid darkgray;
+}
+.footer a{
+  padding: 10px;
+  font-size: 1.5rem;
+}
+.footer > div{
+  padding-top: 2rem;
+}
+
+.link-title{
+  font-weight: bold;
+}
+
+.company{
+  font-size: 2rem;
+}
+
+.link-list{
+  justify-content: center;
+  font-weight: bold;
+}
+
+.link-list a{
+  padding-right: 4rem;
+  color: var(--black-color);
+}
+
+.warning{
+  padding-top: 1rem;
+  font-weight: bold;
+  color: #c54949;
+}
+
+.footer-down{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10rem;
+  padding-bottom: 4rem;
+}
+
+.sns a{
+  padding: 0 2rem;
+}
