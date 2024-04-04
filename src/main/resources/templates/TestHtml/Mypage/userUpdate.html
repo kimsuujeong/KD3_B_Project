@@ -9,18 +9,18 @@
     <h1>개인정보.</h1>
     <div id="userInfo">
         <h2>사용자 정보</h2>
-        <p>userID: <span th:text="${loggedUser.userID}"></span></p>
+        <p th:if="${loggedInUser!=null}">userID: <span th:text="${loggedInUser.userID}"></span></p>
     <form th:action="@{/userUpdate/namemodify}" method="post">
-        <p>이름: <span th:text="${loggedUser.userName}"></span></p>
-		<input type="hidden" name="userName" th:value="${loggedUser.userName}" />
+        <p th:if="${loggedInUser!=null}">이름: <span th:text="${loggedInUser.userName}"></span></p>
+		<input type="hidden" name="userName" th:value="${loggedInUser.userName}" />
         <button class="btn btn-dark" type="submit">이름 변경</button>
     </form>
     <form th:action="@{/userUpdate/emmodify}" method="post">
-        <p>이메일: <span th:text="${loggedUser.email}"></span></p>
-		<input type="hidden" name="email" th:value="${loggedUser.email}" />
+        <p th:if="${loggedInUser!=null}">이메일: <span th:text="${loggedInUser.email}"></span></pth:if="loggedInUser!=null">
+		<input type="hidden" name="email" th:value="${loggedInUser.email}" />
         <button class="btn btn-dark" type="submit">이메일 변경</button>
     </form>
-    <form th:action="@{/userUpdate/pwmodify}" method="post">
+    <form th:action="@{/userUpdate/pwmodify}">		
         <button class="btn btn-dark" type="submit">비밀번호 변경</button>
     </form>
     </div>

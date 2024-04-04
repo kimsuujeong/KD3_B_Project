@@ -1,8 +1,13 @@
 package com.example.demo.myPage;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.user.User;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MypageController { // 관심목록, 인증, 개인정보 수정(비밀번호 수정), 로그아웃 
@@ -29,7 +34,9 @@ public class MypageController { // 관심목록, 인증, 개인정보 수정(비
 	}
 	
 	@RequestMapping("/userUpdate") // 개인정보 수정
-	public String userUpdate() {
+	public String userUpdate(Model model, HttpSession httpSession) {
+		User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
+		model.addAttribute("loggedInUser", loggedInUser);
 		return "TestHtml/Mypage/userUpdate";
 	}
 	
