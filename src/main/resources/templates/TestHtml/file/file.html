@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+    <h2>Upload a File</h2>
+    <form th:action="@{/api/upload}" method="post" enctype="multipart/form-data">
+        <input  type="file" name="file" id="file">
+        <button type="submit">Upload</button>
+    </form>
+	<a th:href="${fileLink}">올린 파일 보기</a>
+</body>
+</html>
