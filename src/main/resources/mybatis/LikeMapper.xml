@@ -18,6 +18,15 @@
 		values(#{likeID}, #{userID}, #{postID})
 	</insert>
 
-
+	<select id = "countLike" resultType="int">
+		select count(*)
+		from mydb.like 
+		where userID = 'test1'
+		and postID = #{postID};
+	</select>
+	
+	<delete id="deletelike" parameterType="Integer">
+		delete from mydb.like where likeID = #{likeID}
+	</delete>
 
 </mapper>
