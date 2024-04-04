@@ -1,22 +1,16 @@
 package com.example.demo.user;
 
-import java.io.PrintStream;
-import java.lang.ProcessBuilder.Redirect;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.relational.core.mapping.Embedded.Empty;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.mail.MailController;
 import com.example.demo.redis.RedisUtil;
@@ -26,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class UserController { // 로그인, 아이디&비밀번호 찾기
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -78,7 +72,9 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 		}
 
 	}
-	
+
+	// 아이디 찾기 이메일 받기
+
 	private String Email = null;
 
 	// FindID
@@ -89,9 +85,9 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@PostMapping("/FindID") // test FindID
 	public ResponseEntity<Map<String, Object>> FindID(@RequestParam("email") String email) {
-		
+
 		Email = email;
-		
+
 		Map<String, Object> response = new HashMap<>();
 //		userService.FindID(email); 
 
@@ -101,11 +97,9 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
 				// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
-				
+
 				response.put("redirectUrl", "http://localhost:8085/cerid");
 				response.put("message", "인증번호가 전송 되었습니다.");
-				
-				
 
 				return ResponseEntity.ok().body(response); // 페이지 넘어가면서 ID가 보이는 형식
 
@@ -128,47 +122,51 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 		return "LogIn/cerId";
 	}
 
+	// 아이디 찾기 토큰 확인
+
+	private String IdForEmail = null; // 아이디를 찾기 위한 이메일
+
 	@PostMapping("/cerid")
 	public ResponseEntity<Map<String, Object>> IdEmailToken(@RequestParam("token") String token) {
 
 		Map<String, Object> response = new HashMap<>();
 		String getKey = redisUtil.getData(Integer.parseInt(token));
-		
+
 		try {
 
-			System.out.println("입력한 토큰: "+token);
+			System.out.println("입력한 토큰: " + token);
 
 			System.out.println("getKeyTest: " + getKey);
-			
-			System.out.println("아까 받은 이메일임: "+ Email);
-			
+
+			System.out.println("아까 받은 이메일임: " + Email);
 
 			if (getKey == null) {
-				
+
 				response.put("redirectUrl", "http://localhost:8085/cerid");
 				response.put("message", "존재하지 않는 토큰 입니다.");
-				
 
 				return ResponseEntity.ok().body(response);
-				
+
 			}
-			
+
 			if (Email.equals(getKey)) {
-				
+
 				response.put("redirectUrl", "http://localhost:8085/cerid/userid");
 				response.put("message", "토큰 인증 되었습니다.");
-				
+
+				IdForEmail = getKey;
+
+				System.out.println(IdForEmail);
 
 				return ResponseEntity.ok().body(response);
-				
+
 			} else {
-				
+
 				response.put("redirectUrl", "http://localhost:8085/cerid");
 				response.put("message", "토큰을 다시 확인해주세요.");
-				
 
 				return ResponseEntity.ok().body(response);
-				
+
 			}
 
 		} catch (Exception e) {
@@ -179,21 +177,25 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 		}
 
 		return ResponseEntity.badRequest().body(response);
-		
+
 	}
 
 	// 아이디 띄워주는 페이지
-	@GetMapping("/cerid/userid")
-	public String ShowIdToken() {
-		return "LogIn/findid";
-	}
-	
-	@PostMapping("/cerid/userid")
-	public String ShowIdToken(String id) {
-		
-		return "LogIn/findid";
-	}
+	@RequestMapping("/cerid/userid")
+	public String ShowIdToken(Model model) {
 
+		try {
+			
+			String id = usermapper.FindID(IdForEmail).getUserID();
+
+			model.addAttribute("data", id);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return "LogIn/findId";
+	}
 
 	// FindPassword
 	@GetMapping("/FindPW")

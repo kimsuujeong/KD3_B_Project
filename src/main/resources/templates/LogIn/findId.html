@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +54,7 @@
     <div class="contents">
       <h3>등록된 아이디는</h3>
       <br>
-      <p>gaeun****@naver.com입니다.</p>
+      <p th:text="${data + ' 입니다.'}"></p>
       <br>
       <!-- 비밀번호 입력 <input type="password" id="password1">
       비밀번호 확인 <input type="password" id="password2">
