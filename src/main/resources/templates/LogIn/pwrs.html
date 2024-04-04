@@ -4,49 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>비밀번호 재설정</title>
-  <style>
-    .contents {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 400px;
-      height: auto;
-      padding: 40px;
-      box-sizing: border-box;
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background-color: transparent;
-      border: 1px solid #9c9c9c;
-      box-shadow: 2px 2px 2px 2px #9c9c9c;
-    }
-    .contents > h3, p {
-      text-align: center;
-    }
-    .contents > input {
-      background-color: transparent;
-      width: 100%;
-      height: 48px;
-      padding: 0 10px;
-      box-sizing: border-box;
-      margin-top: 5px;
-      margin-bottom: 16px;
-      border-radius: 6px;
-      background-color: #fff;
-      border: 1px solid #9c9c9c;
-    }
-    .contents > input[type="submit"] {
-      width: 100%;
-      height: 48px;
-      color: #fff;
-      font-size: 16px;
-      background-color: #00ce80;
-      border: 1px solid #9c9c9c;
-      margin-top: 5px;
-    }
-  </style>
+  <link rel="stylesheet" href="../../static/css/Setting.css">
+  <link rel="stylesheet" href="../../static/css/pwrs.css">
 </head>
 <body>
   <div class="container"> 
@@ -56,8 +15,8 @@
       <br>
       <p>비밀번호를 재입력해주세요.</p>
       <br>
-      비밀번호 입력 <input type="password" id="password1">
-      비밀번호 확인 <input type="password" id="password2">
+      비밀번호 입력 <input type="password" id="password1" minlength="12">
+      비밀번호 확인 <input type="password" id="password2" minlength="12">
       <input type="submit" value="확인" onclick="checkPasswords()">
     </div>
     <div class="footer"></div>
@@ -66,16 +25,25 @@
         var password1 = document.getElementById("password1").value;
         var password2 = document.getElementById("password2").value;
         if (password1.trim() === '' || password2.trim() === '') {
-      alert("비밀번호를 입력해주세요.");
-      return false;
+          alert("비밀번호를 입력해주세요.");
+          return false;
         }
         if (password1 !== password2) {
           alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
           return false;
-        } else {
-          alert("비밀번호 변경 완료!");
-          window.location.href = "login.html";
         }
+        if (!isValidPassword(password1)) {
+          alert("비밀번호는 최소 12자 이상이어야 하며, 대문자, 소문자, 숫자, 특수 문자가 모두 포함되어야 합니다.");
+          return false;
+        }
+        alert("비밀번호 변경 완료!");
+        window.location.href = "login.html";
+      }
+
+      function isValidPassword(password) {
+        // 최소 12자 이상, 대소문자, 숫자, 특수문자가 모두 포함되어야 함
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'",.<>/?]).{12,}$/;
+        return regex.test(password);
       }
     </script>
   </body>
