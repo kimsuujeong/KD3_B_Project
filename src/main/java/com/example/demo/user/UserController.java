@@ -23,15 +23,17 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private UserMapper usermapper; // test
+//
+//	@Autowired
+//	private UserMapper usermapper; // test
 
 	@Autowired
 	private MailController mailController;
 
 	@Autowired
 	private RedisUtil redisUtil;
+
+	private String Email = null;
 
 	@GetMapping("/Testmain") // test home
 	public String Testmain() {
@@ -75,9 +77,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	// 아이디 찾기 이메일 받기
 
-	private String Email = null;
-
-	// FindID
 	@GetMapping("/FindID")
 	public String FindID() {
 		return "LogIn/searchId";
@@ -86,20 +85,20 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	@PostMapping("/FindID") // test FindID
 	public ResponseEntity<Map<String, Object>> FindID(@RequestParam("email") String email) {
 
-		Email = email;
-
 		Map<String, Object> response = new HashMap<>();
 //		userService.FindID(email); 
 
 		try {
 
-			if (usermapper.FindID(email).getEmail() != null) {
+			if (userService.FindID(email).getEmail() != null) {
 
 //				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
 				// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
 
 				response.put("redirectUrl", "http://localhost:8085/cerid");
 				response.put("message", "인증번호가 전송 되었습니다.");
+
+				this.Email = email;
 
 				return ResponseEntity.ok().body(response); // 페이지 넘어가면서 ID가 보이는 형식
 
@@ -154,7 +153,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 				response.put("redirectUrl", "http://localhost:8085/cerid/userid");
 				response.put("message", "토큰 인증 되었습니다.");
 
-				IdForEmail = getKey;
+				this.IdForEmail = getKey;
 
 				System.out.println(IdForEmail);
 
@@ -185,13 +184,13 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	public String ShowIdToken(Model model) {
 
 		try {
-			
-			String id = usermapper.FindID(IdForEmail).getUserID();
+
+			String id = userService.FindID(IdForEmail).getUserID();
 
 			model.addAttribute("data", id);
-			
-		} catch (Exception e) { //null값
-			// TODO: handle exception
+
+		} catch (Exception e) { // null값
+
 		}
 
 		return "LogIn/findId";
@@ -200,17 +199,123 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	// FindPassword
 	@GetMapping("/FindPW")
 	public String FindPW() {
-		return "TestHtml/user/FindPW";
+		return "LogIn/searchPw";
 	}
 
-	@PostMapping("/FindPW") // test FindPW 아이디랑 이메일로 보내서 토큰받는걸로 바꾸기
-							// 바로 비밀번호 바꾸는 페이지로 넘어가기
-	public String FindPW(@RequestParam("email") String email, @RequestParam("userID") String userID) {
-		User user = userService.FindPW(email, userID);
+	@PostMapping("/FindPW")
+	public ResponseEntity<Map<String, String>> FindPW(@RequestParam("userID") String userID,
+			@RequestParam("email") String email) {
 
-		System.out.println(usermapper.FindPW(email, userID));
+		Map<String, String> response = new HashMap<>();
 
-		return "TestHtml/user/FindPW";
+		try {
+
+			String id = userService.FindPW(email, userID).getUserID();
+			String mail = userService.FindPW(email, userID).getEmail();
+
+			if (id.equals(userID) && mail.equals(mail)) {
+
+//				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
+				// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
+
+				response.put("redirectUrl", "http://localhost:8085/cerpw");
+				response.put("message", "인증번호가 전송 되었습니다.");
+
+				this.Email = mail;
+
+				return ResponseEntity.ok().body(response);
+
+			}
+
+		} catch (Exception e) {
+
+			response.put("redirectUrl", "http://localhost:8085/FindPW");
+			response.put("message", "아이디와 비밀번호가 맞지 않습니다.");
+
+			return ResponseEntity.ok().body(response);
+
+		}
+
+		return ResponseEntity.badRequest().body(response);
+
+	}
+
+	@GetMapping("/cerpw")
+	public String PWEmailToken() {
+		return "LogIn/cerPW";
+	}
+
+	String pwEmail = null;
+
+	// 비밀번호 찾기 토큰 확인
+	@PostMapping("/cerpw")
+	public ResponseEntity<Map<String, Object>> PWEmailToken(@RequestParam("token") String token) {
+
+		Map<String, Object> response = new HashMap<>();
+		String getKey = redisUtil.getData(Integer.parseInt(token));
+
+		try {
+
+			System.out.println("입력한 토큰: " + token);
+
+			System.out.println("getKeyTest: " + getKey);
+
+			System.out.println("아까 받은 이메일임: " + Email);
+
+			if (getKey == null) {
+
+				response.put("redirectUrl", "http://localhost:8085/cerpw");
+				response.put("message", "존재하지 않는 토큰 입니다.");
+
+				return ResponseEntity.ok().body(response);
+
+			}
+
+			if (Email.equals(getKey)) {
+
+				response.put("redirectUrl", "http://localhost:8085/cerpw/pwrs");
+				response.put("message", "토큰 인증 되었습니다.");
+
+				pwEmail = Email;
+
+				return ResponseEntity.ok().body(response);
+
+			} else {
+
+				response.put("redirectUrl", "http://localhost:8085/cerpw");
+				response.put("message", "토큰을 다시 확인해주세요.");
+
+				return ResponseEntity.ok().body(response);
+
+			}
+
+		} catch (Exception e) {
+
+			// TODO: handle exception
+			System.out.println("존재하지 않는 토큰 입니다.");
+
+		}
+
+		return ResponseEntity.badRequest().body(response);
+
+	}
+
+	@GetMapping("cerpw/pwrs")
+	public String pwrs() {
+		return "LogIn/pwrs";
+	}
+
+	@PostMapping("cerpw/pwrs")
+	public String pwrs(@RequestParam("pwNew") String pwNew) {
+
+		if (pwEmail != null) {
+
+			userService.Update(pwNew, pwEmail);
+		} else {
+			return "LogIn/pwrs"; // 서버 이상 페이지 추가 예정
+		}
+
+		return "redirect:/Testmain";
 	}
 
 }

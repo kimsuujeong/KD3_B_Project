@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>아이디 찾기</title>
+  <title>비밀번호 찾기</title>
   <style>
     .contents {
       position: absolute;
@@ -29,7 +29,7 @@
       text-align: center;
     }
 
-    #findIdForm input {
+    #findPWForm input {
       background-color: transparent;
       width: 100%;
       height: 48px;
@@ -42,7 +42,7 @@
       border: 1px solid #9c9c9c;
     }
 
-    #findIdForm input[type="submit"] {
+    #findPWForm input[type="submit"] {
       width: 100%;
       height: 48px;
       color: #fff;
@@ -64,7 +64,8 @@
       <br>
       <p>가입하신 이메일로 인증번호를 전송해드립니다</p>
       <p>*인증번호 유효시간은 5분 입니다.</p>
-      <form th:action="@{/FindID}" method="post" id="findIdForm">
+      <form th:action="@{/FindPW}" method="post" id="findPWForm">
+        아이디(id) <input type="userID" id="idInput" name="userID" placeholder="ID"> <br>
         이메일(email) <input type="email" id="emailInput" name="email" placeholder="Email"> <br>
         <input type="submit" value="인증번호 받기" onclick="return checkEmail()">
       </form>
@@ -77,14 +78,26 @@
 
     function checkEmail() {
 
+      var id = document.getElementById("idInput").value;
       var email = document.getElementById("emailInput").value;
       var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+      console.log(id);
+
+      if (id===""){
+        alert("아이디를 입력해주세요.");
+        return false;
+      }
+      if (email === ""){
+        alert("이메일을 입력해주세요.");
+        return false;
+      }
 
       if (!emailPattern.test(email)) {
         alert("올바른 이메일 형식으로 입력해주세요.");
         return false;
       }
-      
+
 
       // AJAX 요청
       $.ajax({
@@ -92,7 +105,7 @@
         url: "/FindPW",
         type: "POST",
         dataType: "json",
-        data: {email : email},
+        data: { userID: id, email: email },
 
         success: function (response) {
 

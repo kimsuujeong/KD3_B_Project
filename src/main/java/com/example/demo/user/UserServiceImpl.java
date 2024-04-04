@@ -25,6 +25,12 @@ public class UserServiceImpl implements UserService {
 		return userMapper.FindPW(usermail, userID);
 	}
 
+	@Override
+	public int Update(String pwNew, String pwEmail) {
+		// TODO Auto-generated method stub
+		return userMapper.Update(pwNew, pwEmail);
+	}
+
 
 
 }

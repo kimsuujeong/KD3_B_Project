@@ -35,4 +35,13 @@ public class UserMapper {
 		 return sqlSession.selectOne("FindPW",FindPWInfo);
 	}
 
+
+
+	public int Update(String pwNew, String pwEmail) {
+		Map<String, String> UpdatePWInfo = new HashMap<>();
+		UpdatePWInfo.put("password", pwNew);
+		UpdatePWInfo.put("email", pwEmail);
+		return sqlSession.update("UpdatePW",UpdatePWInfo);
+	}
+
 }
