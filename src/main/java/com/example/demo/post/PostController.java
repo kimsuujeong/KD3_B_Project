@@ -73,6 +73,8 @@ public class PostController {
         board.setContent(board_temp.getContent());
 		board.setAuthorName(board_temp.getAuthorName());
 		board.setAuthorLink(board_temp.getAuthorLink());
+		board.setCategory_categoryID(board_temp.getCategory_categoryID());
+		board.setUser_userID(board_temp.getUser_userID());
 		board.setEventStart(board_temp.getEventStart());
 		board.setEventEnd(board_temp.getEventEnd());
 		
