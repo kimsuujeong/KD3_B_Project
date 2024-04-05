@@ -5,65 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예술가 인증</title>
     <link rel="stylesheet" href="../../static/css/Setting.css">
-    <style>
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            margin-top: 20px;
-        }
-        label {
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="file"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            box-sizing: border-box;
-            display: inline-block;
-        }
-        input[type="submit"] {
-            background-color: #00ce80;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            display: inline-block;
-            margin-left: 80%;
-        }
-        input[type="submit"]:hover {
-            background-color: #00ce80;
-        }
-    </style>
+    <link rel="stylesheet" href="../../static/css/cer.css">
 </head>
 <body>
 
 <div class="container">
     <h1>예술가 인증</h1>
     <hr>
-    <form action="#" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmit()">
+    <form action="../MyPage/mypage3.html" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmit()">
         <label for="name">이름:</label>
         <input type="text" id="name" name="name" required> <br>
         <label for="phone">연락처:</label>
         <input type="text" id="phone" name="phone" required> <br>
+        <label for="company">회사 링크:</label>
+        <input type="text" id="company" name="company"> <br> <!-- 회사 링크 추가 -->
         <label for="file">증명서 첨부:</label>
         <input type="file" id="file" name="file" accept=".pdf, .jpg, .jpeg, .png" required>
         <input type="submit" value="인증 신청">
     </form>
 </div>
+
+<footer>
+    <a href="#"></a>
+</footer>
 
 <script>
     function confirmSubmit() {
