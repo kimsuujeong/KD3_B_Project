@@ -15,7 +15,6 @@ import com.example.demo.userJoin.UserJoinService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/userUpdate")
 public class ChanInfoController {
 
 	@Autowired
@@ -24,9 +23,9 @@ public class ChanInfoController {
 	@Autowired
 	UserJoinService userService;
 
-	@GetMapping("namemodify")
+	@GetMapping("/userUpdate/namemodify")
 	public String nameUpdate(HttpSession session, Model model) {
-		User user = (User) session.getAttribute("loggedUser");
+		User user = (User) session.getAttribute("loggedInUser");
 
 		if (user == null) {
 			return "redirect:/login";
@@ -36,11 +35,11 @@ public class ChanInfoController {
 		return "TestHtml/Mypage/name_modify";
 	}
 
-	@PostMapping("namemodify")
+	@PostMapping("/userUpdate/namemodify")
 	public String nameUpdate(@RequestParam("userName") String userName, HttpSession session, Model model) {
-		User loggedUser = (User) session.getAttribute("loggedUser");
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
 
-		if (loggedUser == null) {
+		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
 		int result = userService.namechk(userName);
@@ -49,27 +48,27 @@ public class ChanInfoController {
 			model.addAttribute("errorMessage", "이미 사용중인 이름입니다");
 			return "TestHtml/Mypage/name_modify";
 		} else {
-			loggedUser.setUserName(userName);
-			chanInfoService.updateName(loggedUser);
+			loggedInUser.setUserName(userName);
+			chanInfoService.updateName(loggedInUser);
 			return "redirect:/userUpdate";
 		}
 	}
 
-	@GetMapping("emmodify")
+	@GetMapping("/userUpdate/emmodify")
 	public String emailUpdate(HttpSession session, Model model) {
-		User loguser = (User) session.getAttribute("loggedUser");
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
 
-		if (loguser == null) {
-			return "redirect:/TestHtml/login";
+		if (loggedInUser == null) {
+			return "redirect:/login";
 		}
 		return "TestHtml/Mypage/email_modify";
 	}
 
-	@PostMapping("emmodify")
+	@PostMapping("/userUpdate/emmodify")
 	public String emailUpdate(@RequestParam("email") String email, HttpSession session, Model model) {
-		User loggedUser = (User) session.getAttribute("loggedUser");
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
 
-		if (loggedUser == null) {
+		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
 
@@ -79,36 +78,37 @@ public class ChanInfoController {
 			model.addAttribute("errorMessage", "이미 사용중인 이름입니다");
 			return "TestHtml/Mypage/email_modify";
 		} else {
-			loggedUser.setEmail(email);
-			chanInfoService.updateEmail(loggedUser);
+			loggedInUser.setEmail(email);
+			chanInfoService.updateEmail(loggedInUser);
 			return "redirect:/userUpdate";
 		}
 	}
 
-	@GetMapping("pwmodify")
+	@GetMapping("/userUpdate/pwmodify")
 	public String passwordUpdate(HttpSession session, Model model) {
-		User loggedUser = (User) session.getAttribute("loggedUser");
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
 
-		if (loggedUser == null) {
+		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
+		
 		return "TestHtml/Mypage/passwd_modify";
 	}
 	
-	@PostMapping("pwmodify")
-	public String passwordUpdate(@RequestParam("oldPw")String oldPw,
-			@RequestParam("newPw")String newPw,
-			@ModelAttribute User user, HttpSession session, Model model) {
-		User loggedUser = (User) session.getAttribute("loggedUser");
+	@PostMapping("/userUpdate/pwmodify")
+	public String passwordUpdate(@RequestParam("oldPw") String oldPw,
+			@RequestParam("newPw") String newPw,
+			 HttpSession session, Model model) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
-		if (loggedUser == null) {
+		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
-		int result=chanInfoService.checkpw(loggedUser.getUserID(),oldPw);
+		int result=chanInfoService.checkpw(loggedInUser.getUserID(),oldPw);
 		
 		if(result>0) {
-			loggedUser.setPassword(newPw);
-			chanInfoService.updatePw(loggedUser);
+			loggedInUser.setPassword(newPw);
+			chanInfoService.updatePw(loggedInUser);
 			return "redirect:/userUpdate";
 		}else {
 			model.addAttribute("errorMessage", "비밀번호가 틀립니다");

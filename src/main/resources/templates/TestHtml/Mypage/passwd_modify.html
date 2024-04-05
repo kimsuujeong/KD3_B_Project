@@ -4,11 +4,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Name Modify</title>
+	<title>password Modify</title>
 </head>
 
 <body>
-	<h2>Modify email</h2>
+	<h2>Modify password</h2>
 	<form th:action="@{/userUpdate/pwmodify}" method="post">
 		<p th:if="${errorMessage}" class="error" style="color: red" th:text="${errorMessage}"></p>
 		<label for="oldPw">기존 비밀번호:</label>

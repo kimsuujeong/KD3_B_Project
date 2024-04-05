@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.mail.MailController;
 import com.example.demo.redis.RedisUtil;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -48,25 +49,27 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@PostMapping("/login")
 	public String loginForm(@RequestParam("userID") String userID, @RequestParam("password") String password,
-			Model model) {
+			Model model,HttpSession httpSession) {
 		User user = userService.Login(userID, password);
 
 		// 예외처리로 변경하기
 		if (userID.isEmpty()) {
 			System.out.println("아이디를 입력해 주세요");
-			return "login";
+			return "TestHtml/user/login";
 		}
 
 		if (password.isEmpty()) {
 			System.out.println("비밀번호를 입력해 주세요");
-			return "login";
+			return "TestHtml/user/login";
 		}
 
 		if (user != null) {
 			// 로그인 성공
 			model.addAttribute("loggedInUser", user); // 세션에 사용자 정보 저장
+			httpSession.setAttribute("loggedInUser", user);
 			System.out.println("성공입니다");
-			return "login";
+			System.out.println(user.toString());
+			return "redirect:/";
 		} else {
 			// 로그인 실패
 			System.out.println("실패입니다");
