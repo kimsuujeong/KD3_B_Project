@@ -21,7 +21,7 @@ body{
   /* 투명도 */
   background-color: transparent; 
   border: 1px solid #9c9c9c;
-   box-shadow: 2px 2px 2px 2px #9c9c9c;
+  box-shadow: 2px 2px 2px 2px #9c9c9c;
 }
 .login-wrapper img {
   width: 200px;
@@ -41,6 +41,7 @@ body{
 
 .search{
 float: right;
+padding-left: 20%;
 }
 
 #login-form > input{

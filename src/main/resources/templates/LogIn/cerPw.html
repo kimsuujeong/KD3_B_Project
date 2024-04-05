@@ -1,108 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>인증</title>
-  <style>
-  .contents{
-  position: absolute;
-  top:40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* text-align: center; */
-  width: 400px;
-  height: 415px;
-  padding: 40px;
-  box-sizing: border-box;
-  position: fixed; /* 상대적인 위치 설정 */
-  left: 50%; 
-  top: 50%; 
-  transform: translate(-50%, -50%);
-  /* 투명도 */
-  background-color: transparent; 
-  border: 1px solid #9c9c9c;
-   box-shadow: 2px 2px 2px 2px #9c9c9c;
-}
-.contents>h3,p{
-  text-align: center;
-}
-.contents>input{
-  background-color: transparent;
-   margin-top: 5px;
-    width: 100%;
-    height: 48px;
-    padding: 0 10px;
-    box-sizing: border-box;
-    margin-bottom: 16px;
-    border-radius: 6px;
-    background-color: #fff;
-    border: 1px solid #9c9c9c;
-}
-/* .contents>input[type="submit"]{
-  color: #fff;
-  font-size: 16px;
-  background-color:#00ce80;
-  border: 1px solid #9c9c9c;
-   margin: 10px; 
-   margin-top: 5px; 
-} */
-button {
-    color: #fff;
-    font-size: 16px;
-    background-color: #00ce80;
-    border: 1px solid #9c9c9c;
-    margin-top: 5px;
-  width: 100%;
-  height: 48px;
-  padding: 0 10px;
-  box-sizing: border-box;
-  margin-bottom: 16px;
-  border-radius: 6px;
-  }
-  .error-message {
-    color: red;
-  }
-  .success-message {
-    color: green;
-  }
-  </style>
+  <title>비밀번호 찾기</title>
+  <link rel="stylesheet" href="../../static/css/Setting.css">
+  <link rel="stylesheet" href="../../static/css/searchPw.css">
 </head>
-<body>
-  <div class="container"> 
+
+<body onload="startCountdown()">
+
+  <div class="container">
     <div class="header"></div>
-  <div class="contents">
-    <h3>인증 번호 입력</h3> <br>
-    <p>회원님의 이메일에 전송된 <br>
-      인증 번호를 입력하세요!</p><br>
-    
-    인증 번호 <input type="text" id="numInput" placeholder="인증번호">
-    <span id="message" class="error-message"></span>
-    <br>
-    <button onclick="checkAuth()">확인</button>
+    <div class="contents">
+      <h3>비밀번호 찾기</h3>
+      <br>
+      <p>가입하신 이메일로 인증번호를 전송해드립니다. <br>
+      *인증번호 유효시간은 5분 입니다.</p>
+      <form th:action="@{/FindID}" method="post" id="findIdForm">
+        아이디(Id) <input type="id" id="idInput" name="id" placeholder="Id"> <br>
+        이메일(email) <input type="email" id="emailInput" name="email" placeholder="Email"> <br>
+        <input type="submit" value="인증번호 받기" onclick="return checkEmail()">
+      </form>
+      <div id="timerSection" style="display: none;">
+        <p id="timerMessage"></p>
+      </div>
+    </div>
   </div>
   <div class="footer"></div>
-  <script>
-  function checkAuth() {
-    // 입력된 인증 번호를 가져옵니다.
-    var inputNumber = document.getElementById("numInput").value;
 
-    // 올바른 인증 번호를 확인합니다.
-    if (inputNumber === "1234") {
-      // 인증 성공 메시지를 표시합니다.
-      var message = document.getElementById("message");
-      message.textContent = "인증 완료!";
-      message.classList.remove("error-message");
-      message.classList.add("success-message");
-      window.location.href = "pwrs.html";
-    } else {
-      // 인증 실패 메시지를 표시합니다.
-      var message = document.getElementById("message");
-      message.textContent = "인증 번호가 틀렸습니다.";
-      message.classList.remove("success-message");
-      message.classList.add("error-message");
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script th:inline="javascript">
+    function startCountdown() {
+      var timerSection = document.getElementById("timerSection");
+      var timerMessage = document.getElementById("timerMessage");
+
+      // 인증번호 발송 후 타이머 영역 표시
+      timerSection.style.display = "block";
+      
+      var countDownDate = new Date().getTime() + (5 * 60 * 1000); // 현재 시간 + 5분
+
+      // 1초마다 타이머 업데이트
+      var timerInterval = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // 타이머 메시지 업데이트
+        timerMessage.innerHTML = "인증번호 유효 시간: " + minutes + "분 " + seconds + "초";
+
+        // 타이머가 만료되면 폼을 숨기고 메시지 표시
+        if (distance < 0) {
+          clearInterval(timerInterval);
+          timerSection.style.display = "none";
+          timerMessage.innerHTML = "인증번호 유효 시간이 종료되었습니다.";
+
+          // 타이머 만료 시 페이지 이동
+          window.location.href = "/searchPw.html"; // 리디렉션
+        }
+      }, 1000);
     }
-  }
   </script>
+
 </body>
+
 </html>

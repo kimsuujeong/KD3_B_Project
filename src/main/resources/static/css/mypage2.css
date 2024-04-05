@@ -132,7 +132,7 @@ body{
   background-color: #f2f2f2;
   font-size: 2rem;
   width: 20vw;
-  height: 1000px; 
+  height: auto; 
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
@@ -176,7 +176,9 @@ body{
   display: flex; 
   align-items: flex-start;
 }
-
+.content{
+  height: auto;
+}
 .content .list {
   font-size: 2rem;
   margin: 10px;
@@ -232,18 +234,8 @@ body{
   flex: 0 0 100px; /* 라벨의 너비 조정 */
   font-weight: bold;
 }
-
-input[type="password"] {
-  flex: 1; /* 입력 필드가 가능한 최대 너비를 차지하도록 설정 */
-  margin-right: 10px; /* 입력 필드 사이 간격 조정 */
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  box-sizing: border-box;
-  letter-spacing:10px'
-}
-.down .submit{
-  float: right;
+.down .bye{
+  
   background-color: #00ce80;
   color: #fff;
   border: 1px solid #9c9c9c;
