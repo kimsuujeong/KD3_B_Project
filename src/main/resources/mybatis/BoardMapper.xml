@@ -33,20 +33,22 @@
 		WHERE b.postID = #{postID}
 	</select>
 
-	<insert id="insert" parameterType="com.example.demo.board.Board">
+	<!-- post write -->
+	<insert id="insert_post" parameterType="com.example.demo.board.Board">
 		INSERT INTO board (postName, content, authorName, authorLink, user_userID,
-		category_categoryID, eventStart, eventEnd)
+		category_categoryID, eventStart, eventEnd, writeDate, visitCnt)
 		VALUES (#{postName}, #{content}, #{authorName}, #{authorLink},
-		#{user.userID}, #{category.categoryID}, #{eventStart}, #{eventEnd})
+		#{user.userID}, #{category.categoryID}, #{eventStart}, #{eventEnd}, NOW(), #{visitCnt})
 	</insert>
 	
-	<delete id="delete" parameterType="Integer">
-		delete from board where postID
-		= #{postID}
+	<!-- post delete -->
+	<delete id="delete_post" parameterType="Integer">
+		delete from board where postID = #{postID}
 	</delete>
 
-	<update id="update" parameterType="com.example.demo.board.Board">
-		update board set postName = #{postName}, content = #{content}
+	<!-- post update -->
+	<update id="update_post" parameterType="com.example.demo.board.Board">
+		update board set postName = #{postName}, content = #{content}, endDate = NOW()
 		where postID = #{postID}
 	</update>
 
@@ -57,6 +59,7 @@
 	<select id="countAll">
 		select count(*) from board;
 	</select>
+	
 	<!-- search post -->
 	<select id="searchCtg" resultType="com.example.demo.board.Board">
 		select b.*,c.categoryID
@@ -64,7 +67,7 @@
 		join category c on b.category_categoryID=c.categoryID
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
 			<if test="categoryID!=null">
-				and b.category_categoryID=#{categoryID}
+				AND b.category_categoryID=#{categoryID}
 			</if>
 			<if
 				test="search.searchType=='postName' and search.keyword != null and search.keyword != '' ">
@@ -78,8 +81,20 @@
 				test="search.searchType=='authorName' and search.keyword != null and search.keyword != '' ">
 				AND b.authorName like CONCAT('%', #{search.keyword}, '%')
 			</if>
+			<choose>
+				<when test="order == 'visitCnt'">
+					ORDER BY b.visitCnt DESC
+				</when>
+				<when test="order == 'eventEnd'">
+					ORDER BY b.eventEnd
+				</when>
+				<otherwise>
+					ORDER BY b.writeDate DESC
+				</otherwise>
+			</choose>
 		</trim>
 	</select>
+	
 	<!-- count searched post -->
 	<select id="countSCR" resultType="java.lang.Integer">
 		select count(*)
@@ -100,6 +115,15 @@
 			<if
 				test="search.searchType=='authorName' and search.keyword != null and search.keyword != '' ">
 				AND b.authorName like CONCAT('%', #{search.keyword}, '%')
+			</if>
+			<if test="order == 'visitCnt'">
+				ORDER BY visitCnt DESC
+			</if>
+			<if test="order == 'writeDate'">
+				ORDER BY writeDate DESC
+			</if>
+			<if test="order == 'eventEnd'">
+				ORDER BY eventEnd
 			</if>
 		</trim>
 	</select>

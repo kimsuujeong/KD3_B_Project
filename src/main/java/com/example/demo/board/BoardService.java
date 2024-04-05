@@ -19,7 +19,7 @@ public interface BoardService {
 	
 	public Page<Board> getList(Pageable page);
 	
-	public Page<Board> searchCtg(Integer categoryID, Search search, Pageable pageable);
+	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable);
 	
 	
 }

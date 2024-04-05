@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.user.UserService;
 
@@ -43,7 +44,8 @@ public class BoardController {
 
 //	board page separate categoryId
 	@GetMapping("/board/{categoryID}")
-	public String showBoard(@PathVariable(name = "categoryID") Integer categoryID, Model model, Pageable page) {
+	public String showBoard(@PathVariable(name = "categoryID") Integer categoryID, 
+							Model model, Pageable page) {
 //		all post view
 		Page<Board> posts = this.boardService.getPostsByCategoryId(categoryID, page);
 
@@ -63,10 +65,13 @@ public class BoardController {
 
 	@RequestMapping("/board/{categoryID}/search")
 	public String search(@PathVariable(name = "categoryID") Integer categoryID, Model model,
+			@RequestParam(value="order", defaultValue="visitCnt") String order, 
 			@ModelAttribute Search search, Pageable pageable) {
-		Page<Board> searchPost = boardService.searchCtg(categoryID, search, pageable);
+		Page<Board> searchPost = boardService.searchCtg(categoryID, search, order, pageable);
 		model.addAttribute("posts", searchPost);
 
 		return "/TestHtml/board/board";
 	}
+	
+	
 }

@@ -50,7 +50,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Page<Board> searchCtg(Integer categoryID, Search search, Pageable pageable) {
-		return boardMapper.searchCtg(categoryID,search, pageable);
+	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable) {
+		return boardMapper.searchCtg(categoryID, search, order, pageable);
 	}
 }
