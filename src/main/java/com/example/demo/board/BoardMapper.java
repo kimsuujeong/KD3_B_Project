@@ -57,13 +57,13 @@ public class BoardMapper {
 		return new PageImpl<>(content, page, total);
 	}
 
-	public Page<Board> searchCtg(Integer categoryID, Search search, Pageable pageable) {
+	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable) {
 		int offset = pageable.getPageNumber() * pageable.getPageSize();
 		RowBounds rowBounds = new RowBounds(offset, pageable.getPageSize());
 		List<Board> searchCResults = sqlSession.selectList("searchCtg",
-				Map.of("categoryID", categoryID, "search", search), rowBounds);
+				Map.of("categoryID", categoryID, "search", search, "order", order), rowBounds);
 	    int total = sqlSession.selectOne("countSCR", 
-	    		Map.of("categoryID", categoryID, "search", search));
+	    		Map.of("categoryID", categoryID, "search", search, "order", order));
 
 		return new PageImpl<>(searchCResults, pageable, total);
 	}

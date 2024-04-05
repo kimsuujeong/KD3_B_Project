@@ -12,6 +12,18 @@
 	<div class="btn_wrap text-right">
 		<a th:href="@{/board/register/new}" class="btn btn-primary waves-effect waves-light">글쓰기</a>
 	</div>
+	<div class="content-list">
+	            <div class="search-result">
+	                <div>
+						<span class="content-cnt" th:text="${posts.getTotalElements()}"></span><span>개의 행사가 검색되었습니다</span>
+					</div>
+	                <div class="list-btn">
+	                    <a th:href="@{|/board/${categoryID}/search?order=visitCnt|}">추천순</a>
+	                    <a th:href="@{|/board/${categoryID}/search?order=writeDate|}">최신순</a>
+	                    <a th:href="@{|/board/${categoryID}/search?order=eventEnd|}">모집 마감일순</a>
+	                </div>
+	            </div>
+	</div>
 	<table>
 		<thead>
 			<tr>
@@ -19,7 +31,8 @@
 				<th>게시물 제목</th>
 				<th>작성자</th>
 				<th>조회수</th>
-				<th>작성일</th>
+				<th>시작일</th>
+				<th>마감일</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -28,7 +41,8 @@
 				<td><a th:href="@{/board/{categoryID}/{postID}(postID=${post.postID})}" th:text="${post.postName}"></a></td>
 				<td th:text="${post.authorName != null ? post.authorName : 'Unknown'}"></td>
 				<td th:text="${post.visitCnt}"></td>
-				<td th:text="${post.writeDate}"></td>
+				<td th:text="${post.eventStart}"></td>
+				<td th:text="${post.eventEnd}"></td>
 			</tr>
 		</tbody>
 	</table>
