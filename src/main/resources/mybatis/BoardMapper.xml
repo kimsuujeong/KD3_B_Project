@@ -33,20 +33,22 @@
 		WHERE b.postID = #{postID}
 	</select>
 
-	<insert id="insert" parameterType="com.example.demo.board.Board">
+	<!-- post write -->
+	<insert id="insert_post" parameterType="com.example.demo.board.Board">
 		INSERT INTO board (postName, content, authorName, authorLink, user_userID,
-		category_categoryID, eventStart, eventEnd)
+		category_categoryID, eventStart, eventEnd, writeDate, visitCnt)
 		VALUES (#{postName}, #{content}, #{authorName}, #{authorLink},
-		#{user.userID}, #{category.categoryID}, #{eventStart}, #{eventEnd})
+		#{user.userID}, #{category.categoryID}, #{eventStart}, #{eventEnd}, NOW(), #{visitCnt})
 	</insert>
 	
-	<delete id="delete" parameterType="Integer">
-		delete from board where postID
-		= #{postID}
+	<!-- post delete -->
+	<delete id="delete_post" parameterType="Integer">
+		delete from board where postID = #{postID}
 	</delete>
 
-	<update id="update" parameterType="com.example.demo.board.Board">
-		update board set postName = #{postName}, content = #{content}
+	<!-- post update -->
+	<update id="update_post" parameterType="com.example.demo.board.Board">
+		update board set postName = #{postName}, content = #{content}, endDate = NOW()
 		where postID = #{postID}
 	</update>
 
