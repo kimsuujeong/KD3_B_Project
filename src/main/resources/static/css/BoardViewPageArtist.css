@@ -119,18 +119,11 @@
 
 
 /* background img and trailer Start */
-.trailer-vowel{
-    background-color: #c54949;
-    width: 100%;
-    height: 75vh;
-    display: flex;
-    align-items: center;
-}
+/* img slider start */
+
+/* img slider END */
 
 
-/* trailer img cousel Start */
-
-/* trailer img cousel End */
 
 /* background img and trailer End */
 
@@ -157,11 +150,14 @@
     width: 80%;
     font-size: 1.6rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
+    justify-content: left;
+    padding: 0 0 2rem 2rem;
     /* background-color: #c54949; */
-    margin: auto;
+}
+
+.tag-container .tag{
+    padding-right: 2rem;
+    color: var(--green-color);
 }
 
 .box-1{
@@ -268,6 +264,7 @@
     margin-right: 3rem;
     font-size: 1.6rem;
     padding: 2rem;
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
 }
 
 .fundinfobox .tag-box{
@@ -340,6 +337,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    cursor: pointer;
 }
 
 .like-btn div{
@@ -356,6 +354,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    cursor: pointer;
 }
 
 .userinfo-container{
@@ -365,6 +364,7 @@
     background-color: aquamarine;   
     margin-right: 3rem;
     margin-top: 3rem;
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
 }
 
 .userinfobox{
@@ -405,10 +405,77 @@
     color: var(--white-color);
 }
 
-
-
 /* right content explain End */
 /* contens explain End */
+
+
+/* artist info Start */
+
+
+/* artist info End */
+#artist-info{
+    padding-bottom: 4rem;
+}
+
+.info-box{
+    background-color: var(--light-green-color);
+    border-radius: 10px;
+    padding: 1rem 1rem;
+}
+
+.info-all{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-content-box{
+    display: flex;
+    align-items: center;    
+}
+
+.info-title{
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.info-box .profile-img{
+    justify-content: left;
+    padding-right: 2rem;
+}
+
+
+.info-name{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.info-explain{
+    font-size: 1.4rem;
+    color: var(--grey-color);
+}
+
+.go-portfoilo-btn button{
+    background-color: var(--white-color);
+    /* background-color: #c54949; */
+    border: 1px solid var(--grey-color);
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* contact Start */
+.info-contact{
+    font-size: 1.6rem;
+    color: var(--grey-color);
+}
+
+.info-contact span{
+    padding: 0 1rem;
+    color: var(--black-color);
+}
+
 
 
 /* editor pick */
@@ -519,6 +586,28 @@
 /* draggable images slider END */
 /* editor pick END*/
 
+.empty{
+    height: 5rem;
+}
+
+.up-btn{
+    position: fixed;
+    top: 90%;
+    right: 2%;
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green-color);
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.up-btn a{
+    color: var(--white-color);
+}
 
 /* footer Start */
 footer{

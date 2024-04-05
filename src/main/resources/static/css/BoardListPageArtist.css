@@ -415,6 +415,24 @@ span {
 
 /* content-list End */
 
+/* write board btn */
+.write-btn{
+    margin: 2rem 5rem;
+    display: flex;
+    justify-content: right;
+}
+
+.write-btn button{
+    display: flex;
+    justify-content: right;
+    background-color: var(--green-color);
+    padding: 1.4rem;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
 /* pagination */
 .pagination{
     display: flex;
