@@ -50,6 +50,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
+	public Page<Board> search(Search search, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return boardMapper.search(search, pageable);
+	}
+	
+	@Override
 	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable) {
 		return boardMapper.searchCtg(categoryID, search, order, pageable);
 	}

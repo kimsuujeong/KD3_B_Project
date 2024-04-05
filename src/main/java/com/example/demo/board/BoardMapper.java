@@ -57,6 +57,15 @@ public class BoardMapper {
 		return new PageImpl<>(content, page, total);
 	}
 
+	public Page<Board> search(@Param("search") Search search, Pageable pageable){
+		int offset = pageable.getPageNumber() * pageable.getPageSize();
+		RowBounds rowBounds = new RowBounds(offset, pageable.getPageSize());
+		List<Board> searchResults = sqlSession.selectList("search", search, rowBounds);
+		int total = sqlSession.selectOne("countSearchResults", search);
+		
+		return new PageImpl<>(searchResults, pageable, total);
+	}
+	
 	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable) {
 		int offset = pageable.getPageNumber() * pageable.getPageSize();
 		RowBounds rowBounds = new RowBounds(offset, pageable.getPageSize());
