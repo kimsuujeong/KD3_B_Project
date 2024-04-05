@@ -277,6 +277,8 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 				response.put("message", "토큰 인증 되었습니다.");
 
 				pwEmail = Email;
+				
+				System.out.println(pwEmail);
 
 				return ResponseEntity.ok().body(response);
 
@@ -308,9 +310,12 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	@PostMapping("cerpw/pwrs")
 	public String pwrs(@RequestParam("pwNew") String pwNew) {
 
-		if (pwEmail != null) {
+		System.out.println(107265);
+		
+		if (pwEmail != null ) {
 
 			userService.Update(pwNew, pwEmail);
+			
 		} else {
 			return "LogIn/pwrs"; // 서버 이상 페이지 추가 예정
 		}

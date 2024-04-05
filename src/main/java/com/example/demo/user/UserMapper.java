@@ -36,7 +36,6 @@ public class UserMapper {
 	}
 
 
-
 	public int Update(String pwNew, String pwEmail) {
 		Map<String, String> UpdatePWInfo = new HashMap<>();
 		UpdatePWInfo.put("password", pwNew);

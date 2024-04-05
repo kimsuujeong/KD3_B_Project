@@ -18,13 +18,13 @@
 		#{email} and userID = #{userID}
 	</select>
 
-	<update id="UpdatePW">
+	<update id="UpdatePW" >
 		update user set password=#{password}
 		where
 		email=#{email}
 	</update>
 
-	<insert id="InsertUser">
+	<insert id="InsertUser" >
 		insert into user (userID, email, password, userName,
 		date)
 		values(#{userID},

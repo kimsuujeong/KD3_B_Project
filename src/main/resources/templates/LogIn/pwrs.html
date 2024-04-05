@@ -49,37 +49,7 @@
           location.replace("/Testmain");
         }
 
-        $.ajax({
-
-          url: "/cerpw/pwrs",
-          type: "POST",
-
-          success: function (response) {
-
-            console.log(response);
-
-            var redirectUrl = response.redirectUrl;
-            var message = response.message;
-
-            console.log(redirectUrl);
-            console.log(message);
-
-            alert(message); // 서버에서 보낸 메시지를 알림으로 표시
-            window.location.href = redirectUrl; // 리다이렉트
-
-          },
-          error: function () {
-
-            alert("서버 오류가 발생했습니다.");
-
-          }
-
-        });
-
-        // 기본 동작 방지
-        return false;
-
-      }
+       }
 
     </script>
 
