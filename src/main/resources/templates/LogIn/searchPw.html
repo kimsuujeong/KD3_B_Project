@@ -20,8 +20,8 @@
       <p>가입하신 이메일로 인증번호를 전송해드립니다 <br>
       *인증번호 유효시간은 5분 입니다.</p>
       <form th:action="@{/FindPW}" method="post" id="findPWForm">
-        아이디(id) <input type="userID" id="idInput" name="userID" placeholder="ID"> <br>
-        이메일(email) <input type="email" id="emailInput" name="email" placeholder="Email"> <br>
+        아이디(id) <input type="userID" id="idInput" name="userID" placeholder="Id"> <br>
+        이메일(email) <input type="email" id="emailInput" name="email" placeholder="Email"> <br> <br>
         <input type="submit" value="인증번호 받기" onclick="return checkEmail()">
       </form>
     </div>
@@ -88,6 +88,8 @@
       return false;
 
     }
+
+    
 
   </script>
 

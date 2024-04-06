@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이메일 재설정</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header"></div>
+    <div class="contents">
+      <h3>이메일 재설정</h3>
+      <br>
+      <p>이메일을 재입력해주세요.</p>
+      <br>
+      <form action="">
+        비밀번호 입력 <input type="password" id="password1">
+        비밀번호 확인 <input type="password" id="password2" name="pwNew">
+        <input type="submit" value="확인" onclick="return checkPasswords()">
+      </form>
+      <form th:action="@{/cerpw/pwrs}" method="post" id="qwrsForm">
+        비밀번호 입력 <input type="password" id="password1">
+        비밀번호 확인 <input type="password" id="password2" name="pwNew">
+        <input type="submit" value="확인" onclick="return checkPasswords()">
+      </form>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

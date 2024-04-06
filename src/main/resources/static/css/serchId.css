@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 415px;
+  height: 500px;
   padding: 40px;
   box-sizing: border-box;
   position: fixed;
@@ -14,13 +14,22 @@
   background-color: transparent;
   border: 1px solid #9c9c9c;
   box-shadow: 2px 2px 2px 2px #9c9c9c;
+  font-size: 15px;
 }
 
-.contents>h3,
+/* .contents>h3,
 p {
   text-align: center;
+} */
+.contents>h3 {
+  text-align: center;
+  margin-top:20px;
 }
-
+.contents>p {
+  text-align: center;
+  margin:10px;
+  
+}
 #findIdForm input {
   background-color: transparent;
   width: 100%;
@@ -41,5 +50,5 @@ p {
   font-size: 16px;
   background-color: #00ce80;
   border: 1px solid #9c9c9c;
-  margin-top: 5px;
+  margin-top: 16.5px;
 }
