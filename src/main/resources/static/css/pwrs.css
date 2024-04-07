@@ -22,8 +22,7 @@
 }
 .contents>p {
   text-align: center;
-  margin:10px;
-  
+  margin:10px; 
 }
 #qwrsForm input {
   background-color: transparent;
@@ -44,5 +43,5 @@
   font-size: 16px;
   background-color: #00ce80;
   border: 1px solid #9c9c9c;
-  margin-top: 26px;
+  margin-top: 24px;
 }
