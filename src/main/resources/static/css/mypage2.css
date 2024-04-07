@@ -132,7 +132,7 @@ body{
   background-color: #f2f2f2;
   font-size: 2rem;
   width: 20vw;
-  height: auto; 
+  height: 580px; 
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
@@ -177,7 +177,8 @@ body{
   align-items: flex-start;
 }
 .content{
-  height: auto;
+  height: 580px;
+  width: 980px;
 }
 .content .list {
   font-size: 2rem;
@@ -194,29 +195,33 @@ body{
 }
 .box{
   font-size: 1.5rem;
-  padding: 30px;
-  /* border-top:2px solid #9c9c9c; */
+  padding: 25px;
+  border: 1px solid #9c9c9c;
+  margin-left: 15px;
 }
+
 .list-list{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px; 
+  gap: 10px;
+  margin: 20px; 
 }
-
-.input-container-email {
+/* .input-container-email {
   display: none;
 }
 .nickname{
   font-size: 1.5rem;
   font-weight: 300;
-}
+} */
 
-.btn{
+.list-list .btn{
+  font-weight: 300;
+  font-size: 12px;
   background-color: #00ce80;
   color: #fff;
   border: 1px solid #9c9c9c;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
   margin: 10px;
 }
@@ -227,7 +232,7 @@ body{
 }
 .text-gray{
   color: #9c9c9c;
-  font-weight : 300;
+  font-weight : 400;
   font-size:1.5rem;
 }
 .list-con {
@@ -235,11 +240,11 @@ body{
   font-weight: bold;
 }
 .down .bye{
-  
+/*   
   background-color: #00ce80;
-  color: #fff;
-  border: 1px solid #9c9c9c;
-  border-radius: 10px;
+  color: #fff; */
+  border-bottom: 1px solid #9c9c9c;
+  font-size: 10px;
   padding: 10px;
   margin: 10px;
 }
