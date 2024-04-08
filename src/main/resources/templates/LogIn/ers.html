@@ -4,24 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>이메일 재설정</title>
+  <link rel="stylesheet" href="../../static/css/Setting.css">
+  <link rel="stylesheet" href="../../static/css/ers.css">
 </head>
 <body>
   <div class="container">
     <div class="header"></div>
     <div class="contents">
-      <h3>이메일 재설정</h3>
+      <h3>재설정 인증번호 전송</h3>
       <br>
-      <p>이메일을 재입력해주세요.</p>
+      <p>기존 이메일은 <br><span class="text-gray">example@gmail.com</span>입니다. </p>
       <br>
-      <form action="">
-        비밀번호 입력 <input type="password" id="password1">
-        비밀번호 확인 <input type="password" id="password2" name="pwNew">
-        <input type="submit" value="확인" onclick="return checkPasswords()">
-      </form>
-      <form th:action="@{/cerpw/pwrs}" method="post" id="qwrsForm">
-        비밀번호 입력 <input type="password" id="password1">
-        비밀번호 확인 <input type="password" id="password2" name="pwNew">
-        <input type="submit" value="확인" onclick="return checkPasswords()">
+      <form action="../LogIn/cerE.html" id="EmaildForm">
+        바꿀 이메일 입력<input type="email" id="email" placeholder="Email">
+        <br><br><br><br><br>
+        <input type="submit" value="확인">
       </form>
     </div>
     <div class="footer"></div>

@@ -133,7 +133,7 @@ body{
   font-size: 2rem;
   width: 20vw;
   /* height: 100vh; */
-  height: 1350px;
+  height: 600px;
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
@@ -151,6 +151,11 @@ body{
 }
 .sidebar .A, .B{
    color: black;
+}
+.sidebar .R{
+  color: black;
+  font-size:14px;
+  margin-top: 10px;
 }
 .sidebar .C{
   color: #00ce80;
