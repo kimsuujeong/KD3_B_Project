@@ -1,6 +1,6 @@
 
 body{
-    background-color: #e1e4e631;;
+    background-color: var(--board-background-color);
     overflow-x: hidden;
 }
 
