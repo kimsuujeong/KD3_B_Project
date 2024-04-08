@@ -42,54 +42,77 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	}
 
 	// Login
-	@GetMapping("/login") // login
+	@GetMapping("/login")
 	public String loginForm() {
-		return "TestHtml/user/login";
+		return "LogIn/login";
 	}
-
 	@PostMapping("/login")
-	public String loginForm(@RequestParam("userID") String userID, @RequestParam("password") String password,
-			Model model,HttpSession httpSession) {
-		User user = userService.Login(userID, password);
+	public ResponseEntity<Map<String, String>> loginForm(@RequestParam("userID") String userID,
+			@RequestParam("password") String password, Model model, HttpSession httpSession) {
 
-		// 예외처리로 변경하기
-		if (userID.isEmpty()) {
-			System.out.println("아이디를 입력해 주세요");
-			return "TestHtml/user/login";
-		}
+		Map<String, String> response = new HashMap<>();
+		
+		try {
 
-		if (password.isEmpty()) {
-			System.out.println("비밀번호를 입력해 주세요");
-			return "TestHtml/user/login";
-		}
+			User user = userService.Login(userID, password);
 
-		if (user != null) {
-			// 로그인 성공
-			model.addAttribute("loggedInUser", user); // 세션에 사용자 정보 저장
-			httpSession.setAttribute("loggedInUser", user);
-			System.out.println("성공입니다");
-			System.out.println(user.toString());
-			return "redirect:/";
-		} else {
-			// 로그인 실패
-			System.out.println("실패입니다");
-			return "TestHtml/user/login";
+			if (userID.isEmpty()) {
+
+				response.put("redirectUrl", "http://localhost:8085/login");
+				response.put("message", "아이디를 입력해 주세요");
+
+				return ResponseEntity.ok().body(response);
+
+			}
+
+			if (password.isEmpty()) {
+				
+				response.put("redirectUrl", "http://localhost:8085/login");
+				response.put("message", "비밀번호를 입력해 주세요");
+
+				return ResponseEntity.ok().body(response);
+				
+			}
+
+			if (user != null) { // 로그인 성공
+				
+				model.addAttribute("loggedInUser", user); // 세션에 사용자 정보 저장
+				httpSession.setAttribute("loggedInUser", user);
+
+				response.put("redirectUrl", "http://localhost:8085/Testmain");
+				response.put("message", "로그인 성공 했습니다.");
+
+				return ResponseEntity.ok().body(response);
+				
+			} else {
+				
+				response.put("redirectUrl", "http://localhost:8085/login");
+				response.put("message", "아이디와 비밀번호를 다시 확인해주세요.");
+
+				return ResponseEntity.ok().body(response);
+				
+			}
+
+		} catch (Exception e) { // 로그인 실패
+			
+			response.put("redirectUrl", "http://localhost:8085/Testmain");
+			response.put("message", "서버 오류 입니다.");
+			
 		}
+		
+		return ResponseEntity.badRequest().body(response); // 서버 오류코드 넣기
 
 	}
 
 	// 아이디 찾기 이메일 받기
-
 	@GetMapping("/FindID")
 	public String FindID() {
 		return "LogIn/searchId";
 	}
-
-	@PostMapping("/FindID") // test FindID
+	@PostMapping("/FindID")
 	public ResponseEntity<Map<String, Object>> FindID(@RequestParam("email") String email) {
 
 		Map<String, Object> response = new HashMap<>();
-//		userService.FindID(email); 
 
 		try {
 
@@ -121,10 +144,10 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@GetMapping("/cerid")
 	public String IdEmailToken() {
+		
 		return "LogIn/cerId";
+		
 	}
-
-	// 아이디 찾기 토큰 확인
 
 	private String IdForEmail = null; // 아이디를 찾기 위한 이메일
 
@@ -280,7 +303,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 				response.put("message", "토큰 인증 되었습니다.");
 
 				pwEmail = Email;
-				
+
 				System.out.println(pwEmail);
 
 				return ResponseEntity.ok().body(response);
@@ -296,7 +319,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 		} catch (Exception e) {
 
-			// TODO: handle exception
 			System.out.println("존재하지 않는 토큰 입니다.");
 
 		}
@@ -313,12 +335,11 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	@PostMapping("cerpw/pwrs")
 	public String pwrs(@RequestParam("pwNew") String pwNew) {
 
-		System.out.println(107265);
-		
-		if (pwEmail != null ) {
+
+		if (pwEmail != null) {
 
 			userService.Update(pwNew, pwEmail);
-			
+
 		} else {
 			return "LogIn/pwrs"; // 서버 이상 페이지 추가 예정
 		}
