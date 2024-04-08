@@ -9,6 +9,7 @@
 
 <body>
 	<p th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></p>
+
 	<form id="joinForm" method="post" th:action="@{/joinForm}">
 		id : <input type="text" name="userID" id="userID">
 		<button class="idchk" id="idchk" name="idchk" onclick="fn_idchk();" value="N">중복확인</button><br>
@@ -22,12 +23,6 @@
 	</form>
 
 	<script>
-		var idc = false;
-		var emc = false;
-		var nac = false;
-		var idv = "";
-		var emv = "";
-		var nav = "";
 
 
 		function fn_idchk() {
@@ -130,6 +125,7 @@
 					}
 
 				})
+
 			} else if (!idc) {
 				alert("아이디의 중복 확인을 완료하십시오");
 				$('#email').val(emv);
@@ -145,7 +141,9 @@
 			} else {
 				alert("모든 중복 확인을 완료하십시오");
 			}
+			
 		}
+
 	</script>
 </body>
 

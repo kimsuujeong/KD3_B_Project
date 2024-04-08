@@ -12,6 +12,11 @@ public class UserJoinServiceImpl implements UserJoinService{
 	UserJoinMapper userMapper;
 	
 	@Override
+	public int emailchk(String email) {
+		return userMapper.emailchk(email);
+	}
+	
+	@Override
 	public void InsertUser(User userDTO) {
 		userMapper.InsertUser(userDTO);
 	}
@@ -19,11 +24,6 @@ public class UserJoinServiceImpl implements UserJoinService{
 	@Override
 	public int idchk(String userID) {
 		return userMapper.idchk(userID);
-	}
-
-	@Override
-	public int emailchk(String email) {
-		return userMapper.emailchk(email);
 	}
 
 	@Override

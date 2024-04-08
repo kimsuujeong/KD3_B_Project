@@ -84,7 +84,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 				return ResponseEntity.ok().body(response);
 				
-			} else {
+			} else { 
 				
 				response.put("redirectUrl", "http://localhost:8085/login");
 				response.put("message", "아이디와 비밀번호를 다시 확인해주세요.");
@@ -118,7 +118,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (userService.FindID(email).getEmail() != null) {
 
-//				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
+				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
 				// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
 
 				response.put("redirectUrl", "http://localhost:8085/cerid");
@@ -241,7 +241,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (id.equals(userID) && mail.equals(mail)) {
 
-//				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
+				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
 				// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
 
 				response.put("redirectUrl", "http://localhost:8085/cerpw");

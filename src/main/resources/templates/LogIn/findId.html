@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>아이디 알려주기</title>
-    <link rel="stylesheet" th:href="@{/css/Setting.css}">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
+  <style>
+    .contents {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 415px;
+      padding: 40px;
+      box-sizing: border-box;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: transparent;
+      border: 1px solid #9c9c9c;
+      box-shadow: 2px 2px 2px 2px #9c9c9c;
+      text-align: center;
+    }
+  </style>
+  <link rel="stylesheet" th:href="@{/css/Setting.css}">
+  <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
+
 <body>
-  <div class="container"> 
+  <div class="container">
     <div class="header"></div>
     <div class="contents">
+      <br><br><br><br>
       <h3>등록된 아이디는</h3>
       <br>
       <p th:text="${data + ' 입니다.'}"></p>
       <br>
-      <!-- 비밀번호 입력 <input type="password" id="password1">
-      비밀번호 확인 <input type="password" id="password2">
-      <input type="submit" value="확인" onclick="checkPasswords()"> -->
+
     </div>
+
     <div class="footer"></div>
     <script>
-      // function checkPasswords() {
-      //   var password1 = document.getElementById("password1").value;
-      //   var password2 = document.getElementById("password2").value;
-      //   if (password1.trim() === '' || password2.trim() === '') {
-      // alert("비밀번호를 입력해주세요.");
-      // return false;
-      //   }
-      //   if (password1 !== password2) {
-      //     alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-      //     return false;
-      //   } else {
-      //     alert("비밀번호 변경 완료!");
-      //     window.location.href = "../00은아/login.html";
-      //   }
-      // }
     </script>
-  </body>
+</body>
+
 </html>

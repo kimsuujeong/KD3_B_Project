@@ -13,17 +13,16 @@ public class UserJoinMapper {
 	SqlSession sqlSession;
 	
 
+	public int emailchk(String email) {
+		return sqlSession.selectOne("emailchk",email);
+	}
+	
 	public void InsertUser(User userDTO) {
 		sqlSession.insert("InsertUser", userDTO);
 	}
 	
 	public int idchk(String userID) {
 		return sqlSession.selectOne("idchk",userID);
-	}
-
-
-	public int emailchk(String email) {
-		return sqlSession.selectOne("emailchk",email);
 	}
 
 
