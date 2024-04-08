@@ -123,9 +123,6 @@ body{
 }
 /* header End*/
 
-
-
-
 /* tagAndContent Start */
 .Contents{
   background-color: #fff;
@@ -141,7 +138,6 @@ body{
   background-color: #f2f2f2;
   font-size: 2rem;
   width: 20vw;
-  /* height: 100vh; */
   height: 1350px;
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
@@ -192,7 +188,7 @@ body{
   /* background-color: goldenrod; */
   width: 65vw;
   height: 100%;
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
 }
 
 .search-result{

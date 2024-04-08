@@ -23,6 +23,7 @@
       <p>*인증번호 유효시간은 5분 입니다.</p>
       <form th:action="@{/FindID}" method="post" id="findIdForm">
         이메일(email) <input type="email" id="emailInput" name="email" placeholder="Email"> <br>
+        <br><br><br><br><br> 
         <input type="submit" value="인증번호 받기" onclick="return checkEmail()">
       </form>
     </div>

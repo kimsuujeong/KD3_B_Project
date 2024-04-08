@@ -132,7 +132,8 @@ body{
   background-color: #f2f2f2;
   font-size: 2rem;
   width: 20vw;
-  height: 580px; 
+  /* height: 100vh; */
+  height: 1350px;
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
@@ -147,13 +148,14 @@ body{
 }
 .list{
   list-style-type: none;
-  width: 1000px;
 }
-.sidebar .A, .C{
+.sidebar .A, .B, .C{
    color: black;
 }
-.sidebar .B{
+.sidebar .R{
   color: #00ce80;
+  font-size:14px;
+  margin-top: 10px;
 }
 .sidebar >a{
   float: left;
@@ -161,95 +163,117 @@ body{
   font-size: 16px;
   background-color:#00ce80;
   border: 1px solid #9c9c9c;
-  margin-top: 600px; 
+  margin-top: 100rem;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px #9c9c9c;
+  box-shadow: 2px 2px 2px 2px #9c9c9c; 
+}
+.select-tag{
+  font-size: 1.6rem;
+  padding-left: 2rem;
+  color: var(--black-color);
 }
 /* select-tag Start */
 .Contents{
   background-color: #fff;
   width: 85vw;
   margin: 0 auto;
-  height: auto;
   align-items: center;   
   display: flex; 
   align-items: flex-start;
 }
-.content{
-  height: 580px;
-  width: 980px;
+.content-list{
+  /* background-color: goldenrod; */
+  width: 65vw;
+  height: 100%;
+  /* margin-left: 2rem; */
 }
-.content .list {
+
+.search-result{
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
   font-size: 2rem;
   margin: 10px;
   padding: 30px;
-  
-}
-.content .list-list >div {
-  padding: 2rem 3.5rem 2rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  height: 2.5rem;
-  /* border-top: 2px solid var(--light_gray); */
-}
-.box{
-  font-size: 1.5rem;
-  padding: 25px;
-  border: 1px solid #9c9c9c;
-  margin-left: 15px;
 }
 
-.list-list{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 20px; 
+.search-result span{
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
 }
-/* .input-container-email {
-  display: none;
-}
-.nickname{
-  font-size: 1.5rem;
-  font-weight: 300;
-} */
 
-.list-list .btn{
-  font-weight: 300;
-  font-size: 12px;
-  background-color: #00ce80;
-  color: #fff;
-  border: 1px solid #9c9c9c;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px;
-}
-.font-bold{
-  font-weight: 700;
-  font-size: 1.8rem;
-  margin: 10px;
-}
-.text-gray{
-  color: #9c9c9c;
-  font-weight : 400;
-  font-size:1.5rem;
-}
-.list-con {
-  flex: 0 0 100px; /* 라벨의 너비 조정 */
+.search-result .content-cnt{
   font-weight: bold;
+  color: var(--green-color);
 }
-.down .bye{
-/*   
-  background-color: #00ce80;
-  color: #fff; */
-  border-bottom: 1px solid #9c9c9c;
-  font-size: 10px;
-  padding: 10px;
-  margin: 10px;
+
+.list-btn a{
+  font-size: 1.2rem;
+  color: var(--grey-color);
+  padding: 0 1rem;
 }
-/* pagination */
+
+.board-content{
+  display: flex;
+  flex-wrap: wrap;
+  height: 850px;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.carousel-box{
+  width: 30%;
+  padding: 2rem;
+  font-size: 1.6rem;
+  /* background-color: aqua; */
+}
+
+.carousel-box img{
+  height: 14rem;
+  width: 26rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.carousel-box div{
+  font-size: 1.3rem;
+  color: var(--black-color);
+}
+
+.carousel-box .startDate{
+  color: var(--grey-color);
+  padding-top: 1.5rem;
+}
+
+.carousel-box .title{
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem 0;
+}
+
+.space-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-box .cost{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--green-color);
+}
+
+.visit{
+  color: var(--grey-color);
+}
+
+.visit span{
+  margin: 0;
+}
+
+/* content-list End */
+
 .pagination{
   display: flex;
   align-items: center;
@@ -308,9 +332,7 @@ ul li.active{
 
 /* tagAndContent End */
 
-.dowm hr{
-  width: 1300px;
-}
+
 
 
 
@@ -322,16 +344,7 @@ footer{
   color: var(--black-color);
   clear: both;
 }
-hr{
-  margin-top: 0;
-  margin-bottom: 0;
-  border: 0;
-  border-top: 1px solid darkgray;
-}
-.footer a{
-  padding: 10px;
-  font-size: 1.5rem;
-}
+
 .footer > div{
   padding-top: 2rem;
 }

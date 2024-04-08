@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인증</title>
+    <link rel="stylesheet" href="../../static/css/Setting.css">
+    <link rel="stylesheet" href="../../static/css/cerE.css">
+</head>
+<body>
+<div class="container">
+    <div class="header"></div>
+    <div class="contents">
+        <h3>인증 번호 입력</h3> <br>
+        <p>회원님의 이메일에 전송된 <br>
+            인증 번호를 입력하세요!</p><br>
+        <form action="../MyPage/mypage2.html"  id="cerEForm">
+          인증 번호 <input type="text"  placeholder="인증번호">
+          <br>
+          <!-- <a href="../MyPage/mypage2.html" class="submit">확인</a> -->
+          <input type="submit" value="확인"> 
+         
+        </form>
+    </div>
+    <div class="footer"></div>
+    <script>
+      document.getElementById('cerEForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // 기본 이벤트 중단
+          // 변경 완료 알림 표시
+          alert('변경이 완료되었습니다.');
+          // 페이지 이동
+          window.location.href = '../MyPage/mypage2.html';
+      });
+  </script>  
+</body>
+
+</html>

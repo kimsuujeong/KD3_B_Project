@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>닉네임 재설정</title>
+  <link rel="stylesheet" href="../../static/css/Setting.css">
+  <link rel="stylesheet" href="../../static/css/nrs.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header"></div>
+    <div class="contents">
+      <h3>닉네임 재설정</h3>
+      <br>
+      <p>닉네임을 재입력해주세요.</p>
+      <br>
+      <form action="../MyPage/mypage2.html" id="findIdForm">
+        닉네임 입력 <input type="text" id="nickname" placeholder="닉네임">
+        <span id="nicknameError" style="color: red; display: none;">이미 사용 중인 닉네임입니다.</span>
+        <br><br><br><br><br><br> 
+        <input type="submit" value="확인" onclick="return checkNickname()">
+      </form>
+    </div>
+    <div class="footer"></div>
+
+    <script>
+      function checkNickname() {
+        var nickname = document.getElementById("nickname").value;
+        var nicknameError = document.getElementById("nicknameError");
+        
+        // 닉네임 중복 확인 로직을 여기에 추가하세요.
+        // 예를 들어, Ajax를 사용하여 서버로 닉네임 중복 여부를 요청하고
+        // 응답에 따라서 중복 여부를 처리합니다.
+
+        // 임시로 중복 여부를 확인하지 않고 true를 반환합니다.
+        return true;
+      }
+    </script>
+  </div>
+</body>
+</html>
