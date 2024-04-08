@@ -130,7 +130,7 @@
 
 /* contens explain Start */
 .contents-explain{
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 85vw;
     height: 100%;
     margin: 0 auto;
@@ -141,7 +141,7 @@
 }
 
 .explain-container{
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     width: 64%;
     height: 100%;
 }
@@ -254,13 +254,14 @@
 /* rignt content explain Start */
 /* user container Start */
 .user-container{
-    background-color: yellow;
+    /* background-color: yellow; */
     width: 34%;
     height: 100%;
 }
 
 .fundinfobox{
-    background-color: aquamarine;   
+    background-color: var(--light-green-color);
+    border-radius: 20px;   
     margin-right: 3rem;
     font-size: 1.6rem;
     padding: 2rem;
@@ -361,7 +362,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;   
+    background-color: var(--light-green-color);
+    border-radius: 20px;      
     margin-right: 3rem;
     margin-top: 3rem;
     box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);

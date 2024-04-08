@@ -3,10 +3,14 @@
 :root{
     /* color */
     --green-color:#00ce80;
+    --light-green-color: #f0f8f2;
     --grey-color:#9C9C9C;
+    --light-grey-color : #d3d3d3;
     --white-color:#ffffff;
     --black-color:#171717;   
-    --light-green-color: #dcfff4;
+    --board-background-color : #fafcf9;
+    --red-color : #b84747;
+    --light-red-color :#ffd9d9;
 }
 
 *{
