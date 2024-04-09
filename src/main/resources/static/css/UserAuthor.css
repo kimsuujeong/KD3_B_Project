@@ -60,7 +60,10 @@
 
 .header .navbar .link1 a{
     padding-right: 1rem;
+}
 
+.header .navbar .link1 .mypage span{
+    font-weight: bold
 }
 
 .header .navbar a{
@@ -71,6 +74,10 @@
     color: var(--green-color);
     transition: all 0.3s;
 }
+.header .navbar .link1 .mypage:hover{
+    color: var(--black-color);
+}
+/* header End */
 
 .category {
     display: flex;
