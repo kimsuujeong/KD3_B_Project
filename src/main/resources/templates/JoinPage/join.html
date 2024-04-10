@@ -22,7 +22,7 @@
       <!-- <h3 style="color: #9c9c9c;">일반인 회원가입</h3> -->
 
       <div class="join_box">
-
+        
         <div class="email_auth">
           <input type="email" placeholder="이메일" name="email" id="email" class="email" required>
           <button type="submit" onclick="sendVerificationCode()" id="email_auth_btn" class="email_auth_btn"
@@ -38,22 +38,22 @@
             확인</button>
         </div>
 
-        <input type="id" placeholder="아이디" name="id" id="id" required>
-        <span class="id ok">이 아이디는 사용 가능합니다</span>
-        <span class="id error">이 아이디는 사용할 수 없습니다.</span>
+        <input type="text" class="mid_id" name="mid_id" id="mid_id" placeholder="아이디">
+        <label for="mid_id" id="id"></label> 
 
-        <input type="nickname" placeholder="닉네임" name="nickname" id="nickname" required>
-        <span class="nickname ok">이 아이디는 사용 가능합니다</span>
-        <span class="nickname error">이 아이디는 사용할 수 없습니다.</span>
+        <input type="text" class="mid_nickname" name="mid_nickname" id="mid_nickname" placeholder="닉네임">
+        <label for="mid_nickname" id="nickname"></label> 
 
         <input type="password" placeholder="비밀번호" name="password" id="password" required>
-        <input type="password_ck" placeholder="비밀번호  확인" id="password_ck" required>
-
+        <input type="password" placeholder="비밀번호  확인" name="password_ck" id="password_ck" required>
+        <label for="pwConfirm" id="pwConfirm"></label>
+      
       </div>
 
       <div class="c">
-        <input type="checkbox" id="id_a" name="all" required>
+        <input type="checkbox" id="id_a" name="all" >
         <label for="agree">전체동의</label> <br>
+
         <input type="checkbox" id="id_b" name="agree" required>
         <label for="agree">[필수] 만 14세 이상입니다.</label> <br>
         <input type="checkbox" id="id_c" name="agree" required>
@@ -64,6 +64,7 @@
         <label for="agree"> [필수] 개인정보 수집·이용 동의서
           <a style="text-decoration: underline;" href="../JoinPage/d.html" target="_blank">보기</a>
         </label><br>
+        
         <input type="checkbox" id="id_e" name="agree">
         <label for="agree">[선택] 마케팅 정보 수신동의
           <a style="text-decoration: underline;" href="../JoinPage/e.html" target="_blank">보기</a>
@@ -81,176 +82,7 @@
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script th:inline="javascript"> // https://mollangpiu.tistory.com/331
-    // 이메일 유효성 검사
-    function sendVerificationCode() {
-
-      var email = document.getElementById("email").value;
-      var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-      if (!emailPattern.test(email)) {
-        alert("유효한 이메일 주소를 입력하세요.");
-        return false;
-      }
-
-      // AJAX 요청
-      $.ajax({
-
-        url: "/submitEmailToken",
-        type: "POST",
-        dataType: "json",
-        data: { email: email },
-
-        success: function (response) {
-
-          console.log(response);
-          console.log(email);
-
-          var redirectUrl = response.redirectUrl;
-          var message = response.message;
-
-          alert(message); // 서버에서 보낸 메시지를 알림으로 표시
-
-        },
-        error: function () {
-
-          alert("서버오류입니다.");
-
-        }
-
-      });
-
-      // 기본 동작 방지
-      return false;
-
-    }
-
-    // 토큰 검사
-    function checkVerificationCode() {
-
-      var email_Check_key = document.getElementById("email_Check_key").value;
-      var tokenPattern = /^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/;
-
-      console.log(email_Check_key);
-
-      if (email_Check_key == "") {
-        alert("토큰값을 입력해주세요.");
-        return false;
-      }
-
-      if (!tokenPattern.test(email_Check_key)) {
-        alert("유효한 토큰을 입력하세요.");
-        return false;
-      }
-
-      // AJAX 요청
-      $.ajax({
-
-        url: "/checkEmailToken",
-        type: "POST",
-        dataType: "json",
-        data: { email_Check_key: email_Check_key },
-
-        success: function (response) {
-
-          console.log(response);
-          console.log(email_Check_key);
-
-          var redirectUrl = response.redirectUrl;
-          var message = response.message;
-
-          alert(message); // 서버에서 보낸 메시지를 알림으로 표시
-
-        },
-        error: function () {
-
-          alert("서버오류입니다.");
-
-        }
-
-      });
-
-      // 기본 동작 방지
-      return false;
-
-    }
-
-    // 아이디 유효성 검사
-    // 	$("#memberId").on("input",function(){ //이렇게도 가능
-    $("#memberId").keyup(function () {
-      var insertid = $("#memberId").val();
-      var regID = /[a-z0-9_]{5,16}$/;
-      var regID2 = /[a-z0-9]{1,4}$/;
-      console.log(insertid == "")
-      // 		if(regID2.test(insertid)){
-      // 			$("#p4").html("아이디는 5자 이상이어야 합니다.")
-      // 		}
-      if (insertid == "") {
-        $("#p4").html("");
-      }
-      else if (!regID.test(insertid)) {
-        $("#p4").html("아이디는 5자이상 영문소문자, 숫자,특수문자(_)만 사용 가능합니다.");
-
-      } else {
-
-
-        $.ajax({
-          url: "/member/checkId.kh",
-          type: "get",
-          data: { "insertid": insertid },
-          success: function (data) {
-
-            console.log(data);
-
-            if (data != "") {
-              var str2 = "<span class='error'>[" + data + "] 이미 사용중인 아이디 입니다.</span>";
-              $("#p4").html(str2);
-            } else {
-              var str = "<span class='ok'>이 아이디는 사용 가능합니다</span>"
-              $("#p4").html(str)
-            }
-            console.log("연결 성공");
-          },
-          error: function () {
-            console.log("서버 연결에 실패");
-          }
-
-        });
-      };
-    });
-
-    // 닉네임 유효성 검사
-
-    // 비밀번호 유효성 검사
-
-
-    // 유효성 검사
-    document.addEventListener('DOMContentLoaded', () => {
-      const ckTag = document.getElementById('id_a');
-      const submitButton = document.querySelector('.submit');
-      const requiredCheckboxes = document.querySelectorAll('input[name="agree"]:required');
-
-      // 버튼 전체 동의 (필수, 선택) 부분 코드
-      ckTag.addEventListener('change', () => {
-        const allChecked = ckTag.checked;
-
-        requiredCheckboxes.forEach(checkbox => {
-          checkbox.checked = allChecked;
-        });
-
-        submitButton.disabled = !allChecked;
-      });
-
-      requiredCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-          const allAgreed = [...requiredCheckboxes].every(cb => cb.checked);
-          submitButton.disabled = !allAgreed;
-
-        });
-
-      });
-
-    });
+  <script src="/js/join.js">
 
   </script>
 

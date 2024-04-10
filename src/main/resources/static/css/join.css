@@ -136,7 +136,6 @@ background-color: transparent;
 
 .join_box span {
   display: inline-block;
-  color: red;
   font-size: 12px;
   padding-left: 1px;
   padding-top: 8px;
@@ -199,4 +198,11 @@ background-color: transparent;
   background-color: #03c75a;
   color: white;
   margin-top: 20px;
+}
+
+#id,
+#nickname {
+  font: #9c9c9c;
+  font-weight: bold;
+  font-size: 10px;
 }
