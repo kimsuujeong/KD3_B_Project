@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Adminpage.AdminMapper">
+
+	<select id="admincheck"
+		resultType="com.example.demo.auth.AuthorizedUser">
+		select *
+		from authorizeduser
+		where user_userID=#{userID}
+	</select>
+
+	<select id="getAllAuthReq">
+		select *
+		from authrequest
+	</select>
+	
+	<select id="getAuthReqStatus">
+		select *
+		from authrequest
+		where status="확인중"
+	</select>
+
+	<select id="getAuthReqID"
+		resultType="com.example.demo.auth.AuthRequest">
+		select *
+		from authrequest
+		where requestID=#{requestID}
+	</select>
+	<update id="updateStatus">
+		update authrequest
+		set status = #{status}
+		where
+		requestID=#{requestID}
+	</update>
+
+	<insert id="insertAuthUser">
+		insert into
+		authorizeduser(authorizeID,user_userID,fileID,authDate)
+		values(#{authorizeID},#{user_userID},#{fileID},now())
+	</insert>
+
+	<delete id="deleteAuthRequest">
+		DELETE FROM authrequest WHERE requestID = #{requestID}
+	</delete>
+	
+</mapper>
