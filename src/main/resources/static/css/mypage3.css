@@ -1,17 +1,19 @@
 body{
-  background-color: #e1e4e631;;
+ 
   overflow-x: hidden;
 }
 
 /* header Start*/
 .header{
-  /* background-color: crimson; */
+  background-color: var(--white-color);
   display: flex;
   justify-content: space-between;
   padding:1.5rem 7%;
   border-bottom: var(--border);
   top: 0; left: 0; right: 0;
   z-index: 1000;
+  box-shadow: 0 2px 5px 0 var(--light-grey-color);
+   margin-bottom: 5px; 
 }
 
 .navbar .container {
@@ -90,37 +92,7 @@ body{
   padding: 1rem;
 }
 
-.category .category-list{
-  cursor: pointer;
-  padding: 1rem;
-  /* background-color: rgb(235, 235, 235); */
-}
 
-/* dropdown-menu */
-/* 좀 더 괜찮게 다듬을 필요 있음 */
-.dropdown li{
-  display: block;
-  background-color: var(--white-color);
-  margin: 2rem 0rem;
-}
-
-.dropdown{
-  width: auto;
-  background-color: var(--white-color);
-  position: absolute;
-  z-index: 999;
-  display: none;
-  padding: 1rem;
-  margin-right: 2rem;
-}
-
-.category-list:hover .dropdown{
-  display: block;
-}
-
-.category-list:hover{
-  color: var(--green-color);
-}
 /* header End*/
 
 
@@ -129,7 +101,6 @@ body{
 /* tagAndContent Start */
 
 .sidebar{
-  background-color: #f2f2f2;
   font-size: 2rem;
   width: 20vw;
   /* height: 100vh; */
@@ -140,8 +111,8 @@ body{
   
 }
 
-.sidebar .sidebar-list{
-  font-size: 2rem;
+sidebar .sidebar-list{
+  font-size: 1.8rem;
   padding: 2rem;
   display: flex;
   justify-content: space-between;
@@ -149,14 +120,10 @@ body{
 .list{
   list-style-type: none;
 }
-.sidebar .A, .B{
+.sidebar .A, .B, .R{
    color: black;
 }
-.sidebar .R{
-  color: black;
-  font-size:14px;
-  margin-top: 10px;
-}
+
 .sidebar .C{
   color: #00ce80;
 }
@@ -173,11 +140,13 @@ body{
 }
 /* select-tag Start */
 .Contents{
-  background-color: #fff;
+  /* background-color: #fff; */
   width: 85vw;
+  height: 100%;
+  padding-bottom: 2rem;
   margin: 0 auto;
-  align-items: center;   
-  display: flex; 
+  align-items: center;
+  display: flex;
   align-items: flex-start;
 }
 .content .list {
@@ -188,34 +157,33 @@ body{
 .box1, .box2 {
   width: 300px;
   height: 300px;
-  margin-top: 90px;
+  /* margin-top: 2rem; */
+  margin-bottom: 6rem;
   margin-left:90px; /* 수정된 부분: 박스 간격 조정 */
   margin-right: 90px; /* 수정된 부분: 박스 간격 조정 */
   padding: 20px;
   background-color: #fff;
-  border: 1px solid #9c9c9c;
+  border: 1px solid #9C9C9C;
   border-radius: 10px;
   float: left;
   text-align: center;
-  box-shadow: 2px 2px 2px 2px #9c9c9c;
+  box-shadow: 2px 2px 2px 2px #9C9C9C;
 }
-
 .box1 h4, .box2 h4{
   text-align: center;
-  font-size: 2rem;
-  margin-top: 20px; 
+  font-size: 2.4rem;
+  margin-top: 4rem;
 }
 .box1 a, .box2 a{
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #fff;
-  background-color: #00ce80;
-  border: 1px solid #9c9c9c;
+  background-color: #00CE80;
+  border: 1px solid #9C9C9C;
   border-radius: 10px;
   padding: 10px;
-  width: auto;
+  width: 15rem;
   display: inline-block; /* 인증하기 버튼을 블록 요소로 변환 */
   margin-top: 100px; /* 원하는 만큼의 위쪽 여백 추가 */
-  
 }
 /* .box2{
   width: 300px;
