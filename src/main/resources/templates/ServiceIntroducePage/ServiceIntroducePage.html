@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>서비스 소개</title>
-  <link rel="stylesheet" href="../../static/css/Setting.css">
-  <link rel="stylesheet" href="../../static/css/ServiceIntroducePage.css">
+  <link rel="stylesheet" th:href="@{/css/Setting.css}">
+  <link rel="stylesheet" th:href="@{/css/ServiceIntroducePage.css}">
 </head>
 <body>
   <div class="container">
@@ -30,7 +30,7 @@
       <p>쉽고 빠르게 지금 당장 쉽고 빠르게<br>
         당신만의 행사를 계획하세요.</p>
       <p>참여자들이 당신의 행사를 열려고 기다리고 있습니다!</p>
-      <a href="#">무료로 행사 개설하기</a>
+      <a th:href="@{/Login/login}">무료로 행사 개설하기</a>
     </section>
     
     
@@ -40,18 +40,18 @@
         </p>
         <div>
       <div class="ce11">
-        <img src="../../static/images/기회.png" alt="" width="110px" height="110px">
+        <img th:src="@{/images/기회.png}" alt="" width="110px" height="110px">
         <h6>다양한 기회</h6>
         <p>행사 네트워킹으로 다양한 사람과 연결하여 새로운 기회와 만남을 경험하세요.</p>
       </div>
       <div class="ce12">
-        <img src="../../static/images/인지도.png" alt="" width="110px" height="110px">
+        <img th:src="@{/images/인지도.png}" alt="" width="110px" height="110px">
         <h6>더 높은 인지도</h6>
         <p>행사에서 더 많은 사람에게 우리의 <br>
           메시지를 전달해보세요.</p>
       </div>
       <div class="ce13">
-        <img src="../../static/images/공유.png" alt="" width="110px" height="110px">
+        <img th:src="@{/images/공유.png}" alt="" width="110px" height="110px">
         <h6>전문 지식과 경험 공유</h6>
         <p>
           행사는 업계 전문가들과의 만남과 경험을 통한 지식 공유의 장입니다.</p>
@@ -59,18 +59,18 @@
     </div>
    
       <div class="ce21">
-        <img src="../../static/images/발굴.png" alt="" width="110px" height="110px">
+        <img th:src="@{/images/발굴.png}" alt="" width="110px" height="110px">
         <h6>혁신적인 아이디어 발굴</h6>
         <p>다양한 분야와 업계에서 온 사람들과의 상호작용을 통해 혁신적인 아이디어와 새로운 비즈니스 모델, 제품 아이디어를 발굴할 수 있습니다.</p>
       </div>
       <div class="ce22">
-        <img src="../../static/images/협력.png" alt="" width="110px" height="110px">
+        <img th:src="@{/images/협력.png}" alt="" width="110px" height="110px">
         <h6>파트너십 협력 기회</h6>
         <p>
           행사는 파트너십을 형성하고 협력 기회를 찾을 수 있는 좋은 장입니다. 다른 기업이나 기관과의 협력을 통해 서로의 강점을 결합하고 성장할 수 있습니다.</p>
       </div>
       <div class="ce23">
-        <img src="../../static/images/홍보.png" alt="" width="110px" height="110px">
+        <img th:src="@{/images/홍보.png}" alt="" width="110px" height="110px">
         <h6>마케팅 및 홍보 효과</h6>
         <p>행사는 비즈니스의 마케팅 및 홍보에도 효과적입니다. 행사를 통해 새로운 고객을 유치하고 브랜드 인지도를 높일 수 있습니다.</p>
       </div>
@@ -132,7 +132,7 @@
         <p>쉽고 빠르게 지금 당장 쉽고 빠르게<br>
           당신만의 행사를 계획하세요.</p>
         <p>참여자들이 당신의 행사를 열려고 기다리고 있습니다!</p>
-        <a href="#" class="btn2">무료로 행사 개설하기</a>
+        <a th:href="@{/Login/login}" class="btn2">무료로 행사 개설하기</a>
       </section>
     
   
@@ -181,17 +181,17 @@
                 ⓒ 2024. EVENTREE All Rights Reserved.
             </div>
             <div class="sns">
-              <a href="#"> <img src="../../static/images/icons/kakao.png" alt=""></a>
-              <a href="#"> <img src="../../static/images/icons/naver blog.png" alt=""></a>
-              <a href="#"> <img src="../../static/images/icons/twitter X.png" alt="" ></a>
-              <a href="#"> <img src="../../static/images/icons/instagram.png" alt=""></a>
-              <a href="#"> <img src="../../static/images/icons/youtube.png" alt="" ></a>
+              <a href="#"> <img th:src="@{/images/icons/kakao.png}" alt="Kakao Icon"></a>
+              <a href="#"> <img th:src="@{/images/icons/naver blog.png}" alt="Naverblog Icon"></a>
+              <a href="#"> <img th:src="@{/images/icons/twitterX.png}" alt="Twitter Icon" /></a>
+              <a href="#"> <img th:src="@{/images/icons/instagram.png}" alt="Instagram Icon"></a>
+              <a href="#"> <img th:src="@{/images/icons/youtube.png}" alt="Youtube Icon" ></a>
           </div>
-            <!-- 나중에 sns 로고 이미지로 교체할것 -->
+        
         </div>
 
     </footer>
-    <script>
+    <script th:inline="javascript">
       // span 요소의 내용을 변경하는 함수
       function changeSpanText() {
           var texts = ["[ 비즈니스 ]", "[ 제품/서비스 ]", "[ 모임/커뮤니티 ]"]; // 변경할 텍스트 목록
