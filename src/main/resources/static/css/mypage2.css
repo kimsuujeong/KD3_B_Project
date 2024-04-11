@@ -1,17 +1,19 @@
 body{
-  background-color: #e1e4e631;;
+  
   overflow-x: hidden;
 }
 
 /* header Start*/
 .header{
-  /* background-color: crimson; */
+  background-color: var(--white-color);
   display: flex;
   justify-content: space-between;
   padding:1.5rem 7%;
   border-bottom: var(--border);
   top: 0; left: 0; right: 0;
   z-index: 1000;
+  box-shadow: 0 2px 5px 0 var(--light-grey-color);
+   margin-bottom: 5px; 
 }
 
 .navbar .container {
@@ -129,27 +131,26 @@ body{
 /* tagAndContent Start */
 
 .sidebar{
-  background-color: #f2f2f2;
   font-size: 2rem;
   width: 20vw;
-  height: 580px; 
+  /* height: 100vh; */
+  height: 600px;
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
   
 }
 
-.sidebar .sidebar-list{
-  font-size: 2rem;
+sidebar .sidebar-list{
+  font-size: 1.8rem;
   padding: 2rem;
   display: flex;
   justify-content: space-between;
 }
 .list{
   list-style-type: none;
-  width: 1000px;
 }
-.sidebar .A, .C{
+.sidebar .A, .C, .R{
    color: black;
 }
 .sidebar .B{
@@ -161,7 +162,7 @@ body{
   font-size: 16px;
   background-color:#00ce80;
   border: 1px solid #9c9c9c;
-  margin-top: 600px; 
+  margin-top: 100rem;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px #9c9c9c;

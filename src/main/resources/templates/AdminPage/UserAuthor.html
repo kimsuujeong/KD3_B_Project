@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UserAuthorCompany</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="../../static/css/Setting.css">
-    <link rel="stylesheet" href="../../static/css/UserAuthor.css">
+    <link rel="stylesheet" th:href="@{/css/Setting.css}">
+    <link rel="stylesheet" th:href="@{/css/UserAuthor.css}">
     
 </head>
 <body>
@@ -18,7 +18,7 @@
                 <div class="container">
                     <!-- logo -->
                     <a href="#" class="logo">
-                        <img src="../../static/images/logo-01.png" alt="">
+                        <img th:src="@{/images/logo-01.png}" alt="">
                     </a>
                     <div>
                         <form action="" class="search-bar">
@@ -29,9 +29,15 @@
                         </form>
                     </div>
                     <div class="link1">
+                        <!-- before Login -->
                         <a href="#">로그인</a>
                         <a href="#">회원가입</a>
                         <a href="#">관심목록</a>
+                        
+                        <!-- after Login -->
+                        <!-- <a href="#" class="mypage"><span>OO</span>님 안녕하세요</a>
+                        <a href="#">관심목록</a>
+                        <a href="#">로그아웃</a> -->
                     </div>
                 </div>
     
@@ -79,315 +85,25 @@
                             <th>종류</th>
                             <th>행동</th>
                         </tr>
-                        <tr class="userInfo-value">
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
+
+                        <tr th:each="request, index : ${authRequests}">
+			                <td th:text="${request.name}"></td>
+			                <td th:text="${request.link}"></td>
+			                <td><a th:href="${fileLinks[__${index.index}__]}" >다운로드</a></td>
+			                <td>
+                                <span th:if="${request.authorizeID == 1}">기업인</span>
+                                <span th:if="${request.authorizeID == 2}">예술인</span>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>미디어랩 독감경보</td>
-                            <td><a href="#">www.instagram.com/project_flu/</a></td>
-                            <td>어떤 파일</td>
-                            <td>예술인</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>스타트업빌리지(S-Village)</td>
-                            <td><a href="#">http://svillage.co.kr/</a></td>
-                            <td>어떤 파일</td>
-                            <td>기업</td>
-                            <td>
-                                <button class="accept">
-                                    수락
-                                </button>
-                                <button class="deny">
-                                    거절
-                                </button>
-                            </td>
-                        </tr>
-                        
+			                <td>
+			                    <form th:action="@{/admin/authorizeRequest/{requestID}/approve(requestID=${request.requestID})}" method="post" onsubmit="return confirm('승인하시겠습니까?')">
+			                        <button type="submit">승인</button>
+			                    </form>
+			                    <form th:action="@{/admin/authorizeRequest/{requestID}/reject(requestID=${request.requestID})}" method="post" onsubmit="return confirm('거절하시겠습니까?')">
+			                        <button type="submit">거절</button>
+			                    </form>
+			                </td>
+			            </tr>
+
                     </table>
                 </div>
             </div>

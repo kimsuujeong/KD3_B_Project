@@ -50,6 +50,11 @@
       
       </div>
 
+        <input type="checkbox" id="id_a" name="all" >
+        <label for="agree">전체동의</label> <br>
+
+        <input type="checkbox" id="id_b" name="agree" required>
+        <label for="agree">[필수] 만 14세 이상입니다.</label> <br>
       <div class="c">
         <input type="checkbox" id="id_a" name="all" >
         <label for="agree">전체동의</label> <br>
@@ -58,20 +63,19 @@
         <label for="agree">[필수] 만 14세 이상입니다.</label> <br>
         <input type="checkbox" id="id_c" name="agree" required>
         <label for="agree">[필수] 이용약관
-          <a style="text-decoration: underline;" href="../JoinPage/c.html" target="_blank">보기</a>
+          <a style="text-decoration: underline; "th:href="@{../JoinPage/c}" target="_blank">보기</a>
         </label><br>
         <input type="checkbox" id="id_d" name="agree" required>
-        <label for="agree"> [필수] 개인정보 수집·이용 동의서
-          <a style="text-decoration: underline;" href="../JoinPage/d.html" target="_blank">보기</a>
-        </label><br>
-        
+		<label for="agree"> [필수] 개인정보 수집·이용 동의서
+		  <a style="text-decoration: underline;" th:href="@{../JoinPage/d}" target="_blank">보기</a>
+		</label><br>
         <input type="checkbox" id="id_e" name="agree">
         <label for="agree">[선택] 마케팅 정보 수신동의
-          <a style="text-decoration: underline;" href="../JoinPage/e.html" target="_blank">보기</a>
+          <a style="text-decoration: underline;" th:href="@{../JoinPage/e}" target="_blank">보기</a>
         </label><br>
         <input type="checkbox" id="id_f" name="agree">
         <label for="agree">[선택] 개인정보 수집·이용 동의서
-          <a style="text-decoration: underline;" href="../JoinPage/d.html" target="_blank">보기</a>
+          <a style="text-decoration: underline;" th:href="@{../JoinPage/d}" target="_blank">보기</a>
         </label><br>
       </div>
 

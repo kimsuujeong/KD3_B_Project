@@ -1,26 +1,33 @@
+
 .container {
   max-width: 600px;
-  margin: 50px auto;
+  margin: 25vh auto;
   background-color: #fff;
-  padding: 20px;
+  /* display: flex; */
+  justify-items: center;
+  align-items: center;
+   padding: 20px; 
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 h1 {
   text-align: center;
   color: #333;
+  font-size: 2.5rem;
 }
 form {
   margin-top: 20px;
 }
 label {
   font-weight: bold;
+  font-size: 1.6rem;
 }
 input[type="text"],
 input[type="file"] {
   width: calc(100% - 22px);
   padding: 10px;
   margin-bottom: 10px;
+  margin-top:10px;
   border: 1px solid #ccc;
   border-radius: 3px;
   box-sizing: border-box;

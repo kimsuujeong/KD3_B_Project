@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>예술가 인증</title>
-    <link rel="stylesheet" href="../../static/css/Setting.css">
-    <link rel="stylesheet" href="../../static/css/cer.css">
+    <!-- <link rel="stylesheet" href="../../static/css/Setting.css"> -->
+    <link rel="stylesheet" th:href="@{/css/Setting.css}">
+    <!-- <link rel="stylesheet" href="../../static/css/cer.css"> -->
+    <link rel="stylesheet" th:href="@{/css/cer.css}">
 </head>
 <body>
 
 <div class="container">
     <h1>예술가 인증</h1>
     <hr>
-    <form action="../MyPage/mypage3.html" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmit()">
+    <form th:action="@{/authn/request/artist}" th:object="${artistcer}" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmit()">
         <label for="name">이름:</label>
-        <input type="text" id="name" name="name" required> <br>
-        <label for="phone">연락처:</label>
-        <input type="text" id="phone" name="phone" required> <br>
+
+        <input type="text" th:field="*{name}" id="name" name="name" required> <br>
+        <input type="text" id="phone" name="phone" required> <br> -->
         <label for="company">회사 링크:</label>
-        <input type="text" id="company" name="company"> <br> <!-- 회사 링크 추가 -->
+        <input type="text" th:field="*{link}" id="link" name="link"> <br>
         <label for="file">증명서 첨부:</label>
-        <input type="file" id="file" name="file" accept=".pdf, .jpg, .jpeg, .png" required>
+        <input type="file" th:field="*{file}" id="file" name="file" accept=".pdf, .jpg, .jpeg, .png" required>
         <input type="submit" value="인증 신청">
     </form>
 </div>
