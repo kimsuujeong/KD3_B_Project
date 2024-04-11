@@ -170,7 +170,7 @@ $mid_nickname.on("keyup", function () {
       success: function (data) {
         if (data == 1) {
           nicknamechk = false; // 중복된 닉네임이 있을 때 상태를 변경
-          $nickname.html("<span id='nickname'>이미 존재하는 아이디입니다</span>").css({ // 스타일 적용하는 부분에 직접적으로 css 메소드를 체이닝
+          $nickname.html("<span id='nickname'>이미 존재하는 닉네임입니다.</span>").css({ // 스타일 적용하는 부분에 직접적으로 css 메소드를 체이닝
             "color": "#ff0000",
             "font-weight": "bold",
             "font-size": "10px"
@@ -179,7 +179,7 @@ $mid_nickname.on("keyup", function () {
         }
         else { // 아니면 중복아님
           nicknamechk = true;
-          $nickname.html("<span id='nickname'>사용가능한 아이디입니다</span>")
+          $nickname.html("<span id='nickname'>사용가능한 닉네임입니다</span>")
 
           $("#nickname").css({
             "color": "#9c9c9c",
