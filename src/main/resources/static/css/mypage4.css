@@ -1,19 +1,19 @@
 body{
-  background-color: #e1e4e631;;
   overflow-x: hidden;
 }
 
 /* header Start*/
 .header{
-  /* background-color: crimson; */
+  background-color: var(--white-color);
   display: flex;
   justify-content: space-between;
   padding:1.5rem 7%;
   border-bottom: var(--border);
   top: 0; left: 0; right: 0;
   z-index: 1000;
+  box-shadow: 0 2px 5px 0 var(--light-grey-color);
+   margin-bottom: 5px; 
 }
-
 .navbar .container {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@ body{
 }
 
 .header .navbar .link1 a{
-  padding-right: 1rem;
+  padding-right: 5rem;
 
 }
 
@@ -129,7 +129,6 @@ body{
 /* tagAndContent Start */
 
 .sidebar{
-  background-color: #f2f2f2;
   font-size: 2rem;
   width: 20vw;
   /* height: 100vh; */
@@ -140,8 +139,8 @@ body{
   
 }
 
-.sidebar .sidebar-list{
-  font-size: 2rem;
+sidebar .sidebar-list{
+  font-size: 1.8rem;
   padding: 2rem;
   display: flex;
   justify-content: space-between;
@@ -154,8 +153,6 @@ body{
 }
 .sidebar .R{
   color: #00ce80;
-  font-size:14px;
-  margin-top: 10px;
 }
 .sidebar >a{
   float: left;
