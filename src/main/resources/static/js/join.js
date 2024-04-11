@@ -42,8 +42,10 @@ function sendVerificationCode() {
 }
 
 // 토큰 검사
+var $join = $("#join");
 function checkVerificationCode() {
 
+  var join_btn = document.getElementById("join");
   var email_Check_key = document.getElementById("email_Check_key").value;
   var tokenPattern = /^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/;
 
@@ -56,7 +58,10 @@ function checkVerificationCode() {
 
   if (!tokenPattern.test(email_Check_key)) {
     alert("유효한 토큰을 입력하세요.");
+    $join.prop('disabled', true);
     return false;
+  } else {
+    $join.prop('disabled', false);
   }
 
   // AJAX 요청
@@ -90,6 +95,25 @@ function checkVerificationCode() {
   return false;
 
 }
+
+// 토큰 숫자만 들어오게 하기
+var $join = $("#join");
+$join.on("click", function(){
+
+  var email_Check_key = $("#email_Check_key").val();
+  var tokenPattern = /^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/;
+
+  console.log(email_Check_key);
+
+  if (!tokenPattern.test(email_Check_key)) {
+    alert("유효한 토큰을 입력하세요.");
+    $join.prop('disabled', true);
+    return false; 
+  } else {
+    $join.prop('disabled', false);
+  }
+
+})
 
 // 아이디 유효성 검사
 var $mid_id = $("#mid_id");
@@ -158,6 +182,7 @@ $mid_nickname.on("keyup", function () {
       "font-weight": "bold",
       "font-size": "10px"
     });
+
     return false;
   } else {
     $.ajax({
@@ -272,6 +297,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const ckTag = document.getElementById('id_a');
   const submitButton = document.querySelector('.submit');
   const requiredCheckboxes = document.querySelectorAll('input[name="agree"]');
+
+  var email_Check_key = document.getElementById("email_Check_key").value;
+  var tokenPattern = /^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/;
+
+  console.log(email_Check_key);
 
   // 버튼 전체 동의 (필수, 선택) 부분 코드
   ckTag.addEventListener('change', () => {
