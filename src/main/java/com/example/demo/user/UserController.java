@@ -24,9 +24,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@Autowired
 	private UserService userService;
-//
-//	@Autowired
-//	private UserMapper usermapper; // test
 
 	@Autowired
 	private MailController mailController;
