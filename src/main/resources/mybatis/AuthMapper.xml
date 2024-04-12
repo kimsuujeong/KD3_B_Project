@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.auth.AuthMapper">
+	
+	<!-- 확인중인것만 가져옴 -->
 	<insert id="authRequest">
 		INSERT INTO authrequest(userID, fileID, requestDate,
 		name, link, status,authorizeID)
 		VALUES (#{userID}, #{fileID} , now(),
 		#{name},#{link}, "확인중" ,#{authorizeID})
 	</insert>
-
-	<select id="getAuthreqeust">
-		SELECT * FROM authrequest 
-		WHERE userID = #{userID} AND authorizeID = #{authorizeID}
+	<!-- 아이디와 권한아이디별로 선택해서 가져옴 -->
+	<select id="getAuthreqeust" resultType="com.example.demo.auth.AuthRequest">
+	    SELECT * FROM authrequest 
+	    WHERE userID = #{userID} AND authorizeID = #{authorizeID}
 	</select>
+
 
 </mapper>
