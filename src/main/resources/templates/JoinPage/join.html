@@ -22,7 +22,7 @@
       <!-- <h3 style="color: #9c9c9c;">일반인 회원가입</h3> -->
 
       <div class="join_box">
-        
+
         <div class="email_auth">
           <input type="email" placeholder="이메일" name="email" id="email" class="email" required>
           <button type="submit" onclick="sendVerificationCode()" id="email_auth_btn" class="email_auth_btn"
@@ -39,36 +39,30 @@
         </div>
 
         <input type="text" class="mid_id" name="mid_id" id="mid_id" placeholder="아이디">
-        <label for="mid_id" id="id"></label> 
+        <label for="mid_id" id="id"></label>
 
         <input type="text" class="mid_nickname" name="mid_nickname" id="mid_nickname" placeholder="닉네임">
-        <label for="mid_nickname" id="nickname"></label> 
+        <label for="mid_nickname" id="nickname"></label>
 
         <input type="password" placeholder="비밀번호" name="password" id="password" required>
         <input type="password" placeholder="비밀번호  확인" name="password_ck" id="password_ck" required>
         <label for="pwConfirm" id="pwConfirm"></label>
-      
+
       </div>
 
-        <input type="checkbox" id="id_a" name="all" >
-        <label for="agree">전체동의</label> <br>
-
-        <input type="checkbox" id="id_b" name="agree" required>
-        <label for="agree">[필수] 만 14세 이상입니다.</label> <br>
       <div class="c">
-        <input type="checkbox" id="id_a" name="all" >
+        <input type="checkbox" id="id_a" name="all">
         <label for="agree">전체동의</label> <br>
-
         <input type="checkbox" id="id_b" name="agree" required>
         <label for="agree">[필수] 만 14세 이상입니다.</label> <br>
         <input type="checkbox" id="id_c" name="agree" required>
         <label for="agree">[필수] 이용약관
-          <a style="text-decoration: underline; "th:href="@{../JoinPage/c}" target="_blank">보기</a>
+          <a style="text-decoration: underline; " th:href="@{../JoinPage/c}" target="_blank">보기</a>
         </label><br>
         <input type="checkbox" id="id_d" name="agree" required>
-		<label for="agree"> [필수] 개인정보 수집·이용 동의서
-		  <a style="text-decoration: underline;" th:href="@{../JoinPage/d}" target="_blank">보기</a>
-		</label><br>
+        <label for="agree"> [필수] 개인정보 수집·이용 동의서
+          <a style="text-decoration: underline;" th:href="@{../JoinPage/d}" target="_blank">보기</a>
+        </label><br>
         <input type="checkbox" id="id_e" name="agree">
         <label for="agree">[선택] 마케팅 정보 수신동의
           <a style="text-decoration: underline;" th:href="@{../JoinPage/e}" target="_blank">보기</a>

@@ -47,7 +47,7 @@ public class UserJoinController {
 	    try {
 	        if (userJoinService.emailchk(email) != 1) {
 	        	
-	        	mailController.mailSend(email); // 이메일 보내기
+//	        	mailController.mailSend(email); // 이메일 보내기
 	        	
 	            response.put("redirectUrl", "http://localhost:8085/joinForm");
 	            response.put("message", "토큰이 보내졌습니다.");

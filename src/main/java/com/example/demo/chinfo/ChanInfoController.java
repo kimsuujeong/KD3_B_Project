@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.user.User;
@@ -30,9 +28,11 @@ public class ChanInfoController {
 		if (user == null) {
 			return "redirect:/login";
 		}
-
+		
+		model.addAttribute("errorMessage","");
 		model.addAttribute("user", user);
-		return "TestHtml/Mypage/name_modify";
+		
+		return "MyPage/nrs";
 	}
 
 	@PostMapping("/userUpdate/namemodify")
@@ -42,36 +42,39 @@ public class ChanInfoController {
 		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
+		model.addAttribute("errorMessage","");
 		int result = userService.namechk(userName);
 
 		if (result > 0) {
 			model.addAttribute("errorMessage", "이미 사용중인 이름입니다");
-			return "TestHtml/Mypage/name_modify";
-		} else {
+			return "MyPage/nrs";		}
+		else {
 			loggedInUser.setUserName(userName);
 			chanInfoService.updateName(loggedInUser);
 			return "redirect:/userUpdate";
 		}
 	}
-
-	@GetMapping("/userUpdate/emmodify")
-	public String emailUpdate(HttpSession session, Model model) {
-		User loggedInUser = (User) session.getAttribute("loggedInUser");
-
-		if (loggedInUser == null) {
-			return "redirect:/login";
-		}
-		return "TestHtml/Mypage/email_modify";
-	}
+	
+	
+	// 이메일 변경은 뻄
+//	@GetMapping("/userUpdate/emmodify")
+//	public String emailUpdate(HttpSession session, Model model) {
+//		User loggedInUser = (User) session.getAttribute("loggedInUser");
+//
+//		if (loggedInUser == null) {
+//			return "redirect:/login";
+//		}
+//		return "TestHtml/Mypage/email_modify";
+//	}
 
 	@PostMapping("/userUpdate/emmodify")
 	public String emailUpdate(@RequestParam("email") String email, HttpSession session, Model model) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 
 		if (loggedInUser == null) {
-			return "redirect:/login";
-		}
-
+			return "redirect:/login";  
+		} 
+                                                    
 		int result = userService.emailchk(email);
 
 		if (result > 0) {
@@ -82,8 +85,9 @@ public class ChanInfoController {
 			chanInfoService.updateEmail(loggedInUser);
 			return "redirect:/userUpdate";
 		}
-	}
+	} 
 
+	
 	@GetMapping("/userUpdate/pwmodify")
 	public String passwordUpdate(HttpSession session, Model model) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -92,7 +96,7 @@ public class ChanInfoController {
 			return "redirect:/login";
 		}
 		
-		return "TestHtml/Mypage/passwd_modify";
+		return "Login/pwrs";
 	}
 	
 	@PostMapping("/userUpdate/pwmodify")
@@ -112,7 +116,7 @@ public class ChanInfoController {
 			return "redirect:/userUpdate";
 		}else {
 			model.addAttribute("errorMessage", "비밀번호가 틀립니다");
-			return "TestHtml/Mypage/passwd_modify";
+			return "Login/pwrs";
 		}
 		
 	}
