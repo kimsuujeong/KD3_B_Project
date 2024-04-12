@@ -18,11 +18,40 @@ public class MypageController { // 관심목록, 인증, 개인정보 수정(비
 //	@Autowired
 //	private UserMapper usermapper; // test
 	
-	@RequestMapping("/mypage") // test home
-	public String My_page() {
-		return "TestHtml/Mypage/TestMy_page";
+	@RequestMapping("/mypage/userupdate") // 내 정보 수정
+	public String My_page2() {
+		return "/Mypage/mypage2";
+	}
+	@GetMapping("/mypage/userupdate/namemodify") //닉네임 수정
+	public String MY_page2namemodify() {
+		return "/Login/nrs";
 	}
 	
+	@GetMapping("/mypage/userupdate/emmodify") //이메일 수정 
+	public String MY_page2emmodify() {
+		return "/Login/ers";	
+	}	
+	@GetMapping("/mypage/userupdate/emmodify/cere") //이메일 재설정
+	public String MY_page2emmodifycere() {
+		return "/Login/cerE";	
+	}	
+	@GetMapping("/mypage/userupdate/pwmodify") //비밀번호 수정 (1.비밀번호 재확인)
+	public String MY_page2pwmodify() {
+		return "/Login/pwcheck";
+	}
+	
+	@RequestMapping("/mypage/savelist") // 관심 목록
+	public String My_page1() {
+		return "/Mypage/mypage1";
+	}
+	@RequestMapping("/mypage/authn") // 관계자 인증
+	public String My_page3() {
+		return "/Mypage/mypage3";
+	}
+	@RequestMapping("/mypage/mypage4") // 내 글 확인
+	public String My_page4() {
+		return "/Mypage/mypage4";
+	}
 	@RequestMapping("/savelist") // 관심목록
 	public String savelist() {
 		return "TestHtml/Mypage/savelist";
@@ -44,5 +73,18 @@ public class MypageController { // 관심목록, 인증, 개인정보 수정(비
 	public String logout() {
 		return "TestHtml/Mypage/logout";
 	}
+	
+	@RequestMapping("/mypage/qa") // q&a
+	public String My_pageqa() {
+		return "/QAPage/qa";
+	}
 
+	@RequestMapping("/mypage/notice") // 공지사항
+	public String My_pagenotice() {
+		return "/QAPage/notice";
+	}
+	@RequestMapping("/mypage/serviceintroduce") // 서비스 소개
+	public String My_pageserviceintroduce() {
+		return "/ServiceIntroducePage/ServiceIntroducePage";
+	}
 }

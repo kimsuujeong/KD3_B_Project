@@ -1,307 +1,273 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지2</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="../../static/css/Setting.css">
-    <link rel="stylesheet" href="../../static/css/mypage2.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마이페이지2</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/css/Setting.css}">
+	<link rel="stylesheet" th:href="@{/css/mypage2.css}">
 </head>
 
 <body>
-    <!-- header Start -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-                <a href="#" class="logo">
-                    <img src="../../static/images/logo-01.png" alt="">
-                </a>
-                <div>
-                    <form action="" class="search-bar">
-                        <input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
-                        <div class="fas fa-search" id="search-btn"></div>
-                    </form>
-                </div>
-                <div class="link1">
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">관심목록</a>
-                </div>
-            </div>
+	<!-- header Start -->
+	<header class="header">
+		<nav class="navbar">
+			<div class="container">
+				<a href="#" class="logo">
+					<img th:src="@{/images/logo-01.png}" alt="">
+				</a>
+				<div>
+					<form action="" class="search-bar">
+						<input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
+						<div class="fas fa-search" id="search-btn"></div>
+					</form>
+				</div>
+				<div class="link1">
+					<a href="#">로그인</a>
+					<a href="#">회원가입</a>
+					<a href="#">관심목록</a>
+				</div>
+			</div>
 
-            <!-- category -->
-            <div class="category">
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">행사개설</a>
-            </div>
-        </nav>
-    </header>
-    <!-- header End -->
+			<!-- category -->
+			<div class="category">
+				<a href="#">기업행사</a>
+				<a href="#">예술인 펀딩</a>
+				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+				<a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
+				<a href="#">행사개설</a>
+			</div>
+		</nav>
+	</header>
+	<!-- header End -->
 
+	<!-- Contents Start-->
+	<section class="Contents">
+		<!-- tag Start -->
+		<div class="sidebar">
+			<h3>My Page</h3>
+			<div class="sidebar-list">
 
-    <!-- Contents Start-->
-    <section class="Contents">
-        <!-- tag Start -->
-        <div class="sidebar">
-            <h3>My Page</h3>
-            <div class="sidebar-list">
-                
-      <nav>
-        <br>
-        <ul class="list">
-            <li><a class="B" href="../MyPage/mypage2.html"target="_self">- 내정보 수정</a></li> <br>
-          <li><a class="A" href="../MyPage/mypage1.html" target="_self">- 관심 목록</a></li> <br>
-          <li><a class="C" href="../MyPage/mypage3.html" target="_self">- 관계자 인증</a></li><br> 
-          <li><a class="R" href="../MyPage/mypage4.html" target="_self">- 내 글 관리</a></li> <br> 
-        </ul>
-      </nav>
-    </div>
-        </div>
- 
-        <!-- side End -->
-        
+				<nav>
+					<br>
+					<ul class="list">
+						<li><a class="B" th:href="@{/mypage/userupdate}" target="_self">- 내정보 수정</a></li> <br>
+						<li><a class="A" th:href="@{/mypage/savelist}" target="_self">- 관심 목록</a></li> <br>
+						<li><a class="C" th:href="@{/mypage/authn}" target="_self">- 관계자 인증</a></li><br>
+						<li><a class="R" th:href="@{/mypage/mypage4}" target="_self">- 내 글 관리</a></li> <br>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- side End -->
+		<!-- content-list Start -->
+		<div class="content">
+			<div class="list">
+				<div><span class="title"></span><span>
+						<h3> 내정보 수정</h3>
+					</span></div>
+			</div>
 
-        <!-- content-list Start -->
-        <div class="content">
-            <div class="list">
-                <div><span class="title"></span><span><h3> 내정보 수정</h3></span></div>
-            </div>
-    
-            <div class="box-content">
-                <div class="box">
+			<div class="box-content">
+				<div class="box">
 
-                    <div class="list-list">
-                        <div class="font-bold">아이디&emsp;  <span class="text-gray">exampleId</span><input id="profile_email" type="text" class="eventree-input" disabled="" hidden="">
-                        </div>
-                    </div>
-                    
-            
-                    <!-- <div class="email flex flex-row items-center space-x-6">
-                      <span id="email">example@example.com</span>
-                      <button id="changeEmailBtn" class="btn" type="button">변경</button>
-                    </div>
-                    <div class="input-container-email" style="display:none;">
-                      <input id="newEmail" type="email" placeholder="새로운 이메일 입력"> -->
-                      
-                
-                <div class="list-list">
-                    <div class="font-bold">닉네임&emsp; <a href="../LogIn/nrs.html" class="btn">변경하기</a></div>
-                </div>
-                <div class="list-list">
-                    <div class="font-bold">이메일&emsp; <a href="../LogIn/ers.html" class="btn">변경하기</a></div>
-                </div>
-                
-                <div class="list-list">
-                    <div class="font-bold">비밀번호&nbsp; <a href="../LogIn/pwrs.html" class="btn">변경하기</a></div>
-                </div>
-            </div>
-                <!-- <div class="list-list">
-                        <div class="font-bold">닉네임</div> -->
-                        <!-- <div class="nickname flex flex-row items-center space-x-6">
-                          <span id="nickname">나는야호랑이</span>
-                          <button id="changeBtn" class="btn" type="button">변경</button>
-                        </div>
-                        <div class="input-container" style="display: none;">
-                          <input id="newNickname" type="text" placeholder="새로운 닉네임 입력"> -->
-                          <!-- <button id="confirmBtn" class="btn" type="button">변경확인</button>
-                      </div> -->
+					<div class="list-list">
+						<div class="font-bold">아이디&emsp; <span class="text-gray">exampleId</span><input
+								id="profile_email" type="text" class="eventree-input" disabled="" hidden="">
+						</div>
+					</div>
+					<div class="list-list">
+						<div class="font-bold">닉네임&emsp; <a href="http://localhost:8085/mypage/userupdate/namemodify" class="btn">변경하기</a></div>
+					</div>
+					<div class="list-list">
+						<div class="font-bold">이메일&emsp; <a href="http://localhost:8085/mypage/userupdate/emmodify" class="btn">변경하기</a></div>
+					</div>
 
-                
-                    
+					<div class="list-list">
+						<div class="font-bold">비밀번호&nbsp; <a href="http://localhost:8085/mypage/userupdate/pwmodify" class="btn">변경하기</a></div>
+					</div>
+				</div>
 
-            <div class="down">
-               <br><br> <br> <hr> <br>
-                <a href="../../templates/LogIn/bye.html" class="bye">회원탈퇴하기</a><br>
-                <!-- <a href="" class="submit">저장하기</a> -->
-            </div>
-    
-            <!-- <div class="pagination">
-                <button class="btn1" onclick="backBtn()"><i class="fa-solid fa-angle-left"></i>이전</button>
-                <ul class="pagination-ul">
-                    <li class="link active" value="1" onclick="activeLink()">1</li>
-                    <li class="link" value="2" onclick="activeLink()">2</li>
-                    <li class="link" value="3" onclick="activeLink()">3</li>
-                    <li class="link" value="4" onclick="activeLink()">4</li>
-                    <li class="link" value="5" onclick="activeLink()">5</li>
-                </ul>
-                <button class="btn2" onclick="nextBtn()">다음<i class="fa-solid fa-angle-right"></i></button>
-            </div> -->
-        </div>
-        <!-- content-list End -->
+				<div class="down">
+					<br><br> <br>
+					<hr> <br>
+					<a href="http://localhost:8085/login/bye" class="bye">회원탈퇴하기</a><br>
+				</div>
+			</div>
+			<!-- content-list End -->
 
-    </section>
-    <!-- tagAndContent End-->
+	</section>
+	<!-- tagAndContent End-->
 
 
- 
-    <!-- footer start -->
-    <footer class="footer">
-        <div class="footer-first">
-            <div class="link-list">
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="../../templates/MyPage/notice.html">공지사항</a>
-            </div>
-        </div>
 
-        <div class="footer-third">
-            <div class="link-title">서비스 이용 문의</div>
-            <div>채팅상담 (평일 10:00~17:00)</div>
-            <div>사업 제휴 문의 whiosemail@event-tree.kr</div>         
-        </div>
+	<!-- footer start -->
+	<footer class="footer">
+		<div class="footer-first">
+			<div class="link-list">
+				<a href="#">기업행사</a>
+				<a href="#">예술인 펀딩</a>
+				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+				<a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
+				<a th:href="@{http://localhost:8085/mypage/notice}">공지사항</a>
+			</div>
+		</div>
 
-        <div class="footer-four">
-            <div class="link-title company">EVENTREE</div>
-            <div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
-            <div>통신판매업 신고번호 제0000-0000-0000호</div>
-            <div>대표 신유경 | 개인정보책임자 DB관리자</div>
-            <div>광주특별시 광산구 무진대로 무역회관 7층</div>
-            <!-- <div class="warning">
+		<div class="footer-third">
+			<div class="link-title">서비스 이용 문의</div>
+			<div>채팅상담 (평일 10:00~17:00)</div>
+			<div>사업 제휴 문의 whiosemail@event-tree.kr</div>
+		</div>
+
+		<div class="footer-four">
+			<div class="link-title company">EVENTREE</div>
+			<div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
+			<div>통신판매업 신고번호 제0000-0000-0000호</div>
+			<div>대표 신유경 | 개인정보책임자 DB관리자</div>
+			<div>광주특별시 광산구 무진대로 무역회관 7층</div>
+			<!-- <div class="warning">
                 이벤트리는 통신판매중개자이며 행사에 대한 당사자 및 주최자가 아닙니다. 따라서 이벤트리는 등록된 행사에 대해 책임지지 않습니다
             </div> -->
-        </div> 
-        
-        <div class="footer-second">
-            <div class="link-list">
-                <a href="#">서비스 이용 약관</a>
-                <a href="#">개인정보처리방침</a>
-                <a href="#">이메일 주소 무단수집 거부</a>
-                
-            </div>         
-        </div>
-        
-        
+		</div>
 
-        <div class="footer-down">
-            <div class="copyright">
-                ⓒ 2024. EVENTREE All Rights Reserved.
-            </div>
-            <div class="sns">
-                <a href="#"> <img src="../../static/images/icons/kakao.png" alt=""></a>
-                <a href="#"> <img src="../../static/images/icons/naver blog.png" alt=""></a>
-                <a href="#"> <img src="../../static/images/icons/twitter X.png" alt="" ></a>
-                <a href="#"> <img src="../../static/images/icons/instagram.png" alt=""></a>
-                <a href="#"> <img src="../../static/images/icons/youtube.png" alt="" ></a>
-            </div>
-        </div>
-    </footer>
-    <script>
-        // 닉네임 변경 관련 코드
-        const changeBtn = document.getElementById('changeBtn');
-        const confirmBtn = document.getElementById('confirmBtn');
-        const nicknameElement = document.getElementById('nickname');
-        const inputContainer = document.querySelector('.input-container');
-    
-        // 닉네임 변경 버튼 클릭 시 이벤트 핸들러
-        changeBtn.addEventListener('click', () => {
-            inputContainer.style.display = 'flex';
-            nicknameElement.style.display = 'none';
-            changeBtn.style.display = 'none'; // 변경 버튼 숨기기
-        });
-    
-        // 닉네임 변경 확인 버튼 클릭 시 이벤트 핸들러
-        confirmBtn.addEventListener('click', () => {
-            const newNickname = document.getElementById('newNickname').value;
-            const currentNickname = nicknameElement.textContent;
-            if (newNickname === currentNickname) {
-                alert('현재 닉네임과 같은 닉네임입니다.');
-                return;
-            }
-            if (!isNicknameAvailable(newNickname) || newNickname === currentNickname) {
-                alert('이미 사용 중인 닉네임입니다. 다른 닉네임을 입력해주세요.');
-                return;
-            }
-            nicknameElement.textContent = newNickname;
-            nicknameElement.style.display = 'inline';
-            inputContainer.style.display = 'none';
-            changeBtn.style.display = 'inline'; // 변경 버튼 다시 보이기
-        });
-    
-        // 중복 닉네임 검사 함수
-        function isNicknameAvailable(newNickname) {
-            // 간단한 예시로 미리 정의된 닉네임과 비교
-            const existingNicknames = ['호랑이', '사자', '토끼'];
-            return !existingNicknames.includes(newNickname);
-        }
-    
-        // 이메일 변경 관련 코드
-        const changeEmailBtn = document.getElementById('changeEmailBtn');
-        const confirmEmailBtn = document.getElementById('confirmEmailBtn');
-        const emailElement = document.getElementById('email');
-        const inputContainerEmail = document.querySelector('.input-container-email');
-    
-        // 이메일 변경 버튼 클릭 시 이벤트 핸들러
-        changeEmailBtn.addEventListener('click', () => {
-            inputContainerEmail.style.display = 'flex';
-            emailElement.style.display = 'none';
-            changeEmailBtn.style.display = 'none'; // 변경 버튼 숨기기
-        });
-    
-        // 이메일 변경 확인 버튼 클릭 시 이벤트 핸들러
-        confirmEmailBtn.addEventListener('click', () => {
-            const newEmail = document.getElementById('newEmail').value;
-            const currentEmail = emailElement.textContent;
-            if (newEmail === currentEmail) {
-                alert('현재 이메일과 같은 이메일 주소입니다.');
-                return;
-            }
-            if (!isValidEmail(newEmail)) {
-                alert('유효한 이메일 주소를 입력해주세요.');
-                return;
-            }
-            if (!isEmailAvailable(newEmail) || newEmail === currentEmail) {
-                alert('이미 사용 중인 이메일 주소입니다. 다른 이메일 주소를 입력해주세요.');
-                return;
-            }
-            emailElement.textContent = newEmail;
-            emailElement.style.display = 'inline';
-            inputContainerEmail.style.display = 'none';
-            changeEmailBtn.style.display = 'inline'; // 변경 버튼 다시 보이기
-        });
-    
-        // 이메일 주소 유효성 검사 함수
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-    
-        // 중복 이메일 주소 검사 함수
-        function isEmailAvailable(newEmail) {
-            // 간단한 예시로 미리 정의된 이메일 주소와 비교
-            const existingEmails = ['example@example.com', 'test@test.com'];
-            return !existingEmails.includes(newEmail);
-        }
-        document.getElementById("confirmBtn").addEventListener("click", function() {
-        var newPassword = document.getElementById("password").value;
-        var confirmPassword = document.getElementById("confirmPassword").value;
+		<div class="footer-second">
+			<div class="link-list">
+				<a href="#">서비스 이용 약관</a>
+				<a href="#">개인정보처리방침</a>
+				<a href="#">이메일 주소 무단수집 거부</a>
 
-        // 비밀번호가 12자 이상이어야 하고, 숫자, 영어, 특수문자를 모두 포함해야 함
-        var passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{12,}$/;
+			</div>
+		</div>
 
-        if (!passwordRegex.test(newPassword)) {
-            alert("비밀번호는 12자 이상이어야 하며, 숫자, 영어, 특수문자를 모두 포함해야 합니다.");
-            return;
-        }
 
-        if (newPassword !== confirmPassword) {
-            alert("비밀번호가 일치하지 않습니다.");
-            return;
-        }
 
-        // 유효성 검사 통과 시 다음 작업 수행
-        // 여기에 추가 작업을 입력하세요
+		<div class="footer-down">
+			<div class="copyright">
+				ⓒ 2024. EVENTREE All Rights Reserved.
+			</div>
+			<div class="sns">
+				<a href="#"> <img th:src="@{/images/icons/kakao.png}" alt="Kakao Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/naver blog.png}" alt="Naverblog Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/twitterX.png}" alt="Twitter Icon" /></a>
+				<a href="#"> <img th:src="@{/images/icons/instagram.png}" alt="Instagram Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/youtube.png}" alt="Youtube Icon"></a>
+			</div>
+		</div>
+	</footer>
+	<script>
+		// 닉네임 변경 관련 코드
+		const changeBtn = document.getElementById('changeBtn');
+		const confirmBtn = document.getElementById('confirmBtn');
+		const nicknameElement = document.getElementById('nickname');
+		const inputContainer = document.querySelector('.input-container');
 
-        alert("비밀번호가 성공적으로 변경되었습니다!");
-    });
-    </script>
-    
+		// 닉네임 변경 버튼 클릭 시 이벤트 핸들러
+		changeBtn.addEventListener('click', () => {
+			inputContainer.style.display = 'flex';
+			nicknameElement.style.display = 'none';
+			changeBtn.style.display = 'none'; // 변경 버튼 숨기기
+		});
+
+		// 닉네임 변경 확인 버튼 클릭 시 이벤트 핸들러
+		confirmBtn.addEventListener('click', () => {
+			const newNickname = document.getElementById('newNickname').value;
+			const currentNickname = nicknameElement.textContent;
+			if (newNickname === currentNickname) {
+				alert('현재 닉네임과 같은 닉네임입니다.');
+				return;
+			}
+			if (!isNicknameAvailable(newNickname) || newNickname === currentNickname) {
+				alert('이미 사용 중인 닉네임입니다. 다른 닉네임을 입력해주세요.');
+				return;
+			}
+			nicknameElement.textContent = newNickname;
+			nicknameElement.style.display = 'inline';
+			inputContainer.style.display = 'none';
+			changeBtn.style.display = 'inline'; // 변경 버튼 다시 보이기
+		});
+
+		// 중복 닉네임 검사 함수
+		function isNicknameAvailable(newNickname) {
+			// 간단한 예시로 미리 정의된 닉네임과 비교
+			const existingNicknames = ['호랑이', '사자', '토끼'];
+			return !existingNicknames.includes(newNickname);
+		}
+
+		// 이메일 변경 관련 코드
+		const changeEmailBtn = document.getElementById('changeEmailBtn');
+		const confirmEmailBtn = document.getElementById('confirmEmailBtn');
+		const emailElement = document.getElementById('email');
+		const inputContainerEmail = document.querySelector('.input-container-email');
+
+		// 이메일 변경 버튼 클릭 시 이벤트 핸들러
+		changeEmailBtn.addEventListener('click', () => {
+			inputContainerEmail.style.display = 'flex';
+			emailElement.style.display = 'none';
+			changeEmailBtn.style.display = 'none'; // 변경 버튼 숨기기
+		});
+
+		// 이메일 변경 확인 버튼 클릭 시 이벤트 핸들러
+		confirmEmailBtn.addEventListener('click', () => {
+			const newEmail = document.getElementById('newEmail').value;
+			const currentEmail = emailElement.textContent;
+			if (newEmail === currentEmail) {
+				alert('현재 이메일과 같은 이메일 주소입니다.');
+				return;
+			}
+			if (!isValidEmail(newEmail)) {
+				alert('유효한 이메일 주소를 입력해주세요.');
+				return;
+			}
+			if (!isEmailAvailable(newEmail) || newEmail === currentEmail) {
+				alert('이미 사용 중인 이메일 주소입니다. 다른 이메일 주소를 입력해주세요.');
+				return;
+			}
+			emailElement.textContent = newEmail;
+			emailElement.style.display = 'inline';
+			inputContainerEmail.style.display = 'none';
+			changeEmailBtn.style.display = 'inline'; // 변경 버튼 다시 보이기
+		});
+
+		// 이메일 주소 유효성 검사 함수
+		function isValidEmail(email) {
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			return emailRegex.test(email);
+		}
+
+		// 중복 이메일 주소 검사 함수
+		function isEmailAvailable(newEmail) {
+			// 간단한 예시로 미리 정의된 이메일 주소와 비교
+			const existingEmails = ['example@example.com', 'test@test.com'];
+			return !existingEmails.includes(newEmail);
+		}
+		document.getElementById("confirmBtn").addEventListener("click", function () {
+			var newPassword = document.getElementById("password").value;
+			var confirmPassword = document.getElementById("confirmPassword").value;
+
+			// 비밀번호가 12자 이상이어야 하고, 숫자, 영어, 특수문자를 모두 포함해야 함
+			var passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{12,}$/;
+
+			if (!passwordRegex.test(newPassword)) {
+				alert("비밀번호는 12자 이상이어야 하며, 숫자, 영어, 특수문자를 모두 포함해야 합니다.");
+				return;
+			}
+
+			if (newPassword !== confirmPassword) {
+				alert("비밀번호가 일치하지 않습니다.");
+				return;
+			}
+
+			// 유효성 검사 통과 시 다음 작업 수행
+			// 여기에 추가 작업을 입력하세요
+
+			alert("비밀번호가 성공적으로 변경되었습니다!");
+		});
+	</script>
+
 
 
 </body>
+
 </html>

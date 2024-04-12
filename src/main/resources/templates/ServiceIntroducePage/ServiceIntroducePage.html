@@ -30,7 +30,7 @@
       <p>쉽고 빠르게 지금 당장 쉽고 빠르게<br>
         당신만의 행사를 계획하세요.</p>
       <p>참여자들이 당신의 행사를 열려고 기다리고 있습니다!</p>
-      <a th:href="@{/Login/login}">무료로 행사 개설하기</a>
+	  <a th:href="@{http://localhost:8085/login}">무료로 행사 개설하기</a>
     </section>
     
     
@@ -132,7 +132,7 @@
         <p>쉽고 빠르게 지금 당장 쉽고 빠르게<br>
           당신만의 행사를 계획하세요.</p>
         <p>참여자들이 당신의 행사를 열려고 기다리고 있습니다!</p>
-        <a th:href="@{/Login/login}" class="btn2">무료로 행사 개설하기</a>
+        <a th:href="@{http://localhost:8085/login}" class="btn2">무료로 행사 개설하기</a>
       </section>
     
   
@@ -144,8 +144,8 @@
                 <a href="#">기업행사</a>
                 <a href="#">예술인 펀딩</a>
                 <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="../../templates/QAPage/notice.html">공지사항</a>
+                <a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
+                <a th:href="@{http://localhost:8085/mypage/notice}">공지사항</a>
             </div>
         </div>
 

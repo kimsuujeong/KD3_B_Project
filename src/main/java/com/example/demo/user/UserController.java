@@ -37,12 +37,17 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	public String Testmain() {
 		return "TestHtml/user/Testmain";
 	}
+	@GetMapping("/main") //home
+	public String main() {
+		return "MainPage/Main";
+	}
 
 	// Login
 	@GetMapping("/login")
 	public String loginForm() {
 		return "LogIn/login";
 	}
+	
 	@PostMapping("/login")
 	public ResponseEntity<Map<String, String>> loginForm(@RequestParam("userID") String userID,
 			@RequestParam("password") String password, Model model, HttpSession httpSession) {
@@ -342,6 +347,10 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 		}
 
 		return "redirect:/Testmain";
+	}
+	@GetMapping("login/bye") //회원탈퇴
+	public String bye() {
+		return "Login/bye";
 	}
 
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>닉네임 재설정</title>
-  <link rel="stylesheet" href="../../static/css/Setting.css">
-  <link rel="stylesheet" href="../../static/css/nrs.css">
+  <link rel="stylesheet" th:href="@{/css/Setting.css}">
+  <link rel="stylesheet" th:href="@{/css/nrs.css}">
 </head>
 <body>
   <div class="container">
@@ -15,7 +15,7 @@
       <br>
       <p>닉네임을 재입력해주세요.</p>
       <br>
-      <form action="../MyPage/mypage2.html" id="findIdForm">
+      <form th:action="@{/mypage/userupdate}" id="findIdForm" method="post">
         닉네임 입력 <input type="text" id="nickname" placeholder="닉네임">
         <span id="nicknameError" style="color: red; display: none;">이미 사용 중인 닉네임입니다.</span>
         <br><br><br><br><br><br> 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>이메일 재설정</title>
-  <link rel="stylesheet" href="../../static/css/Setting.css">
-  <link rel="stylesheet" href="../../static/css/ers.css">
+   <link rel="stylesheet" th:href="@{/css/Setting.css}">
+   <link rel="stylesheet" th:href="@{/css/ers.css}">
 </head>
 <body>
   <div class="container">
@@ -15,7 +15,7 @@
       <br>
       <p>기존 이메일은 <br><span class="text-gray">example@gmail.com</span>입니다. </p>
       <br>
-      <form action="../LogIn/cerE.html" id="EmaildForm">
+      <form th:action="@{/mypage/userupdate/emmodify}" id="EmaildForm" method="post">
         바꿀 이메일 입력<input type="email" id="email" placeholder="Email">
         <br><br><br><br><br>
         <input type="submit" value="확인">
