@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Q & A</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="stylesheet" href="../../static/css/Setting.css">
-  <link rel="stylesheet" href="../../static/css/notice.css">
+  <link rel="stylesheet" th:href="@{/css/Setting.css}">
+  <link rel="stylesheet" th:href="@{/css/notice.css}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
       <div class="container">
           <!-- logo -->
           <a href="#" class="logo">
-              <img src="../../static/images/logo-01.png" alt="">
+              <img th:src="@{/images/logo-01.png}" alt="">
           </a>
           <div>
               <form action="" class="search-bar">
@@ -37,8 +37,8 @@
       <div class="category">
           <a href="#">기업행사</a>
           <a href="#">예술인 펀딩</a>
-          <a href="#">서비스 소개</a>
-          <a href="#">Q & A</a>
+		  <a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+		  <a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>  	             
           <a href="#">행사개설</a>
       </div>
   </nav>
@@ -266,7 +266,7 @@
             <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
           </h3>
           <div class="content">
-            <p>A. 이벤터스는 키워드로 프로젝트를 검색할 수 있는 기능을 제공합니다.</p>
+            <p>A. 이벤트리는 키워드로 프로젝트를 검색할 수 있는 기능을 제공합니다.</p>
           </div>
         </li>
         <li>
@@ -284,7 +284,7 @@
             <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
           </h3>
           <div class="content">
-            <p>A. 기본적으로 해당 작성자는 게시글을 수정 및 삭제 할 수 있습니다. 그러나 예기치 못한 사정으로 불가능 할 시 이벤터스 문의처로 연락을 주시면 대신 수정 및 삭제 조치를 해드립니다.</p>
+            <p>A. 기본적으로 해당 작성자는 게시글을 수정 및 삭제 할 수 있습니다. 그러나 예기치 못한 사정으로 불가능 할 시 이벤트리 문의처로 연락을 주시면 대신 수정 및 삭제 조치를 해드립니다.</p>
           </div>
         </li>
         <li>
@@ -305,14 +305,15 @@
     </div>
     <footer class="footer">
 
-      <div class="footer-first">
-          <div class="link-list">
-              <a href="#">기업행사</a>
-              <a href="#">예술인 펀딩</a>
-              <a href="#">서비스 소개</a>
-              <a href="#">Q & A</a>
-          </div>
-      </div>
+		<div class="footer-first">
+		            <div class="link-list">
+		                <a href="#">기업행사</a>
+		                <a href="#">예술인 펀딩</a>
+		                <a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+		                <a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
+		                <a th:href="@{http://localhost:8085/mypage/notice}">공지사항</a>
+		            </div>
+		        </div>
 
       <div class="footer-third">
           <div class="link-title">서비스 이용 문의</div>
@@ -345,13 +346,13 @@
           <div class="copyright">
               ⓒ 2024. EVENTREE All Rights Reserved.
           </div>
-          <div class="sns">
-              <a href="#">X</a>
-              <a href="#">인스타</a>
-              <a href="#">카카오톡</a>
-              <a href="#">유튜브</a>
-          </div>
-          <!-- 나중에 sns 로고 이미지로 교체할것 -->
+		  <div class="sns">
+		              <a href="#"> <img th:src="@{/images/icons/kakao.png}" alt="Kakao Icon"></a>
+		              <a href="#"> <img th:src="@{/images/icons/naver blog.png}" alt="Naverblog Icon"></a>
+		              <a href="#"> <img th:src="@{/images/icons/twitterX.png}" alt="Twitter Icon" /></a>
+		              <a href="#"> <img th:src="@{/images/icons/instagram.png}" alt="Instagram Icon"></a>
+		              <a href="#"> <img th:src="@{/images/icons/youtube.png}" alt="Youtube Icon" ></a>
+		          </div>
       </div>
 
   </footer>

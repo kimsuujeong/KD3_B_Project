@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>인증</title>
-    <link rel="stylesheet" href="../../static/css/Setting.css">
-    <link rel="stylesheet" href="../../static/css/cerE.css">
+    <link rel="stylesheet" th:href="@{/css/Setting.css}">
+    <link rel="stylesheet" th:href="@{/css/cerE.css}">
 </head>
 <body>
 <div class="container">
@@ -14,7 +14,7 @@
         <h3>인증 번호 입력</h3> <br>
         <p>회원님의 이메일에 전송된 <br>
             인증 번호를 입력하세요!</p><br>
-        <form action="../MyPage/mypage2.html"  id="cerEForm">
+        <form th:action="@{/mypage/userupdate/emmodify/cere}"  id="cerEForm">
           인증 번호 <input type="text"  placeholder="인증번호">
           <br>
           <!-- <a href="../MyPage/mypage2.html" class="submit">확인</a> -->

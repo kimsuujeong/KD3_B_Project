@@ -1,450 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Q & A</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="stylesheet" href="../../static/css/Setting.css">
-  <link rel="stylesheet" href="../../static/css/notice.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Q & A</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/css/Setting.css}">
+	<link rel="stylesheet" th:href="@{/css/notice.css}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-  <!-- header Start -->
-  <header class="header">
+	<!-- header Start -->
+	<header class="header">
 
-    <nav class="navbar">
-        <!-- upper (logo, searchbar, login, acount, likelist) -->
-        <div class="container">
-            <!-- logo -->
-            <a href="#" class="logo">
-                <img src="../../static/images/logo-01.png" alt="">
-            </a>
-            <div>
-                <form action="" class="search-bar">
-                    <input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
-                    <div class="fas fa-search" id="search-btn"></div>
-                </form>
-            </div>
-            <div class="link1">
-                <a href="#">로그인</a>
-                <a href="#">회원가입</a>
-                <a href="#">관심목록</a>
-            </div>
-        </div>
+		<nav class="navbar">
+			<!-- upper (logo, searchbar, login, acount, likelist) -->
+			<div class="container">
+				<!-- logo -->
+				<a href="#" class="logo">
+					<img th:src="@{/images/logo-01.png}" alt="">
+				</a>
+				<div>
+					<form action="" class="search-bar">
+						<input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
+						<div class="fas fa-search" id="search-btn"></div>
+					</form>
+				</div>
+				<div class="link1">
+					<a href="#">로그인</a>
+					<a href="#">회원가입</a>
+					<a href="#">관심목록</a>
+				</div>
+			</div>
 
-        <!-- category -->
-        <div class="category">
-            <a href="#">기업행사</a>
-            <a href="#">예술인 펀딩</a>
-            <a href="#">서비스 소개</a>
-            <a href="#">Q & A</a>
-            <a href="#">행사개설</a>
-        </div>
-    </nav>
-</header>
-<!-- header End -->
-    <div class="notice">
-      <h1>공지사항</h1> <br> <br>
-      <ul>
-        <li>
-          <h3>
-            <a href="#" target="_blank" class="content-wrapper">[공지] [재공지] 이메일 발신자 주소 등록 유의사항 (수정 전: 이메일 발신자 주소 등록 해제 및 기본 주소 제공 안내)
-            </a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024.03.19</p>
-          </h3>
-          <div class="content">
-            <p>이벤트 테크 플랫폼, 이벤트리를 이용해 주셔서 감사합니다.<br><br>
+			<!-- category -->
+			<div class="category">
+				<a href="#">기업행사</a>
+				<a href="#">예술인 펀딩</a>
+				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+			    <a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>	          
+				<a href="#">행사개설</a>
+			</div>
+		</nav>
+	</header>
+	<!-- header End -->
+	<div class="notice">
+		<h1>공지사항</h1> <br> <br>
+		<ul>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">[공지] [재공지] 이메일 발신자 주소 등록 유의사항 (수정 전: 이메일 발신자 주소
+						등록 해제 및 기본 주소 제공 안내)
+					</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024.03.19</p>
+				</h3>
+				<div class="content">
+					<p>이벤트 테크 플랫폼, 이벤트리를 이용해 주셔서 감사합니다.<br><br>
 
-              플랫폼에서 제공하고 있는 이메일 기능 관련하여 주요 변경사항을 공지드리오니, 서비스 이용에 참고 부탁드리겠습니다.<br><br>
-              
-              2024년 02월부로 적용된 Gmail의 운영 정책에 따라 이메일 서비스 제공 업체(이벤트리에 해당)를 사용하여 이메일을 발송하는 경우, -@gmail.com 주소의 수신자들에게 정상적인 발송이 제한되고  있습니다. <br><br>
-              
-              모든 참가자에게 호스트의 안내 이메일을 성공적으로 전달하는 것을 최우선으로 고려하여, 이벤트리에서는 인증된(발송이 제한되지 않는) 발신자 이메일 주소를 기본 발신자 주소로 제공합니다. <br><br>
-              
-              호스트는 직접 발신자 이메일 주소를 등록 후 사용할 수 있으나, -@gmail.com 이메일 주소를 사용하는 참가자들에게는 발송에 실패할 확률이 높습니다. <br><br>
-              
-               
-              
-              [변경사항 요약]<br><br>
-              
-              1차<br><br>
-              
-              - 변경 내용: 이메일 발신자 주소를 일괄 기본 주소로 변경(no-reply@event-us.kr)<br>
-              - 변경 일시: 2024년 3월 5일 오전 10시<br>
-              <br>
-              2차<br><br>
-              
-              - 변경 내용: 이메일 발송 시 기본 발신자 주소를 제공, 변경 가능(선택 사항)<br>
-              - 변경 일시: 2024년 3월 19일 오전 10시<br>
-               
-              <br>
-              [참고사항]<br><br>
-              
-              *3월 19일(화)부터 발신자 주소 신규 등록이 가능합니다. 단, 발신자 주소를 등록하더라도 gmail을 사용하는 수신자에게는 발송이 불가하오니 착오 없으시길 바랍니다.<br><br>
-              *개별 발신자 주소로 발송하길 원하시는 경우, 참가자리스트 다운로드 후 별도로 발송 가능합니다.
-              *Gmail 운영정책 확인(클릭)<br><br>
-               
-              
-              호스트 여러분의 너른 양해를 부탁드리며, 문의 또는 불편사항은 채팅상담을 통해 접수해 주시면 감사하겠습니다.<br><br>
-              
-               
-              
-              감사합니다.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="#" target="_blank" class="content-wrapper">[공지]페이스북 간편 로그인 제공 종료 안내
-            </a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024.02.06</p>
-          </h3>
-          <div class="content">
-            <p>이벤트 테크 플랫폼, 이벤트리를 이용해 주셔서 감사합니다.
-              <br><br>
+						플랫폼에서 제공하고 있는 이메일 기능 관련하여 주요 변경사항을 공지드리오니, 서비스 이용에 참고 부탁드리겠습니다.<br><br>
 
-              회원가입, 로그인 옵션으로 제공하고 있는 페이스북 간편 로그인 기능을 2024년 3월 5일부로 제공 종료합니다.<br><br>
-              
-              페이스북 간편 로그인 관련 지속적인 문의를 접수하여 고민한 결과, 서비스 개선의 일환으로 페이스북 간편 로그인 계정을 일반 계정으로 일괄 전환하고자 합니다. <br><br>
-              
-              서비스를 계속해서 이용하시기 위해서는 새로운 비밀번호를 설정해 주셔야 합니다. 해당 회원 분들은 아래 내용을 참고하시어 기간 내 비밀번호 설정을 완료해 주시길 바랍니다. 
-              <br><br>
-               
-              
-              [기능 종료 요약]<br><br>
-              
-              - 종료 기능: 페이스북 간편 로그인<br>
-              - 종료 일시: 2024년 3월 5일 오전 10시<br>
-              - 변경사항: 페이스북 간편 로그인 이용 불가, 일반 로그인 비밀번호 설정 후 이용 가능<br>
-               
-              
-              [일반 로그인 비밀번호 설정 안내]<br><br>
-              
-              - 비밀번호 설정 기간: 2024년 2월 6일 오전 10시 ~ 2024년 3월 5일 오전 9시<br>
-              - 비밀번호 설정 방법: 페이스북 간편 로그인 → 비밀번호 설정 화면으로 자동 이동 → 비밀번호 설정 → 일반 로그인 이용<br>
-              - 문의: 채팅상담 (평일 오전 10시 ~ 오후 5시)<br>
-               
-              <br>
-              [참고사항]<br><br>
-              
-              - 일반 로그인 계정으로 전환하더라도 기존의 이용 내역은 그대로 유지됩니다.<br>
-              - 구글, 네이버, 카카오 계정 로그인은 계속해서 제공됩니다. 단, 일반 로그인 계정에 다른 간편 로그인을 설정하는 것은 불가합니다. <br>
-              - 기간 내 비밀번호 설정을 완료하지 않은 경우, 로그인 페이지의 ‘비밀번호 찾기’를 이용해 주시길 바랍니다.<br>
-               
-              
-              회원 여러분의 너른 양해를 부탁 드리며, 저희 이벤트리는 더욱 안정적으로 서비스를 제공하기 위해 최선을 다하겠습니다. <br><br>
-              
-              문의사항은 언제든 채팅상담을 이용해 주시길 바랍니다.<br><br>
-              
-               
-              
-              감사합니다.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">크라우드 펀딩에 대한 안내</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>후원은 구매가 아닌 창의적인 계획에 자금을 지원하는 일입니다.
-              <br><br>
-              전자상거래법상 통신판매는 소비자의 청약 전 규격, 제조연월일 등 구체적인 상품정보가 제공 가능한 것을 대상으로 합니다. 따라서 텀블벅에서의 후원은 통신판매에 해당하지 않고, 전자상거래법 및 소비자보호규정(수령 후 7일 내 청약철회 등)이 적용되지 않습니다.
-              <br><br>
-              프로젝트는 계획과 달리 진행될 수 있습니다.
-              <br><br>
-              예상을 뛰어넘는 멋진 결과가 나올 수 있지만 진행 과정에서 계획이 지연, 변경되거나 무산될 수도 있습니다. 본 프로젝트를 완수할 책임과 권리는 창작자에게 있습니다.
-            </p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">프로젝트 정책</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>
-              시사회:
-              시사회 초대권은 본인 외에는 타인에게 양도가 불가하며, 시사회 당일 현장 수령으로 본인 확인 후 진행될 예정입니다. 시사회 선택 후 개인 사정으로 참석이 어려울 경우 사전에 미리 창작자에게 연락주세요.
+						2024년 02월부로 적용된 Gmail의 운영 정책에 따라 이메일 서비스 제공 업체(이벤트리에 해당)를 사용하여 이메일을 발송하는 경우, -@gmail.com 주소의
+						수신자들에게 정상적인 발송이 제한되고 있습니다. <br><br>
 
-              <br><br>
-              비공개링크 상영본:
-              시사회 불참으로 개인 후원자에게 전달되어지는 영화본편 비공개링크는 본인 외에 링크 전달 및 단체 관람은 불가합니다.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">투자자 유의사항</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>온라인 소액 공모에 대한 투자는 고위험투자로 [예금자보호법]에 따라 보호되지 않고 투자원금의 손실이 발생할 수 있으므로 투자에 신중을 기하시기 바랍니다.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">투자 위험안내</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>1. 원금손실위험
-              <br>
-              투자자는 투자원금액의 전부 또는 일부에 대한 손실 위험이 있으며, 투자자의 투자원금액 손실은 전적으로 투자자가 부담합니다.
-              <br><br>
-              2. 유명인, 주요인물(개인)신뢰도 하락위험
-              <br>
-              관련 주요 인물의 개인적 신뢰 및 비도덕 문제로 인한 이미지 타격 및 인지도가 급격하게 하락할 수 있습니다.
-              <br><br>
-              3. 시장위험
-              <br>
-              예상치 못한 정치, 경제 상황, 정부의 조치 및 세제의 변경으로 영향을 미칠 수 있습니다.
-              <br><br>
-              4. 신용위험
-              <br>
-              발행 회사나 거래 상대방의 영업 환경, 재무상황 및 신용상태의 악화, 신용등급 하락, 채무불이행, 부도발생 등에 따른 환매연기로 인한 손실이 발생할 수 있습니다. 
-              <br><br>
-              5. 그 외 위험 사항
-              <br>
-              투자상품설명서 내 투자위험 참고
-              
-            </p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">실적별 예상 수익률 안내</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>실적별 예상 수익률은 작성자가 개인적으로 작성한 자료이며 투자자의 이해를 돕기 위한 시뮬레이션 추정치이며, 예상 수익률은 관람객이 아닌 전체 매출에 따라 변동됩니다. 
-              <br><br>
-              추정손익분기점 : 객 단가 x 관람객
+						모든 참가자에게 호스트의 안내 이메일을 성공적으로 전달하는 것을 최우선으로 고려하여, 이벤트리에서는 인증된(발송이 제한되지 않는) 발신자 이메일 주소를 기본 발신자 주소로
+						제공합니다. <br><br>
 
-              참고사항
-              * 최종 수익률은 관람객이 아닌 총 매출에 따라 결정됩니다.
-              *객 단가란? : 객 단가란 1개의 티켓이 판매될 경우 수수료 등을 제외한 실제 단가입니다. 
-              *객 단가에 따라 매출이 변동되며 손익 관람객수가 조정될 수 있습니다.
-            </p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">법적 분쟁관련 안내</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>이벤트리는 플랫폼 제공자로서 프로젝트의 당사자가 아니며, 직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 혜택제공의 책임은 해당 프로젝트의 창작자 및 담당자에게 있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자 및 담당자가 부담합니다.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">4/10(수) 법정공휴일 이벤트리 휴무 안내 (22대 국회의원 선거 당일)
-            </a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>2024년 4월 10일(수)
-              <br>
-              * 휴무 당일 채팅상담, 광고 및 솔루션 이용 상담 등의 고객 지원 업무는 일시 중단됩니다.
-              <br>
-              * 행사 개설, 행사 신청, 광고 신청, 솔루션 온라인 결제 및 현장진행솔루션 등 모든 서비스 정상 이용 가능합니다. 
-              <br><br>
-               
-              
-              휴일 외 채팅상담 정규 운영 시간은 아래와 같습니다.
-              <br>
-              평일 오전 10시~오후5시 (휴식 시간: 오후 12시 30분~2시)
-              <br>
-              서비스 이용에 도움이 필요하신 분은 이벤트리 홈페이지 하단의 채팅상담을 이용해 메시지를 남겨 주시면 4월 11일부터 순차적으로 확인 후 안내 드리도록 하겠습니다.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper"> 개인정보 처리방침 변경 사항 안내</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>
-              [변경 내용]
-              <br>
-              인포그래픽 추가
-              제2조 민감정보의 공개 가능성 및 비공개를 선택하는 방법 추가
-              <br>
-              제3조 만 14세 미만 아동의 개인정보 처리에 관한 사항 추가
-              <br>
-              제10조 이용자 및 법정대리인의 권리와 그 행사 방법
-              <br>
-              개인정보의 이전을 거부하는 방법 및 절차, 거부의 효과 추가
-               <br><br>
-              
-              개인정보 처리 방침 시행일자 변경
-              <br>
-              -2023년 09월 19일</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">대체공휴일(5월 29일 월요일) 이벤트리는 휴무 안내</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>오는 5월 29일 월요일, 부처님오신날 대체공휴일을 맞아 이벤트리는 하루 쉬어 갑니다. 
-              <br><br>
-               휴일에도 서비스는 24시간 정상 이용 가능하지만, 채팅상담 등 CS 업무는 일시 중단됩니다.
-              <br><br>             
-              휴일 외 채팅상담 운영 시간은 아래와 같습니다.
-              <br>
-              평일 오전 10시~오후 5시 (휴식 시간: 오후 12시 30분~14시)
-              서비스 이용에 도움이 필요하신 분은 이벤트리 홈페이지 하단의 채팅상담을 이용해 메시지를 남겨주시면 5월 30일부터 순차적으로 확인 후 답변드리겠습니다.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">[명절인사] 즐거운 한가위 되세요</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>안녕하세요, 이벤트리입니다. 
-              <br>
-            민족 최대의 명절 추석이 찾아왔습니다. 즐거운 명절 한가위를 맞이하여 이벤트리에 보내주신 아낌없는 애정과 관심에 진심으로 감사의 말씀드립니다. 이벤트리는 올 한 해 회원님들의 사랑 덕분에 행복하고 즐거운 나날들의 연속이었습니다. 앞으로도 매력적이고 재미있는 프로젝트 및 행사 정보 제공을 통해 보내주신 성원에 보답할 수 있도록 하겠습니다. 끝으로 어려운 시기임에도 변함없는 성원에 감사의 말씀드리며 보다 나은 서비스를 제공해 드리기 위해 항상 최선을 다할 예정이오니 앞으로도 많은 애정과 관심 부탁드리겠습니다. 
-            <br><br>
-            다가오는 명절 사랑하는 분들과 함께 풍족하고 행복하게 보내시기 바라며 마음까지 풍족해 지는 한가위 되시기 바라겠습니다.
-            <br><br>
-            감사합니다.
-          </p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">[이벤트리 이용가이드#4] 투자 전 투자설명서 확인하기</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>안녕하세요~ 이벤트리입니다!
-              <br><br>
-              이벤트리 회원들이 이벤트리를 쉽고 편하게 이용할 수 있도록 하기 위해 '이벤트리 이용가이드'를 준비했습니다.
-              <br><br>          
-              네 번째는 투자 전 투자설명서 확인하기! 입니다.
-              내가 어떤 투자 상품에 투자하게 되는지, 투자했을 때 손실과 이익이 어떻게 될지 예상해볼 수 있도록 제공하는 자료입니다.
-              <br><br>              
-              투자 최종 결정은 투자자의 몫입니다. 
-              <br><br>
-              투자 상품에 대한 다양한 정보가 기재되어 있으니 꼭 꼼꼼하게 검토하셔서 신중한 투자 하시기 바랍니다.</p>
-          </div>
-        </li>
-        <li>
-          <h3>
-            <a href="https://www.naver.com" target="_blank" class="content-wrapper">[서비스 이용 안내] 새로운 기능 추가</a>
-            <span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
-            <p class="date">Date: 2024-03-25</p>
-          </h3>
-          <div class="content">
-            <p>안녕하세요, 이벤트리입니다. 
-              <br>
-              저희 서비스에 새로운 기능이 추가되었습니다. 이제부터 사용자들은 신속하고 편리하게 원하는 정보를 검색할 수 있습니다. 또한 새로운 테마와 레이아웃이 적용되어 사용자 경험이 더욱 향상되었습니다. 
-              <br>
-              새로운 기능을 확인해보세요!</p>
-          </div>
-        </li>
-        <!-- 이하 생략 -->
-      </ul>
-      <a href="#" id="load" class="more">더 보기</a>
-    </div>
-    <footer class="footer">
+						호스트는 직접 발신자 이메일 주소를 등록 후 사용할 수 있으나, -@gmail.com 이메일 주소를 사용하는 참가자들에게는 발송에 실패할 확률이 높습니다. <br><br>
 
-      <div class="footer-first">
-          <div class="link-list">
-              <a href="#">기업행사</a>
-              <a href="#">예술인 펀딩</a>
-              <a href="#">서비스 소개</a>
-              <a href="#">Q & A</a>
-          </div>
-      </div>
 
-      <div class="footer-third">
-          <div class="link-title">서비스 이용 문의</div>
-          <div>채팅상담 (평일 10:00~17:00)</div>
-          <div>사업 제휴 문의 whiosemail@event-tree.kr</div>         
-      </div>
 
-      <div class="footer-four">
-          <div class="link-title company">EVENTREE</div>
-          <div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
-          <div>통신판매업 신고번호 제0000-0000-0000호</div>
-          <div>대표 신유경 | 개인정보책임자 DB관리자</div>
-          <div>광주특별시 광산구 무진대로 무역회관 7층</div>
-          <!-- <div class="warning">
+						[변경사항 요약]<br><br>
+
+						1차<br><br>
+
+						- 변경 내용: 이메일 발신자 주소를 일괄 기본 주소로 변경(no-reply@event-us.kr)<br>
+						- 변경 일시: 2024년 3월 5일 오전 10시<br>
+						<br>
+						2차<br><br>
+
+						- 변경 내용: 이메일 발송 시 기본 발신자 주소를 제공, 변경 가능(선택 사항)<br>
+						- 변경 일시: 2024년 3월 19일 오전 10시<br>
+
+						<br>
+						[참고사항]<br><br>
+
+						*3월 19일(화)부터 발신자 주소 신규 등록이 가능합니다. 단, 발신자 주소를 등록하더라도 gmail을 사용하는 수신자에게는 발송이 불가하오니 착오 없으시길
+						바랍니다.<br><br>
+						*개별 발신자 주소로 발송하길 원하시는 경우, 참가자리스트 다운로드 후 별도로 발송 가능합니다.
+						*Gmail 운영정책 확인(클릭)<br><br>
+
+
+						호스트 여러분의 너른 양해를 부탁드리며, 문의 또는 불편사항은 채팅상담을 통해 접수해 주시면 감사하겠습니다.<br><br>
+
+
+
+						감사합니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">[공지]페이스북 간편 로그인 제공 종료 안내
+					</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024.02.06</p>
+				</h3>
+				<div class="content">
+					<p>이벤트 테크 플랫폼, 이벤트리를 이용해 주셔서 감사합니다.
+						<br><br>
+
+						회원가입, 로그인 옵션으로 제공하고 있는 페이스북 간편 로그인 기능을 2024년 3월 5일부로 제공 종료합니다.<br><br>
+
+						페이스북 간편 로그인 관련 지속적인 문의를 접수하여 고민한 결과, 서비스 개선의 일환으로 페이스북 간편 로그인 계정을 일반 계정으로 일괄 전환하고자 합니다. <br><br>
+
+						서비스를 계속해서 이용하시기 위해서는 새로운 비밀번호를 설정해 주셔야 합니다. 해당 회원 분들은 아래 내용을 참고하시어 기간 내 비밀번호 설정을 완료해 주시길 바랍니다.
+						<br><br>
+
+
+						[기능 종료 요약]<br><br>
+
+						- 종료 기능: 페이스북 간편 로그인<br>
+						- 종료 일시: 2024년 3월 5일 오전 10시<br>
+						- 변경사항: 페이스북 간편 로그인 이용 불가, 일반 로그인 비밀번호 설정 후 이용 가능<br>
+
+
+						[일반 로그인 비밀번호 설정 안내]<br><br>
+
+						- 비밀번호 설정 기간: 2024년 2월 6일 오전 10시 ~ 2024년 3월 5일 오전 9시<br>
+						- 비밀번호 설정 방법: 페이스북 간편 로그인 → 비밀번호 설정 화면으로 자동 이동 → 비밀번호 설정 → 일반 로그인 이용<br>
+						- 문의: 채팅상담 (평일 오전 10시 ~ 오후 5시)<br>
+
+						<br>
+						[참고사항]<br><br>
+
+						- 일반 로그인 계정으로 전환하더라도 기존의 이용 내역은 그대로 유지됩니다.<br>
+						- 구글, 네이버, 카카오 계정 로그인은 계속해서 제공됩니다. 단, 일반 로그인 계정에 다른 간편 로그인을 설정하는 것은 불가합니다. <br>
+						- 기간 내 비밀번호 설정을 완료하지 않은 경우, 로그인 페이지의 ‘비밀번호 찾기’를 이용해 주시길 바랍니다.<br>
+
+
+						회원 여러분의 너른 양해를 부탁 드리며, 저희 이벤트리는 더욱 안정적으로 서비스를 제공하기 위해 최선을 다하겠습니다. <br><br>
+
+						문의사항은 언제든 채팅상담을 이용해 주시길 바랍니다.<br><br>
+
+
+
+						감사합니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">크라우드 펀딩에 대한 안내</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>후원은 구매가 아닌 창의적인 계획에 자금을 지원하는 일입니다.
+						<br><br>
+						전자상거래법상 통신판매는 소비자의 청약 전 규격, 제조연월일 등 구체적인 상품정보가 제공 가능한 것을 대상으로 합니다. 따라서 텀블벅에서의 후원은 통신판매에 해당하지 않고,
+						전자상거래법 및 소비자보호규정(수령 후 7일 내 청약철회 등)이 적용되지 않습니다.
+						<br><br>
+						프로젝트는 계획과 달리 진행될 수 있습니다.
+						<br><br>
+						예상을 뛰어넘는 멋진 결과가 나올 수 있지만 진행 과정에서 계획이 지연, 변경되거나 무산될 수도 있습니다. 본 프로젝트를 완수할 책임과 권리는 창작자에게 있습니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">프로젝트 정책</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>
+						시사회:
+						시사회 초대권은 본인 외에는 타인에게 양도가 불가하며, 시사회 당일 현장 수령으로 본인 확인 후 진행될 예정입니다. 시사회 선택 후 개인 사정으로 참석이 어려울 경우 사전에
+						미리 창작자에게 연락주세요.
+
+						<br><br>
+						비공개링크 상영본:
+						시사회 불참으로 개인 후원자에게 전달되어지는 영화본편 비공개링크는 본인 외에 링크 전달 및 단체 관람은 불가합니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">투자자 유의사항</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>온라인 소액 공모에 대한 투자는 고위험투자로 [예금자보호법]에 따라 보호되지 않고 투자원금의 손실이 발생할 수 있으므로 투자에 신중을 기하시기 바랍니다.</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">투자 위험안내</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>1. 원금손실위험
+						<br>
+						투자자는 투자원금액의 전부 또는 일부에 대한 손실 위험이 있으며, 투자자의 투자원금액 손실은 전적으로 투자자가 부담합니다.
+						<br><br>
+						2. 유명인, 주요인물(개인)신뢰도 하락위험
+						<br>
+						관련 주요 인물의 개인적 신뢰 및 비도덕 문제로 인한 이미지 타격 및 인지도가 급격하게 하락할 수 있습니다.
+						<br><br>
+						3. 시장위험
+						<br>
+						예상치 못한 정치, 경제 상황, 정부의 조치 및 세제의 변경으로 영향을 미칠 수 있습니다.
+						<br><br>
+						4. 신용위험
+						<br>
+						발행 회사나 거래 상대방의 영업 환경, 재무상황 및 신용상태의 악화, 신용등급 하락, 채무불이행, 부도발생 등에 따른 환매연기로 인한 손실이 발생할 수 있습니다.
+						<br><br>
+						5. 그 외 위험 사항
+						<br>
+						투자상품설명서 내 투자위험 참고
+
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">실적별 예상 수익률 안내</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>실적별 예상 수익률은 작성자가 개인적으로 작성한 자료이며 투자자의 이해를 돕기 위한 시뮬레이션 추정치이며, 예상 수익률은 관람객이 아닌 전체 매출에 따라 변동됩니다.
+						<br><br>
+						추정손익분기점 : 객 단가 x 관람객
+
+						참고사항
+						* 최종 수익률은 관람객이 아닌 총 매출에 따라 결정됩니다.
+						*객 단가란? : 객 단가란 1개의 티켓이 판매될 경우 수수료 등을 제외한 실제 단가입니다.
+						*객 단가에 따라 매출이 변동되며 손익 관람객수가 조정될 수 있습니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">법적 분쟁관련 안내</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>이벤트리는 플랫폼 제공자로서 프로젝트의 당사자가 아니며, 직접적인 통신판매를 진행하지 않습니다. 프로젝트의 완수 및 혜택제공의 책임은 해당 프로젝트의 창작자 및 담당자에게
+						있으며, 프로젝트와 관련하여 후원자와 발생하는 법적 분쟁에 대한 책임은 해당 창작자 및 담당자가 부담합니다.</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">4/10(수) 법정공휴일 이벤트리 휴무 안내
+						(22대 국회의원 선거 당일)
+					</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>2024년 4월 10일(수)
+						<br>
+						* 휴무 당일 채팅상담, 광고 및 솔루션 이용 상담 등의 고객 지원 업무는 일시 중단됩니다.
+						<br>
+						* 행사 개설, 행사 신청, 광고 신청, 솔루션 온라인 결제 및 현장진행솔루션 등 모든 서비스 정상 이용 가능합니다.
+						<br><br>
+
+
+						휴일 외 채팅상담 정규 운영 시간은 아래와 같습니다.
+						<br>
+						평일 오전 10시~오후5시 (휴식 시간: 오후 12시 30분~2시)
+						<br>
+						서비스 이용에 도움이 필요하신 분은 이벤트리 홈페이지 하단의 채팅상담을 이용해 메시지를 남겨 주시면 4월 11일부터 순차적으로 확인 후 안내 드리도록 하겠습니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper"> 개인정보 처리방침 변경 사항 안내</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>
+						[변경 내용]
+						<br>
+						인포그래픽 추가
+						제2조 민감정보의 공개 가능성 및 비공개를 선택하는 방법 추가
+						<br>
+						제3조 만 14세 미만 아동의 개인정보 처리에 관한 사항 추가
+						<br>
+						제10조 이용자 및 법정대리인의 권리와 그 행사 방법
+						<br>
+						개인정보의 이전을 거부하는 방법 및 절차, 거부의 효과 추가
+						<br><br>
+
+						개인정보 처리 방침 시행일자 변경
+						<br>
+						-2023년 09월 19일
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">대체공휴일(5월 29일 월요일) 이벤트리는 휴무
+						안내</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>오는 5월 29일 월요일, 부처님오신날 대체공휴일을 맞아 이벤트리는 하루 쉬어 갑니다.
+						<br><br>
+						휴일에도 서비스는 24시간 정상 이용 가능하지만, 채팅상담 등 CS 업무는 일시 중단됩니다.
+						<br><br>
+						휴일 외 채팅상담 운영 시간은 아래와 같습니다.
+						<br>
+						평일 오전 10시~오후 5시 (휴식 시간: 오후 12시 30분~14시)
+						서비스 이용에 도움이 필요하신 분은 이벤트리 홈페이지 하단의 채팅상담을 이용해 메시지를 남겨주시면 5월 30일부터 순차적으로 확인 후 답변드리겠습니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">[명절인사] 즐거운 한가위 되세요</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>안녕하세요, 이벤트리입니다.
+						<br>
+						민족 최대의 명절 추석이 찾아왔습니다. 즐거운 명절 한가위를 맞이하여 이벤트리에 보내주신 아낌없는 애정과 관심에 진심으로 감사의 말씀드립니다. 이벤트리는 올 한 해
+						회원님들의 사랑 덕분에 행복하고 즐거운 나날들의 연속이었습니다. 앞으로도 매력적이고 재미있는 프로젝트 및 행사 정보 제공을 통해 보내주신 성원에 보답할 수 있도록
+						하겠습니다. 끝으로 어려운 시기임에도 변함없는 성원에 감사의 말씀드리며 보다 나은 서비스를 제공해 드리기 위해 항상 최선을 다할 예정이오니 앞으로도 많은 애정과 관심
+						부탁드리겠습니다.
+						<br><br>
+						다가오는 명절 사랑하는 분들과 함께 풍족하고 행복하게 보내시기 바라며 마음까지 풍족해 지는 한가위 되시기 바라겠습니다.
+						<br><br>
+						감사합니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">[이벤트리 이용가이드#4] 투자 전 투자설명서
+						확인하기</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>안녕하세요~ 이벤트리입니다!
+						<br><br>
+						이벤트리 회원들이 이벤트리를 쉽고 편하게 이용할 수 있도록 하기 위해 '이벤트리 이용가이드'를 준비했습니다.
+						<br><br>
+						네 번째는 투자 전 투자설명서 확인하기! 입니다.
+						내가 어떤 투자 상품에 투자하게 되는지, 투자했을 때 손실과 이익이 어떻게 될지 예상해볼 수 있도록 제공하는 자료입니다.
+						<br><br>
+						투자 최종 결정은 투자자의 몫입니다.
+						<br><br>
+						투자 상품에 대한 다양한 정보가 기재되어 있으니 꼭 꼼꼼하게 검토하셔서 신중한 투자 하시기 바랍니다.
+					</p>
+				</div>
+			</li>
+			<li>
+				<h3>
+					<a href="#" target="_blank" class="content-wrapper">[서비스 이용 안내] 새로운 기능 추가</a>
+					<span class="expand-btn" onclick="toggleContent(this)">[ ▲ ]</span>
+					<p class="date">Date: 2024-03-25</p>
+				</h3>
+				<div class="content">
+					<p>안녕하세요, 이벤트리입니다.
+						<br>
+						저희 서비스에 새로운 기능이 추가되었습니다. 이제부터 사용자들은 신속하고 편리하게 원하는 정보를 검색할 수 있습니다. 또한 새로운 테마와 레이아웃이 적용되어 사용자 경험이
+						더욱 향상되었습니다.
+						<br>
+						새로운 기능을 확인해보세요!
+					</p>
+				</div>
+			</li>
+			<!-- 이하 생략 -->
+		</ul>
+		<a href="#" id="load" class="more">더 보기</a>
+	</div>
+	<footer class="footer">
+
+		<div class="footer-first">
+		            <div class="link-list">
+		                <a href="#">기업행사</a>
+		                <a href="#">예술인 펀딩</a>
+										<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+		                <a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
+		                <a th:href="@{http://localhost:8085/mypage/notice}">공지사항</a>
+		            </div>
+		        </div>
+
+		<div class="footer-third">
+			<div class="link-title">서비스 이용 문의</div>
+			<div>채팅상담 (평일 10:00~17:00)</div>
+			<div>사업 제휴 문의 whiosemail@event-tree.kr</div>
+		</div>
+
+		<div class="footer-four">
+			<div class="link-title company">EVENTREE</div>
+			<div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
+			<div>통신판매업 신고번호 제0000-0000-0000호</div>
+			<div>대표 신유경 | 개인정보책임자 DB관리자</div>
+			<div>광주특별시 광산구 무진대로 무역회관 7층</div>
+			<!-- <div class="warning">
               이벤트리는 통신판매중개자이며 행사에 대한 당사자 및 주최자가 아닙니다. 따라서 이벤트리는 등록된 행사에 대해 책임지지 않습니다
           </div> -->
-      </div> 
-      
-      <div class="footer-second">
-          <div class="link-list">
-              <a href="#">서비스 이용 약관</a>
-              <a href="#">개인정보처리방침</a>
-              <a href="#">이메일 주소 무단수집 거부</a>
-          </div>         
-      </div>
-      
-      
+		</div>
 
-      <div class="footer-down">
-          <div class="copyright">
-              ⓒ 2024. EVENTREE All Rights Reserved.
-          </div>
-          <div class="sns">
-              <a href="#">X</a>
-              <a href="#">인스타</a>
-              <a href="#">카카오톡</a>
-              <a href="#">유튜브</a>
-          </div>
-          <!-- 나중에 sns 로고 이미지로 교체할것 -->
-      </div>
+		<div class="footer-second">
+			<div class="link-list">
+				<a href="#">서비스 이용 약관</a>
+				<a href="#">개인정보처리방침</a>
+				<a href="#">이메일 주소 무단수집 거부</a>
+			</div>
+		</div>
 
-  </footer>
 
-  <script>
-    $(document).ready(function() {
-    var itemsToShow = 10;
-    var loadButton = $("#load");
-    var listItems = $(".notice ul li");
 
-    listItems.slice(itemsToShow).hide();
+		<div class="footer-down">
+			<div class="copyright">
+				ⓒ 2024. EVENTREE All Rights Reserved.
+			</div>
+			<div class="sns">
+				<a href="#"> <img th:src="@{/images/icons/kakao.png}" alt="Kakao Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/naver blog.png}" alt="Naverblog Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/twitterX.png}" alt="Twitter Icon" /></a>
+				<a href="#"> <img th:src="@{/images/icons/instagram.png}" alt="Instagram Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/youtube.png}" alt="Youtube Icon"></a>
+			</div>
+		</div>
 
-    loadButton.click(function(e) {
-        e.preventDefault();
-        var hiddenItems = listItems.filter(":hidden");
-        var itemsToLoad = hiddenItems.slice(0, 5);
-        itemsToLoad.slideDown();
-        
-        // 숨겨진 아이템이 1개 이상일 때 알람 표시
-        if (hiddenItems.length === 0) {
-            alert("끝입니다.");
-        }
-    });
-})
+	</footer>
 
-var isContentVisible = false; // 추가 변수
+	<script>
+		$(document).ready(function () {
+			var itemsToShow = 10;
+			var loadButton = $("#load");
+			var listItems = $(".notice ul li");
 
-function toggleContent(button) {
-  var content = $(button).parent().next(".content");
-  content.slideToggle();
-  isContentVisible = !isContentVisible; // 상태를 반전시킴
-  $(button).text(isContentVisible ? "[ ▼ ]" : "[ ▲ ]"); // 상태에 따라 버튼 텍스트 설정
-}
-  </script>
+			listItems.slice(itemsToShow).hide();
+
+			loadButton.click(function (e) {
+				e.preventDefault();
+				var hiddenItems = listItems.filter(":hidden");
+				var itemsToLoad = hiddenItems.slice(0, 5);
+				itemsToLoad.slideDown();
+
+				// 숨겨진 아이템이 1개 이상일 때 알람 표시
+				if (hiddenItems.length === 0) {
+					alert("끝입니다.");
+				}
+			});
+		})
+
+		var isContentVisible = false; // 추가 변수
+
+		function toggleContent(button) {
+			var content = $(button).parent().next(".content");
+			content.slideToggle();
+			isContentVisible = !isContentVisible; // 상태를 반전시킴
+			$(button).text(isContentVisible ? "[ ▼ ]" : "[ ▲ ]"); // 상태에 따라 버튼 텍스트 설정
+		}
+	</script>
 </body>
+
 </html>

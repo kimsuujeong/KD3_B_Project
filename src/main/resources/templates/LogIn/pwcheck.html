@@ -2,54 +2,49 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>아이디 찾기</title>
-  <link rel="stylesheet" href="../../static/css/Setting.css">
-  <link rel="stylesheet" href="../../static/css/serchId.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>비밀번호 확인</title>
+	<link rel="stylesheet" th:href="@{/css/Setting.css}">
+	<link rel="stylesheet" th:href="@{/css/pwcheck.css}">
 </head>
 
 <body>
 
 
-  <div class="container">
-    <div class="header"></div>
-    <div class="contents">
-      <h3>현재 비밀번호</h3>
-      <br>
-      <p>비밀번호 변경을 위해<br>
-        현재 비밀번호를 입력해주세요.</p>
-        <form action="../LogIn/pwrs.html" id="findIdForm">
-          현재 비밀번호<input type="password" placeholder="password"><br>
-          <br><br><br><br><br> 
-          <input type="submit" value="입력">
-        </form>
-<!-- 
-      <form th:action="@{/FindID}" method="post" id="findIdForm"> 
-        이메일(email) <input type="email" id="emailInput" name="email" placeholder="Email"> <br>
-        <br><br><br><br><br> 
-        <input type="submit" value="인증번호 받기" onclick="return checkEmail()">
-      </form> -->
-    </div>
-  </div>
-  <div class="footer"></div>
+	<div class="container">
+		<div class="header"></div>
+		<div class="contents">
+			<h3>현재 비밀번호</h3>
+			<br>
+			<p>비밀번호 변경을 위해<br>
+				현재 비밀번호를 입력해주세요.</p>
+			<form th:action="@{/cerpw/pwrs}" id="findIdForm" method="post"><br>
+				현재 비밀번호<input type="password" placeholder="password">
+				<br><br><br><br><br> <br>
+				<input type="submit" value="입력">
+			</form>
+		</div>
+	</div>
+	<div class="footer"></div>
 </body>
-<script>
-  function validatePassword() {
-      // 입력한 현재 비밀번호를 가져옵니다.
-      var currentPassword = document.getElementById('currentPassword').value;
-      
-      // 여기서는 간단히 '1234'를 현재 비밀번호로 가정합니다.
-      var correctPassword = '1234';
-      
-      // 입력한 비밀번호와 올바른 비밀번호를 비교합니다.
-      if (currentPassword !== correctPassword) {
-          // 올바르지 않은 경우 경고 메시지를 표시하고 폼 전송을 막습니다.
-          alert('올바른 현재 비밀번호를 입력해주세요.');
-          return false; // 폼 전송 막음
-      }
-      // 올바른 경우 폼 전송을 허용합니다.
-      return true;
-  }
+<script th:inline="javascript">
+	function validatePassword() {
+		// 입력한 현재 비밀번호를 가져옵니다.
+		var currentPassword = document.getElementById('currentPassword').value;
+
+		// 여기서는 간단히 '1234'를 현재 비밀번호로 가정합니다.
+		var correctPassword = '1234';
+
+		// 입력한 비밀번호와 올바른 비밀번호를 비교합니다.
+		if (currentPassword !== correctPassword) {
+			// 올바르지 않은 경우 경고 메시지를 표시하고 폼 전송을 막습니다.
+			alert('올바른 현재 비밀번호를 입력해주세요.');
+			return false; // 폼 전송 막음
+		}
+		// 올바른 경우 폼 전송을 허용합니다.
+		return true;
+	}
 </script>
+
 </html>

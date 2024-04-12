@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지1</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="../../static/css/Setting.css">
-    <link rel="stylesheet" href="../../static/css/mypage1.css">
+    <link rel="stylesheet" th:href="@{/css/Setting.css}">
+    <link rel="stylesheet" th:href="@{/css/mypage1.css}">
 </head>
 <body>
     <!-- header Start -->
@@ -17,7 +17,7 @@
             <div class="container">
                 <!-- logo -->
                 <a href="#" class="logo">
-                    <img src="../../static/images/logo-01.png" alt="">
+                    <img th:src="@{/images/logo-01.png}" alt="">
                 </a>
                 <div>
                     <form action="" class="search-bar">
@@ -36,8 +36,8 @@
             <div class="category">
                 <a href="#">기업행사</a>
                 <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
+                <a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+                <a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
                 <a href="#">행사개설</a>
             </div>
         </nav>
@@ -56,12 +56,12 @@
                 
       <nav>
         <br>
-        <ul class="list">
-            <li><a class="B" href="../MyPage/mypage2.html"target="_self">- 내정보 수정</a></li> <br>
-          <li><a class="A" href="../MyPage/mypage1.html" target="_self">- 관심 목록</a></li> <br>
-          <li><a class="C" href="../MyPage/mypage3.html" target="_self">- 관계자 인증</a></li><br> 
-          <li><a class="R" href="../MyPage/mypage4.html" target="_self">- 내 글 관리</a></li> <br> 
-        </ul>
+		<ul class="list">
+			<li><a class="B" th:href="@{/mypage/userupdate}" target="_self">- 내정보 수정</a></li> <br>
+			<li><a class="A" th:href="@{/mypage/savelist}" target="_self">- 관심 목록</a></li> <br>
+			<li><a class="C" th:href="@{/mypage/authn}" target="_self">- 관계자 인증</a></li><br>
+			<li><a class="R" th:href="@{/mypage/mypage4}" target="_self">- 내 글 관리</a></li> <br>
+		</ul>
       </nav>
     </div>
         </div>
@@ -83,7 +83,7 @@
     
             <div class="board-content">
                 <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+                    <img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="carousel-box">
-                  <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="carousel-box">
-                  <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="carousel-box">
-                  <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -128,7 +128,7 @@
                     </div>
                 </div>
                 <div class="carousel-box">
-                  <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -137,7 +137,7 @@
                     </div>
                 </div>
                 <div class="carousel-box">
-                  <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="carousel-box">
-                  <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -155,7 +155,7 @@
                     </div>
                 </div>
                 <div class="carousel-box">
-                  <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
+					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
                     <div class="space-between">
@@ -191,9 +191,9 @@
             <div class="link-list">
                 <a href="#">기업행사</a>
                 <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="../../templates/">공지사항</a>
+                <a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+                <a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
+                <a th:href="@{http://localhost:8085/mypage/notice}">공지사항</a>
             </div>
         </div>
 
@@ -228,14 +228,13 @@
             <div class="copyright">
                 ⓒ 2024. EVENTREE All Rights Reserved.
             </div>
-            <div class="sns">
-                <a href="#"> <img src="../../static/images/icons/kakao.png" alt=""></a>
-                <a href="#"> <img src="../../static/images/icons/naver blog.png" alt=""></a>
-                <a href="#"> <img src="../../static/images/icons/twitter X.png" alt="" ></a>
-                <a href="#"> <img src="../../static/images/icons/instagram.png" alt=""></a>
-                <a href="#"> <img src="../../static/images/icons/youtube.png" alt="" ></a>
-            </div>
-            <!-- 나중에 sns 로고 이미지로 교체할것 -->
+			<div class="sns">
+				<a href="#"> <img th:src="@{/images/icons/kakao.png}" alt="Kakao Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/naver blog.png}" alt="Naverblog Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/twitterX.png}" alt="Twitter Icon" /></a>
+				<a href="#"> <img th:src="@{/images/icons/instagram.png}" alt="Instagram Icon"></a>
+				<a href="#"> <img th:src="@{/images/icons/youtube.png}" alt="Youtube Icon"></a>
+			</div>
         </div>
 
     </footer>
