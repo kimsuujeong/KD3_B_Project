@@ -16,7 +16,6 @@
     <form th:action="@{/authn/request/company}" th:object="${entercer}" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmit()">
         <label for="name">이름:</label>
         <input type="text" th:field="*{name}" id="name" name="name" required> <br>
-        <input type="text" id="phone" name="phone" required> <br> -->
         <label for="company">회사 링크:</label>
         <input type="text" th:field="*{link}" id="link" name="link"> <br> 
         <label for="file">증명서 첨부:</label>
