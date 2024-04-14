@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.auth.AuthRequest;
 import com.example.demo.file.FileService;
+import com.example.demo.mail.MailController;
 import com.example.demo.user.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +25,12 @@ public class AdminController {
 	
 	@Autowired
     FileService fileService;
+	
+	@Autowired
+	AdminMapper adminMapper;
+	
+	@Autowired
+	MailController mailController;
 	
 	// 관리자의 관계자 인증 신청 리스트
 	@GetMapping("/admin/auth")
@@ -49,8 +56,15 @@ public class AdminController {
 	// 관계자 신청 수락
 	@PostMapping("/admin/authorizeRequest/{requestID}/approve")
     public String approveRequest(@PathVariable("requestID") Integer requestID) {
-
+		
 		adminService.approveRequest(requestID);
+		
+		String email = adminMapper.getAuthrequestEmail(requestID);
+		
+		System.out.println("수락한 사람의 이메일"+email); // test
+		
+		mailController.approvalMailSend(email);
+		
         return "redirect:/admin/auth";
     }
 
@@ -59,6 +73,13 @@ public class AdminController {
     public String rejectRequest(@PathVariable("requestID") Integer requestID) {
 
     	adminService.rejectRequest(requestID);
+    	
+    	String email = adminMapper.getAuthrequestEmail(requestID);
+    	
+    	System.out.println("거절한 사람의 이메일"+email); // test
+    	
+    	mailController.refusalMailSend(email);
+    	
         return "redirect:/admin/auth";
     }
 }

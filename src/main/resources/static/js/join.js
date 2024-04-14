@@ -88,7 +88,7 @@ function checkVerificationCode() {
       alert("서버오류입니다.");
 
     }
-
+    
   });
 
   // 기본 동작 방지
@@ -246,6 +246,9 @@ $password_ck.on("keyup", function () {
     
   };;
 
+    // 기본 동작 방지
+    return false;
+
 });
 
 // 데이터 insert 검사
@@ -289,7 +292,8 @@ function validateForm() {
 
     }
   });
-
+    // 기본 동작 방지
+    return false;
 }
 
 // 유효성 검사

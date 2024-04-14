@@ -19,6 +19,13 @@
 		where
 		userName=#{userName}
 	</select>
+	
+	<insert id="InsertUser" >
+		insert into user (userID, email, password, userName,
+		date)
+		values(#{userID},
+		#{email},#{password},#{userName}, NOW())
+	</insert>
 
 
 

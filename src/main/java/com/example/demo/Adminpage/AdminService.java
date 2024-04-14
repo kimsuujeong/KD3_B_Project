@@ -16,4 +16,6 @@ public interface AdminService {
 
 	List<AuthRequest> getAuthRequestsStatus();
 
+	void getAuthrequestEmail(Integer requestID);
+
 }

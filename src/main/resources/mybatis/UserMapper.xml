@@ -24,17 +24,9 @@
 		email=#{email}
 	</update>
 
-	<insert id="InsertUser" >
-		insert into user (userID, email, password, userName,
-		date)
-		values(#{userID},
-		#{email},#{password},#{userName}, NOW())
-	</insert>
-
 	<insert id="Login">
 		select * from user
-		where userID = #{userID} and
-		password = #{password}
+		where userID = #{userID}
 	</insert>
 
 </mapper>
