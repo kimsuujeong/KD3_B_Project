@@ -11,8 +11,8 @@ public class UserServiceImpl implements UserService {
 	
 
 	@Override
-	public User Login(String userID, String password) {
-		return userMapper.Login(userID, password);
+	public User Login(String userID) {
+		return userMapper.Login(userID);
 	}
 
 	@Override

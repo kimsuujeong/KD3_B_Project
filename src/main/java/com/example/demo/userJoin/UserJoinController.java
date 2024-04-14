@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.mail.MailController;
 import com.example.demo.redis.RedisUtil;
 import com.example.demo.user.User;
+
+import lombok.Getter;
 
 @Controller
 public class UserJoinController {
@@ -32,7 +35,8 @@ public class UserJoinController {
 
 	private String TokenEmail = null; // 이메일 요청 처리 유,무
 	private String Email = null; // 이메일 토큰 처리 유,무
-
+	
+	
 	@GetMapping("/joinForm")
 	public String joinForm() {
 		return "JoinPage/join";
@@ -47,7 +51,7 @@ public class UserJoinController {
 	    try {
 	        if (userJoinService.emailchk(email) != 1) {
 	        	
-//	        	mailController.mailSend(email); // 이메일 보내기
+	        	mailController.mailSend(email); // 이메일 보내기
 	        	
 	            response.put("redirectUrl", "http://localhost:8085/joinForm");
 	            response.put("message", "토큰이 보내졌습니다.");
@@ -204,11 +208,6 @@ public class UserJoinController {
 			return ResponseEntity.ok().body(response);
 		}
 		
-		System.out.println(Email);
-		System.out.println(Email.isEmpty());
-		System.out.println(Email.equals(email));
-		System.out.println(email);
-		
 		if (Email.isEmpty() && Email.equals(email)) {
 			System.out.println("토큰 번호를 확인해 주세요"); // test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
@@ -268,7 +267,12 @@ public class UserJoinController {
 				userDTO.setEmail(email);
 				userDTO.setUserID(mid_id);
 				userDTO.setUserName(mid_nickname);
-				userDTO.setPassword(password_ck);
+				
+				String BCryptPW = BCrypt.hashpw(password_ck, BCrypt.gensalt()); // 해싱처리
+				userDTO.setPassword(BCryptPW);
+				
+				System.out.println("회원가입 암호화"+ BCryptPW); // test
+				
 				
 				userJoinService.InsertUser(userDTO);
 				
@@ -279,6 +283,8 @@ public class UserJoinController {
 
 				return ResponseEntity.ok().body(response);
 				
+			} else {
+				throw new Exception();
 			}
 			
 		} catch (Exception e) {
@@ -290,8 +296,7 @@ public class UserJoinController {
 			return ResponseEntity.ok().body(response);
 		}
 		
-		return null;
-		
 	}
+
 
 }

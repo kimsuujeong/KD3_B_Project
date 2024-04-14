@@ -3,6 +3,7 @@ package com.example.demo.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.mail.MailController;
 import com.example.demo.redis.RedisUtil;
+import com.example.demo.userJoin.UserJoinController;
+import com.example.demo.userJoin.UserJoinService;
+import com.google.common.collect.HashMultiset;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +34,9 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@Autowired
 	private RedisUtil redisUtil;
+	
+	@Autowired
+	private UserJoinService userJoinService;
 
 	private String Email = null;
 
@@ -37,7 +44,8 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	public String Testmain() {
 		return "TestHtml/user/Testmain";
 	}
-	@GetMapping("/main") //home
+
+	@GetMapping("/main") // home
 	public String main() {
 		return "MainPage/Main";
 	}
@@ -47,37 +55,47 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	public String loginForm() {
 		return "LogIn/login";
 	}
-	
+
 	@PostMapping("/login")
 	public ResponseEntity<Map<String, String>> loginForm(@RequestParam("userID") String userID,
 			@RequestParam("password") String password, Model model, HttpSession httpSession) {
 
 		Map<String, String> response = new HashMap<>();
 		
+		if (userID.isEmpty()) {
+
+			response.put("redirectUrl", "http://localhost:8085/login");
+			response.put("message", "아이디를 입력해 주세요");
+
+			return ResponseEntity.ok().body(response);
+
+		}
+
+		if (password.isEmpty()) {
+
+			response.put("redirectUrl", "http://localhost:8085/login");
+			response.put("message", "비밀번호를 입력해 주세요");
+
+			return ResponseEntity.ok().body(response);
+
+		}
+		
+		if (userJoinService.idchk(userID)==0) {
+			response.put("redirectUrl", "http://localhost:8085/login");
+			response.put("message", "존재하지 않는 아이디 입니다.");
+
+			return ResponseEntity.ok().body(response);
+		}
+		
 		try {
 
-			User user = userService.Login(userID, password);
+			User user = userService.Login(userID);
 
-			if (userID.isEmpty()) {
+			String checkPW = user.getPassword();
 
-				response.put("redirectUrl", "http://localhost:8085/login");
-				response.put("message", "아이디를 입력해 주세요");
 
-				return ResponseEntity.ok().body(response);
+			if (BCrypt.checkpw(password, checkPW)) { // 로그인 성공
 
-			}
-
-			if (password.isEmpty()) {
-				
-				response.put("redirectUrl", "http://localhost:8085/login");
-				response.put("message", "비밀번호를 입력해 주세요");
-
-				return ResponseEntity.ok().body(response);
-				
-			}
-
-			if (user != null) { // 로그인 성공
-				
 				model.addAttribute("loggedInUser", user); // 세션에 사용자 정보 저장
 				httpSession.setAttribute("loggedInUser", user);
 
@@ -85,23 +103,25 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 				response.put("message", "로그인 성공 했습니다.");
 
 				return ResponseEntity.ok().body(response);
-				
-			} else { 
-				
+
+			} else {
+
 				response.put("redirectUrl", "http://localhost:8085/login");
 				response.put("message", "아이디와 비밀번호를 다시 확인해주세요.");
 
 				return ResponseEntity.ok().body(response);
-				
+
 			}
 
 		} catch (Exception e) { // 로그인 실패
+
 			
+
 			response.put("redirectUrl", "http://localhost:8085/Testmain");
 			response.put("message", "서버 오류 입니다.");
-			
+
 		}
-		
+
 		return ResponseEntity.badRequest().body(response); // 서버 오류코드 넣기
 
 	}
@@ -111,6 +131,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	public String FindID() {
 		return "LogIn/searchId";
 	}
+
 	@PostMapping("/FindID")
 	public ResponseEntity<Map<String, Object>> FindID(@RequestParam("email") String email) {
 
@@ -146,9 +167,9 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 	@GetMapping("/cerid")
 	public String IdEmailToken() {
-		
+
 		return "LogIn/cerId";
-		
+
 	}
 
 	private String IdForEmail = null; // 아이디를 찾기 위한 이메일
@@ -337,7 +358,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 	@PostMapping("cerpw/pwrs")
 	public String pwrs(@RequestParam("pwNew") String pwNew) {
 
-
 		if (pwEmail != null) {
 
 			userService.Update(pwNew, pwEmail);
@@ -348,7 +368,8 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 		return "redirect:/Testmain";
 	}
-	@GetMapping("login/bye") //회원탈퇴
+
+	@GetMapping("login/bye") // 회원탈퇴
 	public String bye() {
 		return "Login/bye";
 	}

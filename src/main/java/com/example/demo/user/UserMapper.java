@@ -14,11 +14,8 @@ public class UserMapper {
 	SqlSession sqlSession;
 
 
-	public User Login(String userID, String password) {
-		Map<String, String> loginInfo = new HashMap<>();
-	    loginInfo.put("userID", userID);
-	    loginInfo.put("password", password);
-		return sqlSession.selectOne("Login", loginInfo);
+	public User Login(String userID) {
+		return sqlSession.selectOne("Login", userID);
 	}
 
 
