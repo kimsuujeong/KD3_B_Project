@@ -104,7 +104,7 @@ body{
   font-size: 2rem;
   width: 20vw;
   /* height: 100vh; */
-  height: 600px;
+  height: 1350px;
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
@@ -123,7 +123,6 @@ body{
 .sidebar .A, .B, .R{
    color: black;
 }
-
 .sidebar .C{
   color: #00ce80;
 }
@@ -136,7 +135,12 @@ body{
   margin-top: 100rem;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px #9c9c9c;
+  box-shadow: 2px 2px 2px 2px #9c9c9c; 
+}
+.select-tag{
+  font-size: 1.6rem;
+  padding-left: 2rem;
+  color: var(--black-color);
 }
 /* select-tag Start */
 .Contents{
