@@ -134,7 +134,8 @@ public class MailService {
 			message.setSubject("EVENTREE 인증 관련 메일 입니다.");
 
 			String body = "";
-			body += "<h1>" + "요청하신 인증이 실패 되었습니다." + "</h1>";
+			body += "<h1>" + "요청하신 인증이 거부 되었습니다." + "</h1>";
+			body += "<h1>" + "다시 인증해 주시길 바랍니다." + "</h1>";
 
 			message.setText(body, "UTF-8", "html");
 
