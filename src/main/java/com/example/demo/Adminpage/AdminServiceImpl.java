@@ -62,6 +62,10 @@ public class AdminServiceImpl implements AdminService{
 		authRequest.setStatus("거절");
 		adminMapper.updateAuthRequest(authRequest);
 	}
+	@Override
+	public void getAuthrequestEmail(Integer requestID) {
+		adminMapper.getAuthrequestEmail(requestID);
+	}
 
 	
 

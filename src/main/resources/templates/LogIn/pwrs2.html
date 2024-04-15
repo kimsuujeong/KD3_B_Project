@@ -59,9 +59,9 @@
       <br>
       <p>비밀번호를 재입력해주세요.</p>
       <br>
-      <form th:action="@{/cerpw/pwrs}" method="post" id="qwrsForm">
-        비밀번호 입력 <input type="password" id="password1" placeholder="비밀번호 입력">
-        비밀번호 확인 <input type="password" id="password2" name="pwNew"placeholder="비밀번호 확인">
+      <form th:action="@{/userUpdate/pwmodify}" method="post" id="qwrsForm">
+        비밀번호 입력 <input type="password" id="password1" name="password1" placeholder="password">
+        비밀번호 확인 <input type="password" id="password2" name="password2" placeholder="password">
         <input type="submit" value="확인" onclick="return checkPasswords()">
       </form>
     </div>
@@ -80,7 +80,7 @@
         }
 
         if (password1.trim() === '' || password2.trim() === '') {
-          alert("비밀번호 확인을 해주세요.");
+          alert("비밀번호를 입력해주세요.");
           return false;
         }
         if (password1 !== password2) {
@@ -88,7 +88,7 @@
           return false;
         } else {
           alert("비밀번호 변경 완료!");
-          location.replace("/Testmain");
+          location.replace("/userUpdate");
         }
 
       }

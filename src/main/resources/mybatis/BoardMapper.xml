@@ -57,41 +57,12 @@
 	</update>
 
 	<select id="countAll">
-		select count(*) from board;
+		select count(*) from board
+		where category_categoryID = #{categoryID};
 	</select>
 	
-	<!-- search all post -->
-	<select id="search" resultType="com.example.demo.board.Board">
-       select * from board
-       <trim prefix="WHERE" prefixOverrides="AND|OR">         
-          <if test="searchType=='postName' and keyword != null and keyword != '' ">
-             AND postName like CONCAT('%', #{keyword}, '%')
-          </if>
-          <if test="searchType=='content' and keyword != null and keyword != '' ">            
-             AND content like CONCAT('%', #{keyword}, '%')         
-          </if>
-          <if test="searchType=='authorName' and keyword != null and keyword != '' ">            
-             AND authorName like CONCAT('%', #{keyword}, '%')         
-          </if>         
-       </trim>
-    </select>
-    
-    <!-- count searched all post -->
-    <select id="countSearchResults" resultType="integer">
-       select count(*) from board
-       <trim prefix="WHERE" prefixOverrides="AND|OR">         
-          <if test="searchType=='postName' and keyword != null and keyword != '' ">
-             AND postName like CONCAT('%', #{keyword}, '%')
-          </if>
-          <if test="searchType=='content' and keyword != null and keyword != '' ">            
-             AND content like CONCAT('%', #{keyword}, '%')         
-          </if>
-          <if test="searchType=='authorName' and keyword != null and keyword != '' ">            
-             AND authorName like CONCAT('%', #{keyword}, '%')         
-          </if>         
-       </trim>
-    </select>
-	
+
+		
 	<!-- search post -->
 	<select id="searchCtg" resultType="com.example.demo.board.Board">
 		select b.*,c.categoryID
@@ -101,16 +72,13 @@
 			<if test="categoryID!=null">
 				AND b.category_categoryID=#{categoryID}
 			</if>
-			<if
-				test="search.searchType=='postName' and search.keyword != null and search.keyword != '' ">
+			<if test="search.searchType=='postName' and search.keyword != null and search.keyword != '' ">
 				AND b.postName like CONCAT('%', #{search.keyword}, '%')
 			</if>
-			<if
-				test="search.searchType=='content' and search.keyword != null and search.keyword != '' ">
+			<if test="search.searchType=='content' and search.keyword != null and search.keyword != '' ">
 				AND b.content like CONCAT('%', #{search.keyword}, '%')
 			</if>
-			<if
-				test="search.searchType=='authorName' and search.keyword != null and search.keyword != '' ">
+			<if test="search.searchType=='authorName' and search.keyword != null and search.keyword != '' ">
 				AND b.authorName like CONCAT('%', #{search.keyword}, '%')
 			</if>
 			<choose>

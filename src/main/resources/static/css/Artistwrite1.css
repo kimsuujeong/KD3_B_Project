@@ -1,0 +1,109 @@
+@import url("Setting.css");
+
+
+
+
+input {
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 50vw;
+    margin: 0 auto;
+}
+
+.lab {
+    display: block;
+    width: 40vw;
+    font-size: 16px;
+    margin: 10px 0;
+}
+label {
+    text-align: left;
+}
+
+.header {
+
+}
+
+.nav {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem;
+    
+}
+.nav .title{
+    width: 40vw;
+    margin: 15px 0;
+}
+.nav .lab{
+    margin: 10px 0;
+}
+.nav #postName{
+    margin: 10px 0;
+}
+.nav > input[type=text] {
+    width: 40vw;
+    padding: 1.5rem;
+}
+.nav > #p_schedule_start {
+    display: block;
+}
+
+.head {
+    padding: 20px;
+}
+
+h1 {
+    color: var(--green-color);
+}
+
+.line {
+    width: 40vw;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.line > div {
+    justify-content: space-around;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 19vw;
+    border: 1px solid black;
+    padding: 1.5rem;
+}
+
+.line > div > input[type=date] {
+    margin-right: 0;
+    border: none;
+}
+
+.line > .start {
+    margin-right: 4rem;
+}
+
+nav > #plink{
+    margin: 10px 0;
+}
+.charge > div{
+    width: 19vw;
+}
+
+.line > select {
+    justify-content: space-around;
+    border: 1px solid black;
+    width: 19vw;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+#one{
+    margin-right: 4rem;
+}

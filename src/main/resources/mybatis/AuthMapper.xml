@@ -14,6 +14,13 @@
 	    SELECT * FROM authrequest 
 	    WHERE userID = #{userID} AND authorizeID = #{authorizeID}
 	</select>
+	<!-- 권한 요청한 사람 이메일 가져오기 -->
+	<select id="getAuthrequestEmail" resultType="String">
+		select a.email
+		from user a inner join authrequest b
+		on a.userID =  b.userID
+		where b.requestID = #{requestID};
+	</select>
 
 
 </mapper>

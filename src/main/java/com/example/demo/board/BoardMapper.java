@@ -41,14 +41,14 @@ public class BoardMapper {
 	public void visitCnt(@Param("postID") Integer postID) {
 		sqlSession.update("visitCnt", postID);
 	}
-
-	public int countAll() {
-		return sqlSession.selectOne("countAll");
+	public int countAll(Integer categoryId) {
+		return sqlSession.selectOne("countAll", categoryId);
 	}
 
+	
 // 	List<Board> getBoardList(Search search);
-	public Page<Board> getList(Pageable page) {
-		int total = countAll();
+	public Page<Board> getList(Pageable page, Integer categoryID) {
+		int total = countAll(categoryID);
 		int offset = page.getPageNumber() * page.getPageSize();
 
 		RowBounds rowBounds = new RowBounds(offset, page.getPageSize());

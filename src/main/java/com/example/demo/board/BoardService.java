@@ -15,9 +15,9 @@ public interface BoardService {
 	
 	public void visitCnt(Integer postID);
 	
-	public int countAll();
+	public int countAll(Integer categoryId);
 	
-	public Page<Board> getList(Pageable page);
+	public Page<Board> getList(Pageable page, Integer categoryID);
 	
 	public Page<Board> search(Search search, Pageable pageable);
 

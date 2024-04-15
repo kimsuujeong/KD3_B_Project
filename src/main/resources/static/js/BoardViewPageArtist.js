@@ -1,6 +1,22 @@
 // scroll content
 const carousel = document.querySelectorAll('.carousel');
 
+document.addEventListener('DOMContentLoaded', function() {
+    var startDate = document.getElementById('eventStart').textContent;
+    var endDate = document.getElementById('eventEnd').textContent;
+
+    var start = new Date(startDate);
+    var end = new Date(endDate);
+    
+    console.log(start);
+    console.log(end);
+
+    var diffTime = Math.abs(end - start);
+    var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+    document.querySelector('.remaintime').textContent = diffDays + '일 남음';
+});
+
 for(let target of carousel){
 
     let isDragStart = false, prevPageX, prevScrollLeft;

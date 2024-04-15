@@ -25,7 +25,8 @@ public class BoardServiceImpl implements BoardService {
 		int offset = pageable.getPageNumber() * pageable.getPageSize();
 		RowBounds rowBounds = new RowBounds(offset, pageable.getPageSize());
 		List<Board> posts = boardMapper.findByCategoryId(categoryId, rowBounds);
-		int total = boardMapper.countAll();
+	
+		int total = boardMapper.countAll(categoryId);
 		return new PageImpl<>(posts, pageable, total);
 	}
 
@@ -40,13 +41,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int countAll() {
-		return boardMapper.countAll();
+	public int countAll(Integer categoryId) {
+		return boardMapper.countAll(categoryId);
 	}
 
 	@Override
-	public Page<Board> getList(Pageable page) {
-		return boardMapper.getList(page);
+	public Page<Board> getList(Pageable page, Integer categoryID) {
+		return boardMapper.getList(page, categoryID);
 	}
 
 	@Override

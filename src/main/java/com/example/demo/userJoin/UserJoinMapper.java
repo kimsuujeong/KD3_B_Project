@@ -17,9 +17,6 @@ public class UserJoinMapper {
 		return sqlSession.selectOne("emailchk",email);
 	}
 	
-	public void InsertUser(User userDTO) {
-		sqlSession.insert("InsertUser", userDTO);
-	}
 	
 	public int idchk(String userID) {
 		return sqlSession.selectOne("idchk",userID);
@@ -28,6 +25,10 @@ public class UserJoinMapper {
 
 	public int namechk(String userName) {
 		return sqlSession.selectOne("namechk",userName);
+	}
+	
+	public void InsertUser(User userDTO) {
+		sqlSession.insert("InsertUser", userDTO);
 	}
 
 }

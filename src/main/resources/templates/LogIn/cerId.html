@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>인증</title>
-  <link rel="stylesheet" href="../../static/css/Setting.css">
-  <link rel="stylesheet" href="../../static/css/cerId.css">
+  <link rel="stylesheet" th:href="@{css/Setting.css}">
+  <link rel="stylesheet" th:href="@{css/cerId.css}">
 </head>
 
 <body onload="startCountdown()">
@@ -16,24 +16,47 @@
       <h3>인증 번호 입력</h3> <br>
       <p>회원님의 이메일에 전송된 <br>
         인증 번호를 입력하세요!</p><br>
+
       <form th:action="@{/cerid}" method="post" id="ceridForm">
+
         인증 번호 <input type="text" id="numInput" name="token" placeholder="인증번호">
         <span id="message" class="error-message"></span>
-        <br>
+        <div id="timerMessage" style="color: red;"></div> <!-- 타이머 메시지를 표시할 요소 -->
+
         <button type="submit" value="확인" onclick="return checkAuth()">확인</button>
 
       </form>
-
-      <!-- 타이머 영역 추가 -->
-      <div id="timerSection" style="display:none;">
-        <p id="timerMessage"></p>
-      </div>
-
     </div>
     <div class="footer"></div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script th:inline="javascript">
+
+      function startCountdown() {
+        var timerMessage = document.getElementById("timerMessage");
+
+        var countDownDate = new Date().getTime() + (5 * 60 * 1000); // 현재 시간 + 5분
+
+        // 1초마다 타이머 업데이트
+        var timerInterval = setInterval(function () {
+          var now = new Date().getTime();
+          var distance = countDownDate - now;
+
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // 타이머 메시지 업데이트
+          timerMessage.textContent = "유효 시간: " + minutes + "분 " + seconds + "초";
+
+          // 타이머가 만료되면 폼을 숨기고 메시지 표시
+          if (distance < 0) {
+            clearInterval(timerInterval);
+            timerMessage.textContent = "인증 번호 유효 시간이 종료되었습니다.";
+            // 타이머 만료 시 페이지 이동
+            window.location.href = "/searchPw.html"; // 리디렉션
+          }
+        }, 1000);
+      }
+
       function checkAuth() {
         // 입력된 인증 번호를 가져옵니다.
         var inputNumber = document.getElementById("numInput").value;
@@ -78,7 +101,7 @@
         }, 1000);
       }
     </script>
-  
-  </body>
-  
-  </html>
+
+</body>
+
+</html>

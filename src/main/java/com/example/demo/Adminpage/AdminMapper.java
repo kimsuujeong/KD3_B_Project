@@ -50,6 +50,10 @@ public class AdminMapper {
 		session.delete("deleteAuthRequest", requestID);
 	}
 
+	public String getAuthrequestEmail(Integer requestID) {
+		return session.selectOne("getAuthrequestEmail",requestID);
+	}
+
 	
 	
 }
