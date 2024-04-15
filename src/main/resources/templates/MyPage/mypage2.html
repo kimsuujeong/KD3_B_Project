@@ -73,21 +73,23 @@
 			<div class="box-content">
 				<div class="box">
 
-					<div class="list-list">
-						<div class="font-bold">아이디&emsp; <span class="text-gray">exampleId</span><input
-								id="profile_email" type="text" class="eventree-input" disabled="" hidden="">
-						</div>
-					</div>
-					<div class="list-list">
-						<div class="font-bold">닉네임&emsp; <a href="http://localhost:8085/mypage/userupdate/namemodify" class="btn">변경하기</a></div>
-					</div>
-					<div class="list-list">
-						<div class="font-bold">이메일&emsp; <a href="http://localhost:8085/mypage/userupdate/emmodify" class="btn">변경하기</a></div>
-					</div>
-
-					<div class="list-list">
-						<div class="font-bold">비밀번호&nbsp; <a href="http://localhost:8085/mypage/userupdate/pwmodify" class="btn">변경하기</a></div>
-					</div>
+					<div class="box">
+					
+	                    <div class="list-list">
+	                        <div class="font-bold">아이디&emsp; <span th:text="${loggedInUser.userID}"></span> <input id="profile_email" type="text" class="eventree-input" disabled="" hidden="">
+	                        </div>
+	                    </div>
+	                <div class="list-list">
+	                    <div class="font-bold">이메일&emsp; <span th:text="${loggedInUser.email}"></span></div>
+	                </div>
+	                    
+	                <div class="list-list">
+	                    <div class="font-bold">닉네임&emsp; <span th:text="${loggedInUser.userName}"></span> <a th:href="@{/userUpdate/namemodify}" class="btn">변경하기</a></div>
+	                </div>
+	                
+	                <div class="list-list">
+	                    <div class="font-bold">비밀번호&nbsp; <a th:href="@{/pwcheck}" class="btn">변경하기</a></div>
+	                </div>
 				</div>
 
 				<div class="down">
