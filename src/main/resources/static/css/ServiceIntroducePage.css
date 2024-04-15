@@ -6,6 +6,7 @@
   body{
     background-color: black;
     color: white;
+    overflow-x: hidden;
   }
   .container{
    max-width: 1200px;
@@ -20,9 +21,9 @@
   header{
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
     align-items: center;
-    padding:  1.2rem 0;
+    padding:  1.2rem 10rem;
     position: fixed;
     z-index: 1000;
     background-color: black;
@@ -46,9 +47,9 @@
     padding-bottom: 5px;
     color: #f2f2f2;;
   }
-  header>ul>li:first-child>a{
+  /* header>ul>li:first-child>a{
     border-bottom: 1px solid gray;
-  }
+  } */
   header >ul>li>a:hover{
     border-bottom: 1px solid gray;
   }
@@ -89,7 +90,7 @@
     border-radius: 50px;
     text-decoration: none;
     background-color:#00ce80;
-    color:black;
+    color:var(--white-color);
   }
   .btn2{ 
     display: block;
@@ -103,8 +104,8 @@
     padding: 15px;
     border-radius: 50px;
     text-decoration: none;
-    background-color:white;
-    color: black;
+    background-color:var(--green-color);
+    color: var(--white-color);
   }
   .ce1{
     padding: 50px;
@@ -344,10 +345,30 @@
     /* border-bottom: 1px solid gray; */
     /* display: inline-block; */
   }
+
+  .start-btn2{
+    width: 127%;
+    background-color: var(--white-color);
+  }
+
+  .start-btn2 p{
+    color: var(--black-color);
+  }
+
+  .start-btn2 p:first-child{
+    padding-top: 10rem;
+  }
+
+  .start-btn2 p :last-child{
+    color: var(--gret-color);
+  }
+
+
+
   /* footer Start */
   footer{
-    background-color: #e1e4e67a;
-    width: 140%;
+    background-color: #f0f0f0;
+    width: 127%;
     font-size: 1.6rem;
     padding-left: 10rem;
     color: var(--black-color);
