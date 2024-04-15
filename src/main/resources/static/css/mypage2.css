@@ -141,7 +141,7 @@ body{
   
 }
 
-sidebar .sidebar-list{
+.sidebar .sidebar-list{
   font-size: 1.8rem;
   padding: 2rem;
   display: flex;
