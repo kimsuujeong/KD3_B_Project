@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/Setting.css}">
+  	<link rel="stylesheet" th:href="@{/css/Artistwrite1.css}">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="nav">
+            <label for="" class="lab">1/3 단계</label>
+            <h1 class="title">새로운 프로젝트를 개설해 보세요</h1>
+            <label for="postName" class="lab">프로젝트명을 입력해주세요</label>
+            <input type="text" id="postName" name="">
+
+            <label class="lab">펀딩 링크를 입력해 주세요</label>
+            <div class="date line">
+                
+                <div class="date start">      
+                    <input type="date" id="p_schedule start" >
+                </div>
+
+                <div class="date end">
+                    <input type="date" id="p_schedule end">
+                </div>
+               
+            </div>
+
+            
+            <label for="p_link" class="lab">후원자 모집 링크를 입력해주세요</label>
+            <input type="text" id="p_link" placeholder="http://">
+
+            <label for="p_charge" class="lab">투자혜택은 어떤 방식인가요?</label>
+            <div class="charge line">
+                <div class="chk start">
+                    <input type="checkbox" name="p_charge" id="p_charge A" value=""><span>고정수익</span>     
+                </div>
+                <div class="chk middle">
+                    <input type="checkbox" name="p_charge" id="p_charge B" value=""><span>손익분배</span>
+                </div>
+                <div class="chk end">
+                    <input type="checkbox" name="p_charge" id="p_charge B" value=""><span>혜택지급</span>
+                </div>                
+            </div>
+            <label for="p_tag" class="lab">어떤 태그와 가장 연관성이 있나요?</label>
+            <div class="charge line">
+                <select name="" id="one">
+                    <option value="">1</option>
+                    <option value="">1</option>
+                    <option value="">1</option>
+                    <option value="">1</option>
+                </select>
+
+                <select name="" id="">
+                    <option value="">2</option>
+                    <option value="">2</option>
+                    <option value="">2</option>
+                    <option value="">2</option>
+                </select>
+            </div>
+
+        </div><!-- nav end-->
+
+    </div><!-- container end-->
+    
+
+
+</body>
+</html>

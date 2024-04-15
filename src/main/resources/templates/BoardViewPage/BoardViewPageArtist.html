@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoardViewPageArtist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="../../static/css/Setting.css">
-    <link rel="stylesheet" href="../../static/css/BoardViewPageArtist.css">
+    <link rel="stylesheet" th:href="@{/css/Setting.css}">
+  	<link rel="stylesheet" th:href="@{/css/BoardViewPageArtist.css}">
 </head>
 <body>
     <!-- header Start -->
@@ -60,7 +60,7 @@
         <div class="explain-container">
             
             <div class="box-1">
-                <div class="content-tittle">악마가 깨어났다! THE 씬 SIN</div>
+                <div class="content-tittle" th:text="${post.postName}"></div>
             <div class="visit-cnt">조회수<span>81</span></div>
             </div>
 
@@ -80,7 +80,12 @@
                 <a href="#purpose" class="select-explan-position">프로젝트 소개</a>
                 <a href="#artist-info">예술인 정보</a>
                 <a href="#contact">문의하기</a>
-                <a href="#recommendation">추천</a>
+                <form name="form1" method="post" action="/like/insert">
+					<input type="hidden" name="postID" th:value="${postID}">                  
+			    	<button type="submit" class="like">♥</button>
+			    	<a href="#recommendation">추천</a>
+				</form>
+                
             </div>
             <!-- move positon tag End -->
 
@@ -89,21 +94,7 @@
                     <div class="explain-tittle">
                         | 프로젝트 소개
                     </div>
-                    <div class="explain-story">이쪽에 글과 이미지가 들어감Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aliquid accusamus, incidunt laudantium assumenda saepe quasi explicabo corrupti adipisci, debitis, obcaecati alias libero sit? Tempore sint rerum doloribus officia qui?
-                    Dicta exercitationem corrupti necessitatibus sed distinctio ullam voluptatum similique labore voluptate pariatur, ad amet sunt quos magnam dolores voluptatem aut nesciunt obcaecati reiciendis cum. Tempore error sit officia quo illum.
-                    Expedita quo similique minima minus inventore provident adipisci consequuntur rem modi, odit voluptas consectetur perferendis ullam tempore ad, asperiores ex illum porro deleniti, obcaecati laboriosam. Exercitationem sit eum eligendi. Voluptatem.
-                    Harum perspiciatis totam dicta dolorem atque optio quis sunt pariatur, cum molestias voluptatem quia praesentium reprehenderit eos blanditiis numquam, assumenda reiciendis nam voluptate ducimus officia. Ducimus modi suscipit facilis perferendis?
-                    Veritatis, molestias voluptas? Asperiores ratione nulla quasi et debitis incidunt iusto atque architecto, omnis praesentium inventore perspiciatis saepe, molestiae doloremque quod neque vel beatae? Nisi obcaecati sapiente eos ipsa rem!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed rerum excepturi saepe laborum ullam ut, doloremque, consequatur delectus voluptas, atque officiis neque. Sit veritatis beatae vel autem vero reprehenderit quos!
-                    Magnam veritatis neque, labore velit, amet asperiores pariatur ad consectetur error corrupti expedita minus sint at mollitia provident corporis doloribus. Et, tenetur. Quod harum nisi doloremque repellendus ratione cupiditate suscipit.
-                    Laboriosam suscipit veniam ipsam officiis nulla consequatur eos fugit expedita, velit doloremque nesciunt temporibus deserunt laudantium iure aut fuga exercitationem debitis natus alias quos? Velit fuga eius cupiditate perferendis omnis?
-                    Alias, aspernatur. Modi, harum excepturi perspiciatis impedit similique commodi magnam accusantium labore libero nulla quisquam tenetur placeat culpa? Fugiat eligendi exercitationem officiis minus consequatur modi facere earum necessitatibus itaque magnam!
-                    Laudantium corporis alias eligendi quam exercitationem culpa quidem perspiciatis ipsam, fuga, tenetur quae vel, in nam cupiditate dolor sit magnam! Tenetur sint est, consequuntur dolorem temporibus aperiam quidem adipisci tempora!
-                    Quam veniam dicta quia excepturi fugiat quidem eveniet sequi asperiores! Iste commodi quibusdam at odio quaerat, eius distinctio obcaecati, optio hic sint expedita quisquam doloribus quas, architecto dolore dolor beatae!
-                    Dolor rerum quas ipsam placeat vitae recusandae debitis blanditiis molestiae corporis et veniam veritatis consectetur harum provident minus rem, nam, saepe consequatur magni? Non aliquam libero earum iusto placeat at.
-                    Aspernatur, fugit exercitationem! Magni a fuga dignissimos exercitationem molestias consequuntur amet, consectetur quas rerum aliquid incidunt minus nam vitae enim eligendi accusantium sapiente, facere ratione pariatur! Voluptates dignissimos alias sint.
-                    Sint, rerum aliquid iure non quasi tempore aperiam. Mollitia fugit, voluptates explicabo dolorem, pariatur vero adipisci reprehenderit, enim ratione laborum voluptatem harum? Dolorem fuga nisi doloremque quam aspernatur eius ipsa.
-                    Veritatis, magni sit repellat explicabo quam ducimus odit, voluptatibus fugit, reiciendis expedita rem facilis numquam. Harum voluptatem at cumque dolorum labore dolores aliquid, rem ut expedita repudiandae nobis similique accusantium!</div>
+                    <div class="explain-story"  th:text="${post.content}"></div>
                 </div>
                 <div id="budget">
                     <div class="explain-tittle">
@@ -251,14 +242,11 @@
                     <div class="tag">#판타지</div>
                 </div>
                 <div class="title">
-                    악마가 깨어났다! THE 씬 SIN
-                </div>
-                <div class="goalcost">
-                    목표금액<span>100,000,000</span>원
+                    <div class="content-tittle" th:text="${post.postName}"></div>
                 </div>
                 <div class="fundperiod">
-                    펀딩 기간<br><span>2024.03.17</span> ~ <span>2024.04.17</span>
-                    <span class="remaintime">13일 남음</span>
+                    펀딩 기간<br><span id="evtStart" th:text="${post.eventStart}"></span> ~ <span id="evtEnd" th:text="${post.eventEnd}"></span>
+                	<span class="remaintime"></span>
                 </div>  
                 <div class="fundinfo-btnbox">
                     <div class="gofund-btn">
@@ -441,6 +429,6 @@
     </footer>
 
 
-<script src="../../static/js/BoardViewPageArtist.js"></script> 
+<script src="js/BoardViewPageArtist.js"></script> 
 </body>
 </html>
