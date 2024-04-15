@@ -1,4 +1,19 @@
 // img slider 
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('search-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        var categoryID = document.getElementById('categoryID').value;
+        var searchType = document.getElementById('searchType').value;
+        var keyword = document.getElementById('keyword').value;
+        alert(categoryID)
+        var url = "/board" + categoryID + "/search?searchType=" + searchType + "&keyword=" + keyword;
+
+       	location.href = url;
+		
+    });
+});
+
 var counter = 1;
 setInterval(function(){
     document.getElementById('radio' + counter).checked = true;
@@ -40,4 +55,5 @@ function nextBtn(){
         link[currentValue - 1].classList.add("active");
     }
 }
+
 // after 5 is Error

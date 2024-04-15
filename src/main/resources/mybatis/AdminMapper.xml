@@ -8,7 +8,7 @@
 		from authorizeduser
 		where user_userID=#{userID}
 	</select>
-	<!-- 모든 리스트 -- 안씀 -->
+	<!-- 모든 리스트 안씀 -->
 	<select id="getAllAuthReq">
 		select *
 		from authrequest
@@ -39,7 +39,7 @@
 		authorizeduser(authorizeID,user_userID,fileID,authDate)
 		values(#{authorizeID},#{user_userID},#{fileID},now())
 	</insert>
-	<!-- 신청리스트에서 삭제 -- 안씀 -->
+	<!-- 신청리스트에서 삭제 안씀 -->
 	<delete id="deleteAuthRequest">
 		DELETE FROM authrequest WHERE requestID = #{requestID}
 	</delete>
