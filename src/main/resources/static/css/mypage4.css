@@ -61,8 +61,9 @@ body{
   color: var(--black-color);
 }
 
+/* 다른 마이페이지와는 다르게 5rem으로 되어있어서 1rem으로 변경 */
 .header .navbar .link1 a{
-  padding-right: 5rem;
+  padding-right: 1rem;
 
 }
 
@@ -139,7 +140,7 @@ body{
   
 }
 
-sidebar .sidebar-list{
+.sidebar .sidebar-list{
   font-size: 1.8rem;
   padding: 2rem;
   display: flex;

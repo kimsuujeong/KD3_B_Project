@@ -41,6 +41,7 @@
 
 
             <div class="category">
+              
                 <div class="category-list">
                     <span>카테고리</span>
                     <div class="fas fa-solid fa-chevron-down"></div>
@@ -54,6 +55,7 @@
                 </div>
                 <a th:href="@{|/board/1|}">기업행사</a>
                 <a th:href="@{|/board/2|}">예술인 펀딩</a>
+
                 <a href="#">서비스 소개</a>
                 <a href="#">Q & A</a>
                 <a href="#">행사개설</a>
@@ -191,6 +193,7 @@
             </div>
     
             <div class="board-content">
+
                 <div class="carousel-box" th:each="post : ${posts}">
                 	<input type="hidden" th:text="${post.postID}">
                 	<input type="hidden" id="categoryID" th:value="${categoryID}" />

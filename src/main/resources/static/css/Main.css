@@ -1,4 +1,3 @@
-
 body{
     background-color: var(--board-background-color);
     overflow-x: hidden;
@@ -279,7 +278,7 @@ body{
 }
 
 .wrapper .carousel{
-    cursor: pointer;
+    /* cursor: pointer; */
     white-space: nowrap;
     overflow: hidden;
     display: flex;
