@@ -35,6 +35,7 @@ body{
     background-color: var(--white-color);
     margin-bottom: 1rem;
     border: 1px var(--grey-color) solid;
+    cursor:pointer;
 }
 
 .search-bar input{
