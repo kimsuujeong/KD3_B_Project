@@ -18,10 +18,10 @@ public class MypageController { // 관심목록, 인증, 개인정보 수정(비
 //	@Autowired
 //	private UserMapper usermapper; // test
 	
-	@RequestMapping("/mypage/userupdate") // 내 정보 수정
-	public String My_page2() {
-		return "/Mypage/mypage2";
-	}
+//	@RequestMapping("/mypage/userupdate") // 내 정보 수정
+//	public String My_page2() {
+//		return "/Mypage/mypage2";
+//	}
 	@GetMapping("/mypage/userupdate/namemodify") //닉네임 수정
 	public String MY_page2namemodify() {
 		return "/Login/nrs";
@@ -65,8 +65,11 @@ public class MypageController { // 관심목록, 인증, 개인정보 수정(비
 	@RequestMapping("/userUpdate") // 개인정보 수정
 	public String userUpdate(Model model, HttpSession httpSession) {
 		User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
+		if (loggedInUser == null) {
+			return "redirect:/login";
+		}
 		model.addAttribute("loggedInUser", loggedInUser);
-		return "TestHtml/Mypage/userUpdate";
+		return "MyPage/mypage2";
 	}
 	
 	@RequestMapping("/logout") // 로그아웃
