@@ -30,7 +30,6 @@ public class ChanInfoController {
 		}
 		
 		model.addAttribute("errorMessage","");
-		model.addAttribute("user", user);
 		
 		return "MyPage/nrs";
 	}
@@ -53,41 +52,35 @@ public class ChanInfoController {
 			chanInfoService.updateName(loggedInUser);
 			return "redirect:/userUpdate";
 		}
-	}
+	} 
 	
-	
-	// 이메일 변경은 뻄
-//	@GetMapping("/userUpdate/emmodify")
-//	public String emailUpdate(HttpSession session, Model model) {
-//		User loggedInUser = (User) session.getAttribute("loggedInUser");
-//
-//		if (loggedInUser == null) {
-//			return "redirect:/login";
-//		}
-//		return "TestHtml/Mypage/email_modify";
-//	}
-
-	@PostMapping("/userUpdate/emmodify")
-	public String emailUpdate(@RequestParam("email") String email, HttpSession session, Model model) {
+	@GetMapping("/pwcheck")
+    public String passwordCheck(HttpSession session, Model model) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 
 		if (loggedInUser == null) {
-			return "redirect:/login";  
-		} 
-                                                    
-		int result = userService.emailchk(email);
-
-		if (result > 0) {
-			model.addAttribute("errorMessage", "이미 사용중인 이름입니다");
-			return "TestHtml/Mypage/email_modify";
-		} else {
-			loggedInUser.setEmail(email);
-			chanInfoService.updateEmail(loggedInUser);
-			return "redirect:/userUpdate";
+			return "redirect:/login";
 		}
-	} 
+		return "/Login/pwcheck2";
+    }
 
-	
+    @PostMapping("/pwcheck")
+    public String checkPassword(@RequestParam("password") String password,HttpSession session, Model model) {
+    	User loggedInUser = (User) session.getAttribute("loggedInUser");
+
+		if (loggedInUser == null) {
+			return "redirect:/login";
+		}
+        String correctPassword = loggedInUser.getPassword(); 
+        if (!password.equals(correctPassword)) {
+            // 올바르지 않은 경우 다시 입력하도록 페이지로 이동
+            return "redirect:/pwcheck?error";
+        }
+        session.setAttribute("pwcheckComplete", true);
+        // 올바른 경우 비밀번호 변경 페이지로 이동
+        return "redirect:/userUpdate/pwmodify";
+    }
+
 	@GetMapping("/userUpdate/pwmodify")
 	public String passwordUpdate(HttpSession session, Model model) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -95,29 +88,34 @@ public class ChanInfoController {
 		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
-		
-		return "Login/pwrs";
+		if(session.getAttribute("pwcheckComplete")==null) {
+			return "redirect:/pwcheck";
+		}
+		return "Login/pwrs2";
 	}
 	
 	@PostMapping("/userUpdate/pwmodify")
-	public String passwordUpdate(@RequestParam("oldPw") String oldPw,
-			@RequestParam("newPw") String newPw,
+	public String passwordUpdate(@RequestParam("password1") String password1,
+			@RequestParam("password2") String password2,
 			 HttpSession session, Model model) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
 		
 		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
-		int result=chanInfoService.checkpw(loggedInUser.getUserID(),oldPw);
-		
-		if(result>0) {
-			loggedInUser.setPassword(newPw);
-			chanInfoService.updatePw(loggedInUser);
-			return "redirect:/userUpdate";
-		}else {
-			model.addAttribute("errorMessage", "비밀번호가 틀립니다");
-			return "Login/pwrs";
+		if(session.getAttribute("pwcheckComplete")==null) {
+			return "redirect:/pwcheck";
 		}
 		
+		if(!password1.equals(password2)) { 
+	        return "redirect:/userUpdate/pwmodify";
+	    }
+		loggedInUser.setPassword(password2);
+		chanInfoService.updatePw(loggedInUser);
+		
+		return "redirect:/userUpdate";
 	}
+	
+	
+
 }
