@@ -150,8 +150,13 @@ public class UserJoinController {
 	    return "JoinPage/e";
 	}
 
+	@GetMapping("/JoinPage/m")
+	public String showJoinPageM(Model model) {
+		// 모델에 필요한 데이터를 추가하거나 로직을 수행한 후에
+		// 해당하는 HTML 파일의 경로를 리턴합니다.
+		return "JoinPage/m";
+	}
 
-	
 	// 아이디 중복 체크 처리
 	@PostMapping("/nicknameCheck")
 	@ResponseBody

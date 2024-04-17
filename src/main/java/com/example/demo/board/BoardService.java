@@ -19,6 +19,8 @@ public interface BoardService {
 	
 	public Page<Board> getList(Pageable page, Integer categoryID);
 	
+	public Page<Board> search(Search search, Pageable pageable);
+
 	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable);
 	
 	

@@ -85,6 +85,16 @@ public class BoardController {
 		return url;
 	}
 
+	// 전체 게시물 검색
+	@RequestMapping("/board/search")
+	public String search_board(Model model, @ModelAttribute Search search, Pageable pageable) {
+		Page<Board> searchPost = boardService.search(search, pageable);
+		model.addAttribute("posts", searchPost);
+			
+		return "/TestHtml/board/board";
+	}
+		
+	// 카테고리별 검색
 	@RequestMapping("/board/{categoryID}/search")
 	public String search(@PathVariable(name = "categoryID") Integer categoryID, Model model,
 			@RequestParam(value="order", defaultValue="visitCnt") String order, 
