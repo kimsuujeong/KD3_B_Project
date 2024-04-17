@@ -3,56 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoardViewPageArtist</title>
+    <title>BoardViewPageCompany</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
   	<link rel="stylesheet" th:href="@{/css/BoardViewPageArtist.css}">
 </head>
 <body>
-    <!-- header Start -->
-    <header class="header">
 
-        <nav class="navbar">
-            <!-- upper (logo, searchbar, login, acount, likelist) -->
-            <div class="container">
-                <!-- logo -->
-                <a href="#" class="logo">
-					<img th:src="@{/images/logo-01.png}" alt="">
-                </a>
-                <div>
-                    <form action="" class="search-bar">
-                        <input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
-                        <div class="fas fa-search" id="search-btn"></div>
-                    </form>
-                </div>
-                <div class="link1">
-                    <!-- 로그인 했을때 th로 연결해둠 -->
-                    <!-- Check if user is logged in -->
-                    <th:block th:if="${session['loggedInUser'] == null}">
-                        <a href="/login">로그인</a>
-                        <a href="/joinForm">회원가입</a>
-                        <a href="#">관심목록</a>
-                    </th:block>
-                    <!-- Check if user is logged out -->
-                    <th:block th:if="${session['loggedInUser'] != null}">
-                        <a href="/mypage/userupdate" class="mypage"><span>OO</span>님 안녕하세요</a>
-                        <a href="/savelist">관심목록</a>
-                        <a href="/logout">로그아웃</a>
-                    </th:block>
-                </div>
-            </div>
 
-            <!-- category -->
-            <div class="category">
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
-				<a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
-                <a href="#">공지사항</a>
-            </div>
-        </nav>
-    </header>
-    <!-- header End -->
+    <div th:replace="~{/Fragment/header :: headerFragment}"></div>
 
     <div class="empty"></div>
 
@@ -62,16 +21,19 @@
             
             <div class="box-1">
                 <div class="content-tittle" th:text="${post.postName}"></div>
-                <div class="visit-cnt">조회수<span>81</span></div>
+
+            <div class="visit-cnt" >조회수<span th:text="${post.visitCnt}"></span></div>
             </div>
 
+
             <div class="box-2">
-                <div class="write-user">작성자이름임</div>
-                <div class="write-date">마지막 수정날짜가 보이겠지</div>
+                <div class="write-user" th:text="${post.authorName}">작성자이름임<span th:text="${post.authorName}"></span></div>
+                <div class="write-date" th:text="${post.endDate}">마지막 수정날짜<span th:text="${post.endDate}"></span></div>
+
             </div>
 
             <div class="content-post">
-                <img src="../../static/images/ArtistBoardListExam/moviePoster.png" alt="">
+                <img th:src="${image}" alt="">
             </div>
 
             <div class="empty"></div>
@@ -79,14 +41,17 @@
             <div class="explain-content">
                 <div id="purpose">
                     <div class="explain-story" th:text="${post.content}"></div>
+
                 </div>
 
 
             </div>
 
+
             <!-- <div class="explain-content">
                 <div id="purpose" class="short">
                     <div class="explain-story" th:text="${post.content}"></div>
+
                 </div>
 
                 <button type="button" id="buttonDetail">더보기</button>
@@ -106,14 +71,21 @@
 
         <div class="user-container">
 
-            <div class="edit-btn">
-                <button>게시글 수정하기</button>
-                <button>게시글 삭제하기</button>
-    
-            </div>
-
+            <th:block th:if="${session['loggedInUser'] != null}">
+                <div th:if="${post.userID == session['loggedInUser'].userID}" class="edit-btn">
+                    <a th:href="@{/board/modify/{postID}(postID = ${post.postID})}" class="edit-btn">게시글 수정하기</a>
+                    <a th:href="@{/board/delete/{postID}(postID = ${post.postID})}" class="edit-btn">게시글 삭제하기</a>
+                </div>
+            </th:block>
+ 
             <div class="fundinfobox">
-                
+                <!-- <div class="tag-box">
+                    <div class="tag">#예술인펀딩</div>
+                    <div class="tag">#손익분배</div>
+                    <div class="tag">#공포</div>
+                    <div class="tag">#판타지</div>
+                </div> -->
+
                 <div class="title">
                     <div class="content-tittle" th:text="${post.postName}"></div>
                 </div>
@@ -128,8 +100,22 @@
                     <div class="gofund-btn">
                         <a href="#">이 프로젝트 펀딩하러 가기</a>
                     </div>
+
+                    <div class="space-between">
+                        <!-- <div class="like-btn">
+                            <i class="fa-regular fa-heart"></i>
+                            <div class="like-cnt" >찜인데 아직임</div>
+                        </div> -->
+                        <form name="form1" method="post" action="/savelist/insert">
+                            <input type="hidden" name="postID" th:value="${postID}">                  
+                            <button type="submit" class="like">♥관심등록</button>
+                            <!-- <a href="#recommendation">추천</a> -->
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
+            
 
         </div>
     </section>
@@ -158,8 +144,9 @@
 
 
 <!-- scroll content -->
-<section class="scroll-content">
+<!-- <section class="scroll-content">
     <div class="wrapper">
+
         <div class="carousel">
             <div class="carousel-box">
                 <a href="#">
@@ -237,7 +224,7 @@
         </div>
 
     </div>
-</section>
+</section> -->
 
 <div class="empty"></div>
 
@@ -246,60 +233,7 @@
     <a href="#"><i class="fa-solid fa-angle-up"></i></a>
 </div> -->
 
-    <!-- footer start -->
-    <footer class="footer">
-
-        <div class="footer-first">
-            <div class="link-list">
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">공지사항</a>
-            </div>
-        </div>
-
-        <div class="footer-third">
-            <div class="link-title">서비스 이용 문의</div>
-            <div>채팅상담 (평일 10:00~17:00)</div>
-            <div>사업 제휴 문의 whiosemail@event-tree.kr</div>         
-        </div>
-
-        <div class="footer-four">
-            <div class="link-title company">EVENTREE</div>
-            <div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
-            <div>통신판매업 신고번호 제0000-0000-0000호</div>
-            <div>대표 신유경 | 개인정보책임자 DB관리자</div>
-            <div>광주특별시 광산구 무진대로 무역회관 7층</div>
-            <!-- <div class="warning">
-                이벤트리는 통신판매중개자이며 행사에 대한 당사자 및 주최자가 아닙니다. 따라서 이벤트리는 등록된 행사에 대해 책임지지 않습니다
-            </div> -->
-        </div> 
-        
-        <div class="footer-second">
-            <div class="link-list">
-                <a href="#">서비스 이용 약관</a>
-                <a href="#">개인정보처리방침</a>
-                <a href="#">이메일 주소 무단수집 거부</a>
-            </div>         
-        </div>
-        
-        
-
-        <div class="footer-down">
-            <div class="copyright">
-                ⓒ 2024. EVENTREE All Rights Reserved.
-            </div>
-            <div class="sns">
-                <a href="#">X</a>
-                <a href="#">인스타</a>
-                <a href="#">카카오톡</a>
-                <a href="#">유튜브</a>
-            </div>
-            <!-- 나중에 sns 로고 이미지로 교체할것 -->
-        </div>
-
-    </footer>
+<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
 
 <script th:src="@{/js/BoardViewPageArtist.js}"></script> 

@@ -17,13 +17,27 @@ public class AdminServiceImpl implements AdminService{
 	// 관리자인지 확인
 	@Override
 	public boolean isUserAdmin(String userID) {
-		AuthorizedUser aUser=adminMapper.adminCheck(userID);
+		List<AuthorizedUser> aUser=adminMapper.adminCheck(userID);
 		// 관리자 권한 확인(authorizeID가 3이어야함
-		if(aUser!=null&& aUser.getAuthorizeID()==3) {
-			return true;
+		for (AuthorizedUser userlist : aUser) {
+			if(userlist!=null&& userlist.getAuthorizeID()==3) {
+				return true;
+			}
 		}
 		return false;
 	}
+	@Override
+	public boolean isUserAuth(String userID) {
+		List<AuthorizedUser> aUser=adminMapper.adminCheck(userID);
+		// 관리자 권한 확인(authorizeID가 3이어야함
+		for (AuthorizedUser userlist : aUser) {
+			if(userlist!=null&& (userlist.getAuthorizeID()==1||userlist.getAuthorizeID()==2 || userlist.getAuthorizeID()==3)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	// 모든 신청 리스트 -- 이제 안씀
 	@Override
 	public List<AuthRequest> getAllAuthRequests() {
@@ -66,6 +80,7 @@ public class AdminServiceImpl implements AdminService{
 	public void getAuthrequestEmail(Integer requestID) {
 		adminMapper.getAuthrequestEmail(requestID);
 	}
+	
 
 	
 

@@ -14,8 +14,8 @@
 	</select>
 
 	<insert id="insert">
-		insert into mydb.like(likeID, userID, postID)
-		values(#{likeID}, #{userID}, #{postID})
+		insert into mydb.like(likeID, userID, postID,heart)
+		values(#{likeID}, #{userID}, #{postID},1)
 	</insert>
 
 	<select id = "countLike" resultType="int">

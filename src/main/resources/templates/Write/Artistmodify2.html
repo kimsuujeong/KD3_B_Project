@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
     <link rel="stylesheet" th:href="@{/css/Artistwrite2.css}">
-
     
 </head>
 <body>
@@ -16,8 +14,7 @@
         <div class="nav">
             <label for="" class="lab">2/2 단계</label>
             <h1 class="title">새로운 프로젝트를 개설해 보세요</h1>
-
-            <form th:action="@{'/board/register/new/'+${categoryID}+'/2'}" method="post" th:object="${board}" enctype="multipart/form-data">
+            <form th:action="@{'/board/modify/'+${postID}+'/2'}" method="post" th:object="${board}" enctype="multipart/form-data">
                 <label for="postForm" class="lab">행사를 설명할 수 있는 대표 이미지를 넣어주세요</label>
                 <input type="file" name="file" id="file" th:field="*{file}" multiple>
             
@@ -25,15 +22,13 @@
                 <textarea name="content" id="content"></textarea>
                 <input type="submit" class="write-next-btn" value="등록">
             </form>
-
+           
         </div><!-- nav end-->
 
     </div><!-- container end-->
 
 
-
     <script th:src="@{/ckeditor/build/ckeditor.js}"></script>
     <script th:src="@{/js/Artistwrite2.js}"></script>
-
 </body>
 </html>

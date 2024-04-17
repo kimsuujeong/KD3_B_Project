@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.Adminpage.AdminService;
 import com.example.demo.file.FileService;
 import com.example.demo.user.User;
 
@@ -23,11 +24,15 @@ public class AuthController {
 	@Autowired
 	FileService fileService;
 	
+	@Autowired
+	AdminService adminService;
 	@GetMapping("/authn") // 인증
 	public String authn(Model model, HttpSession httpSession) {
 		User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
-		model.addAttribute("loggedInUser", loggedInUser);
+	    
+	    // 사용자가 관리자인지 여부를 확인합니다.
 		
+		model.addAttribute("loggedInUser", loggedInUser);
 		return "/MyPage/mypage3";
 	}
 	

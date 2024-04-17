@@ -11,37 +11,10 @@
 </head>
 
 <body>
-	<!-- header Start -->
-	<header class="header">
-		<nav class="navbar">
-			<div class="container">
-				<a href="#" class="logo">
-					<img th:src="@{/images/logo-01.png}" alt="">
-				</a>
-				<div>
-					<form action="" class="search-bar">
-						<input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
-						<div class="fas fa-search" id="search-btn"></div>
-					</form>
-				</div>
-				<div class="link1">
-					<a href="#">로그인</a>
-					<a href="#">회원가입</a>
-					<a href="#">관심목록</a>
-				</div>
-			</div>
 
-			<!-- category -->
-			<div class="category">
-				<a href="#">기업행사</a>
-				<a href="#">예술인 펀딩</a>
-				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
-				<a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
-				<a href="#">행사개설</a>
-			</div>
-		</nav>
-	</header>
-	<!-- header End -->
+	
+	<div th:replace="~{/Fragment/header :: headerFragment}"></div>
+
 
 	<!-- Contents Start-->
 	<section class="Contents">
@@ -53,10 +26,10 @@
 				<nav>
 					<br>
 					<ul class="list">
-						<li><a class="B" th:href="@{/mypage/userupdate}" target="_self">- 내정보 수정</a></li> <br>
-						<li><a class="A" th:href="@{/mypage/savelist}" target="_self">- 관심 목록</a></li> <br>
-						<li><a class="C" th:href="@{/mypage/authn}" target="_self">- 관계자 인증</a></li><br>
-						<li><a class="R" th:href="@{/mypage/mypage4}" target="_self">- 내 글 관리</a></li> <br>
+						<li><a class="B" th:href="@{/userupdate}" target="_self">- 내정보 수정</a></li> <br>
+						<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
+						<li><a class="C" th:href="@{/authn}" target="_self">- 관계자 인증</a></li><br>
+						<li><a class="R" th:href="@{/mypage4}" target="_self">- 내 글 관리</a></li> <br>
 					</ul>
 				</nav>
 			</div>
@@ -94,9 +67,9 @@
 				</div>
 
 				<div class="down">
-					<br><br> <br>
-					<hr> <br>
-					<a href="http://localhost:8085/login/bye" class="bye">회원탈퇴하기</a><br>
+					<br><br> 
+					<hr> 
+					<a th:href="@{/bye}" class="bye">회원탈퇴하기</a><br>
 				</div>
 			</div>
 			<!-- content-list End -->
@@ -105,60 +78,9 @@
 	<!-- tagAndContent End-->
 
 
-
-	<!-- footer start -->
-	<footer class="footer">
-		<div class="footer-first">
-			<div class="link-list">
-				<a href="#">기업행사</a>
-				<a href="#">예술인 펀딩</a>
-				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
-				<a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
-				<a th:href="@{http://localhost:8085/mypage/notice}">공지사항</a>
-			</div>
-		</div>
-
-		<div class="footer-third">
-			<div class="link-title">서비스 이용 문의</div>
-			<div>채팅상담 (평일 10:00~17:00)</div>
-			<div>사업 제휴 문의 whiosemail@event-tree.kr</div>
-		</div>
-
-		<div class="footer-four">
-			<div class="link-title company">EVENTREE</div>
-			<div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
-			<div>통신판매업 신고번호 제0000-0000-0000호</div>
-			<div>대표 신유경 | 개인정보책임자 DB관리자</div>
-			<div>광주특별시 광산구 무진대로 무역회관 7층</div>
-			<!-- <div class="warning">
-                이벤트리는 통신판매중개자이며 행사에 대한 당사자 및 주최자가 아닙니다. 따라서 이벤트리는 등록된 행사에 대해 책임지지 않습니다
-            </div> -->
-		</div>
-
-		<div class="footer-second">
-			<div class="link-list">
-				<a href="#">서비스 이용 약관</a>
-				<a href="#">개인정보처리방침</a>
-				<a href="#">이메일 주소 무단수집 거부</a>
-
-			</div>
-		</div>
+	<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
 
-
-		<div class="footer-down">
-			<div class="copyright">
-				ⓒ 2024. EVENTREE All Rights Reserved.
-			</div>
-			<div class="sns">
-				<a href="#"> <img th:src="@{/images/icons/kakao.png}" alt="Kakao Icon"></a>
-				<a href="#"> <img th:src="@{/images/icons/naver blog.png}" alt="Naverblog Icon"></a>
-				<a href="#"> <img th:src="@{/images/icons/twitterX.png}" alt="Twitter Icon" /></a>
-				<a href="#"> <img th:src="@{/images/icons/instagram.png}" alt="Instagram Icon"></a>
-				<a href="#"> <img th:src="@{/images/icons/youtube.png}" alt="Youtube Icon"></a>
-			</div>
-		</div>
-	</footer>
 	<script>
 		// 닉네임 변경 관련 코드
 		const changeBtn = document.getElementById('changeBtn');

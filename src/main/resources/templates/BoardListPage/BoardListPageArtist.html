@@ -11,9 +11,9 @@
 </head>
 <body>
 
-	<header>
-	
-    </header>
+
+	<div th:replace="~{/Fragment/header :: headerFragment}"></div>
+
 
     <section class="img-slider">
         <div class="slider">
@@ -72,9 +72,10 @@
     
             <div class="board-content">
 
-                <div class="carousel-box" th:each="post : ${posts}">
+                <div class="carousel-box" th:each="post, index: ${posts}">
                 	<input type="hidden" th:text="${post.postID}">
                 	<input type="hidden" id="categoryID" th:value="${categoryID}" />
+                    <img th:src="${imageLinks[__${index.index}__]}">
                     <div th:text="${post.eventStart}"></div>
                     <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
              <!--        <div class="space-between">
@@ -85,7 +86,9 @@
             </div>
 
             <div class="write-btn">
-                <button>프로젝트 개설</button>
+                <a th:href="@{/board/register/new/2}">
+                    <button>프로젝트 개설</button>
+                </a>
             </div>
     
       <div class="pagination" th:if="${!posts.isEmpty()}">
@@ -121,59 +124,11 @@
 
     </section>
 
-    <footer class="footer">
+    <div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
-        <div class="footer-first">
-            <div class="link-list">
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">공지사항</a>
-            </div>
-        </div>
 
-        <div class="footer-third">
-            <div class="link-title">서비스 이용 문의</div>
-            <div>채팅상담 (평일 10:00~17:00)</div>
-            <div>사업 제휴 문의 whiosemail@event-tree.kr</div>         
-        </div>
+	<script th:src="@{/js/BoardListPageArtist.js}"></script>
 
-        <div class="footer-four">
-            <div class="link-title company">EVENTREE</div>
-            <div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
-            <div>통신판매업 신고번호 제0000-0000-0000호</div>
-            <div>대표 신유경 | 개인정보책임자 DB관리자</div>
-            <div>광주특별시 광산구 무진대로 무역회관 7층</div>
-
-        </div> 
-        
-        <div class="footer-second">
-            <div class="link-list">
-                <a href="#">서비스 이용 약관</a>
-                <a href="#">개인정보처리방침</a>
-                <a href="#">이메일 주소 무단수집 거부</a>
-            </div>         
-        </div>
-        
-        
-
-        <div class="footer-down">
-            <div class="copyright">
-                ⓒ 2024. EVENTREE All Rights Reserved.
-            </div>
-            <div class="sns">
-                <a href="#">X</a>
-                <a href="#">인스타</a>
-                <a href="#">카카오톡</a>
-                <a href="#">유튜브</a>
-            </div>
-
-        </div>
-
-    </footer>
-
-	<script  th:src="@{/js/BoardListPageArtist.js}"></script>
 </body>
 
 </html>
