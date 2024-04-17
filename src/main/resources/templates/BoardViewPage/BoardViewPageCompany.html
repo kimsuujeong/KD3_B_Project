@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoardViewPageCompany</title>
+    <title>BoardViewPageArtist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
-  	<link rel="stylesheet" th:href="@{/css/BoardViewPageArtist.css}">
+  	<link rel="stylesheet" th:href="@{/css/BoardViewPageCompany.css}">
 </head>
 <body>
     <!-- header Start -->
@@ -17,7 +17,7 @@
             <div class="container">
                 <!-- logo -->
                 <a href="#" class="logo">
-                    <img src="../../static/images/logo-01.png" alt="">
+					<img th:src="@{/images/logo-01.png}" alt="">
                 </a>
                 <div>
                     <form action="" class="search-bar">
@@ -26,140 +26,225 @@
                     </form>
                 </div>
                 <div class="link1">
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">관심목록</a>
+                    <!-- 로그인 했을때 th로 연결해둠 -->
+                    <!-- Check if user is logged in -->
+                    <th:block th:if="${session['loggedInUser'] == null}">
+                        <a href="/login">로그인</a>
+                        <a href="/joinForm">회원가입</a>
+                        <a href="#">관심목록</a>
+                    </th:block>
+                    <!-- Check if user is logged out -->
+                    <th:block th:if="${session['loggedInUser'] != null}">
+                        <a href="/mypage/userupdate" class="mypage"><span>OO</span>님 안녕하세요</a>
+                        <a href="/savelist">관심목록</a>
+                        <a href="/logout">로그아웃</a>
+                    </th:block>
                 </div>
             </div>
 
             <!-- category -->
             <div class="category">
-                <div class="category-list">
-                    <span>카테고리</span>
-                    <div class="fas fa-solid fa-chevron-down"></div>
-
-                    <!-- dropdown menu -->
-                <ul class="dropdown">
-                    <li><a href="#">컨퍼런스</a></li>
-                    <li><a href="#">세미나</a></li>
-                    <li><a href="#">펀딩</a></li>
-                </ul>
-                </div>
                 <a href="#">기업행사</a>
                 <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">행사개설</a>
+				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+				<a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
+                <a href="#">공지사항</a>
             </div>
         </nav>
     </header>
     <!-- header End -->
 
-
-
-    <!-- background img Start -->
-    <section>
-        <div class="background-img"></div>
-    </section>
-    <!-- background img End -->
-
-
+    <div class="empty"></div>
 
     <!-- contents Explain Start -->
-    <section>
-        <div class="trapezoid">
+    <section class="contents-explain">
+        <div class="explain-container">
+            
+            <div class="box-1">
+                <div class="content-tittle" th:text="${post.postName}"></div>
+                <div class="visit-cnt">조회수<span>81</span></div>
+            </div>
 
-        </div>
+            <div class="box-2">
+                <div class="write-user">작성자이름임</div>
+                <div class="write-date">마지막 수정날짜가 보이겠지</div>
+            </div>
 
-        <div class="explain">
-            <div class="tag">
+            <div class="content-post">
+                <img src="../../static/images/ArtistBoardListExam/moviePoster.png" alt="">
+            </div>
+
+            <div class="empty"></div>
+
+            <div class="explain-content">
+                <div id="purpose">
+                    <div class="explain-story" th:text="${post.content}"></div>
+                </div>
+
 
             </div>
-            <div class="explain-title"></div>
-            <div class="visit-cnt"></div>
 
-            
+            <!-- <div class="explain-content">
+                <div id="purpose" class="short">
+                    <div class="explain-story" th:text="${post.content}"></div>
+                </div>
+
+                <button type="button" id="buttonDetail">더보기</button>
+
+            </div> -->
+
+            <!-- artist info End -->
+
+            <!-- <div class="more-btn-box">
+                <div class="more-btn">
+                    프로젝트 설명 더보기<i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div> -->
         </div>
 
+        
+
+        <div class="user-container">
+
+            <div class="edit-btn">
+                <button>게시글 수정하기</button>
+                <button>게시글 삭제하기</button>
+    
+            </div>
+
+            <div class="fundinfobox">
+                
+                <div class="title">
+                    <div class="content-tittle" th:text="${post.postName}"></div>
+                </div>
+                <div class="fundperiod">
+                    <span class="time-explain">펀딩 기간</span><br><br><span id="evtStart" th:text="${post.eventStart}"></span>&nbsp;&nbsp;~ &nbsp;&nbsp;<span id="evtEnd" th:text="${post.eventEnd}"></span>
+                </div>  
+                <div class="fundinfo-btnbox">
+                    <div class="like-btn">
+                        <i class="fa-regular fa-heart"></i>
+                        <div class="like-cnt">81</div>
+                    </div>
+                    <div class="gofund-btn">
+                        <a href="#">이 행사에 참가하기</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
     <!-- contents Explain End -->
-    
-    
 
-    <!-- editors pick content -->
-    <section class="editors-pick">
-        <div class="bordelist">
-            <div>이런 행사는 어떠세요?</div>
-            <div class="bordelist-explain">
-                현재 행사와 비슷한 행사를 선별했어요!
-            </div>
+    
+    <div class="empty"></div>
+
+
+    
+<!-- editors pick content -->
+<section class="editors-pick">
+    <div id="recommendation" class="bordelist">
+        <div>이런 행사는 어떠세요?</div>
+        <div class="bordelist-explain">
+            현재 행사정보와 비슷한 행사목록를 선별했어요!
         </div>
+    </div>
+    
+    <div class="readmore">
+        <a href="#">
+            <span>더 많은 행사목록 보기 </span><i class="fa-solid fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+
+
+<!-- scroll content -->
+<section class="scroll-content">
+    <div class="wrapper">
+        <div class="carousel">
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-1.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
         
-        <div class="readmore">
-            <a href="#">
-                <span>더 많은 행사 보기 </span><i class="fa-solid fa-angle-right"></i>
-            </a>
-        </div>
-    </section>
-
-
-    <!-- scroll content -->
-    <section class="scroll-content">
-        <div class="wrapper">
-            <!-- <i class="fa-solid fa-angle-left"></i> -->
-            <div class="carousel">
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-1.png" alt="img">
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-2.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-2.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-4.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-5.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-7.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-8 .png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-9 .png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-
+                </a>
             </div>
-            <!-- <i class="fa-solid fa-angle-right"></i> -->
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-3.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-4.png}" alt="img">
+                <div class="startDate">03월 27일 (수)</div>
+                <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-5.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
+                <div class="startDate">03월 27일 (수)</div>
+                <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-7.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-8.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-9.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>                    
+            </div>
+
         </div>
-    </section>
 
+    </div>
+</section>
 
+<div class="empty"></div>
+
+<!-- page up btn -->
+<!-- <div class="up-btn">
+    <a href="#"><i class="fa-solid fa-angle-up"></i></a>
+</div> -->
 
     <!-- footer start -->
     <footer class="footer">
@@ -217,6 +302,6 @@
     </footer>
 
 
-<script src="js/BoardViewPageCompany.js"></script>
+<script th:src="@{/js/BoardViewPageCompany.js}"></script> 
 </body>
 </html>

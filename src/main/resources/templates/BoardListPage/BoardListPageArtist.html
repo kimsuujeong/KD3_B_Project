@@ -12,55 +12,7 @@
 <body>
 
 	<header>
-		<nav>
-            <div class="container">
-
-                <a href="#" class="logo">
-                    <img src="../../static/images/logo-01.png" alt="">
-                </a>
-                <div>
-                    <form action="" class="search-bar" th:data-uri="@{|/board/{categoryID}/search|}">
-                    	<input type="hidden" id="categoryID" th:value="${categoryID}" />
-                        <input type="text" placeholder="참여하고 싶은 행사나 프로젝트를 검색해보세요" name="keyword" id="keyword">
-                        <div class="fas fa-search" name="btnSearch" id="search-btn"></div>
-                     	<div class="w100" style="padding-right:10px">
-							<select class="form-control form-control-sm" name="searchType" id="searchType">
-								<option value="postName">제목</option>
-								<option value="content">본문</option>
-								<option value="authorName">작성자</option>
-							</select>
-						</div>
-                    </form>
-                </div>
-                <div class="link1">
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">관심목록</a>
-                </div>
-            </div>
-
-
-            <div class="category">
-              
-                <div class="category-list">
-                    <span>카테고리</span>
-                    <div class="fas fa-solid fa-chevron-down"></div>
-
- 
-                <ul class="dropdown">
-                    <li><a href="#">컨퍼런스</a></li>
-                    <li><a href="#">세미나</a></li>
-                    <li><a href="#">펀딩</a></li>
-                </ul>
-                </div>
-                <a th:href="@{|/board/1|}">기업행사</a>
-                <a th:href="@{|/board/2|}">예술인 펀딩</a>
-
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">행사개설</a>
-            </div>
-        </nav>
+	
     </header>
 
     <section class="img-slider">
@@ -107,80 +59,6 @@
 
     <section class="tagAndContent">
 
-        <div class="filter-reset">
-            <div class="filter-announcement">
-                <div class="filter-tag">필터 태그</div>
-                <a href="#">태그 초기화</a>
-            </div>
-
-            <div class="select-tag">
-                <div class="time-tag">
-                    <div class="time-btn bold">일시</div>
-                    <input type="radio" name="time" value="time-1" checked><span>모든 날</span>
-                    <br>
-                    <input type="radio" name="time" value="time-2"><span>오늘</span>
-                    <br>
-                    <input type="radio" name="time" value="time-3"><span>이번주</span>
-                    <br>
-                    <input type="radio" name="time" value="time-4"><span>이번달</span>
-                    <br>
-                    <input type="checkbox" name="time" value="time-5"><span>종료된 펀딩</span>
-                </div><br>
-                
-                <div class="genre-tag">
-                    <div class="genre-btn bold">장르</div>
-                    <input type="checkbox" name="genre" value="genre-1"><span>액션</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-2"><span>범죄</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-3"><span>SF</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-4"><span>코미디</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-5"><span>로맨스</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-6"><span>스릴러</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-7"><span>공포</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-8"><span>전쟁</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-9"><span>스포츠</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-10"><span>판타지</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-11"><span>음악/뮤지컬</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-12"><span>애니메이션</span>
-                    <br>
-                    <input type="checkbox" name="genre" value="genre-13"><span>추리</span>
-                </div> <br>
-
-                <div class="form-tag">
-                    <div class="form-btn bold">형식 및 양식</div>
-                    <input type="checkbox" name="form" value="form-1"><span>무성</span>
-                    <br>
-                    <input type="checkbox" name="form" value="form-2"><span>흑백</span>
-                    <br>
-                    <input type="checkbox" name="form" value="form-3"><span>단편</span>
-                    <br>
-                    <input type="checkbox" name="form" value="form-4"><span>장편</span>
-                    <br>
-                </div><br>
-
-
-                <div class="benefits-tag">
-                    <div class="benefits-btn bold">투자혜택</div>
-                    <input type="checkbox" name="benefits" value="benefits-1"><span>고정수익</span>
-                    <br>
-                    <input type="checkbox" name="benefits" value="benefits-2"><span>손익분배</span>
-                    <br>
-                    <input type="checkbox" name="benefits" value="benefits-3"><span>혜택지급</span>
-                    <br>
-                </div><br>
-            </div>
-        </div>
-
         <div class="content-list">
             <div class="search-result">
                 <div><span class="content-cnt" th:text="${posts.getTotalElements()}"></span><span>개의 행사가 검색되었습니다</span></div>
@@ -221,7 +99,7 @@
 -->
 					<li class="page-item" th:classappend="${!posts.hasPrevious} ? 'disabled'">
 						<a class="page-link" th:href="@{|?page=${posts.number-1}|}">
-						    <button class="btn1"><i class="fa-solid fa-angle-left"></i>이전</button>
+						    <button class="btn1"><i class="fa-solid fa-angle-left"></i></button>
 						</a>
 					</li>
 					<li th:each="page: ${#numbers.sequence(0, posts.totalPages-1)}"
@@ -232,7 +110,7 @@
 					</li>
 					<li class="page-item" th:classappend="${!posts.hasNext} ? 'disabled'">
 						<a class="page-link" th:href="@{|?page=${posts.number+1}|}">
-							<button class="btn2">다음<i class="fa-solid fa-angle-right"></i></button>
+							<button class="btn2"><i class="fa-solid fa-angle-right"></i></button>
 						</a>
 					</li>
                 </ul>
@@ -295,7 +173,7 @@
 
     </footer>
 
-	<script src="js/BoardListPageArtist.js"></script>
+	<script  th:src="@{/js/BoardListPageArtist.js}"></script>
 </body>
 
 </html>

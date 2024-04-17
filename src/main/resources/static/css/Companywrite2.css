@@ -96,6 +96,10 @@ h1 {
     margin-right: 4rem;
 }
 
+.line > .end{
+    margin: 0;
+}
+
 .line > .middle{
    border : none;
 }
@@ -114,4 +118,16 @@ select {
 }
 #one{
     width: 40vw;
+}
+
+.write-next-btn{
+    margin-top: 4rem;
+    background-color: var(--green-color);
+    width: 14rem;
+    height: 5rem;
+    border-radius: 10px;
+    color: var(--white-color);
+    font-size: 1.8rem;
+    font-weight: 500;
+    cursor: pointer;
 }
