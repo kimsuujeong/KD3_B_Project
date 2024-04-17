@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.user.User;
+import com.example.demo.post.ImageFile;
 
 @Repository
 public class FileMapper {
@@ -48,6 +47,19 @@ public class FileMapper {
 		String path=session.selectOne("getPathFileID", fileID);
 		String name=session.selectOne("getNameFileID", fileID);
 		return path+"/"+name;
+	}
+
+	// board에 image 파일
+	public void insertImFile(ImageFile fileInfo) {
+		session.insert("insertImageFile",fileInfo);
+	}
+
+	public Integer findImageFileID(String saveName) {
+		return session.selectOne("findImageFileID", saveName);
+	}
+
+	public String getSaveNameFileID(Integer fileID) {
+		return session.selectOne("getsaveNameByFileID", fileID);
 	}
 
 	

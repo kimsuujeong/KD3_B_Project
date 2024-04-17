@@ -48,5 +48,20 @@
 		select oriName from file
 		where fileID=#{fileID}
 	</select>
+	
+	<select id="getsaveNameByFileID" resultType="string">
+		select saveName from file
+		where fileID=#{fileID}
+	</select>
 
+	<!-- board에 이미지 파일 -->
+	<insert id="insertImageFile">
+		INSERT INTO image (path, oriImName,saveImName,userID, createDate)
+		VALUES (#{path}, #{oriImName}, #{saveImName},#{userID} , now())
+	</insert>
+	<select id="findImageFileID">
+		select imageID from image
+		where saveImName=#{saveImName}
+	</select>
+	
 </mapper>
