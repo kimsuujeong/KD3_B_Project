@@ -23,22 +23,26 @@
 		WHERE b.category_categoryID = #{categoryID}
 	</select>
 	<!-- find userID board -->
-	<select id="findByPostId"
-		resultType="com.example.demo.board.Board" parameterType="int">
-		SELECT b.*, u.userID, c.categoryName
-		FROM board b
-		JOIN user u ON u.userID =
-		b.user_userID
-		JOIN category c ON c.categoryID = b.category_categoryID
-		WHERE b.postID = #{postID}
+	<select id="getPostById"
+		resultType="com.example.demo.board.Board" >
+		SELECT b.*, u.userID as userID, c.categoryID,c.categoryName
+		
+	    FROM board b
+	    left JOIN user u ON u.userID = b.user_userID
+	    left JOIN category c ON c.categoryID = b.category_categoryID
+	    WHERE b.postID = #{postID} 
+		<!-- select postID,authorName,authorLink,postName,content,visitCnt, 
+		writeDate,endDate,eventStart,eventEnd,user_userID,
+		category_categoryID,fileID,costID
+		from board where postID=#{postID} -->
 	</select>
 
 	<!-- post write -->
 	<insert id="insert_post" parameterType="com.example.demo.board.Board">
 		INSERT INTO board (postName, content, authorName, authorLink, user_userID,
-		category_categoryID, eventStart, eventEnd, writeDate, visitCnt)
+		category_categoryID, eventStart, eventEnd, writeDate, visitCnt,fileID,costID)
 		VALUES (#{postName}, #{content}, #{authorName}, #{authorLink},
-		#{user.userID}, #{category.categoryID}, #{eventStart}, #{eventEnd}, NOW(), #{visitCnt})
+		#{userID}, #{categoryID}, #{eventStart}, #{eventEnd}, NOW(), #{visitCnt},#{fileID},#{costID})
 	</insert>
 	
 	<!-- post delete -->
@@ -48,7 +52,10 @@
 
 	<!-- post update -->
 	<update id="update_post" parameterType="com.example.demo.board.Board">
-		update board set postName = #{postName}, content = #{content}, endDate = NOW()
+		update board 
+		set postName = #{postName}, content = #{content}, endDate = NOW(),
+		authorLink=#{authorLink},eventStart=#{evenetStart}, eventEnd=#{eventEnd},
+		costID=#{costID}
 		where postID = #{postID}
 	</update>
 
@@ -61,8 +68,16 @@
 		where category_categoryID = #{categoryID};
 	</select>
 	
+	<select id="getImageFile">
+		select * from image
+		where imageID = #{fileID};
+	</select>
 
-		
+	<select id="getPostByLikeID">
+		select * from board
+		where postID=#{postID}
+	</select>
+	
 	<!-- search post -->
 	<select id="searchCtg" resultType="com.example.demo.board.Board">
 		select b.*,c.categoryID

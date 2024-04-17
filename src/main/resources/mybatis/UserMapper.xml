@@ -29,4 +29,34 @@
 		where userID = #{userID}
 	</insert>
 
+<!-- 회원 탈퇴 -->
+	<delete id="deleteUser">
+		delete from user
+		where userID=#{userID}
+	</delete>
+	<delete id="deletePostUser" >
+		delete from board 
+		where user_userID=#{userID}
+	</delete>
+	<delete id="deleteFileUser" >
+		delete from file 
+		where user_userID=#{userID}
+	</delete>
+	<delete id="deleteImageUser" >
+		delete from image
+		where userID=#{userID}
+	</delete>
+	<delete id="deleteLikeUser" >
+		delete from like
+		where userID=#{userID}
+	</delete>
+	<delete id="deleteAuthReqUser" >
+		delete from authrequest 
+		where userID=#{userID}
+	</delete>
+	<delete id="deleteAuthedUser" >
+		delete from authorizeduser
+		where user_userID=#{userID}
+	</delete>
+	
 </mapper>

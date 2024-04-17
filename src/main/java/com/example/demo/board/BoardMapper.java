@@ -12,6 +12,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.post.ImageFile;
+
 @Repository
 public class BoardMapper {
 
@@ -30,8 +32,8 @@ public class BoardMapper {
 		return sqlSession.selectList("findByCategoryId", categoryId, rowBounds);
 	}
 
-	public Board findPostById(Integer postId) {
-		return sqlSession.selectOne("findByPostId", postId);
+	public Board getPostById(Integer postId) {
+		return sqlSession.selectOne("getPostById", postId);
 	}
 
 //	Board findById(@Param("postID") Integer postID) {
@@ -57,15 +59,6 @@ public class BoardMapper {
 		return new PageImpl<>(content, page, total);
 	}
 
-	public Page<Board> search(@Param("search") Search search, Pageable pageable){
-		int offset = pageable.getPageNumber() * pageable.getPageSize();
-		RowBounds rowBounds = new RowBounds(offset, pageable.getPageSize());
-		List<Board> searchResults = sqlSession.selectList("search", search, rowBounds);
-		int total = sqlSession.selectOne("countSearchResults", search);
-		
-		return new PageImpl<>(searchResults, pageable, total);
-	}
-	
 	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable) {
 		int offset = pageable.getPageNumber() * pageable.getPageSize();
 		RowBounds rowBounds = new RowBounds(offset, pageable.getPageSize());
@@ -75,5 +68,13 @@ public class BoardMapper {
 	    		Map.of("categoryID", categoryID, "search", search, "order", order));
 
 		return new PageImpl<>(searchCResults, pageable, total);
+	}
+
+	public ImageFile getImageFile(Integer fileID) {
+		return sqlSession.selectOne("getImageFile", fileID);
+	}
+
+	public Board getPostByLikeID(Integer postID) {
+		return sqlSession.selectOne("getPostByLikeID", postID);
 	}
 }

@@ -11,8 +11,8 @@ public class UserServiceImpl implements UserService {
 	
 
 	@Override
-	public User Login(String userID) {
-		return userMapper.Login(userID);
+	public User Login(String userID, String password) {
+		return userMapper.Login(userID, password);
 	}
 
 	@Override
@@ -29,6 +29,17 @@ public class UserServiceImpl implements UserService {
 	public int Update(String pwNew, String pwEmail) {
 		// TODO Auto-generated method stub
 		return userMapper.Update(pwNew, pwEmail);
+	}
+
+	@Override
+	public void deleteUser(String userID) {
+		userMapper.deletePostUser(userID);
+		userMapper.deleteFileUser(userID);
+		userMapper.deleteImageUser(userID);
+		userMapper.deleteLikeUser(userID);
+		userMapper.deleteAuthReqUser(userID);
+		userMapper.deleteAuthedUser(userID);
+		userMapper.deleteUser(userID);
 	}
 
 

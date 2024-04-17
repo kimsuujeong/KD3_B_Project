@@ -16,8 +16,8 @@ public class AdminMapper {
 	SqlSession session;
 
 	// 관리자 확인
-	public AuthorizedUser adminCheck(String userID) {
-		return session.selectOne("admincheck", userID);
+	public List<AuthorizedUser> adminCheck(String userID) {
+		return session.selectList("admincheck", userID);
 	}
 
 	// 모든 신청리스트 -- 이제 안씀
