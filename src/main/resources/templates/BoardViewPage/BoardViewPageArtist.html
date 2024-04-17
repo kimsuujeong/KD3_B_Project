@@ -3,57 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoardViewPageArtist</title>
+    <title>BoardViewPageCompany</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
   	<link rel="stylesheet" th:href="@{/css/BoardViewPageArtist.css}">
 </head>
 <body>
-    <!-- header Start -->
-    <header class="header">
 
-        <nav class="navbar">
-            <!-- upper (logo, searchbar, login, acount, likelist) -->
-            <div class="container">
-                <!-- logo -->
-                <a href="#" class="logo">
-                    <img src="../../static/images/logo-01.png" alt="">
-                </a>
-                <div>
-                    <form action="" class="search-bar">
-                        <input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
-                        <div class="fas fa-search" id="search-btn"></div>
-                    </form>
-                </div>
-                <div class="link1">
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">관심목록</a>
-                </div>
-            </div>
-
-            <!-- category -->
-            <div class="category">
-                <div class="category-list">
-                    <span>카테고리</span>
-                    <div class="fas fa-solid fa-chevron-down"></div>
-
-                    <!-- dropdown menu -->
-                <ul class="dropdown">
-                    <li><a href="#">컨퍼런스</a></li>
-                    <li><a href="#">세미나</a></li>
-                    <li><a href="#">펀딩</a></li>
-                </ul>
-                </div>
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">공지사항</a>
-            </div>
-        </nav>
-    </header>
-    <!-- header End -->
+    <div th:replace="~{/Fragment/header :: headerFragment}"></div>
 
     <!-- contents Explain Start -->
     <section class="contents-explain">
@@ -61,18 +18,23 @@
             
             <div class="box-1">
                 <div class="content-tittle" th:text="${post.postName}"></div>
-            <div class="visit-cnt">조회수<span>81</span></div>
+            <div class="visit-cnt" >조회수<span th:text="${post.visitCnt}"></span></div>
             </div>
 
-            <div class="tag-container">
+            <!-- <div class="tag-container">
                 <div class="tag">#예술인펀딩</div>
                 <div class="tag">#손익분배</div>
                 <div class="tag">#공포</div>
                 <div class="tag">#판타지</div>
+            </div> -->
+
+            <div class="box-2">
+                <div class="write-user" th:text="${post.authorName}">작성자이름임<span th:text="${post.authorName}"></span></div>
+                <div class="write-date" th:text="${post.endDate}">마지막 수정날짜<span th:text="${post.endDate}"></span></div>
             </div>
 
             <div class="content-post">
-                <img src="../../static/images/ArtistBoardListExam/moviePoster.png" alt="">
+                <img th:src="${image}" alt="">
             </div>
 
             <!-- move positon tag Start -->
@@ -80,11 +42,11 @@
                 <a href="#purpose" class="select-explan-position">프로젝트 소개</a>
                 <a href="#artist-info">예술인 정보</a>
                 <a href="#contact">문의하기</a>
-                <form name="form1" method="post" action="/like/insert">
+                <!-- <form name="form1" method="post" action="/like/insert">
 					<input type="hidden" name="postID" th:value="${postID}">                  
 			    	<button type="submit" class="like">♥</button>
 			    	<a href="#recommendation">추천</a>
-				</form>
+				</form> -->
                 
             </div>
             <!-- move positon tag End -->
@@ -94,98 +56,13 @@
                     <div class="explain-tittle">
                         | 프로젝트 소개
                     </div>
-                    <div class="explain-story"  th:text="${post.content}"></div>
+                    <div class="explain-story"  th:utext="${post.content}"></div>
                 </div>
                 <div id="budget">
                     <div class="explain-tittle">
                         | 프로젝트 예산
                     </div>
-                    <div class="explain-story">
-                        이쪽에 글과 이미지가 들어감
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe repudiandae, impedit dicta beatae excepturi dolore. Fuga itaque asperiores magnam voluptas corporis. Amet eligendi et distinctio fuga magnam nihil quod quos!
-                        Necessitatibus ex dolor quibusdam culpa accusamus, corporis totam fugit exercitationem eaque provident mollitia enim asperiores eius quis at voluptate odit deleniti officiis amet? Molestiae quisquam, corrupti fuga placeat minus voluptates.
-                        Ad vitae nisi, nobis omnis accusamus quia? Quidem accusamus maxime expedita magni laboriosam consequuntur ratione ullam deserunt. Magnam error, minima, aut cumque suscipit voluptatibus consequuntur, qui voluptatum facilis rerum voluptate?
-                        Deserunt sint placeat totam consequatur autem, eveniet reiciendis dolorem laboriosam soluta tempore. Quibusdam modi, iure culpa, blanditiis at deserunt cum sint labore perferendis saepe voluptatum dolorem consectetur error. Ipsa, optio.
-                        Excepturi, iste tempora neque maiores ullam nemo nisi distinctio quaerat quisquam natus minus sequi voluptatibus corporis incidunt eos nobis doloremque, nam impedit fugit nesciunt laudantium! Suscipit unde omnis dolorem nam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi iste illum perspiciatis, quidem obcaecati enim totam. Veritatis, id explicabo veniam suscipit aliquid incidunt nisi accusantium, atque nihil commodi quibusdam eius!
-                        Aspernatur vero dignissimos dolor fuga est quidem maxime voluptatum assumenda nobis similique accusantium autem necessitatibus suscipit, minus consequatur placeat dolorum ipsam praesentium. Maiores veniam vel dolores illo vitae officia delectus!
-                        Accusantium similique esse assumenda explicabo soluta ea nam natus, aperiam dignissimos eos, a voluptatem numquam vero facilis enim, voluptate voluptas velit distinctio rerum eaque quia quam eius sit? Doloremque, officiis.
-                        Officiis earum sed optio quod molestias consequuntur, molestiae doloremque quo cum cupiditate illo quisquam dolores, possimus eaque blanditiis nostrum maxime id suscipit! Voluptas mollitia voluptate totam ea, harum possimus dignissimos!
-                        Aliquid beatae eaque quo similique repudiandae voluptate unde aperiam accusamus debitis ea perferendis voluptatum, laudantium distinctio. Perspiciatis qui quidem rem aspernatur est eligendi explicabo quisquam ipsa corrupti, excepturi voluptas praesentium!
-                        Autem, assumenda omnis? Rem ad voluptatibus impedit architecto accusantium vero alias necessitatibus delectus ratione. Consectetur molestiae nesciunt perferendis laudantium. Eveniet fugit et officiis labore ipsum quae cupiditate deleniti facere cum?
-                        Ut nulla, cumque asperiores temporibus commodi architecto molestias vitae eius explicabo soluta unde ipsam numquam, ex quibusdam ratione sit officiis totam iusto rem. Impedit culpa architecto quidem. Natus, esse quia.
-                        Eveniet ipsum eos, officia quo deserunt laborum perferendis, quas aut saepe porro dolorem veritatis expedita! Laudantium quae dolorem non officiis aliquam! Voluptas libero dicta eos eius aspernatur hic amet. Dolor?
-                        Pariatur blanditiis ipsum illo. Delectus consequuntur commodi ex quae autem expedita, eius, pariatur soluta aliquid voluptate rem maiores praesentium. Tempore, culpa esse? Voluptatibus deserunt beatae, aliquid delectus dolorem est ratione.
-                        Id vitae exercitationem in odit voluptas velit adipisci aperiam molestiae nemo sapiente rerum neque quibusdam numquam consequatur, impedit accusamus maxime quae ipsa provident. Non libero, est aliquid aspernatur maiores ducimus.
-                    </div>
-                </div>
-                <div id="schedule">
-                    <div class="explain-tittle">
-                        | 프로젝트 일정
-                    </div>
-                    <div class="explain-story">
-                        이쪽에 글과 이미지가 들어감
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus cumque voluptatibus distinctio omnis laboriosam sed perferendis, tempora et sapiente praesentium soluta cupiditate alias aperiam totam tempore nemo placeat voluptatum magnam.
-                        Cum ratione possimus dicta nostrum, suscipit neque magni tenetur quidem eius, similique quo totam esse animi quibusdam nihil voluptas officiis. Pariatur aspernatur facere tempore obcaecati impedit a, quasi assumenda maxime!
-                        Repellat tempora, consectetur, est cupiditate adipisci atque tenetur libero ad hic omnis veritatis at! Ullam temporibus natus deleniti laborum esse excepturi repellendus officiis dicta rem, alias consectetur architecto ipsum cupiditate!
-                        Illo natus, quisquam nulla saepe incidunt facere neque libero ut et est, quo exercitationem maiores vero accusamus eum porro, odio aliquam! Illo nam praesentium, eveniet cupiditate aspernatur at omnis minima.
-                        Minus, soluta laudantium? Laboriosam ex a fuga dolores harum placeat quaerat facilis officia ab obcaecati. Maxime obcaecati voluptatem amet a! Alias maiores vel dolores dolorem minus ad error blanditiis velit.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias libero laboriosam dolor placeat voluptate! Reiciendis minima velit assumenda animi alias ea quas eaque? Dolorum assumenda consectetur deleniti maxime tempore deserunt.
-                        Magnam quidem dignissimos quo nisi quisquam fugit facilis doloremque incidunt tenetur asperiores ipsa, ex, amet quaerat. Saepe, quos quo deleniti, illum earum esse, distinctio aspernatur ratione sunt ab magnam pariatur!
-                        Unde laudantium eveniet veritatis labore natus ea, velit maxime magni similique cumque, mollitia totam, consectetur delectus? Voluptate quidem dolor fugit suscipit repellendus sequi dicta alias, eveniet voluptas earum consequatur neque.
-                        Deserunt repellat vitae laborum, nulla animi optio ipsam nobis quasi quos. Praesentium voluptatibus quidem maiores harum quibusdam ut impedit, expedita, illo nemo veritatis dolores dicta accusamus repellendus rerum tempora mollitia.
-                        Incidunt porro sit odio illum tempora numquam, quae suscipit impedit necessitatibus! Ab id at magni tempore dignissimos. Excepturi illum quidem, officia delectus voluptatibus accusamus totam? Aperiam officia commodi a suscipit.
-                        Ratione dicta iure reprehenderit, fuga unde earum, aliquid quas corporis totam officiis ab. Sequi, hic dolore voluptatum nemo at quae enim nisi eligendi, quod modi pariatur iure voluptatem eius aperiam?
-                        Officia voluptatibus, iusto, veritatis doloremque consequatur quisquam soluta harum placeat quam ab eos in. Dicta recusandae magni quibusdam ullam unde, aut provident! Omnis aut laudantium exercitationem. Consequatur explicabo dolores nemo!
-                        Accusamus nam recusandae voluptate obcaecati pariatur impedit repellendus dignissimos eaque nisi harum consequatur accusantium dicta, beatae explicabo nesciunt? Maiores delectus quod minus repellat modi, rem quis est distinctio aperiam quas!
-                        Commodi itaque, aliquid asperiores numquam alias sed obcaecati quo deleniti ea omnis harum et quos quas illum voluptas, nam provident laborum neque cum soluta. Magnam ea exercitationem quibusdam sed numquam?
-                        Ea temporibus vero cum? Possimus eos vero at nihil inventore. Voluptates, nihil explicabo. Eaque reiciendis amet aliquam, eveniet facilis odit excepturi quidem blanditiis distinctio voluptate eius minima, quam ipsam possimus.
-                    </div>
-                </div>
-                <div id="introduce">
-                    <div class="explain-tittle">
-                        | 팀 소개
-                    </div>
-                    <div class="explain-story">
-                        이쪽에 글과 이미지가 들어감
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur porro sequi veritatis quibusdam temporibus saepe explicabo quisquam repellendus deserunt laborum officia illo error voluptate facere voluptatibus, corporis minima accusamus reprehenderit?
-                        Aspernatur, suscipit quo! Rem pariatur dolorem, illo perferendis voluptatibus numquam soluta explicabo accusantium quis nam ea, inventore voluptatem consequuntur vel minima aut libero deserunt velit maiores molestiae sapiente, nihil cum?
-                        Quisquam assumenda, natus totam nemo perspiciatis veniam eos? Ipsum tempore laudantium non sunt animi explicabo repellat ab corrupti adipisci voluptatem, impedit, placeat totam at provident optio enim ad dolore cum?
-                        Assumenda voluptates tempora magnam consequatur itaque obcaecati qui ipsum molestiae officiis quisquam deserunt veniam, sunt placeat tenetur autem esse. Atque veritatis minima possimus porro mollitia nulla illo pariatur animi delectus.
-                        Tenetur dolor modi pariatur itaque ad ullam facilis laboriosam voluptatem unde quaerat dolorum incidunt, sit, corporis officia aliquid recusandae aliquam voluptatum molestias odio! Quasi, eos quam neque earum exercitationem reiciendis.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet officia totam dignissimos eum iste quidem alias ut unde, consequuntur asperiores deleniti, voluptatum temporibus doloribus doloremque nobis voluptatibus dolorem veritatis quos!
-                        Totam ratione quibusdam facere quidem non esse temporibus saepe impedit. Ratione voluptatem ipsam nihil veritatis excepturi. Illum possimus voluptas quisquam porro necessitatibus nesciunt totam quo vitae dolorum, quod odio numquam?
-                        Ab minus quia voluptate aut voluptates doloremque pariatur, et commodi modi ipsam, perspiciatis esse velit cumque atque inventore unde natus laudantium quae deserunt dignissimos. Commodi illum beatae accusantium eaque dolore.
-                        Porro temporibus tempora voluptas quae, omnis dolore quod optio obcaecati mollitia unde illum! Quo ducimus quod exercitationem consequuntur deserunt at voluptate laudantium ipsa. Autem voluptatibus esse aliquam. Eius, quis quaerat!
-                        Ipsa amet architecto fugiat reprehenderit id? Recusandae fugit voluptatibus accusamus asperiores labore aspernatur saepe. Cum dicta itaque quae hic voluptates maiores quia aperiam rerum, ut repellat, ipsa natus autem dolores.
-                        Aliquam maiores dicta facilis sapiente cumque obcaecati omnis pariatur eaque delectus quis. Eligendi aut quasi laudantium facilis sed dolor alias unde. Est libero ex quam reiciendis quas in molestiae alias.
-                        Necessitatibus voluptates quidem distinctio corporis velit eum tenetur nemo ducimus, a quae, aspernatur reprehenderit earum id quia unde facere beatae, laborum animi sit quasi aliquam perspiciatis voluptatum? Mollitia, ex quis.
-                        Voluptatum error corporis nesciunt at quisquam reprehenderit nihil deserunt minus provident officia sint facere voluptatibus ea minima beatae hic, dicta officiis molestiae amet natus necessitatibus asperiores quasi assumenda voluptates? Nisi.
-                        Laboriosam cum sint perspiciatis ex, veniam quia odio aliquam pariatur repudiandae voluptatem, id cumque ratione ea tempora enim, quaerat illum nesciunt amet illo autem itaque dolores! Temporibus quo tempore totam.
-                        Possimus non corrupti maiores quis, assumenda consectetur perspiciatis, sed cumque laboriosam recusandae provident. Eum fugiat magnam sunt vel ea officia aliquam quia temporibus quam nostrum deserunt, aspernatur quidem consequatur harum!
-                    </div>
-                </div>
-                <div id="benefit">
-                    <div class="explain-tittle">
-                        | 투자 혜택
-                    </div>
-                    <div class="explain-story">
-                        이쪽에 글과 이미지가 들어감
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima numquam molestiae iure consectetur porro nihil corrupti eaque eius nisi voluptatibus earum voluptate, ab nemo adipisci error iste voluptatum, tenetur distinctio!
-                        Consequuntur rem unde tempora velit maxime alias voluptas iste quod impedit pariatur? Placeat, mollitia, fuga obcaecati doloribus accusantium sit, saepe minus molestiae eaque odio labore maxime id velit corrupti voluptas!
-                        Dicta tempora quos corrupti quam facere, eos dolore ipsa itaque culpa fugiat, delectus minima. Consequatur aliquid temporibus debitis hic, sit voluptates quia suscipit repudiandae quibusdam officia corporis quas, commodi labore?
-                        Molestias, quasi qui nesciunt exercitationem soluta, voluptate hic sint voluptatem amet consectetur unde blanditiis tempore ab laborum fugit ipsa ipsum vero fugiat asperiores quos, quae necessitatibus accusantium repellendus? Dolorem, nulla!
-                        Eum quidem totam, necessitatibus non quam possimus eligendi doloribus laboriosam sit qui officiis impedit ea. Nulla consequatur enim sit. Esse ab dicta sunt ipsum ipsa nulla sit qui eaque ullam.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat et provident similique nemo totam soluta, ullam tempora accusantium. Nostrum excepturi sint possimus soluta molestias. Dicta animi esse voluptates labore culpa.
-                        Quaerat, fugit cumque sapiente repellat amet aspernatur? Quis eos voluptatum quia adipisci cumque distinctio consectetur ullam asperiores! Consequuntur dolorum eveniet, officiis pariatur impedit perferendis laudantium eligendi vitae aut, ab sunt?
-                        Similique atque, temporibus delectus voluptatibus ipsum, amet fugit et aperiam, labore totam illo quam dicta ipsa. Sint ab, sed consectetur quis cum ipsum animi similique minima tempora sunt excepturi corporis.
-                        Nostrum neque harum delectus asperiores minus a rerum sint odio est. Architecto incidunt voluptatum, hic dolores saepe molestias quod reprehenderit error nemo nisi doloremque commodi cupiditate, animi quasi dignissimos nostrum.
-                        Voluptate ullam obcaecati dolor excepturi quia molestiae labore! Eius sequi quas doloremque dolorem hic natus explicabo, distinctio est delectus asperiores esse accusantium illum fugit libero blanditiis suscipit architecto vel. Asperiores?
-                        Explicabo temporibus quaerat eos fugit neque debitis cum! Esse corporis consectetur repudiandae! Accusantium sint voluptatibus delectus, odit tempore distinctio maxime autem tenetur molestias? Rerum officiis possimus quasi explicabo ipsum doloremque.
-                        Quam quaerat harum a commodi ex amet laudantium nulla esse? Quis ea tempora placeat ullam ex temporibus atque. Deserunt dolorem sit fuga ullam incidunt odio dolore sapiente commodi doloribus tempore!
-                        Quaerat, veritatis cupiditate minus architecto commodi explicabo error, recusandae dolorum maiores, beatae iure consequuntur praesentium qui. Minus obcaecati aliquam ex maiores officiis officia quod dolor ad at, ea debitis natus!
-                        Praesentium tempore alias amet, nam vitae mollitia voluptate veritatis corporis reprehenderit eaque fugiat modi maxime atque debitis dolor natus minus animi nisi iste aliquid id. Incidunt voluptates optio iure quo.
-                        Dicta quis voluptates voluptate architecto recusandae deserunt omnis blanditiis veniam. Voluptatum possimus, animi repellat ea eum eos ex esse, veritatis aliquid deserunt adipisci tenetur architecto quia placeat tempore voluptates molestias.
-                    </div>
+                    
                 </div>
             </div>
 
@@ -195,7 +72,7 @@
             <div class="info-title">예술인 정보</div>
             <div class="info-all">
                 <div class="info-content-box">
-                    <div class="profile-img"><img src="../../static/images/profileImg/profile_img_1.png" alt=""></div>
+                    <div class="profile-img"><img th:src="@{/images/profileImg/profile_img_1.png}" alt=""></div>
                     <div class="name-explain">
                         <div class="info-name">예술인이름</div>
                         <div class="info-explain">예술인의 정보가 궁금하다면 포트폴리오를 확인하러 가보세요!</div>
@@ -234,13 +111,21 @@
         </div>
 
         <div class="user-container">
+
+            <th:block th:if="${session['loggedInUser'] != null}">
+                <div th:if="${post.userID == session['loggedInUser'].userID}" class="edit-btn">
+                    <a th:href="@{/board/modify/{postID}(postID = ${post.postID})}" class="edit-btn">게시글 수정하기</a>
+                    <a th:href="@{/board/delete/{postID}(postID = ${post.postID})}" class="edit-btn">게시글 삭제하기</a>
+                </div>
+            </th:block>
+ 
             <div class="fundinfobox">
-                <div class="tag-box">
+                <!-- <div class="tag-box">
                     <div class="tag">#예술인펀딩</div>
                     <div class="tag">#손익분배</div>
                     <div class="tag">#공포</div>
                     <div class="tag">#판타지</div>
-                </div>
+                </div> -->
                 <div class="title">
                     <div class="content-tittle" th:text="${post.postName}"></div>
                 </div>
@@ -253,18 +138,21 @@
                         <a href="#">이 프로젝트 펀딩하러 가기</a>
                     </div>
                     <div class="space-between">
-                        <div class="like-btn">
+                        <!-- <div class="like-btn">
                             <i class="fa-regular fa-heart"></i>
-                            <div class="like-cnt">81</div>
-                        </div>
-                        <div class="share-btn">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </div>
+                            <div class="like-cnt" >찜인데 아직임</div>
+                        </div> -->
+                        <form name="form1" method="post" action="/savelist/insert">
+                            <input type="hidden" name="postID" th:value="${postID}">                  
+                            <button type="submit" class="like">♥관심등록</button>
+                            <!-- <a href="#recommendation">추천</a> -->
+                        </form>
                     </div>
+                    
                 </div>
             </div>
 
-            <div class="userinfo-container">
+            <!-- <div class="userinfo-container">
                 <div class="userinfobox">
                     <div class="profile-img">
                         <img src="../../static/images/profileImg/profile_img_1.png" alt="">
@@ -277,7 +165,7 @@
                     </div>
                 </div>
     
-            </div>
+            </div> -->
             
 
 
@@ -308,9 +196,9 @@
 
 
 <!-- scroll content -->
-<section class="scroll-content">
+<!-- <section class="scroll-content">
     <div class="wrapper">
-        <!-- <i class="fa-solid fa-angle-left"></i> -->
+        <i class="fa-solid fa-angle-left"></i>
         <div class="carousel">
             <div class="carousel-box">
                 <a href="">
@@ -362,9 +250,9 @@
             </div>
 
         </div>
-        <!-- <i class="fa-solid fa-angle-right"></i> -->
+        <i class="fa-solid fa-angle-right"></i>
     </div>
-</section>
+</section> -->
 
 <div class="empty"></div>
 
@@ -373,62 +261,9 @@
     <a href="#"><i class="fa-solid fa-angle-up"></i></a>
 </div> -->
 
-    <!-- footer start -->
-    <footer class="footer">
-
-        <div class="footer-first">
-            <div class="link-list">
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">공지사항</a>
-            </div>
-        </div>
-
-        <div class="footer-third">
-            <div class="link-title">서비스 이용 문의</div>
-            <div>채팅상담 (평일 10:00~17:00)</div>
-            <div>사업 제휴 문의 whiosemail@event-tree.kr</div>         
-        </div>
-
-        <div class="footer-four">
-            <div class="link-title company">EVENTREE</div>
-            <div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
-            <div>통신판매업 신고번호 제0000-0000-0000호</div>
-            <div>대표 신유경 | 개인정보책임자 DB관리자</div>
-            <div>광주특별시 광산구 무진대로 무역회관 7층</div>
-            <!-- <div class="warning">
-                이벤트리는 통신판매중개자이며 행사에 대한 당사자 및 주최자가 아닙니다. 따라서 이벤트리는 등록된 행사에 대해 책임지지 않습니다
-            </div> -->
-        </div> 
-        
-        <div class="footer-second">
-            <div class="link-list">
-                <a href="#">서비스 이용 약관</a>
-                <a href="#">개인정보처리방침</a>
-                <a href="#">이메일 주소 무단수집 거부</a>
-            </div>         
-        </div>
-        
-        
-
-        <div class="footer-down">
-            <div class="copyright">
-                ⓒ 2024. EVENTREE All Rights Reserved.
-            </div>
-            <div class="sns">
-                <a href="#">X</a>
-                <a href="#">인스타</a>
-                <a href="#">카카오톡</a>
-                <a href="#">유튜브</a>
-            </div>
-            <!-- 나중에 sns 로고 이미지로 교체할것 -->
-        </div>
-
-    </footer>
+<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
 
-<script src="js/BoardViewPageArtist.js"></script> 
+<script th:src="@{/js/BoardViewPageArtist.js}"></script> 
 </body>
 </html>

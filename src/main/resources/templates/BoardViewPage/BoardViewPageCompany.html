@@ -3,220 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoardViewPageCompany</title>
+    <title>BoardViewPageArtist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
-  	<link rel="stylesheet" th:href="@{/css/BoardViewPageArtist.css}">
+  	<link rel="stylesheet" th:href="@{/css/BoardViewPageCompany.css}">
 </head>
 <body>
-    <!-- header Start -->
-    <header class="header">
+	
+	<div th:replace="~{/Fragment/header :: headerFragment}"></div>
 
-        <nav class="navbar">
-            <!-- upper (logo, searchbar, login, acount, likelist) -->
-            <div class="container">
-                <!-- logo -->
-                <a href="#" class="logo">
-                    <img src="../../static/images/logo-01.png" alt="">
-                </a>
-                <div>
-                    <form action="" class="search-bar">
-                        <input type="text" placeholder=" 참여하고 싶은 행사나 프로젝트를 검색해보세요" name="q" id="">
-                        <div class="fas fa-search" id="search-btn"></div>
-                    </form>
-                </div>
-                <div class="link1">
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">관심목록</a>
-                </div>
-            </div>
-
-            <!-- category -->
-            <div class="category">
-                <div class="category-list">
-                    <span>카테고리</span>
-                    <div class="fas fa-solid fa-chevron-down"></div>
-
-                    <!-- dropdown menu -->
-                <ul class="dropdown">
-                    <li><a href="#">컨퍼런스</a></li>
-                    <li><a href="#">세미나</a></li>
-                    <li><a href="#">펀딩</a></li>
-                </ul>
-                </div>
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">행사개설</a>
-            </div>
-        </nav>
-    </header>
-    <!-- header End -->
-
-
-
-    <!-- background img Start -->
-    <section>
-        <div class="background-img"></div>
-    </section>
-    <!-- background img End -->
-
-
+    <div class="empty"></div>
 
     <!-- contents Explain Start -->
-    <section>
-        <div class="trapezoid">
+    <section class="contents-explain">
+        <div class="explain-container">
+            
+            <div class="box-1">
+                <div class="content-tittle" th:text="${post.postName}"></div>
+                <div class="visit-cnt">조회수<span>81</span></div>
+            </div>
 
-        </div>
+            <div class="box-2">
+                <div class="write-user">작성자이름임</div>
+                <div class="write-date">마지막 수정날짜가 보이겠지</div>
+            </div>
 
-        <div class="explain">
-            <div class="tag">
+            <div class="content-post">
+                <img src="../../static/images/ArtistBoardListExam/moviePoster.png" alt="">
+            </div>
+
+            <div class="empty"></div>
+
+            <div class="explain-content">
+                <div id="purpose">
+                    <div class="explain-story" th:text="${post.content}"></div>
+                </div>
+
 
             </div>
-            <div class="explain-title"></div>
-            <div class="visit-cnt"></div>
 
-            
+            <!-- <div class="explain-content">
+                <div id="purpose" class="short">
+                    <div class="explain-story" th:text="${post.content}"></div>
+                </div>
+
+                <button type="button" id="buttonDetail">더보기</button>
+
+            </div> -->
+
+            <!-- artist info End -->
+
+            <!-- <div class="more-btn-box">
+                <div class="more-btn">
+                    프로젝트 설명 더보기<i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div> -->
         </div>
 
+        
+
+        <div class="user-container">
+
+            <div class="edit-btn">
+                <button>게시글 수정하기</button>
+                <button>게시글 삭제하기</button>
+    
+            </div>
+
+            <div class="fundinfobox">
+                
+                <div class="title">
+                    <div class="content-tittle" th:text="${post.postName}"></div>
+                </div>
+                <div class="fundperiod">
+                    <span class="time-explain">펀딩 기간</span><br><br><span id="evtStart" th:text="${post.eventStart}"></span>&nbsp;&nbsp;~ &nbsp;&nbsp;<span id="evtEnd" th:text="${post.eventEnd}"></span>
+                </div>  
+                <div class="fundinfo-btnbox">
+                    <div class="like-btn">
+                        <i class="fa-regular fa-heart"></i>
+                        <div class="like-cnt">81</div>
+                    </div>
+                    <div class="gofund-btn">
+                        <a href="#">이 행사에 참가하기</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
     <!-- contents Explain End -->
+
     
+    <div class="empty"></div>
+
+
     
-
-    <!-- editors pick content -->
-    <section class="editors-pick">
-        <div class="bordelist">
-            <div>이런 행사는 어떠세요?</div>
-            <div class="bordelist-explain">
-                현재 행사와 비슷한 행사를 선별했어요!
-            </div>
+<!-- editors pick content -->
+<section class="editors-pick">
+    <div id="recommendation" class="bordelist">
+        <div>이런 행사는 어떠세요?</div>
+        <div class="bordelist-explain">
+            현재 행사정보와 비슷한 행사목록를 선별했어요!
         </div>
+    </div>
+    
+    <div class="readmore">
+        <a href="#">
+            <span>더 많은 행사목록 보기 </span><i class="fa-solid fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+
+
+<!-- scroll content -->
+<section class="scroll-content">
+    <div class="wrapper">
+        <div class="carousel">
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-1.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
         
-        <div class="readmore">
-            <a href="#">
-                <span>더 많은 행사 보기 </span><i class="fa-solid fa-angle-right"></i>
-            </a>
-        </div>
-    </section>
-
-
-    <!-- scroll content -->
-    <section class="scroll-content">
-        <div class="wrapper">
-            <!-- <i class="fa-solid fa-angle-left"></i> -->
-            <div class="carousel">
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-1.png" alt="img">
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-2.png}" alt="img">
                     <div class="startDate">03월 27일 (수)</div>
                     <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-2.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-3.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-4.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-5.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-6.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-7.png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-8 .png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-                <div class="carousel-box">
-                    <img src="../../static/images/scrollImgExam/scroll-9 .png" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </div>
-
+                </a>
             </div>
-            <!-- <i class="fa-solid fa-angle-right"></i> -->
-        </div>
-    </section>
-
-
-
-    <!-- footer start -->
-    <footer class="footer">
-
-        <div class="footer-first">
-            <div class="link-list">
-                <a href="#">기업행사</a>
-                <a href="#">예술인 펀딩</a>
-                <a href="#">서비스 소개</a>
-                <a href="#">Q & A</a>
-                <a href="#">공지사항</a>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-3.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
             </div>
-        </div>
-
-        <div class="footer-third">
-            <div class="link-title">서비스 이용 문의</div>
-            <div>채팅상담 (평일 10:00~17:00)</div>
-            <div>사업 제휴 문의 whiosemail@event-tree.kr</div>         
-        </div>
-
-        <div class="footer-four">
-            <div class="link-title company">EVENTREE</div>
-            <div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
-            <div>통신판매업 신고번호 제0000-0000-0000호</div>
-            <div>대표 신유경 | 개인정보책임자 DB관리자</div>
-            <div>광주특별시 광산구 무진대로 무역회관 7층</div>
-            <!-- <div class="warning">
-                이벤트리는 통신판매중개자이며 행사에 대한 당사자 및 주최자가 아닙니다. 따라서 이벤트리는 등록된 행사에 대해 책임지지 않습니다
-            </div> -->
-        </div> 
-        
-        <div class="footer-second">
-            <div class="link-list">
-                <a href="#">서비스 이용 약관</a>
-                <a href="#">개인정보처리방침</a>
-                <a href="#">이메일 주소 무단수집 거부</a>
-            </div>         
-        </div>
-        
-        
-
-        <div class="footer-down">
-            <div class="copyright">
-                ⓒ 2024. EVENTREE All Rights Reserved.
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-4.png}" alt="img">
+                <div class="startDate">03월 27일 (수)</div>
+                <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
             </div>
-            <div class="sns">
-                <a href="#">X</a>
-                <a href="#">인스타</a>
-                <a href="#">카카오톡</a>
-                <a href="#">유튜브</a>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-5.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
             </div>
-            <!-- 나중에 sns 로고 이미지로 교체할것 -->
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
+                <div class="startDate">03월 27일 (수)</div>
+                <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-7.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-8.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>
+            </div>
+            
+            <div class="carousel-box">
+                <a href="#">
+                    <img th:src="@{/images/scrollImgExam/scroll-9.png}" alt="img">
+                    <div class="startDate">03월 27일 (수)</div>
+                    <div class="title">제 7회 서울인구심포지엄</div>
+                </a>                    
+            </div>
+
         </div>
 
-    </footer>
+    </div>
+</section>
+
+<div class="empty"></div>
+
+<!-- page up btn -->
+<!-- <div class="up-btn">
+    <a href="#"><i class="fa-solid fa-angle-up"></i></a>
+</div> -->
+
+<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
 
-<script src="js/BoardViewPageCompany.js"></script>
+<script th:src="@{/js/BoardViewPageCompany.js}"></script> 
 </body>
 </html>
