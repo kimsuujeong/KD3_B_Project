@@ -1,7 +1,6 @@
 package com.example.demo.board;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.Adminpage.AdminService;
+import com.example.demo.file.FileService;
+import com.example.demo.post.ImageFile;
+import com.example.demo.user.User;
 import com.example.demo.user.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class BoardController {
@@ -23,78 +28,89 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 
-//	@Autowired
+	@Autowired
 	UserService userService;
+	
+	@Autowired
+	FileService fileService;
 
-//	test main page
+	@Autowired
+	AdminService adminService;
+	
+//	main page
 	@GetMapping("/")
-	public String main(Model model) {
+	public String main(Model model,HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+	    
+	    // 사용자가 관리자인지 여부를 확인합니다.
+	    boolean isAdmin = false;
+	    if (loggedInUser != null) {
+	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+	    }
 		List<Board> posts = boardService.getAllPosts();
 		model.addAttribute("posts", posts);
-		return "board/Main";
+		model.addAttribute("isAdmin", isAdmin);
+		return "/MainPage/Main";
 	}
 
-//	board page
-//	@GetMapping("/board")
-//	public String showBoard(Model model, Pageable page) {
-////		all post view
-//		Page<Board> posts = this.boardService.getList(page);
-//
-//		model.addAttribute("posts", posts);
-//		return "/BoardListPage/BoardListPageArtist";
-//	}
-
-//	@GetMapping("/boardtest")
-//	public String showBoard2(Model model, Pageable page) {
-////		all post view
-//		Page<Board> posts = this.boardService.getList(page);
-//
-//		model.addAttribute("posts", posts);
-//		return "/TestHtml/board/board";
-//	}
-//	board page separate categoryId
-//	@GetMapping("/board/{categoryID}")
-//	public String showBoard(@PathVariable(name = "categoryID") Integer categoryID, 
-//							Model model, Pageable page) {
-////		all post view
-//		Page<Board> posts = this.boardService.getPostsByCategoryId(categoryID, page);
-//		
-//		model.addAttribute("posts", posts);
-//		String url = (categoryID==1) ? "/BoardListPage/BoardListPageArtist" : "/BoardListPage/BoardListPageArtist";
-//		return url;
-//	}
 //	board page separate categoryId
 	@GetMapping("/board/{categoryID}")
 	public String showBoard3(@PathVariable(name = "categoryID") Integer categoryID, 
-							Model model, Pageable page) {
+							Model model, Pageable page,HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+	    // 사용자가 관리자인지 여부를 확인합니다.
+	    boolean isAdmin = false;
+	    if (loggedInUser != null) {
+	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+	    }
 //		all post view
 		Page<Board> posts = this.boardService.getPostsByCategoryId(categoryID, page);
-		
+		List<String> imageLinks = new ArrayList<>();
+	    for (Board post : posts) {
+	    	if (post.getFileID() != null) {
+	            ImageFile file = boardService.getImageFile(post.getFileID());
+	            String fileLink = fileService.getDownLink(file.getSaveImName());
+	            imageLinks.add(fileLink);
+	        } else {
+	            // 이미지가 없는 경우 빈 문자열을 추가합니다.
+	            imageLinks.add("");
+	        }
+	    }
+//	    System.out.println(posts.getContent());
+	    System.out.println(imageLinks);
+	    model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("posts", posts);
-		String url = (categoryID==1) ? "/BoardListPage/BoardListPageArtist" : "/BoardListPage/BoardListPageArtist";
+		model.addAttribute("imageLinks", imageLinks);
+		String url = (categoryID==1) ? "/BoardListPage/BoardListPageCompany" : "/BoardListPage/BoardListPageArtist";
 		return url;
 	}
 //	post detail 
 	@GetMapping("/board/{categoryID}/{postID}")
-	public String showPostDetail(@PathVariable(name = "postID") Integer postID, @PathVariable(name = "categoryID") Integer categoryID, Model model) {
+	public String showPostDetail(@PathVariable(name = "categoryID") Integer categoryID, 
+			@PathVariable(name = "postID") Integer postID,  Model model,HttpSession session) {
+		User loggedInUser = (User) session.getAttribute("loggedInUser");
+	    
+	    // 사용자가 관리자인지 여부를 확인합니다.
+	    boolean isAdmin = false;
+	    if (loggedInUser != null) {
+	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+	    }
 		Board post = (Board) boardService.getPostById(postID);
-		
+		if(loggedInUser!=null) {			
+			System.out.println(loggedInUser.getUserID());
+		}
+		ImageFile file=boardService.getImageFile(post.getFileID());
+		String fileLink=fileService.getDownLink(file.getSaveImName());
+		System.out.println(file);
+		System.out.println(fileLink);
 		boardService.visitCnt(postID);
+		model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("post", post);
-		String url = (categoryID==1) ? "/BoardViewPage/BoardViewPageArtist" : "/BoardViewPage/BoardViewPageCompany";
+		model.addAttribute("image", fileLink);
+		String url = (categoryID==1) ? "/BoardViewPage/BoardViewPageCompany" : "/BoardViewPage/BoardViewPageArtist";
 		return url;
 	}
 
-	// 전체 게시물 검색
-	@RequestMapping("/board/search")
-	public String search_board(Model model, @ModelAttribute Search search, Pageable pageable) {
-		Page<Board> searchPost = boardService.search(search, pageable);
-		model.addAttribute("posts", searchPost);
-			
-		return "/TestHtml/board/board";
-	}
-		
-	// 카테고리별 검색
 	@RequestMapping("/board/{categoryID}/search")
 	public String search(@PathVariable(name = "categoryID") Integer categoryID, Model model,
 			@RequestParam(value="order", defaultValue="visitCnt") String order, 
@@ -103,7 +119,7 @@ public class BoardController {
 		Page<Board> searchPost = boardService.searchCtg(categoryID, search, order, pageable);
 		model.addAttribute("posts", searchPost);
 
-		String url = (categoryID==1) ? "/BoardListPage/BoardListPageArtist" : "/BoardListPage/BoardListPageArtist";
+		String url = (categoryID==1) ? "/BoardListPage/BoardListPageCompany" : "/BoardListPage/BoardListPageArtist";
 		return url;
 	}
 	

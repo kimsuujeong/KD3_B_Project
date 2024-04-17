@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.post.ImageFile;
+
 @Service
 public class BoardServiceImpl implements BoardService {
 
@@ -32,7 +34,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board getPostById(Integer postID) {
-		return boardMapper.findPostById(postID);
+		return boardMapper.getPostById(postID);
 	}
 
 	@Override
@@ -51,13 +53,17 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Page<Board> search(Search search, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return boardMapper.search(search, pageable);
-	}
-	
-	@Override
 	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable) {
 		return boardMapper.searchCtg(categoryID, search, order, pageable);
+	}
+
+	@Override
+	public ImageFile getImageFile(Integer fileID) {
+		return boardMapper.getImageFile(fileID);
+	}
+
+	@Override
+	public Board getPostByLikeID(Integer postID) {
+		return boardMapper.getPostByLikeID(postID);
 	}
 }

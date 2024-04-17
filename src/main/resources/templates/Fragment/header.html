@@ -14,7 +14,7 @@
 			<!-- upper (logo, searchbar, login, acount, likelist) -->
 			<div class="container">
 				<!-- logo -->
-				<a th:href="@{http://localhost:8085/main}" class="logo">
+				<a th:href="@{/}" class="logo">
 					<img th:src="@{/images/logo-01.png}" alt="">
 				</a>
 				<div>
@@ -35,23 +35,29 @@
 					<!-- 로그인 했을때 th로 연결해둠 -->
 					<!-- Check if user is logged in -->
 					<th:block th:if="${session['loggedInUser'] == null}">
-						<a href="/login">로그인</a>
-						<a href="/joinForm">회원가입</a>
-						<a href="#">관심목록</a>
-					</th:block>
-					<!-- Check if user is logged out -->
-					<th:block th:if="${session['loggedInUser'] != null}">
-						<a href="/mypage/userupdate" class="mypage"><span>OO</span>님 안녕하세요</a>
-						<a href="/savelist">관심목록</a>
-						<a href="/logout">로그아웃</a>
-					</th:block>
+                        <a th:href="@{/login}">로그인</a>
+                        <a th:href="@{/joinForm}">회원가입</a>
+                        <!-- <a href="#">관심목록</a> -->
+                    </th:block>
+                    <!-- Check if user is logged out -->
+                    <th:block th:if="${session['loggedInUser'] != null and !isAdmin}">
+                        <a th:href="@{/userUpdate}" class="mypage"><span th:text="${session['loggedInUser'].userName}"></span>님 안녕하세요</a>
+                        <a th:href="@{/savelist}">관심목록</a>
+                        <a th:href="@{/logout}">로그아웃</a>
+                    </th:block>
+                    <th:block th:if="${session['loggedInUser'] != null and isAdmin}">
+                        <a th:href="@{/userUpdate}" class="mypage"><span th:text="${session['loggedInUser'].userName}"></span>님 안녕하세요</a>
+                        <a th:href="@{/savelist}">관심목록</a>
+                        <a th:href="@{/admin/auth}">관리자 페이지</a>
+                        <a th:href="@{/logout}">로그아웃</a>
+                    </th:block>
 				</div>
 			</div>
 
 			<!-- category -->
 			<div class="category">
-				<a th:href="@{http://localhost:8085/board/1}">기업행사</a>
-				<a th:href="@{http://localhost:8085/board/2}">예술인 펀딩</a>
+				<a th:href="@{/board/1}">기업행사</a>
+				<a th:href="@{/board/2}">예술인 펀딩</a>
 				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
 				<a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
 				<a th:href="@{http://localhost:8085/mypage/notice}">공지사항</a>

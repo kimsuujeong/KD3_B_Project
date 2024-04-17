@@ -18,4 +18,6 @@ public interface AdminService {
 
 	void getAuthrequestEmail(Integer requestID);
 
+	boolean isUserAuth(String userID);
+
 }

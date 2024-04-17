@@ -7,6 +7,7 @@
     border-bottom: var(--border);
     top: 0; left: 0; right: 0;
     z-index: 1000;
+    box-shadow: 0 2px 5px 0 var(--light-grey-color);
 }
 
 .navbar .container {
@@ -30,7 +31,6 @@
     background-color: var(--white-color);
     margin-bottom: 1rem;
     border: 1px var(--grey-color) solid;
-    cursor:pointer;
 }
 
 .search-bar input{
@@ -46,6 +46,7 @@
 .search-bar .fa-search{
     margin-right: 1rem;
     font-size: 1.6rem;
+    cursor: pointer;
 }
 
 .header .navbar .link1{
@@ -59,7 +60,10 @@
 
 .header .navbar .link1 a{
     padding-right: 1rem;
+}
 
+.header .navbar .link1 .mypage span{
+    font-weight: bold
 }
 
 .header .navbar a{
@@ -70,6 +74,10 @@
     color: var(--green-color);
     transition: all 0.3s;
 }
+.header .navbar .link1 .mypage:hover{
+    color: var(--black-color);
+}
+
 
 .category {
     display: flex;
@@ -92,32 +100,7 @@
     /* background-color: rgb(235, 235, 235); */
 }
 
-/* dropdown-menu */
-/* 좀 더 괜찮게 다듬을 필요 있음 */
-.dropdown li{
-    display: block;
-    background-color: var(--white-color);
-    margin: 2rem 0rem;
-}
-
-.dropdown{
-    width: auto;
-    background-color: var(--white-color);
-    position: absolute;
-    z-index: 999;
-    display: none;
-    padding: 1rem;
-    margin-right: 2rem;
-}
-
-.category-list:hover .dropdown{
-    display: block;
-}
-
-.category-list:hover{
-    color: var(--green-color);
-}
-
+/* header End */
 
 /* background img and trailer Start */
 /* img slider start */
@@ -147,25 +130,10 @@
     height: 100%;
 }
 
-.tag-container{
-    width: 80%;
-    font-size: 1.6rem;
-    display: flex;
-    justify-content: left;
-    padding: 0 0 2rem 2rem;
-    /* background-color: #c54949; */
-}
-
-.tag-container .tag{
-    padding-right: 2rem;
-    color: var(--green-color);
-}
-
 .box-1{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
+    align-items: end;
     margin: auto;
 }
 
@@ -176,13 +144,34 @@
 
 .visit-cnt{
     font-size: 1.6rem;
+    color: var(--grey-color);
 }
 
 .visit-cnt span{
     padding: 0 1rem;
+    color: var(--grey-color);
+}
+
+
+.box-2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.write-user{
+    font-size: 1.6rem;
+}
+
+.write-date{
+    font-size: 1.6rem;
+    padding: 0 1rem;
+    color: var(--grey-color);
 }
 
 .content-post{
+    margin-top: 2rem;
     width: 100%
 }
 
@@ -210,23 +199,32 @@
     color: var(--white-color);
 }
 
-/* .fix{
-    position: fixed;
-    top: 0;
-} */
-
-
 .explain-content{
     font-size: 1.6rem;
+    /* background-color: #c54949; */
 }
 
-.explain-tittle{
-    font-weight: bold;
-    font-size: 1.8rem;
+/* detail more btn */
+
+
+.short{
+    overflow: hidden;
+    height: 40rem;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 66%, rgba(255, 255, 255, 0.94) 83%, rgba(255, 255, 255, 0.98) 91%, #ffffff);
 }
 
 .explain-story{
     margin: 1rem 6rem 6rem 2rem;
+    height: 50rem;
+}
+
+.explain-content button{
+    background-color: var(--green-color);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font: 1.6rem;
+    width: 20rem;
 }
 
 .more-btn-box{
@@ -251,62 +249,115 @@
 /* left content explain End */
 
 
-
 /* rignt content explain Start */
 /* user container Start */
 .user-container{
     /* background-color: yellow; */
     width: 34%;
     height: 100%;
+    position: sticky;
+    /* 설명하는 영역에서만 따라다니도록  */
+    top: 6rem;
 }
 
+.edit-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-btn button{
+    background-color: transparent;
+    border: 2px solid var(--grey-color);
+    border-radius: 10px;
+    padding: 1rem 4rem;
+    font-size: 1.8rem;
+    margin: 2rem 1rem;
+    color: var(--grey-color);
+}
+
+.edit-btn button:first-child:hover{
+    background-color: var(--grey-color);
+    color: var(--white-color);
+}
+
+.edit-btn button:last-child{
+    color: var(--red-color);
+    border: 2px solid var(--red-color);
+}
+
+.edit-btn button:last-child:hover{
+    background-color: var(--red-color);
+    color: var(--white-color);
+}
+
+
+
+
 .fundinfobox{
+    width: 100%;
     background-color: var(--light-green-color);
     border-radius: 20px;   
     margin-right: 3rem;
     font-size: 1.6rem;
     padding: 2rem;
     box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
-}
-
-.fundinfobox .tag-box{
-    display: flex;
-    justify-content: left;
-    padding-bottom: 1rem;
-}
-
-.fundinfobox .tag{
-    padding-right: 1rem;
-    color: var(--green-color);
+    text-align: center;
 }
 
 .fundinfobox .title{
     font-size: 2.6rem;
     font-weight: bold;
-    padding-bottom: 2rem;
-}
-
-.fundinfobox .goalcost{
-    font-size: 3.2rem;
-    padding-bottom: 2rem;
-}
-
-.fundinfobox .goalcost span{
-    padding: 0 1rem;
+    padding: 2rem 0;
 }
 
 .fundinfobox .fundperiod{
     font-size: 2.4rem;
-    padding-bottom: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 
-.fundinfobox .fundperiod .remaintime{
-    font-size: 1.8rem;
-    padding-left: 1.5rem;
+.fundperiod span{
+    padding: 5rem 0;
+}
+
+.fundperiod .time-explain{
+    /* background-color: #c54949; */
+    padding: 1rem 4rem;
+    border-bottom: 2px solid var(--black-color);
+}
+
+.fundperiod #evtStart{
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--black-color);
+}
+
+.fundperiod #evtEnd{
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--black-color);
 }
 
 .fundinfobox-btnbox{
     display: flex;
+    justify-content: space-between;
+}
+
+.like-btn{
+    background-color: var(--white-color);
+    color: var(--green-color);
+    border: 2px solid var(--grey-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.like-btn div{
+    padding: 0 1rem;
 }
 
 .gofund-btn{
@@ -322,91 +373,6 @@
     color: var(--white-color);
 }
 
-.space-between{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1rem;
-}
-
-
-.like-btn{
-    width: 17rem;
-    background-color: var(--white-color);
-    color: var(--green-color);
-    border: 2px solid var(--grey-color);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    cursor: pointer;
-}
-
-.like-btn div{
-    padding: 0 1rem;
-}
-
-.share-btn{
-    width: 17rem;
-    background-color: var(--white-color);
-    color: var(--green-color);
-    border: 2px solid var(--grey-color);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    cursor: pointer;
-}
-
-.userinfo-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--light-green-color);
-    border-radius: 20px;      
-    margin-right: 3rem;
-    margin-top: 3rem;
-    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
-}
-
-.userinfobox{
-    padding: 2rem;
-    font-size: 1.6rem;
-}
-
-.profile-img{
-    display: flex;
-    justify-content: center;
-}
-
-.profile-img img{
-    width: 10rem;
-    height: 10rem;
-    border-radius: 50%;
-    object-fit: cover;
-    display: flex;
-    justify-content: center;
-}
-
-.profile-name .name{
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 2rem;
-}
-
-.goportfoilo-btn{
-    background-color: var(--green-color);
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    border-radius: 10px;
-    margin: 1rem;
-}
-
-.goportfoilo-btn a{
-    color: var(--white-color);
-}
 
 /* right content explain End */
 /* contens explain End */

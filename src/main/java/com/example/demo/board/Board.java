@@ -2,6 +2,8 @@ package com.example.demo.board;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.demo.category.Category;
 import com.example.demo.user.User;
 
@@ -24,9 +26,13 @@ public class Board {
     private User user;
     private Category category;
 
-    private String user_userID;
-    private Integer category_categoryID;
+    private String userID;
+    private Integer categoryID;
     
     private String categoryName;
 	
+    private Integer fileID;
+    private Integer costID;
+    
+    private MultipartFile file;
 }
