@@ -14,8 +14,11 @@ public class UserMapper {
 	SqlSession sqlSession;
 
 
-	public User Login(String userID) {
-		return sqlSession.selectOne("Login", userID);
+	public User Login(String userID, String password) {
+		Map<String, String> loginInfo = new HashMap<>();
+	    loginInfo.put("userID", userID);
+	    loginInfo.put("password", password);
+		return sqlSession.selectOne("Login", loginInfo);
 	}
 
 
@@ -39,5 +42,35 @@ public class UserMapper {
 		UpdatePWInfo.put("email", pwEmail);
 		return sqlSession.update("UpdatePW",UpdatePWInfo);
 	}
+
+	// 회원 탈퇴
+	public void deleteUser(String userID) {
+		sqlSession.delete("deleteUser", userID);
+	}
+
+	public void deletePostUser(String userID) {
+		sqlSession.delete("deletePostUser", userID);
+	}
+
+	public void deleteFileUser(String userID) {
+		sqlSession.delete("deleteFileUser", userID);
+	}
+
+	public void deleteImageUser(String userID) {
+		sqlSession.delete("deleteImageUser", userID);
+	}
+	
+	public void deleteLikeUser(String userID) {
+		sqlSession.delete("deleteLikeUser", userID);
+	}
+	
+	public void deleteAuthReqUser(String userID) {
+		sqlSession.delete("deleteAuthReqUser", userID);
+	}
+
+	public void deleteAuthedUser(String userID) {
+		sqlSession.delete("deleteAuthedUser", userID);
+	}
+
 
 }
