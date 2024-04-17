@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<header class="header" th:fragment="headerFragment">
+
+		<nav class="navbar">
+			<!-- upper (logo, searchbar, login, acount, likelist) -->
+			<div class="container">
+				<!-- logo -->
+				<a th:href="@{http://localhost:8085/main}" class="logo">
+					<img th:src="@{/images/logo-01.png}" alt="">
+				</a>
+				<div>
+					<form action="" class="search-bar" th:data-uri="@{|/board/{categoryID}/search|}">
+						<input type="hidden" id="categoryID" th:value="${categoryID}" />
+						<input type="text" placeholder="참여하고 싶은 행사나 프로젝트를 검색해보세요" name="keyword" id="keyword">
+						<div class="fas fa-search" name="btnSearch" id="search-btn"></div>
+						<div class="w100" style="padding-right:10px">
+							<select class="form-control form-control-sm" name="searchType" id="searchType">
+								<option value="postName">제목</option>
+								<option value="content">본문</option>
+								<option value="authorName">작성자</option>
+							</select>
+						</div>
+					</form>
+				</div>
+				<div class="link1">
+					<!-- 로그인 했을때 th로 연결해둠 -->
+					<!-- Check if user is logged in -->
+					<th:block th:if="${session['loggedInUser'] == null}">
+						<a href="/login">로그인</a>
+						<a href="/joinForm">회원가입</a>
+						<a href="#">관심목록</a>
+					</th:block>
+					<!-- Check if user is logged out -->
+					<th:block th:if="${session['loggedInUser'] != null}">
+						<a href="/mypage/userupdate" class="mypage"><span>OO</span>님 안녕하세요</a>
+						<a href="/savelist">관심목록</a>
+						<a href="/logout">로그아웃</a>
+					</th:block>
+				</div>
+			</div>
+
+			<!-- category -->
+			<div class="category">
+				<a th:href="@{http://localhost:8085/board/1}">기업행사</a>
+				<a th:href="@{http://localhost:8085/board/2}">예술인 펀딩</a>
+				<a th:href="@{http://localhost:8085/mypage/serviceintroduce}">서비스 소개</a>
+				<a th:href="@{http://localhost:8085/mypage/qa}">Q & A</a>
+				<a th:href="@{http://localhost:8085/mypage/notice}">공지사항</a>
+			</div>
+		</nav>
+	</header>
+</body>
+
+</html>
