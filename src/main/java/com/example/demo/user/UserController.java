@@ -58,7 +58,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (userID.isEmpty()) {
 
-				response.put("redirectUrl", "http://localhost:8091/login");
+				response.put("redirectUrl", "http://localhost:8085/login");
 				response.put("message", "아이디를 입력해 주세요");
 
 				return ResponseEntity.ok().body(response);
@@ -67,7 +67,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (password.isEmpty()) {
 				
-				response.put("redirectUrl", "http://localhost:8091/login");
+				response.put("redirectUrl", "http://localhost:8085/login");
 				response.put("message", "비밀번호를 입력해 주세요");
 
 				return ResponseEntity.ok().body(response);
@@ -79,14 +79,14 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 				model.addAttribute("loggedInUser", user); // 세션에 사용자 정보 저장
 				httpSession.setAttribute("loggedInUser", user);
 
-				response.put("redirectUrl", "http://localhost:8091/");
+				response.put("redirectUrl", "http://localhost:8085/");
 				response.put("message", "로그인 성공 했습니다.");
 
 				return ResponseEntity.ok().body(response);
 				
 			} else { 
 				
-				response.put("redirectUrl", "http://localhost:8091/login");
+				response.put("redirectUrl", "http://localhost:8085/login");
 				response.put("message", "아이디와 비밀번호를 다시 확인해주세요.");
 
 				return ResponseEntity.ok().body(response);
@@ -95,7 +95,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 		} catch (Exception e) { // 로그인 실패
 			
-			response.put("redirectUrl", "http://localhost:8091/");
+			response.put("redirectUrl", "http://localhost:8085/");
 			response.put("message", "서버 오류 입니다.");
 			
 		}
@@ -121,7 +121,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
 				// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
 
-				response.put("redirectUrl", "http://localhost:8091/cerid");
+				response.put("redirectUrl", "http://localhost:8085/cerid");
 				response.put("message", "인증번호가 전송 되었습니다.");
 
 				this.Email = email;
@@ -132,7 +132,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 		} catch (Exception e) {
 
-			response.put("redirectUrl", "http://localhost:8091/FindID");
+			response.put("redirectUrl", "http://localhost:8085/FindID");
 			response.put("message", "존재하지 않는 이메일 입니다.");
 
 			return ResponseEntity.ok().body(response);
@@ -167,7 +167,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (getKey == null) {
 
-				response.put("redirectUrl", "http://localhost:8091/cerid");
+				response.put("redirectUrl", "http://localhost:8085/cerid");
 				response.put("message", "존재하지 않는 토큰 입니다.");
 
 				return ResponseEntity.ok().body(response);
@@ -176,7 +176,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (Email.equals(getKey)) {
 
-				response.put("redirectUrl", "http://localhost:8091/cerid/userid");
+				response.put("redirectUrl", "http://localhost:8085/cerid/userid");
 				response.put("message", "토큰 인증 되었습니다.");
 
 				this.IdForEmail = getKey;
@@ -187,7 +187,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			} else {
 
-				response.put("redirectUrl", "http://localhost:8091/cerid");
+				response.put("redirectUrl", "http://localhost:8085/cerid");
 				response.put("message", "토큰을 다시 확인해주세요.");
 
 				return ResponseEntity.ok().body(response);
@@ -244,7 +244,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 				mailController.mailSend(email); // 이메일 실제로 보내는 소스코드 입니다.
 				// 하루에 보내는 이메일 한도가 정해져 있어서 주석처리 해놨습니다.
 
-				response.put("redirectUrl", "http://localhost:8091/cerpw");
+				response.put("redirectUrl", "http://localhost:8085/cerpw");
 				response.put("message", "인증번호가 전송 되었습니다.");
 
 				this.Email = mail;
@@ -255,7 +255,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 		} catch (Exception e) {
 
-			response.put("redirectUrl", "http://localhost:8091/FindPW");
+			response.put("redirectUrl", "http://localhost:8085/FindPW");
 			response.put("message", "아이디와 비밀번호가 맞지 않습니다.");
 
 			return ResponseEntity.ok().body(response);
@@ -290,7 +290,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (getKey == null) {
 
-				response.put("redirectUrl", "http://localhost:8091/cerpw");
+				response.put("redirectUrl", "http://localhost:8085/cerpw");
 				response.put("message", "존재하지 않는 토큰 입니다.");
 
 				return ResponseEntity.ok().body(response);
@@ -299,7 +299,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 			if (Email.equals(getKey)) {
 
-				response.put("redirectUrl", "http://localhost:8091/cerpw/pwrs");
+				response.put("redirectUrl", "http://localhost:8085/cerpw/pwrs");
 				response.put("message", "토큰 인증 되었습니다.");
 
 				pwEmail = Email;
@@ -344,7 +344,7 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 			return "LogIn/pwrs"; // 서버 이상 페이지 추가 예정
 		}
 
-		return "redirect:/Testmain";
+		return "redirect:/";
 	}
 
 }

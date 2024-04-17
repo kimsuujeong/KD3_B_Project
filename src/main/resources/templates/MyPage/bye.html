@@ -2,66 +2,57 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>회원 탈퇴</title>
-	<link rel="stylesheet" th:href="@{/css/Setting.css}">
-	<link rel="stylesheet" th:href="@{/css/pwrs.css}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원 탈퇴</title>
+  <link rel="stylesheet" href="../../static/css/Setting.css">
+  <link rel="stylesheet" href="../../static/css/pwrs.css">
 </head>
 
 <body>
-	<div class="container">
-		<div class="header"></div>
-		<div class="contents">
-			<h3>회원 탈퇴</h3>
-			<br>
-			<p>탈퇴를 위해 비밀번호를 입력해주세요.</p>
-			<br>
-			<form th:action="@{/bye}" id="qwrsForm" method="post">
-				비밀번호 입력 <input type="password" id="password1" name="password1" placeholder="password">
-				비밀번호 확인 <input type="password" id="password2" name="password2" placeholder="password">
-				<input type="submit" value="확인" onclick="return checkPasswords()">
-			</form>
-			
-		</div>
-		<div class="footer"></div>
+  <div class="container">
+    <div class="header"></div>
+    <div class="contents">
+      <h3>회원 탈퇴</h3>
+      <br>
+      <p>탈퇴를 위해 비밀번호를 입력해주세요.</p>
+      <br>
+      <form action="" id="qwrsForm">
+        비밀번호 입력 <input type="password" id="password1"placeholder="password">
+        비밀번호 확인 <input type="password" id="password2" name="pwNew"placeholder="password">
+        <input type="submit" value="확인" onclick="return checkPasswords()">
+      </form>
+    </div>
+    <div class="footer"></div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script th:inline="javascript">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:inline="javascript">
 
-			function checkPasswords() {
-				var password1 = document.getElementById("password1").value;
-				var password2 = document.getElementById("password2").value;
+      function checkPasswords() {
+        var password1 = document.getElementById("password1").value;
+        var password2 = document.getElementById("password2").value;
 
-				if (password1 === null) {
-					console("비밀번호를 입력해주세요.");
-					return false;
-				}
+        if (password1 === null) {
+          console("비밀번호를 입력해주세요.");
+          return false;
+        }
 
-				if (password1.trim() === '' || password2.trim() === '') {
-					alert("비밀번호를 확인 해주세요.");
-					return false;
-				}
-				if (password1 !== password2) {
-					alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-					return false;
-				}
-				// 정말 탈퇴하시겠습니까? 확인
-				var confirmWithdrawal = confirm("정말 탈퇴하시겠습니까?");
-				if (confirmWithdrawal) {
-					// 확인 버튼 클릭 시 탈퇴 진행
-					alert("탈퇴되었습니다");
-					setTimeout(function () {
-						window.location.href = "/Testmain"; // 메인 페이지로 리다이렉트
-					}, 2000); // 2초 후에 메인 페이지로 이동
-					return true;
-				} else {
-					// 취소 버튼 클릭 시 탈퇴 취소
-					return false;
-				}
-			}
+        if (password1.trim() === '' || password2.trim() === '') {
+          alert("비밀번호 확인을 해주세요.");
+          return false;
+        }
+        if (password1 !== password2) {
+          alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+          return false;
+        } else {
+          // alert("비밀번호 변경 완료!");
+          location.replace("../LogIn/login.html");
+          return false;
+        }
 
-		</script>
+       }
+
+    </script>
 
 </body>
 
