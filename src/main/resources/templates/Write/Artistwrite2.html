@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
     <link rel="stylesheet" th:href="@{/css/Artistwrite2.css}">
+
     
 </head>
 <body>
@@ -14,6 +16,7 @@
         <div class="nav">
             <label for="" class="lab">2/2 단계</label>
             <h1 class="title">새로운 프로젝트를 개설해 보세요</h1>
+
             <form th:action="@{'/board/register/new/'+${categoryID}+'/2'}" method="post" th:object="${board}" enctype="multipart/form-data">
                 <label for="postForm" class="lab">행사를 설명할 수 있는 대표 이미지를 넣어주세요</label>
                 <input type="file" name="file" id="file" th:field="*{file}" multiple>
@@ -22,26 +25,15 @@
                 <textarea name="content" id="content"></textarea>
                 <input type="submit" class="write-next-btn" value="등록">
             </form>
-           
+
         </div><!-- nav end-->
 
     </div><!-- container end-->
 
 
+
     <script th:src="@{/ckeditor/build/ckeditor.js}"></script>
     <script th:src="@{/js/Artistwrite2.js}"></script>
-    <script>
-        // CKEditor 초기화
-        CKEDITOR.replace('editor', {
-            filebrowserUploadUrl: '/board/uploadImageForCKEditor', // 이미지를 업로드할 URL 설정
-            filebrowserUploadMethod: 'form'
-        });
-    
-        // 제출 버튼 클릭 시, CKEditor에서 작성한 내용을 textarea에 복사
-        document.querySelector('.write-next-btn').addEventListener('click', function() {
-            var editorData = CKEDITOR.instances.editor.getData();
-            document.querySelector('#content').innerText = editorData;
-        });
-    </script>
+
 </body>
 </html>

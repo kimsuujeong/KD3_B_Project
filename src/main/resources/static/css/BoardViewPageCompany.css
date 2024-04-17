@@ -7,6 +7,7 @@
     border-bottom: var(--border);
     top: 0; left: 0; right: 0;
     z-index: 1000;
+    box-shadow: 0 2px 5px 0 var(--light-grey-color);
 }
 
 .navbar .container {
@@ -30,7 +31,6 @@
     background-color: var(--white-color);
     margin-bottom: 1rem;
     border: 1px var(--grey-color) solid;
-    cursor:pointer;
 }
 
 .search-bar input{
@@ -46,6 +46,7 @@
 .search-bar .fa-search{
     margin-right: 1rem;
     font-size: 1.6rem;
+    cursor: pointer;
 }
 
 .header .navbar .link1{
@@ -59,7 +60,10 @@
 
 .header .navbar .link1 a{
     padding-right: 1rem;
+}
 
+.header .navbar .link1 .mypage span{
+    font-weight: bold
 }
 
 .header .navbar a{
@@ -70,6 +74,10 @@
     color: var(--green-color);
     transition: all 0.3s;
 }
+.header .navbar .link1 .mypage:hover{
+    color: var(--black-color);
+}
+
 
 .category {
     display: flex;
@@ -92,47 +100,351 @@
     /* background-color: rgb(235, 235, 235); */
 }
 
-/* dropdown-menu */
-/* 좀 더 괜찮게 다듬을 필요 있음 */
-.dropdown li{
-    display: block;
-    background-color: var(--white-color);
-    margin: 2rem 0rem;
-}
-
-.dropdown{
-    width: auto;
-    background-color: var(--white-color);
-    position: absolute;
-    z-index: 999;
-    display: none;
-    padding: 1rem;
-    margin-right: 2rem;
-}
-
-.category-list:hover .dropdown{
-    display: block;
-}
-
-.category-list:hover{
-    color: var(--green-color);
-}
 /* header End */
 
+/* background img and trailer Start */
+/* img slider start */
 
-/* background img Start */
-.background-img{
-    background-color: #c54949;
-    width: 100%;
-    height: 70vh;
+/* img slider END */
+
+
+
+/* background img and trailer End */
+
+
+/* contens explain Start */
+.contents-explain{
+    /* background-color: aqua; */
+    width: 85vw;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;   
+    display: flex; 
+    align-items: flex-start;
+    justify-content: space-between;
 }
-/* background img End */
+
+.explain-container{
+    /* background-color: blueviolet; */
+    width: 64%;
+    height: 100%;
+}
+
+.box-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: auto;
+}
+
+.content-tittle{
+    font-size: 2.6rem;
+    font-weight: bold;
+}
+
+.visit-cnt{
+    font-size: 1.6rem;
+    color: var(--grey-color);
+}
+
+.visit-cnt span{
+    padding: 0 1rem;
+    color: var(--grey-color);
+}
 
 
-/* contents Explain Start */
+.box-2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.write-user{
+    font-size: 1.6rem;
+}
+
+.write-date{
+    font-size: 1.6rem;
+    padding: 0 1rem;
+    color: var(--grey-color);
+}
+
+.content-post{
+    margin-top: 2rem;
+    width: 100%
+}
+
+.content-post img{
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+}
+
+.explain-positon{
+    font-size: 1.6rem;
+    padding: 2rem 2rem 6rem 2rem;
+    background-color: var(--white-color);
+}
+
+.explain-positon a{
+    padding: 1rem 2rem;
+    margin-right: 2rem;
+    color: var(--grey-color);
+}
+
+.explain-positon a.select-explan-position{
+    border-radius: 5rem;
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+.explain-content{
+    font-size: 1.6rem;
+    /* background-color: #c54949; */
+}
+
+/* detail more btn */
 
 
-/* contents Explain End */
+.short{
+    overflow: hidden;
+    height: 40rem;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 66%, rgba(255, 255, 255, 0.94) 83%, rgba(255, 255, 255, 0.98) 91%, #ffffff);
+}
+
+.explain-story{
+    margin: 1rem 6rem 6rem 2rem;
+    height: 50rem;
+}
+
+.explain-content button{
+    background-color: var(--green-color);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font: 1.6rem;
+    width: 20rem;
+}
+
+.more-btn-box{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.more-btn{
+    background-color: var(--green-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-size: 1.6rem;
+    width: 22rem;
+}
+
+.more-btn i{
+    padding: 0.5rem;
+}
+/* left content explain End */
+
+
+/* rignt content explain Start */
+/* user container Start */
+.user-container{
+    /* background-color: yellow; */
+    width: 34%;
+    height: 100%;
+    position: sticky;
+    /* 설명하는 영역에서만 따라다니도록  */
+    top: 6rem;
+}
+
+.edit-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-btn button{
+    background-color: transparent;
+    border: 2px solid var(--grey-color);
+    border-radius: 10px;
+    padding: 1rem 4rem;
+    font-size: 1.8rem;
+    margin: 2rem 1rem;
+    color: var(--grey-color);
+}
+
+.edit-btn button:first-child:hover{
+    background-color: var(--grey-color);
+    color: var(--white-color);
+}
+
+.edit-btn button:last-child{
+    color: var(--red-color);
+    border: 2px solid var(--red-color);
+}
+
+.edit-btn button:last-child:hover{
+    background-color: var(--red-color);
+    color: var(--white-color);
+}
+
+
+
+
+.fundinfobox{
+    width: 100%;
+    background-color: var(--light-green-color);
+    border-radius: 20px;   
+    margin-right: 3rem;
+    font-size: 1.6rem;
+    padding: 2rem;
+    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.fundinfobox .title{
+    font-size: 2.6rem;
+    font-weight: bold;
+    padding: 2rem 0;
+}
+
+.fundinfobox .fundperiod{
+    font-size: 2.4rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.fundperiod span{
+    padding: 5rem 0;
+}
+
+.fundperiod .time-explain{
+    /* background-color: #c54949; */
+    padding: 1rem 4rem;
+    border-bottom: 2px solid var(--black-color);
+}
+
+.fundperiod #evtStart{
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--black-color);
+}
+
+.fundperiod #evtEnd{
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--black-color);
+}
+
+.fundinfobox-btnbox{
+    display: flex;
+    justify-content: space-between;
+}
+
+.like-btn{
+    background-color: var(--white-color);
+    color: var(--green-color);
+    border: 2px solid var(--grey-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.like-btn div{
+    padding: 0 1rem;
+}
+
+.gofund-btn{
+    background-color: var(--green-color);
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem;
+}
+
+.gofund-btn a{
+    color: var(--white-color);
+}
+
+
+/* right content explain End */
+/* contens explain End */
+
+
+/* artist info Start */
+
+
+/* artist info End */
+#artist-info{
+    padding-bottom: 4rem;
+}
+
+.info-box{
+    background-color: var(--light-green-color);
+    border-radius: 10px;
+    padding: 1rem 1rem;
+}
+
+.info-all{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-content-box{
+    display: flex;
+    align-items: center;    
+}
+
+.info-title{
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.info-box .profile-img{
+    justify-content: left;
+    padding-right: 2rem;
+}
+
+
+.info-name{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.info-explain{
+    font-size: 1.4rem;
+    color: var(--grey-color);
+}
+
+.go-portfoilo-btn button{
+    background-color: var(--white-color);
+    /* background-color: #c54949; */
+    border: 1px solid var(--grey-color);
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* contact Start */
+.info-contact{
+    font-size: 1.6rem;
+    color: var(--grey-color);
+}
+
+.info-contact span{
+    padding: 0 1rem;
+    color: var(--black-color);
+}
+
 
 
 /* editor pick */
@@ -226,6 +538,7 @@
     padding: 1rem 0;
 }
 
+
 /* 웹사이트의 사이즈가 줄면 보이는 갯수가 줆 */
 @media screen and (max-width:90rem){
     .carousel-box{
@@ -242,11 +555,28 @@
 /* draggable images slider END */
 /* editor pick END*/
 
+.empty{
+    height: 5rem;
+}
 
+.up-btn{
+    position: fixed;
+    top: 90%;
+    right: 2%;
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green-color);
+    cursor: pointer;
+    border-radius: 100%;
+}
 
-
-
-
+.up-btn a{
+    color: var(--white-color);
+}
 
 /* footer Start */
 footer{

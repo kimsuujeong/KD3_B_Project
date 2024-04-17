@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
     <link rel="stylesheet" th:href="@{/css/Companywrite3.css}">
     
+
 </head>
 <body>
     <div class="container">
@@ -14,6 +16,7 @@
         <div class="nav">
             <label for="" class="lab">2/2 단계</label>
             <h1 class="title">새로운 행사를 개설해 보세요</h1>
+
             <form th:action="@{'/board/register/new/'+${categoryID}+'/2'}" method="post" th:object="${board}" enctype="multipart/form-data">
             <label for="postForm" class="lab">행사를 설명할 수 있는 대표 이미지를 넣어주세요</label>
             <input type="file" name="file" id="file" th:field="*{file}" multiple>
@@ -23,6 +26,11 @@
                 <input type="submit" class="write-next-btn" value="등록">
 
             </form>
+
+
+            <!-- 다음페이지로 보낼 버튼 생성 -20240416허서진 -->
+            <button type="submit" class="write-next-btn">다음</button>
+
 
         </div><!-- nav end-->
 

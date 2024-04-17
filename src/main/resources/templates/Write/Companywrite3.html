@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/Setting.css">
+    <link rel="stylesheet" href="../../static/css/Companywrite3.css">
+    
+</head>
+<body>
+    <div class="container">
+        
+        <div class="nav">
+            <label for="" class="lab">2/2 단계</label>
+            <h1 class="title">새로운 행사를 개설해 보세요</h1>
+            
+            <label for="postName" class="lab">행사에 대한 내용을 적어주세요</label>
+
+            <form action="/register" method="post">
+                <textarea name="content" id="content"></textarea>
+                <input type="submit" class="write-next-btn" value="등록">
+            </form>
+
+        </div><!-- nav end-->
+
+    </div><!-- container end-->
+
+
+    <script src="../../static/ckeditor/build/ckeditor.js"></script>
+    <script src="../../static/js/Companyhwrite3.js"></script>
+</body>
+</html>

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
     <link rel="stylesheet" th:href="@{/css/Companywrite1.css}">
+
 </head>
 <body>
 <form th:action="@{'/board/register/new/'+${categoryID}}" th:object="${board}" method="post" enctype="multipart/form-data">
@@ -38,10 +40,11 @@
             <label for="p_charge" class="lab">참가 비용이 있나요?</label>
             <div class="charge line" th:field="*{costID}">
                 <div class="chk start">
-                    <input type="checkbox" name="p_charge" id="p_charge A" th:value="1" th:field="*{costID}"><span>비용이 있어요</span>     
+
+                    <input type="radio" name="p_charge" id="p_charge A" th:value="1" th:field="*{costID}"><span>비용이 있어요</span>     
                 </div>
                 <div class="chk end">
-                    <input type="checkbox" name="p_charge" id="p_charge B" th:value="2" th:field="*{costID}"><span>비용이 없어요</span>
+                    <input type="radio" name="p_charge" id="p_charge B" th:value="2" th:field="*{costID}"><span>비용이 없어요</span>
                 </div>
                 
             </div>

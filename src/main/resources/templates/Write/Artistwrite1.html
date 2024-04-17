@@ -6,6 +6,10 @@
     <title>Document</title>
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
   	<link rel="stylesheet" th:href="@{/css/Artistwrite1.css}">
+
+      <link rel="stylesheet" href="../../static/css/Setting.css">
+      <link rel="stylesheet" href="../../static/css/Artistwrite1.css">
+
 </head>
 <body>
 <form th:action="@{'/board/register/new/'+${categoryID}}" th:object="${board}" method="post" enctype="multipart/form-data">
@@ -16,9 +20,11 @@
             <label for="" class="lab">1/2 단계</label>
             <h1 class="title">새로운 프로젝트를 개설해 보세요</h1>
             <label for="postName" class="lab">프로젝트명을 입력해주세요</label>
+
             <input type="text" id="postName" name="postName" th:field="*{postName}">
             
             <label class="lab">펀딩 날짜를 입력해 주세요</label>
+
             <div class="date line">
                 
                 <div class="date start">      
@@ -38,19 +44,20 @@
             <label for="p_charge" class="lab">투자혜택은 어떤 방식인가요?</label>
             <div class="charge line" th:field="*{costID}">
                 <div class="chk start">
-                    <input type="checkbox" name="p_charge" id="p_charge A" th:value="3" th:field="*{costID}"><span>고정수익</span>     
+
+                    <input type="radio" name="p_charge" id="p_charge A" th:value="3" th:field="*{costID}"><span>고정수익</span>     
                 </div>
                 <div class="chk middle">
-                    <input type="checkbox" name="p_charge" id="p_charge B" th:value="4" th:field="*{costID}"><span>손익분배</span>
+                    <input type="radio" name="p_charge" id="p_charge B" th:value="4" th:field="*{costID}"><span>손익분배</span>
                 </div>
                 <div class="chk end">
-                    <input type="checkbox" name="p_charge" id="p_charge B" th:value="5" th:field="*{costID}"><span>혜택지급</span>
+                    <input type="radio" name="p_charge" id="p_charge B" th:value="5" th:field="*{costID}"><span>혜택지급</span>
                 </div>                
             </div>
-            <!-- <label for="postName" class="lab">프로젝트를 설명할 수 있는 대표 이미지를 넣어주세요</label>
-            <input type="file" name="dd" id=""> -->
+
 
             <!-- 구현안된 태그삭제 및 버튼구현 -20240416허서진 -->
+
 
             <button type="submit" class="write-next-btn">다음</button>
 

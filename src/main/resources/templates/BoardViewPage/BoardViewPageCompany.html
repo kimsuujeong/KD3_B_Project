@@ -9,6 +9,7 @@
   	<link rel="stylesheet" th:href="@{/css/BoardViewPageCompany.css}">
 </head>
 <body>
+
 	
 	<div th:replace="~{/Fragment/header :: headerFragment}"></div>
 
@@ -26,11 +27,19 @@
             <div class="box-2">
                 <div class="write-user">작성자이름임</div>
                 <div class="write-date">마지막 수정날짜가 보이겠지</div>
+
             </div>
+
+
+            <div class="explain-content">
+                <div id="purpose">
+                    <div class="explain-story" th:text="${post.content}"></div>
+                </div>
 
             <div class="content-post">
                 <img src="../../static/images/ArtistBoardListExam/moviePoster.png" alt="">
             </div>
+
 
             <div class="empty"></div>
 
@@ -42,10 +51,60 @@
 
             </div>
 
-            <!-- <div class="explain-content">
-                <div id="purpose" class="short">
-                    <div class="explain-story" th:text="${post.content}"></div>
+        
+
+        <div class="user-container">
+
+            <div class="edit-btn">
+                <button>게시글 수정하기</button>
+                <button>게시글 삭제하기</button>
+    
+            </div>
+
+            <div class="fundinfobox">
+                
+                <div class="title">
+                    <div class="content-tittle" th:text="${post.postName}"></div>
                 </div>
+                <div class="fundperiod">
+                    <span class="time-explain">펀딩 기간</span><br><br><span id="evtStart" th:text="${post.eventStart}"></span>&nbsp;&nbsp;~ &nbsp;&nbsp;<span id="evtEnd" th:text="${post.eventEnd}"></span>
+                </div>  
+                <div class="fundinfo-btnbox">
+                    <div class="like-btn">
+                        <i class="fa-regular fa-heart"></i>
+                        <div class="like-cnt">81</div>
+                    </div>
+                    <div class="gofund-btn">
+                        <a href="#">이 행사에 참가하기</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- contents Explain End -->
+
+    
+    <div class="empty"></div>
+
+
+    
+<!-- editors pick content -->
+<section class="editors-pick">
+    <div id="recommendation" class="bordelist">
+        <div>이런 행사는 어떠세요?</div>
+        <div class="bordelist-explain">
+            현재 행사정보와 비슷한 행사목록를 선별했어요!
+        </div>
+    </div>
+    
+    <div class="readmore">
+        <a href="#">
+            <span>더 많은 행사목록 보기 </span><i class="fa-solid fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+
 
                 <button type="button" id="buttonDetail">더보기</button>
 
@@ -92,6 +151,7 @@
         </div>
     </section>
     <!-- contents Explain End -->
+
 
     
     <div class="empty"></div>
@@ -191,6 +251,7 @@
                     <div class="title">제 7회 서울인구심포지엄</div>
                 </a>                    
             </div>
+
 
         </div>
 
