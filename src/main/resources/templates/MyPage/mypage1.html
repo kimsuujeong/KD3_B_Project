@@ -9,8 +9,9 @@
     <link rel="stylesheet" th:href="@{/css/mypage1.css}">
 </head>
 <body>
-	<div th:replace="~{/Fragment/header :: headerFragment}"></div>
-	
+
+    <div th:replace="~{/Fragment/header :: headerFragment}"></div>
+
     <!-- Contents Start-->
     <section class="Contents">
         <!-- tag Start -->
@@ -21,10 +22,10 @@
       <nav>
         <br>
 		<ul class="list">
-			<li><a class="B" th:href="@{/mypage/userupdate}" target="_self">- 내정보 수정</a></li> <br>
-			<li><a class="A" th:href="@{/mypage/savelist}" target="_self">- 관심 목록</a></li> <br>
-			<li><a class="C" th:href="@{/mypage/authn}" target="_self">- 관계자 인증</a></li><br>
-			<li><a class="R" th:href="@{/mypage/mypage4}" target="_self">- 내 글 관리</a></li> <br>
+			<li><a class="B" th:href="@{/userUpdate}" target="_self">- 내정보 수정</a></li> <br>
+			<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
+			<li><a class="C" th:href="@{/authn}" target="_self">- 관계자 인증</a></li><br>
+			<li><a class="R" th:href="@{/mypage4}" target="_self">- 내 글 관리</a></li> <br>
 		</ul>
       </nav>
     </div>
@@ -39,7 +40,7 @@
                 <div><span class="content-cnt"></span><span><h3>관심목록</h3></span></div>
                 <!-- 내글관리-> 관심목록 으로 변경 -20240415허서진 -->
                 <div class="list-btn">
-             <span class="a"> ▷ 총 12개의 게시물이 있습니다.</span>
+             <!-- <span class="a"> ▷ 총 12개의 게시물이 있습니다.</span> -->
                     <!-- <a href="#">추천순</a>
                     <a href="#">업데이트순</a>
                     <a href="#">모집 마감일순</a> -->
@@ -48,87 +49,22 @@
     
             <div class="board-content">
                 <div class="carousel-box">
-                    <img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
+                    <div th:each="post,index : ${map.posts}" class="carousel-box">
+                        <img th:src="${imageLinks[__${index.index}__]}" alt="img">
+                        <div class="startDate" th:text="${post.eventStart}"></div>
+                        <div class="title" th:text="${post.postName}"></div>
+                        <div class="space-between">
+                            <!-- <div class="visit" th:text="${post.visitCnt}"><span>조회</span><span>500</span></div> -->
+                            <div th:each="like : ${map.list}" th:if="${like.postID==post.postID}">
+                                <div><a th:href="@{/savelist/delete/{likeID}(likeID = ${like.likeID})}" class="deleteLink">삭제</a></div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- <div><a href="#">
+                        <button type="button" id="btnDelete" class="deleteLink">관심 삭제</button>
+                    </a></div>
+                    <button type="button" id="btnList">목록</button> -->
                 </div>
-                <div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
-                    </div>
-                </div>
-                <div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
-                    </div>
-                </div>
-                <div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
-                    </div>
-                </div>
-                <div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
-                    </div>
-                </div>
-                <div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
-                    </div>
-                </div>
-                <div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
-                    </div>
-                </div>
-                <div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
-                    </div>
-                </div>
-                <div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                    <div class="space-between">
-                        <div class="cost">무료</div>
-                        <div class="visit"><span>조회</span><span>500</span></div>
-                    </div>
-                </div>
-
             </div>
             <div class="pagination">
                 <button class="btn1" onclick="backBtn()"><i class="fa-solid fa-angle-left"></i>이전</button>
@@ -147,8 +83,39 @@
     </section>
     <!-- tagAndContent End-->
 
-	<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
+    <div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
     <script th:src="@{/js/BorderListPageCompany.js}"></script>
+    <script>
+        $(function(){
+           $("#btnList").click(function(){
+              location.href="/board";
+           });
+        
+           $("#btnDelete").click(function(){
+              if(confirm("관심 목록을 삭제하시겠습니까?")){
+                 location.href="/like/deleteAll";
+              }
+           });
+        
+           $("a.deleteLink").click(function(e){
+              if(!confirm("삭제하시겠습니까?")){
+                 e.preventDefault();
+              }
+           });
+           
+           // 관심 목록 비었을 때 실행
+           document.addEventListener('DOMContentLoaded', () => {
+                   const emptyMessage = document.getElementById('emptyMessage');
+                   const list = document.getElementById('list');
+           
+                   if (list.children.length === 0) {
+                       emptyMessage.style.display = 'block';
+                   } else {
+                       emptyMessage.style.display = 'none';
+                   }
+               });
+        });
+        </script>
 </body>
 </html>
