@@ -9,8 +9,60 @@
   	<link rel="stylesheet" th:href="@{/css/BoardListPageCompany.css}">
 </head>
 <body>
-	
-	<div th:replace="~{/Fragment/header :: headerFragment}"></div>
+    <!-- header Start -->
+    <header class="header">
+
+        <nav class="navbar">
+            <!-- upper (logo, searchbar, login, acount, likelist) -->
+            <div class="container">
+                <!-- logo -->
+                <a href="#" class="logo">
+                    <img src="../../static/images/logo-01.png" alt="">
+                </a>
+                <div>
+                    <form action="" class="search-bar" th:data-uri="@{|/board/{categoryID}/search|}">
+                    	<input type="hidden" id="categoryID" th:value="${categoryID}" />
+                        <input type="text" placeholder="참여하고 싶은 행사나 프로젝트를 검색해보세요" name="keyword" id="keyword">
+                        <div class="fas fa-search" name="btnSearch" id="search-btn"></div>
+                     	<div class="w100" style="padding-right:10px">
+							<select class="form-control form-control-sm" name="searchType" id="searchType">
+								<option value="postName">제목</option>
+								<option value="content">본문</option>
+								<option value="authorName">작성자</option>
+							</select>
+						</div>
+                    </form>
+                </div>
+                <div class="link1">
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                    <a href="#">관심목록</a>
+                </div>
+            </div>
+
+            <!-- category -->
+            <div class="category">
+                <div class="category-list">
+                    <span>카테고리</span>
+                    <div class="fas fa-solid fa-chevron-down"></div>
+
+                    <!-- dropdown menu -->
+                <ul class="dropdown">
+                    <li><a href="#">컨퍼런스</a></li>
+                    <li><a href="#">세미나</a></li>
+                    <li><a href="#">펀딩</a></li>
+                </ul>
+                </div>
+                <a href="#">기업행사</a>
+                <a href="#">예술인 펀딩</a>
+                <a href="#">서비스 소개</a>
+                <a href="#">Q & A</a>
+                <a href="#">행사개설</a>
+            </div>
+        </nav>
+    </header>
+    <!-- header End -->
+
 
     <!-- img slider start -->
     <section class="img-slider">
@@ -186,10 +238,9 @@
     
             <div class="board-content">
                 <div class="carousel-box" th:each="post : ${posts}">
-                	<input type="hidden" th:text="${post.postID}">
-                	<input type="hidden" id="categoryID" th:value="${categoryID}" />
+                	<input type="hidden" th:text="${post.postID}"></td>
                     <div th:text="${post.eventStart}"></div>
-                    <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
+                    <div class="title"><a th:href="@{/board/{categoryID}/{postID}(postID=${post.postID})}" th:text="${post.postName}"></a></div>
              <!--        <div class="space-between">
                         <div class="cost">손익분배</div>
                         <div class="visit"><span>조회</span><span>500</span></div>
@@ -199,9 +250,7 @@
     
             <!-- write board btn -->
             <div class="write-btn">
-                <a th:href="@{/board/register/new/1}">
-                    <button>행사 개설</button>
-                </a>
+                <button>행사 개설</button>
             </div>
 
       <div class="pagination" th:if="${!posts.isEmpty()}">
@@ -240,7 +289,60 @@
 
 
 
-    <div th:replace="~{/Fragment/footer :: footerFragment}"></div>
+    <!-- footer start -->
+    <footer class="footer">
+
+        <div class="footer-first">
+            <div class="link-list">
+                <a href="#">기업행사</a>
+                <a href="#">예술인 펀딩</a>
+                <a href="#">서비스 소개</a>
+                <a href="#">Q & A</a>
+                <a href="#">공지사항</a>
+            </div>
+        </div>
+
+        <div class="footer-third">
+            <div class="link-title">서비스 이용 문의</div>
+            <div>채팅상담 (평일 10:00~17:00)</div>
+            <div>사업 제휴 문의 whiosemail@event-tree.kr</div>         
+        </div>
+
+        <div class="footer-four">
+            <div class="link-title company">EVENTREE</div>
+            <div>(주)이벤트리 | 사업자등록번호 000-00-00000</div>
+            <div>통신판매업 신고번호 제0000-0000-0000호</div>
+            <div>대표 신유경 | 개인정보책임자 DB관리자</div>
+            <div>광주특별시 광산구 무진대로 무역회관 7층</div>
+            <!-- <div class="warning">
+                이벤트리는 통신판매중개자이며 행사에 대한 당사자 및 주최자가 아닙니다. 따라서 이벤트리는 등록된 행사에 대해 책임지지 않습니다
+            </div> -->
+        </div> 
+        
+        <div class="footer-second">
+            <div class="link-list">
+                <a href="#">서비스 이용 약관</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">이메일 주소 무단수집 거부</a>
+            </div>         
+        </div>
+        
+        
+
+        <div class="footer-down">
+            <div class="copyright">
+                ⓒ 2024. EVENTREE All Rights Reserved.
+            </div>
+            <div class="sns">
+                <a href="#">X</a>
+                <a href="#">인스타</a>
+                <a href="#">카카오톡</a>
+                <a href="#">유튜브</a>
+            </div>
+            <!-- 나중에 sns 로고 이미지로 교체할것 -->
+        </div>
+
+    </footer>
 
 
 
