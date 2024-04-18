@@ -78,8 +78,6 @@ public class UserJoinController {
 	@PostMapping("/checkEmailToken") // 토큰 확인 요청 처리
 	public ResponseEntity<Map<String, String>> checkEmailToken(@RequestParam("email_Check_key") String email_Check_key) {
 	    
-		System.out.println(email_Check_key);
-		
 		Map<String, String> response = new HashMap<>();
 	    String getKey = redisUtil.getData(Integer.parseInt(email_Check_key));
 
@@ -95,9 +93,7 @@ public class UserJoinController {
 	            response.put("message", "토큰 인증되었습니다.");
 	            
 	            Email = TokenEmail;
-	            
-	            System.out.println("Email : " + Email);
-	            
+	            	            
 	            return ResponseEntity.ok().body(response);
 	            
 	        } else {
@@ -120,11 +116,9 @@ public class UserJoinController {
 		int cnt = userJoinService.idchk(id);
 		
 		if (cnt==1) {
-			System.out.println(id); // test
 			return 1;
 		}
 		
-		System.out.println(id); //test
 		return 0;
 		
 	}
@@ -165,11 +159,9 @@ public class UserJoinController {
 		int cnt = userJoinService.namechk(nickname);
 		
 		if (cnt==1) {
-			System.out.println(nickname); // test
 			return 1;
 		}
 		
-		System.out.println(nickname); //test
 		return 0;
 		
 	}
@@ -189,7 +181,6 @@ public class UserJoinController {
 		Map<String, String> response = new HashMap<>();
 		
 		if (TokenEmail == null) {
-			System.out.println("이메일 인증 해주세요"); // test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
 			response.put("message", "이메일 인증 해주세요");
 
@@ -197,7 +188,6 @@ public class UserJoinController {
 		}
 		
 		if (Email == null) {
-			System.out.println("인증번호 확인 해주세요"); // test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
 			response.put("message", "인증번호 확인 해주세요");
 
@@ -206,7 +196,6 @@ public class UserJoinController {
 
 		
 		if (!TokenEmail.equals(Email)) {
-			System.out.println("토큰 번호를 보낸 이메일과 다릅니다."); // test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
 			response.put("message", "토큰 번호를 보낸 이메일과 다릅니다.");
 
@@ -214,7 +203,6 @@ public class UserJoinController {
 		}
 		
 		if (Email.isEmpty() && Email.equals(email)) {
-			System.out.println("토큰 번호를 확인해 주세요"); // test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
 			response.put("message", "토큰 번호를 확인해 주세요");
 
@@ -223,7 +211,6 @@ public class UserJoinController {
 		
 		
 		if (email_Check_key == null) {
-			System.out.println("인증번호를 확인해 주세요"); // test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
 			response.put("message", "인증번호를 확인해 주세요");
 
@@ -231,7 +218,6 @@ public class UserJoinController {
 		}
 		
 		if (!Email.equals(getKey)) {
-			System.out.println("토큰번호를 다시 확인해 주세요");// test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
 			response.put("message", "토큰번호를 다시 확인해 주세요");
 
@@ -239,7 +225,6 @@ public class UserJoinController {
 		}
 		
 		if (!password.equals(password_ck)) {
-			System.out.println("비밀번호가 맞지 않습니다."); // test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
 			response.put("message", "비밀번호가 맞지 않습니다.");
 
@@ -249,7 +234,6 @@ public class UserJoinController {
 		try {
 			
 			if (userJoinService.idchk(mid_id)==1) {
-				System.out.println("아이디를 다시 확인해 주세요"); // test
 				response.put("redirectUrl", "http://localhost:8085/joinForm");
 				response.put("message", "아이디를 다시 확인해 주세요");
 
@@ -257,7 +241,6 @@ public class UserJoinController {
 			}
 			
 			if (userJoinService.namechk(mid_nickname)==1) {
-				System.out.println("닉네임을 다시 확인해 주세요"); // test
 				response.put("redirectUrl", "http://localhost:8085/joinForm");
 				response.put("message", "닉네임을 다시 확인해 주세요");
 
@@ -276,12 +259,9 @@ public class UserJoinController {
 				String BCryptPW = BCrypt.hashpw(password_ck, BCrypt.gensalt()); // 해싱처리
 				userDTO.setPassword(BCryptPW);
 				
-				System.out.println("회원가입 암호화"+ BCryptPW); // test
 				
 				
 				userJoinService.InsertUser(userDTO);
-				
-				System.out.println("회원가입 완료"); // test
 				
 				response.put("redirectUrl", "http://localhost:8085/Testmain");
 				response.put("message", "회원가입 완료");
@@ -293,8 +273,6 @@ public class UserJoinController {
 			}
 			
 		} catch (Exception e) {
-			System.out.println(e.toString());
-			System.out.println("서버 오류 입니다."); // test
 			response.put("redirectUrl", "http://localhost:8085/joinForm");
 			response.put("message", "서버 오류 입니다.");
 

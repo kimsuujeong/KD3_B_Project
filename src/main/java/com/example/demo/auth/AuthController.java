@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.Adminpage.AdminService;
+import com.example.demo.board.BoardService;
 import com.example.demo.file.FileService;
 import com.example.demo.user.User;
 
@@ -26,20 +27,23 @@ public class AuthController {
 	
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	BoardService boardService;
+	
 	@GetMapping("/authn") // 인증
 	public String authn(Model model, HttpSession httpSession) {
 		User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
 	    
 	    // 사용자가 관리자인지 여부를 확인합니다.
-		
+		boolean isAdmin = false;
+	    if (loggedInUser != null) {
+	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+	    }
+	    
 		model.addAttribute("loggedInUser", loggedInUser);
+		model.addAttribute("isAdmin", isAdmin);
 		return "/MyPage/mypage3";
-	}
-	
-	// 아직 구현 안됨
-	@GetMapping("/authn/postlist")
-	public String postlist() {//세션 처리해야함
-		return "/MyPage/mypage4";
 	}
 	
 	// 관계자 인증 신청 페이지
@@ -112,6 +116,7 @@ public class AuthController {
 		// 파일 업로드하고 보냄
 		request.setFile(file);
 		request.setUserID(loggedInUser.getUserID());
+		// 데이터베이스에 저장
 		authService.authRequest(request, request.getName(), request.getLink(), 1);
 		session.setAttribute("entercer", request);
 		return "redirect:/authn";

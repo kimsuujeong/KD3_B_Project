@@ -26,10 +26,11 @@ public class AdminServiceImpl implements AdminService{
 		}
 		return false;
 	}
+	// 관계자인지 확인
 	@Override
 	public boolean isUserAuth(String userID) {
 		List<AuthorizedUser> aUser=adminMapper.adminCheck(userID);
-		// 관리자 권한 확인(authorizeID가 3이어야함
+		// 관계자는 1이나2여야 함 관리자는 1로 관계자로 봄
 		for (AuthorizedUser userlist : aUser) {
 			if(userlist!=null&& (userlist.getAuthorizeID()==1||userlist.getAuthorizeID()==2 || userlist.getAuthorizeID()==3)) {
 				return true;
@@ -76,6 +77,7 @@ public class AdminServiceImpl implements AdminService{
 		authRequest.setStatus("거절");
 		adminMapper.updateAuthRequest(authRequest);
 	}
+	// 신청아이디로 유저의 이메일 가져오기
 	@Override
 	public void getAuthrequestEmail(Integer requestID) {
 		adminMapper.getAuthrequestEmail(requestID);

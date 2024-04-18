@@ -22,10 +22,19 @@
 
 				<nav> <br>
 					<ul class="list">
-						<li><a class="B" th:href="@{/mypage/userupdate}" target="_self">- 내정보 수정</a></li> <br>
-						<li><a class="A" th:href="@{/mypage/savelist}" target="_self">- 관심 목록</a></li> <br>
-						<li><a class="C" th:href="@{/mypage/authn}" target="_self">- 관계자 인증</a></li><br>
-						<li><a class="R" th:href="@{/mypage/mypage4}" target="_self">- 내 글 관리</a></li> <br>
+						<th:block th:if="${session['loggedInUser'] != null and !isAdmin}">
+							<li><a class="B" th:href="@{/userUpdate}" target="_self">- 내정보 수정</a></li> <br>
+							<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
+							<li><a class="C" th:href="@{/authn}" target="_self">- 관계자 인증</a></li><br>
+							<li><a class="R" th:href="@{/mypost}" target="_self">- 내 글 관리</a></li> <br>
+						</th:block>
+					
+						<th:block th:if="${session['loggedInUser'] != null and isAdmin}">
+							<li><a class="B" th:href="@{/userUpdate}" target="_self">- 내정보 수정</a></li> <br>
+							<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
+							<li><a th:href="@{/admin/auth}" class="select">- 관계자 인증 확인</a></li><br>
+							<li><a class="R" th:href="@{/mypost}" target="_self">- 내 글 관리</a></li> <br>
+						</th:block>
 					</ul>
 				</nav>
 			</div>

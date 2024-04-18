@@ -9,7 +9,11 @@
     <link rel="stylesheet" th:href="@{/css/mypage1.css}">
 </head>
 <body>
+
+    <!-- header Start -->
 	<div th:replace="~{/Fragment/header :: headerFragment}"></div>
+    
+
 
     <!-- Contents Start-->
     <section class="Contents">
@@ -21,10 +25,19 @@
       <nav>
         <br>
 		<ul class="list">
-			<li><a class="B" th:href="@{/userupdate}" target="_self">- 내정보 수정</a></li> <br>
-			<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
-			<li><a class="C" th:href="@{/authn}" target="_self">- 관계자 인증</a></li><br>
-			<li><a class="R" th:href="@{/mypage4}" target="_self">- 내 글 관리</a></li> <br>
+			<th:block th:if="${session['loggedInUser'] != null and !isAdmin}">
+				<li><a class="B" th:href="@{/userUpdate}" target="_self">- 내정보 수정</a></li> <br>
+				<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
+				<li><a class="C" th:href="@{/authn}" target="_self">- 관계자 인증</a></li><br>
+				<li><a class="R" th:href="@{/mypost}" target="_self">- 내 글 관리</a></li> <br>
+			</th:block>
+		
+			<th:block th:if="${session['loggedInUser'] != null and isAdmin}">
+				<li><a class="B" th:href="@{/userUpdate}" target="_self">- 내정보 수정</a></li> <br>
+				<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
+				<li><a th:href="@{/admin/auth}" class="select">- 관계자 인증 확인</a></li><br>
+				<li><a class="R" th:href="@{/mypost}" target="_self">- 내 글 관리</a></li> <br>
+			</th:block>
 		</ul>
       </nav>
     </div>
@@ -47,23 +60,18 @@
             </div>
     
             <div class="board-content">
-                <div class="carousel-box">
-                    <div th:each="post,index : ${map.posts}" class="carousel-box">
-                        <img th:src="${imageLinks[__${index.index}__]}" alt="img">
-                        <div class="startDate" th:text="${post.eventStart}"></div>
-                        <div class="title" th:text="${post.postName}"></div>
-                        <div class="space-between">
-                            <div class="visit" th:text="${post.visitCnt}"><span>조회</span><span>500</span></div>
-                        </div>
-                        <div th:each="like : ${map.list}" th:if="${like.postID==post.postID}">
-                            <div><a th:href="@{/savelist/delete/{likeID}(likeID = ${like.likeID})}" class="deleteLink">삭제</a></div>
-                        </div>
+                <div th:each="post,index : ${map.posts}" class="carousel-box">
+                    <img th:src="${imageLinks[__${index.index}__]}" alt="img">
+                    <div class="startDate" th:text="${post.eventStart}"></div>
+                    <div class="title" th:text="${post.postName}"></div>
+                    <div class="space-between">
+                        <div class="visit" th:text="${post.visitCnt}"><span>조회</span><span>500</span></div>
                     </div>
-                    <!-- <div><a href="#">
-                        <button type="button" id="btnDelete" class="deleteLink">관심 삭제</button>
-                    </a></div>
-                    <button type="button" id="btnList">목록</button> -->
+                    <div th:each="like : ${map.list}" th:if="${like.postID==post.postID}">
+                        <div><a th:href="@{/savelist/delete/{likeID}(likeID = ${like.likeID})}" class="deleteLink">삭제</a></div>
+                    </div>
                 </div>
+                
             </div>
             <div class="pagination">
                 <button class="btn1" onclick="backBtn()"><i class="fa-solid fa-angle-left"></i>이전</button>
@@ -82,7 +90,10 @@
     </section>
     <!-- tagAndContent End-->
 
+
+    <!-- footer start -->
 	<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
+
 
     <script th:src="@{/js/BorderListPageCompany.js}"></script>
     <script>

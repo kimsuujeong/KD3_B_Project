@@ -7,6 +7,7 @@ public interface UserService {
 	public User FindPW (String usermail, String userID);// FindPW (for e-mail + ID )
 	public User Login (String userID, String password); // Login (ID,PW) + kakaoAPI, GoogleAPI...
 	public int Update(String pwNew, String pwEmail);
+	// 회원 삭제
 	public void deleteUser(String userID);
 	
 
