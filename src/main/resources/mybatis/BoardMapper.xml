@@ -73,6 +73,11 @@
 		where postID=#{postID}
 	</select>
 	
+	<!-- 비용정보 가져오기 -->
+	<select id="getCostName">
+		select costName from cost where costID=#{costID};
+	</select>
+	
 	<!-- search all post -->
 	<select id="search" resultType="com.example.demo.board.Board">
        select * from board

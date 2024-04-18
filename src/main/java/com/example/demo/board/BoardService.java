@@ -28,6 +28,8 @@ public interface BoardService {
 	public Board getPostByLikeID(Integer postID);
 
 	public Page<Board> search(Search search, Pageable pageable);
+
+	public String getCostName(Integer costID);
 	
 	
 }

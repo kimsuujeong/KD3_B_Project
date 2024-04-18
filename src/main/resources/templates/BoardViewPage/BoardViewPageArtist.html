@@ -19,12 +19,12 @@
             
             <div class="box-1">
                 <div class="content-tittle" th:text="${post.postName}"></div>
-                <div class="visit-cnt">조회수<span>81</span></div>
+                <div class="visit-cnt" >조회수<span th:text="${post.visitCnt}"></span></div>
             </div>
 
             <div class="box-2">
-                <div class="write-user">작성자이름임</div>
-                <div class="write-date">마지막 수정날짜가 보이겠지</div>
+                <div class="write-user" th:text="${post.authorName}"></div>
+                <div class="write-date" th:text="${post.writeDate}"></div>
             </div>
 
 			<div class="content-post">
@@ -62,8 +62,12 @@
                 </div>  
                 <div class="fundinfo-btnbox">
                     <div class="like-btn">
-                        <i class="fa-regular fa-heart"></i>
-                        <div class="like-cnt">81</div>
+                       <!-- <i class="fa-regular fa-heart"></i>
+                        <div class="like-cnt">81</div>-->
+						<form name="form1" method="post" th:action="@{/savelist/insert}">
+	                        <input type="hidden" name="postID" th:value="${postID}">                  
+	                        <button type="submit" class="like-cnt" >♥관심등록</button>
+	                    </form>
                     </div>
                     <div class="gofund-btn">
                         <a href="#">이 프로젝트 펀딩하러 가기</a>

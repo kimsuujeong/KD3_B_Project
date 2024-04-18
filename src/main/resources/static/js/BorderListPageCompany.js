@@ -12,6 +12,7 @@ setInterval(function(){
 // pagination
 let link = document.querySelectorAll('.link');
 let currentValue = 1;
+console.log(link);
 
 function activeLink(){
     for(let l of link){

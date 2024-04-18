@@ -222,8 +222,9 @@ body{
   display: flex;
   flex-wrap: wrap;
   height: 850px;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 1rem;
+  margin-left: 4rem;
 }
 
 .carousel-box{
