@@ -59,8 +59,10 @@
 			</div>
 			<!-- <hr class ="hr1" noshade>  -->
 			<div class="board-content">
-				<div th:each="post, index : ${userPosts}" class="carousel-box">
-					<img th:src="${imageLinks[__${index.index}__]}" alt="img">
+				<div th:each="post, index : ${userPosts}" class="carousel-box"><a th:href="@{|/board/${post.categoryID}/${post.postID}|}">
+				    <input type="hidden" th:value="${post.postID}">
+				    <input type="hidden" id="categoryID" th:value="${post.categoryID}" />
+					<img th:if="${imageLinks != null and imageLinks.size() > index.index}" th:src="${imageLinks[index.index]}" alt="img">
 					<div class="startDate" th:text="${post.eventStart}"></div>
 					<div class="title" th:text="${post.postName}"></div>
 					<div class="space-between">

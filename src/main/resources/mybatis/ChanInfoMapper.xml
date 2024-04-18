@@ -30,7 +30,7 @@
 	</select>
 	
 	<select id="getUserPosts" resultType="com.example.demo.board.Board">
-		select * from board
+		select b.*, b.category_categoryID as categoryID from board b
 		where user_userID=#{userID};
 	</select>
 </mapper>

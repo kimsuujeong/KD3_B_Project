@@ -5,7 +5,7 @@
 	<!-- 관심 목록 -->
 	<select id="list" resultType="com.example.demo.like.Like">
 	
-		select l.likeID, u.userID, p.postID, l.userID
+		select l.likeID, u.userID, p.postID, l.userID,p.category_categoryID as categoryID
 		from user u, board p, mydb.like l
 		where u.userID = l.userID
         and p.postID = l.postID
