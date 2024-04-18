@@ -371,6 +371,13 @@
     padding: 0 1rem;
 }
 
+.like-cnt{
+    background-color: var(--white-color);
+    color: var(--green-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
 .gofund-btn{
     background-color: var(--green-color);
     display: flex;
@@ -378,6 +385,7 @@
     padding: 1rem;
     border-radius: 10px;
     margin: 1rem;
+    cursor: pointer;
 }
 
 .gofund-btn a{
