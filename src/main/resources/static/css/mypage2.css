@@ -68,6 +68,10 @@ body{
 
 }
 
+.header .navbar .link1 .mypage span{
+  font-weight: bold
+}
+
 .header .navbar a{
   color: var(--black-color);
 }
@@ -98,31 +102,6 @@ body{
   /* background-color: rgb(235, 235, 235); */
 }
 
-/* dropdown-menu */
-/* 좀 더 괜찮게 다듬을 필요 있음 */
-.dropdown li{
-  display: block;
-  background-color: var(--white-color);
-  margin: 2rem 0rem;
-}
-
-.dropdown{
-  width: auto;
-  background-color: var(--white-color);
-  position: absolute;
-  z-index: 999;
-  display: none;
-  padding: 1rem;
-  margin-right: 2rem;
-}
-
-.category-list:hover .dropdown{
-  display: block;
-}
-
-.category-list:hover{
-  color: var(--green-color);
-}
 /* header End*/
 
 
@@ -134,7 +113,7 @@ body{
   font-size: 2rem;
   width: 20vw;
   /* height: 100vh; */
-  height: 600px;
+  /* height: 600px; */
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
@@ -225,7 +204,7 @@ body{
 
 .list-list .btn{
   font-weight: 300;
-  font-size: 12px;
+  font-size: 1.6rem;
   background-color: #00ce80;
   color: #fff;
   border: 1px solid #9c9c9c;

@@ -78,6 +78,10 @@
     color: var(--black-color);
 }
 
+.header .navbar .link1 .mypage span{
+    font-weight: bold
+}
+
 
 .category {
     display: flex;

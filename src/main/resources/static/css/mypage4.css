@@ -67,6 +67,10 @@ body{
 
 }
 
+.header .navbar .link1 .mypage span{
+  font-weight: bold
+}
+
 .header .navbar a{
   color: var(--black-color);
 }
@@ -192,7 +196,7 @@ body{
 .board-content{
   display: flex;
   flex-wrap: wrap;
-  height: 850px;
+  /* height: 850px; */
   /* justify-content: center; */
   gap: 1rem;
   margin-left: 4rem;

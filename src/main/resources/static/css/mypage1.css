@@ -20,6 +20,10 @@ body{
   align-items: center;
 }
 
+.header .navbar .link1 .mypage span{
+  font-weight: bold
+}
+
 .header .logo img{
   height: 8rem;
   padding-right: 4rem;
@@ -96,32 +100,6 @@ body{
   padding: 1rem;
   /* background-color: rgb(235, 235, 235); */
 }
-
-/* dropdown-menu */
-/* 좀 더 괜찮게 다듬을 필요 있음 */
-.dropdown li{
-  display: block;
-  background-color: var(--white-color);
-  margin: 2rem 0rem;
-}
-
-.dropdown{
-  width: auto;
-  background-color: var(--white-color);
-  position: absolute;
-  z-index: 999;
-  display: none;
-  padding: 1rem;
-  margin-right: 2rem;
-}
-
-.category-list:hover .dropdown{
-  display: block;
-}
-
-.category-list:hover{
-  color: var(--green-color);
-}
 /* header End*/
 
 /* tagAndContent Start */
@@ -129,7 +107,6 @@ body{
   background-color: #fff;
   width: 85vw;
   margin: 0 auto;
-  height: auto;
   align-items: center;
   display: flex;
   align-items: flex-start;
@@ -139,7 +116,7 @@ body{
   /* background-color: #f2f2f2; */
   font-size: 2rem;
   width: 20vw;
-  height: 1350px;
+  /* height: 1350px; */
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
@@ -221,16 +198,19 @@ body{
 .board-content{
   display: flex;
   flex-wrap: wrap;
-  height: 850px;
+  height: 100%;
   /* justify-content: center; */
   gap: 1rem;
   margin-left: 4rem;
+  margin-bottom: 8rem;
 }
 
 .carousel-box{
   width: 30%;
-  padding: 2rem;
+  padding: 0 2rem;
   font-size: 1.6rem;
+  margin-bottom: 2rem;
+  /* height: 20%; */
   /* background-color: aqua; */
 }
 
@@ -252,7 +232,7 @@ body{
 }
 
 .carousel-box .title{
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
   padding: 1rem 0;
 }
@@ -268,12 +248,32 @@ body{
   color: var(--green-color);
 }
 
+.space-between{
+  margin-top: 0.5rem;
+  align-items: end;
+}
+
 .visit{
   color: var(--grey-color);
 }
 
 .visit span{
   margin: 0;
+}
+
+.deleteLink{
+  font-size: 1.6rem;
+  border: 1px var(--green-color) solid;
+  padding: 0.5rem 2rem;
+  background-color: transparent;
+  /* margin: 1rem; */
+  border-radius: 10px;
+  color: var(--green-color);
+}
+
+.deleteLink:hover{
+  background-color: var(--green-color);
+  color: var(--white-color);
 }
 
 /* content-list End */
