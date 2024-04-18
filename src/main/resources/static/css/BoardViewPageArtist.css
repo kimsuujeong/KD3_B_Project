@@ -215,7 +215,7 @@
 
 .explain-story{
     margin: 1rem 6rem 6rem 2rem;
-    height: 50rem;
+    /* height: 50rem; */
 }
 
 .explain-content button{
@@ -540,7 +540,7 @@
 
 
 /* 웹사이트의 사이즈가 줄면 보이는 갯수가 줆 */
-@media screen and (max-width:90rem){
+/* @media screen and (max-width:90rem){
     .carousel-box{
         width: calc(100% / 4);
     }
@@ -550,7 +550,7 @@
     .carousel-box{
         width: calc(100% / 3);
     }
-}
+} */
 
 /* draggable images slider END */
 /* editor pick END*/

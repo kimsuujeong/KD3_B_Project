@@ -71,7 +71,7 @@
             <div class="board-content">
 
 				<div class="carousel-box" th:each="post, index: ${posts}">
-                	<input type="hidden" th:text="${post.postID}">
+                	<input type="hidden" th:value="${post.postID}">
                 	<input type="hidden" id="categoryID" th:value="${categoryID}" />
                     <img th:src="${imageLinks[__${index.index}__]}">
                     <div th:text="${post.eventStart}"></div>

@@ -26,6 +26,8 @@ public interface BoardService {
 	public ImageFile getImageFile(Integer fileID);
 
 	public Board getPostByLikeID(Integer postID);
+
+	public Page<Board> search(Search search, Pageable pageable);
 	
 	
 }
