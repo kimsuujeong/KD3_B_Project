@@ -80,7 +80,7 @@
 	
 	<!-- search all post -->
 	<select id="search" resultType="com.example.demo.board.Board">
-       select * from board
+       select *,category_categoryID as categoryID from board
        <trim prefix="WHERE" prefixOverrides="AND|OR">         
           <if test="searchType=='postName' and keyword != null and keyword != '' ">
              AND postName like CONCAT('%', #{keyword}, '%')
@@ -113,7 +113,7 @@
     
 	<!-- search post -->
 	<select id="searchCtg" resultType="com.example.demo.board.Board">
-		select b.*,c.categoryID
+		select b.*,c.categoryID,b.category_categoryID as categoryID
 		from board b
 		join category c on b.category_categoryID=c.categoryID
 		<trim prefix="WHERE" prefixOverrides="AND|OR">
