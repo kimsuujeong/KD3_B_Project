@@ -34,12 +34,14 @@ public class AuthController {
 	@GetMapping("/authn") // 인증
 	public String authn(Model model, HttpSession httpSession) {
 		User loggedInUser = (User)httpSession.getAttribute("loggedInUser");
+		if (loggedInUser == null) {
+			return "redirect:/login";
+		}
 	    
 	    // 사용자가 관리자인지 여부를 확인합니다.
 		boolean isAdmin = false;
-	    if (loggedInUser != null) {
-	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
-	    }
+	    
+	    isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 	    
 		model.addAttribute("loggedInUser", loggedInUser);
 		model.addAttribute("isAdmin", isAdmin);
@@ -54,8 +56,12 @@ public class AuthController {
 		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
+		boolean isAdmin = false;
+	    
+	    isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+	    
 		model.addAttribute("loggedInUser", loggedInUser);
-		
+		model.addAttribute("isAdmin", isAdmin);
 		
 	    return "/MyPage/mypage3"; 
 
@@ -69,6 +75,10 @@ public class AuthController {
 		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
+		boolean isAdmin = false;
+	    
+	    isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+	    
 		// 기존 기업 인증 신청내역 확인
 		AuthRequest existingRequest = authService.getAuthRequestUserIDType(loggedInUser.getUserID(), 1);
 		
@@ -82,6 +92,8 @@ public class AuthController {
 	        }
 //	        return "redirect:/authn";
 	    }
+		model.addAttribute("isAdmin", isAdmin);
+		
 		model.addAttribute("entercer", new AuthRequest());
 		return "/MyPage/entercer";
 	}
@@ -92,6 +104,10 @@ public class AuthController {
 		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
+		boolean isAdmin = false;
+	    
+	    isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+	    
 		// 기존 예술 인증 신청내역 확인
 		AuthRequest existingRequest = authService.getAuthRequestUserIDType(loggedInUser.getUserID(), 2);
 		if (existingRequest != null) {// 이미 있다면 작성폼으로 가지 않음
@@ -104,6 +120,8 @@ public class AuthController {
 	        }
 //	        return "redirect:/authn";
 	    }
+		model.addAttribute("isAdmin", isAdmin);
+		
 		model.addAttribute("artistcer", new AuthRequest());
 		return "/MyPage/artistcer";
 	}
@@ -113,6 +131,7 @@ public class AuthController {
 										@ModelAttribute("entercer")AuthRequest request,
 										HttpSession session,Model model) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		
 		// 파일 업로드하고 보냄
 		request.setFile(file);
 		request.setUserID(loggedInUser.getUserID());

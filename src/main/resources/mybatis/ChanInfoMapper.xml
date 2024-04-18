@@ -28,4 +28,9 @@
 		userID=#{userID}
 		and password=#{oldPw}
 	</select>
+	
+	<select id="getUserPosts" resultType="com.example.demo.board.Board">
+		select * from board
+		where user_userID=#{userID};
+	</select>
 </mapper>
