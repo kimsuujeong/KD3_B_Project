@@ -99,4 +99,22 @@ public class BoardMapper {
 	public String getCostName(Integer costID) {
 		return sqlSession.selectOne("getCostName", costID);
 	}
+
+	public List<Board> getPostLate() {
+		return sqlSession.selectList("getPostLate");
+	}
+
+	public List<Board> getPostView() {
+		return sqlSession.selectList("getPostView");
+	}
+
+	public List<Board> getPostEnd() {
+		return sqlSession.selectList("getPostEnd");
+	}
+
+	public List<Board> getPostsViewCategory(Integer categoryID) {
+		return sqlSession.selectList("getPostsVC",categoryID);
+	}
+
+	
 }
