@@ -64,29 +64,20 @@
 					<div class="title" th:text="${post.postName}"></div>
 					<div class="space-between">
 						<!-- 추가된 부분: 게시물에 대한 좋아요 수와 삭제 링크 -->
-						<div class="visit" th:text="${post.visitCnt}"><span>조회</span></div>
+						<!-- <div class="visit" th:text="${post.visitCnt}"><span>조회</span></div> -->
 					</div>
 				</div>
 				
 
 			</div>
-			<!-- js 삽입이 안되어있음 나중에 페이징 관련 js 추가할것  -->
-			<div class="pagination">
-				<button class="btn1" onclick="backBtn()"><i class="fa-solid fa-angle-left"></i>이전</button>
-				<ul class="pagination-ul">
-					<li class="link active" value="1" onclick="activeLink()">1</li>
-					<li class="link" value="2" onclick="activeLink()">2</li>
-					<li class="link" value="3" onclick="activeLink()">3</li>
-					<li class="link" value="4" onclick="activeLink()">4</li>
-					<li class="link" value="5" onclick="activeLink()">5</li>
-				</ul>
-				<button class="btn2" onclick="nextBtn()">다음<i class="fa-solid fa-angle-right"></i></button>
-			</div>
+			
 		</div>
 		<!-- content-list End -->
 
 	</section>
 	<!-- tagAndContent End-->
+
+	<div class="empty"></div>
 
 	<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 </body>

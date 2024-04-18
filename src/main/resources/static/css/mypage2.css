@@ -178,8 +178,9 @@ body{
   align-items: flex-start;
 }
 .content{
-  height: 580px;
+  /* height: 580px; */
   width: 980px;
+  margin-bottom: 4rem;
 }
 .content .list {
   font-size: 2rem;
@@ -195,6 +196,11 @@ body{
   height: 2.5rem;
   /* border-top: 2px solid var(--light_gray); */
 }
+
+.box-content{
+  height: 100%;
+}
+
 .box{
   font-size: 1.5rem;
   padding: 25px;
@@ -207,7 +213,7 @@ body{
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  margin: 20px; 
+  /* margin: 20px;  */
 }
 /* .input-container-email {
   display: none;
@@ -243,13 +249,16 @@ body{
 }
 .down .bye{
 /*   
-  background-color: #00ce80;
-  color: #fff; */
+  background-color: #00ce80;*/
+  color: var(--grey-color); 
   border-bottom: 1px solid #9c9c9c;
   font-size: 1.2em;
   padding: 10px;
-  margin: 10px;
+  margin: 0 10px;
 }
+
+
+
 /* pagination */
 .pagination{
   display: flex;
@@ -309,8 +318,9 @@ ul li.active{
 
 /* tagAndContent End */
 
-.dowm hr{
-  width: 1300px;
+.down hr{
+  width: 11rem;
+  margin-left: 10px;
 }
 
 
