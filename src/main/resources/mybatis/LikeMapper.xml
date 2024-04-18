@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="like">
 	
+	<!-- 관심 목록 -->
 	<select id="list" resultType="com.example.demo.like.Like">
 	
 		select l.likeID, u.userID, p.postID, l.userID
@@ -12,19 +13,19 @@
 		order by l.likeID;
 	
 	</select>
-
+	<!-- 관심목록 추가 -->
 	<insert id="insert">
 		insert into mydb.like(likeID, userID, postID,heart)
 		values(#{likeID}, #{userID}, #{postID},1)
 	</insert>
-
+	<!-- 관심 중복 확인을 위한것 -->
 	<select id = "countLike" resultType="int">
 		select count(*)
 		from mydb.like 
 		where userID = 'test1'
 		and postID = #{postID};
 	</select>
-	
+	<!-- 관심 삭제 -->
 	<delete id="deletelike" parameterType="Integer">
 		delete from mydb.like where likeID = #{likeID}
 	</delete>

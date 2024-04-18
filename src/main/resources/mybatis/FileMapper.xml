@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.file.FileMapper">
+	<!-- 파일테이블에 저장 -->
 	<insert id="insertFile">
 		INSERT INTO file (path, oriName,
 		saveName,
@@ -8,47 +9,47 @@
 		VALUES (#{path}, #{oriName}, #{saveName},
 		#{userID} , now())
 	</insert>
-
+	<!-- 파일 삭제 -->
 	<delete id="deleteFile">
 		delete from file
 		where saveName=#{saveName}
 	</delete>
-
+	<!-- 모든 파일 -->
 	<select id="getAllFiles">
 		select oriName
 		from file;
 	</select>
-
+	<!-- 안쓰는듯 -->
 	<select id="findSaveName">
 		SELECT saveName FROM file
 		WHERE saveName = #{saveName}
 	</select>
-
+	<!-- 유저아이디로 uuid 안쓰는듯? -->
 	<select id="findSaveNameUserID">
 		SELECT saveName FROM file
 		WHERE userID = #{userID}
 	</select>
-
+	<!-- 유저아이디로 파일 가져오기 -->
 	<select id="getFileUserID">
 		SELECT * FROM file
 		WHERE user_userID = #{userID}
 	</select>
-
+	<!-- uuid로 파일아이디 -->
 	<select id="findFileID">
 		select fileID from file
 		where saveName=#{saveName}
 	</select>
-	
+	<!-- 파일 아이디로 path  -->
 	<select id="getPathFileID" resultType="string">
 		select path from file
 		where fileID=#{fileID}
 	</select>
-	
+	<!-- 파일 아이디로 원래이름  -->
 	<select id="getNameFileID" resultType="string">
 		select oriName from file
 		where fileID=#{fileID}
 	</select>
-	
+	<!-- 파일아이디로 uuid -->
 	<select id="getsaveNameByFileID" resultType="string">
 		select saveName from file
 		where fileID=#{fileID}
@@ -59,6 +60,7 @@
 		INSERT INTO image (path, oriImName,saveImName,userID, createDate)
 		VALUES (#{path}, #{oriImName}, #{saveImName},#{userID} , now())
 	</insert>
+	<!-- uuid로 이미지아이디 -->
 	<select id="findImageFileID">
 		select imageID from image
 		where saveImName=#{saveImName}

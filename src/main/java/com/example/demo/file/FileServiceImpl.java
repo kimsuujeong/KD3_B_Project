@@ -3,6 +3,8 @@ package com.example.demo.file;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -10,13 +12,18 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.example.demo.auth.AuthRequest;
 import com.example.demo.post.ImageFile;
+import com.example.demo.user.User;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
@@ -33,6 +40,7 @@ public class FileServiceImpl implements FileService {
 	@Autowired
 	FileMapper fileMapper;
 
+	// file테이블에 올라가는 authrequest의 파일
 	@Override
 	public String uploadFiles(UploadFile uploadFile){
 		try {
@@ -239,36 +247,14 @@ public class FileServiceImpl implements FileService {
 	    }
 	}
 
+	// uuid로 이미지아이디 찾기
 	@Override
 	public Integer findImageFileID(String saveName) {
 		return fileMapper.findImageFileID(saveName);
 	}
 	
-//// ck test
-	@Override
-	public String uploadImageForCKEditor(MultipartFile file) {
-		try {
-	        // 파일이 비어 있는지 확인
-	        if (file.isEmpty()) {
-	            throw new IllegalArgumentException("업로드할 파일이 없습니다.");
-	        }
-	        
-	        // 파일 업로드 처리
-	        String saveName = uploadImFilesBucket(file); // 이미지를 버킷에 업로드하고 UUID로 반환되는 파일 이름을 저장
-	        
-	        // 이미지의 URL 구성
-//	        String imageUrl = getDownLink(saveName); // UUID를 이용하여 이미지의 URL을 가져옴
-	        
-	        // 클라이언트로 이미지 URL 반환
-//	        return imageUrl;
-	        return saveName;
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        // 예외 발생 시 예외 처리
-	        return null;
-	    }
-	}
 
+	// image테이블에 올라가는 게시물의 파일
 	private String uploadImFilesBucket(MultipartFile file) {
 		// 버킷 저장소로 보내는 곳
 	    String keyFileName = "projectb-419201-70f6627fba41.json";

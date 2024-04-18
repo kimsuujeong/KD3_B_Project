@@ -31,6 +31,7 @@ public class PostServiceImpl implements PostService {
 		return boardList;
 	}
 
+	// 게시물 저장
 	public void saveBoard(Board board) {
 		MultipartFile file=board.getFile();
 		if (file == null || file.isEmpty()) {
@@ -59,7 +60,7 @@ public class PostServiceImpl implements PostService {
 	public void delete(Integer postID) {
 		postMapper.delete(postID);
 	}
-
+	// 게시물 수정
 	public void updateBoard(Board board) {
 		// TODO Auto-generated method stub
 		postMapper.update(board);

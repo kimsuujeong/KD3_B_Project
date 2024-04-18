@@ -22,7 +22,6 @@ import com.example.demo.user.User;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-//@RequestMapping("/like")
 public class LikeController {
 
 	@Autowired
@@ -35,7 +34,6 @@ public class LikeController {
 	AdminService adminService;
 	
 	// 관심 목록 리스트
-//	@RequestMapping(value = "/list")
 	@RequestMapping(value = "/savelist")
 	public ModelAndView list(HttpSession session, ModelAndView mv) {
 		
@@ -47,6 +45,7 @@ public class LikeController {
 	    if (loggedInUser != null) {
 	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 	    }
+	    // 유저아이디 가져오기
 		String userID = loggedInUser.getUserID();
 		
 		if(userID != null) {
@@ -59,8 +58,10 @@ public class LikeController {
 	        }
 			List<String> imageLinks = new ArrayList<>();
 	        for (Board post : posts) {
-	            if (post.getFileID() != null) {
+	            if (post.getFileID() != null) {// 파일이 있으면 가져옴
+	            	// 파일아이디로 image 정보 가져오기
 	                ImageFile file = boardService.getImageFile(post.getFileID());
+	                // 이미지 정보로 주소 가져오기
 	                String fileLink = fileService.getDownLink(file.getSaveImName());
 	                imageLinks.add(fileLink);
 	            } else {
@@ -73,7 +74,6 @@ public class LikeController {
 	        map.put("count", posts.size());
 	        mv.addObject("isAdmin", isAdmin);
 	        mv.addObject("imageLinks", imageLinks);
-//	        mv.addObject("like", new Like());
 			mv.setViewName("/MyPage/mypage1");
 			mv.addObject("map", map);
 			return mv;
@@ -112,6 +112,7 @@ public class LikeController {
 	// 관심 목록 삭제
 	@RequestMapping(value = "/savelist/delete/{likeID}")
 	public String delete(@PathVariable(name = "likeID") Integer likeID) {
+		// 삭제
 		likeService.delete(likeID);
 		return "redirect:/savelist";
 	}

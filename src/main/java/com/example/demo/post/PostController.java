@@ -42,7 +42,7 @@ public class PostController {
 	@Autowired
 	AdminService adminService;
 	
-//  post write
+//  post write 게시물 작성
 	@GetMapping(value = "/register/new/{categoryID}")
 	public String writePost(@PathVariable(name = "categoryID") Integer categoryID, 
 			HttpSession session,Model model) {
@@ -58,14 +58,17 @@ public class PostController {
 	    if (loggedInUser != null) {
 	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 	    }
+	    if(!isAuth) {
+	    	return "redirect:/";
+	    }
 		session.setAttribute("board", board);
-		model.addAttribute("isAuth", isAuth);
 		model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("board", board);
 		model.addAttribute("categoryID", categoryID);
 		String url = (categoryID==1) ? "/Write/Companywrite1" : "/Write/Artistwrite1";
 		return url;
 	}
+	// 첫번째 작성페이지
 	@PostMapping(value = "/register/new/{categoryID}")
     public String registerNewBoard(@PathVariable(name = "categoryID") Integer categoryID, 
     		@RequestParam("postName") String postName,
@@ -80,7 +83,7 @@ public class PostController {
 	        return "redirect:/login";
 	    }
 		Board board=new Board();
-		
+		// 작성한것 저장
 		board.setPostName(postName);
 		board.setEventStart(eventStart);
 		board.setEventEnd(eventEnd);
@@ -94,6 +97,7 @@ public class PostController {
         return "redirect:/board/register/new/{categoryID}/2";
     }
 
+	// 두번째 작성 페이지
 	@GetMapping(value = "/register/new/{categoryID}/2")
 	public String writePost2(@PathVariable(name = "categoryID") Integer categoryID
 			, HttpSession session,
@@ -113,7 +117,7 @@ public class PostController {
 		String url = (categoryID==1) ? "/Write/Companywrite2" : "/Write/Artistwrite2";
 		return url;
 	}
-	
+	// 두번째 작성 폼
 	@PostMapping(value = "/register/new/{categoryID}/2")
     public String registerNewBoard2(@PathVariable(name = "categoryID") Integer categoryID, 
             @RequestParam("file")MultipartFile file, 
@@ -129,26 +133,15 @@ public class PostController {
             // 세션에 저장된 데이터가 없는 경우, 오류 처리 또는 초기화를 수행할 수 있음
             return "redirect:/board/register/new/{categoryID}";
         }
-
+		// 파일 저장
         sessionBoard.setFile(file);
         sessionBoard.setUserID(loggedInUser.getUserID());
         sessionBoard.setCategoryID(categoryID);
+        // 내용 저장
 		sessionBoard.setContent(content);
-		System.out.println(sessionBoard);
+		// 데이터베이스에 저장
         postService.saveBoard(sessionBoard);
         return "redirect:/board/{categoryID}"; 
-    }
-	@PostMapping("/uploadImageForCKEditor")
-    public ResponseEntity<String> uploadImageForCKEditor(@RequestParam("upload") MultipartFile file) {
-        try {
-            // 이미지를 저장하고 저장된 파일의 URL을 반환하는 서비스 메서드 호출
-            String imageUrl = fileService.uploadImageForCKEditor(file);
-            // 클라이언트로 이미지 URL을 반환
-            return ResponseEntity.ok(imageUrl);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("이미지 업로드에 실패했습니다.");
-        }
     }
 	
 //  post delete
@@ -164,7 +157,7 @@ public class PostController {
 		return "redirect:/";
 	}
 	
-//  post modify (수정)
+//  post modify (수정) -- 못함
 	@GetMapping(value = "/modify/{postID}")
 	public String modifyPost(
 			@PathVariable(name = "postID") Integer postID,
@@ -184,12 +177,6 @@ public class PostController {
 	        // 작성자가 아닌 경우 
 	        return "redirect:/";
 	    }
-//        board.setPostName(board_temp.getPostName());
-//        board.setContent(board_temp.getContent());
-//		board.setAuthorName(board_temp.getAuthorName());
-//		board.setAuthorLink(board_temp.getAuthorLink());
-//		board.setEventStart(board_temp.getEventStart());
-//		board.setEventEnd(board_temp.getEventEnd());
 		
 		model.addAttribute("board", board);
 		model.addAttribute("postID", postID);
@@ -218,7 +205,6 @@ public class PostController {
 		board.setEventStart(eventStart);
 		board.setEventEnd(eventEnd);
 		board.setAuthorName(loggedInUser.getUserName());
-//		board.setUserID(loggedInUser.getUserID());
 		board.setAuthorLink(authorLink);
 		board.setCostID(costID);
 
@@ -269,8 +255,6 @@ public class PostController {
 			return "redirect:/";
 		}
 		board.setFile(file);
-//        board.setUserID(loggedInUser.getUserID());
-//        board.setCategoryID(categoryID);
 		board.setContent(content);
 		postService.updateBoard(board);
 		return "redirect:/";
