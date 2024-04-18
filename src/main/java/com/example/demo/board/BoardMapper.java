@@ -95,4 +95,8 @@ public class BoardMapper {
 	public Board getPostByLikeID(Integer postID) {
 		return sqlSession.selectOne("getPostByLikeID", postID);
 	}
+	// 비용 정보
+	public String getCostName(Integer costID) {
+		return sqlSession.selectOne("getCostName", costID);
+	}
 }

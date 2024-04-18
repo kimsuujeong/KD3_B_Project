@@ -81,4 +81,9 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return boardMapper.search(search, pageable);
 	}
+	// 비용 정보
+	@Override
+	public String getCostName(Integer costID) {
+		return boardMapper.getCostName(costID);
+	}
 }

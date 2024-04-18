@@ -66,6 +66,7 @@ public class BoardController {
 		// 카테고리 아이디별로 게시물 보이기
 		Page<Board> posts = this.boardService.getPostsByCategoryId(categoryID, page);
 		List<String> imageLinks = new ArrayList<>();
+		List<String> costs=new ArrayList<>();
 	    for (Board post : posts) {
 	    	if (post.getFileID() != null) {// 파일아이디가 있을때만 가져옴
 	    		// board에 fileID로 이미지 정보 가져오기
@@ -77,11 +78,14 @@ public class BoardController {
 	            // 이미지가 없는 경우 빈 문자열을 추가합니다.
 	            imageLinks.add("");
 	        }
+	    	Integer costID=post.getCostID();
+	    	String costName=boardService.getCostName(costID);
+	    	costs.add(costName);
 	    }
-
 	    model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("posts", posts);
 		model.addAttribute("imageLinks", imageLinks);
+		model.addAttribute("costs", costs);
 		
 		String url = (categoryID==1) ? "/BoardListPage/BoardListPageCompany" : "/BoardListPage/BoardListPageArtist";
 		return url;

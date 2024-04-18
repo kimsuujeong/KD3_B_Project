@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoardViewPageArtist</title>
+    <title>BoardViewPageCompany</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/Setting.css}">
   	<link rel="stylesheet" th:href="@{/css/BoardViewPageCompany.css}">
@@ -20,16 +20,16 @@
             
             <div class="box-1">
                 <div class="content-tittle" th:text="${post.postName}"></div>
-                <div class="visit-cnt">조회수<span>81</span></div>
+				<div class="visit-cnt" >조회수<span th:text="${post.visitCnt}"></span></div>
             </div>
 
             <div class="box-2">
-                <div class="write-user">작성자이름임</div>
-                <div class="write-date">마지막 수정날짜가 보이겠지</div>
+				<div class="write-user" th:text="${post.authorName}"></div>
+                <div class="write-date" th:text="${post.writeDate}"></div>
             </div>
 
-            <div class="content-post">
-                <img src="../../static/images/ArtistBoardListExam/moviePoster.png" alt="">
+			<div class="content-post">
+                <img th:src="${image}" alt="">
             </div>
 
             <div class="empty"></div>
@@ -60,12 +60,14 @@
                     <div class="content-tittle" th:text="${post.postName}"></div>
                 </div>
                 <div class="fundperiod">
-                    <span class="time-explain">펀딩 기간</span><br><br><span id="evtStart" th:text="${post.eventStart}"></span>&nbsp;&nbsp;~ &nbsp;&nbsp;<span id="evtEnd" th:text="${post.eventEnd}"></span>
+                    <span class="time-explain">행사 기간</span><br><br><span id="evtStart" th:text="${post.eventStart}"></span>&nbsp;&nbsp;~ &nbsp;&nbsp;<span id="evtEnd" th:text="${post.eventEnd}"></span>
                 </div>  
                 <div class="fundinfo-btnbox">
                     <div class="like-btn">
-                        <i class="fa-regular fa-heart"></i>
-                        <div class="like-cnt">81</div>
+						<form name="form1" method="post" th:action="@{/savelist/insert}">
+	                        <input type="hidden" name="postID" th:value="${postID}">                  
+	                        <button type="submit" class="like-cnt" >♥관심등록</button>
+	                    </form>
                     </div>
                     <div class="gofund-btn">
                         <a href="#">이 행사에 참가하기</a>

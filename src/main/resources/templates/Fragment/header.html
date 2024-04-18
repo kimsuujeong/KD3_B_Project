@@ -41,12 +41,12 @@
                         <a th:href="@{/savelist}">관심목록</a>
                     </th:block>
                     <!-- Check if user is logged out -->
-					<th:block th:if="${session['loggedInUser'] != null and (isAdmin == null or !isAdmin)}">
+					<th:block th:if="${(session['loggedInUser'] != null) and (isAdmin == null or !isAdmin)}">
                         <a th:href="@{/userUpdate}" class="mypage"><span th:text="${session['loggedInUser'].userName}"></span>님 안녕하세요</a>
                         <a th:href="@{/savelist}">관심목록</a>
                         <a th:href="@{/logout}">로그아웃</a>
                     </th:block>
-                    <th:block th:if="${session['loggedInUser'] != null and isAdmin}">
+                    <th:block th:if="${(session['loggedInUser'] != null) and (isAdmin==true)}">
                         <a th:href="@{/userUpdate}" class="mypage"><span th:text="${session['loggedInUser'].userName}"></span>님 안녕하세요</a>
                         <a th:href="@{/savelist}">관심목록</a>
                         <a th:href="@{/admin/auth}">관리자 페이지</a>

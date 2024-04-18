@@ -78,6 +78,7 @@
                     <!--<img th:src="${imageLinks[__${index.index}__]}">-->
 					<img th:if="${imageLinks != null and imageLinks.size() > index.index}" th:src="${imageLinks[index.index]}" alt="이미지">
 					<div th:text="${post.eventStart}"></div>
+					<div th:text="${costs[__${index.index}__]}"></div>
                     <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
 					</a>
                 </div>                
