@@ -18,7 +18,7 @@
 					<img th:src="@{/images/logo-01.png}" alt="">
 				</a>
 				<div>
-					<form action="" class="search-bar" th:data-uri="@{|/board/{categoryID}/search|}">
+					<form action="" class="search-bar">
 						<input type="hidden" id="categoryID" th:value="${categoryID}" />
 						<input type="text" placeholder="참여하고 싶은 행사나 프로젝트를 검색해보세요" name="keyword" id="keyword">
 						<div class="fas fa-search" name="btnSearch" id="search-btn"></div>
@@ -30,6 +30,7 @@
 							</select>
 						</div>
 					</form>
+					<p id="searchError" style="color: red; font-size: 15px; display: none;">검색어를 입력하세요.</p>
 				</div>
 				<div class="link1">
 					<!-- 로그인 했을때 th로 연결해둠 -->
