@@ -46,10 +46,12 @@
         
 
         <div class="user-container">
-
+			
             <div class="edit-btn">
-                <button>게시글 수정하기</button>
-                <button>게시글 삭제하기</button>
+				<th:block th:if="${session['loggedInUser'] != null}">
+	                <button>게시글 수정하기</button>
+	                <button>게시글 삭제하기</button>
+                </th:block>
             </div>
 
             <div class="fundinfobox">

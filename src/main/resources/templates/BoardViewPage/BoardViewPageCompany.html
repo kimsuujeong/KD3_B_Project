@@ -49,9 +49,10 @@
         <div class="user-container">
 
             <div class="edit-btn">
-                <button>게시글 수정하기</button>
-                <button>게시글 삭제하기</button>
-    
+				<th:block th:if="${session['loggedInUser'] != null}">
+	                <button>게시글 수정하기</button>
+	                <button>게시글 삭제하기</button>
+                </th:block>
             </div>
 
             <div class="fundinfobox">
@@ -67,11 +68,11 @@
                     <div class="like-btn">
 						<form name="form1" method="post" th:action="@{/savelist/insert}">
 	                        <input type="hidden" name="postID" th:value="${postID}">                  
-	                        <button type="submit" class="like-cnt" >♥관심등록</button>
+	                        <button type="submit" class="like-cnt" ><i class="fa-solid fa-heart"></i></button>
 	                    </form>
                     </div>
                     <div class="gofund-btn">
-                        <a th:href="${post.authorLink}">이 행사에 참가하기</a>
+						<a th:href="${post.authorLink}">이 행사에 참가하기</a>
                     </div>
                 </div>
             </div>
