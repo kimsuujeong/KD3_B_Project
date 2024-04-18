@@ -3,6 +3,127 @@ body{
     overflow-x: hidden;
 }
 
+/* header Start*/
+.header{
+    /* background-color: crimson; */
+    display: flex;
+    justify-content: space-between;
+    padding:1.5rem 7%;
+    border-bottom: var(--border);
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+}
+
+.header .logo img{
+    height: 8rem;
+    padding-right: 4rem;
+}
+
+.search-bar{
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--white-color);
+    margin-bottom: 1rem;
+    border: 1px var(--grey-color) solid;
+    cursor:pointer;
+}
+
+.search-bar input{
+    padding: 0.2rem 0.5rem;
+    background-color: transparent;
+    width: 40rem;
+    flex: 1;
+    outline: none;
+    font-size: 1.6rem;
+    color: var(--grey-color);
+}
+
+.search-bar .fa-search{
+    margin-right: 1rem;
+    font-size: 1.6rem;
+}
+
+.header .navbar .link1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding:4.5rem 7%;
+    font-size: 1.6rem;
+    color: var(--black-color);
+}
+
+.header .navbar .link1 a{
+    padding-right: 1rem;
+
+}
+
+.header .navbar a{
+    color: var(--black-color);
+}
+
+.header .navbar a:hover{
+    color: var(--green-color);
+    transition: all 0.3s;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    /* padding: 1rem; */
+    font-size: 1.6rem; 
+}
+
+.category div {
+    padding-right: 1rem;
+}
+
+.category a {
+    padding: 1rem;
+}
+
+.category .category-list{
+    cursor: pointer;
+    padding: 1rem;
+    /* background-color: rgb(235, 235, 235); */
+}
+
+/* dropdown-menu */
+/* 좀 더 괜찮게 다듬을 필요 있음 */
+.dropdown li{
+    display: block;
+    background-color: var(--white-color);
+    margin: 2rem 0rem;
+}
+
+.dropdown{
+    width: auto;
+    background-color: var(--white-color);
+    position: absolute;
+    z-index: 999;
+    display: none;
+    padding: 1rem;
+    margin-right: 2rem;
+}
+
+.category-list:hover .dropdown{
+    display: block;
+}
+
+.category-list:hover{
+    color: var(--green-color);
+}
+/* header End*/
+
 
 /* img slider start */
 .img-slider{
@@ -213,13 +334,14 @@ span {
 .board-content{
     display: flex;
     flex-wrap: wrap;
+    padding: 0 0 0 3rem;
     /* justify-content: center; */
     gap: 1rem;
 }
 
 .carousel-box{
-    width: 32%;
-    padding: 2rem;
+    width: 24%;
+    padding: 0.5rem;
     font-size: 1.6rem;
     /* background-color: aqua; */
 }

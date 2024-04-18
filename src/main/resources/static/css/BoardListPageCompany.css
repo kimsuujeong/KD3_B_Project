@@ -97,31 +97,6 @@ body{
     /* background-color: rgb(235, 235, 235); */
 }
 
-/* dropdown-menu */
-/* 좀 더 괜찮게 다듬을 필요 있음 */
-.dropdown li{
-    display: block;
-    background-color: var(--white-color);
-    margin: 2rem 0rem;
-}
-
-.dropdown{
-    width: auto;
-    background-color: var(--white-color);
-    position: absolute;
-    z-index: 999;
-    display: none;
-    padding: 1rem;
-    margin-right: 2rem;
-}
-
-.category-list:hover .dropdown{
-    display: block;
-}
-
-.category-list:hover{
-    color: var(--green-color);
-}
 /* header End*/
 
 
@@ -239,33 +214,6 @@ body{
     align-items: flex-start;
 }
 
-.filter-reset{
-    /* background-color: #c54949; */
-    width: 20vw;
-    height: 100%;
-}
-
-.filter-announcement{
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-.filter-announcement .filter-tag{
-    font-size: 1.6rem;
-    color: var(--green-color);
-}
-
-
-.filter-announcement a{
-    font-size: 1.4rem;
-    color: var(--grey-color);
-}
-
-.filter-announcement a:hover{
-    color: var(--green-color);
-}
-
 
 /* select-tag Start */
 .select-tag{
@@ -329,7 +277,7 @@ span {
 /* content-list Start */
 .content-list{
     /* background-color: goldenrod; */
-    width: 65vw;
+    width: 100%;
     height: 100%;
     margin-left: 2rem;
 }
@@ -361,13 +309,14 @@ span {
 .board-content{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    padding: 0 0 0 3rem;
+    /* justify-content: center; */
     gap: 1rem;
 }
 
 .carousel-box{
-    width: 30%;
-    padding: 2rem;
+    width: 24%;
+    padding: 0.5rem;
     font-size: 1.6rem;
     /* background-color: aqua; */
 }
@@ -471,24 +420,26 @@ ul li.active{
 }
 
 .btn1, .btn2{
-    display: inline-flex;
+ /* display: inline-flex;
     align-items: center;
     font-size: 1.6rem;
-    font-weight: 500;
-    color: var(--black-color);
-    background: transparent;
     outline: none;
     border: none;
+    width: 10rem; 
+    color: var(--black-color); */
+    background: transparent;
     cursor: pointer;
-
+    font-weight: 500;
 }
 
 .btn1 i{
     margin-right: 1.5rem;
+    font-size: 2rem;
 }
 
 .btn2 i{
     margin-left: 1.5rem;
+    font-size: 2rem;
 }
 
 
