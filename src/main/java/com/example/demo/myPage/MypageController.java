@@ -57,10 +57,8 @@ public class MypageController { // 관심목록, 인증, 개인정보 수정(비
 	public String My_page4() {
 		return "/Mypage/mypage4";
 	}
-	@RequestMapping("/savelist") // 관심목록
-	public String savelist() {
-		return "TestHtml/Mypage/savelist";
-	}
+	
+//	중복된 savelist 삭제 -20240417 허서진
 	
 //	@RequestMapping("/authn") // 인증
 //	public String authn() {

@@ -9,9 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/mypage1.css}">
 </head>
 <body>
-
-    <div th:replace="~{/Fragment/header :: headerFragment}"></div>
-
+	<div th:replace="~{/Fragment/header :: headerFragment}"></div>
 
     <!-- Contents Start-->
     <section class="Contents">
@@ -23,8 +21,7 @@
       <nav>
         <br>
 		<ul class="list">
-
-			<li><a class="B" th:href="@{/userUpdate}" target="_self">- 내정보 수정</a></li> <br>
+			<li><a class="B" th:href="@{/userupdate}" target="_self">- 내정보 수정</a></li> <br>
 			<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
 			<li><a class="C" th:href="@{/authn}" target="_self">- 관계자 인증</a></li><br>
 			<li><a class="R" th:href="@{/mypage4}" target="_self">- 내 글 관리</a></li> <br>
@@ -56,11 +53,10 @@
                         <div class="startDate" th:text="${post.eventStart}"></div>
                         <div class="title" th:text="${post.postName}"></div>
                         <div class="space-between">
-
-                            <!-- <div class="visit" th:text="${post.visitCnt}"><span>조회</span><span>500</span></div> -->
-                            <div th:each="like : ${map.list}" th:if="${like.postID==post.postID}">
-                                <div><a th:href="@{/savelist/delete/{likeID}(likeID = ${like.likeID})}" class="deleteLink">삭제</a></div>
-                            </div>
+                            <div class="visit" th:text="${post.visitCnt}"><span>조회</span><span>500</span></div>
+                        </div>
+                        <div th:each="like : ${map.list}" th:if="${like.postID==post.postID}">
+                            <div><a th:href="@{/savelist/delete/{likeID}(likeID = ${like.likeID})}" class="deleteLink">삭제</a></div>
                         </div>
                     </div>
                     <!-- <div><a href="#">
@@ -86,9 +82,7 @@
     </section>
     <!-- tagAndContent End-->
 
-
-    <div th:replace="~{/Fragment/footer :: footerFragment}"></div>
-
+	<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
     <script th:src="@{/js/BorderListPageCompany.js}"></script>
     <script>
