@@ -330,6 +330,47 @@
 			isContentVisible = !isContentVisible; // 상태를 반전시킴
 			$(button).text(isContentVisible ? "[ ▼ ]" : "[ ▲ ]"); // 상태에 따라 버튼 텍스트 설정
 		}
+
+		$(document).ready(function () {
+			// 검색 버튼 클릭 이벤트
+			$('#search-btn').on('click', function (e) {
+				e.preventDefault(); // 기본 동작 막기
+				if (validateSearch()) { // 검색어 유효성 검사
+					performSearch();
+				}
+			});
+
+			// 검색어 입력 필드에서 엔터 키 이벤트
+			$('#keyword').keypress(function (e) {
+				if (e.which == 13) { // 눌린 키가 엔터 키인 경우
+					e.preventDefault(); // 기본 동작 막기
+					if (validateSearch()) { // 검색어 유효성 검사
+						performSearch();
+					}
+				}
+			});
+
+			// 검색 실행 함수
+			function performSearch() {
+				var categoryID = $('#categoryID').val();
+				var url = "/search";
+				url = url + "?searchType=" + $('#searchType').val();
+				url = url + "&keyword=" + $('#keyword').val();
+				location.href = url;
+			}
+
+			// 검색어 유효성 검사 함수
+			function validateSearch() {
+				var keyword = document.getElementById("keyword").value.trim();
+				if (keyword === "") {
+					document.getElementById("searchError").style.display = "block";
+					return false;
+				} else {
+					document.getElementById("searchError").style.display = "none";
+					return true;
+				}
+			}
+		});
 	</script>
 </body>
 
