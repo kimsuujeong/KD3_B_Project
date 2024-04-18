@@ -39,7 +39,9 @@ public class LikeController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
-	    
+		if (loggedInUser == null) {
+			return new ModelAndView("redirect:/login");
+		}
 	    // 사용자가 관리자인지 여부를 확인합니다.
 	    boolean isAdmin = false;
 	    if (loggedInUser != null) {

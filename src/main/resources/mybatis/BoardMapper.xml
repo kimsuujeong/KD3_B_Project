@@ -73,6 +73,39 @@
 		where postID=#{postID}
 	</select>
 	
+	<!-- search all post -->
+	<select id="search" resultType="com.example.demo.board.Board">
+       select * from board
+       <trim prefix="WHERE" prefixOverrides="AND|OR">         
+          <if test="searchType=='postName' and keyword != null and keyword != '' ">
+             AND postName like CONCAT('%', #{keyword}, '%')
+          </if>
+          <if test="searchType=='content' and keyword != null and keyword != '' ">            
+             AND content like CONCAT('%', #{keyword}, '%')         
+          </if>
+          <if test="searchType=='authorName' and keyword != null and keyword != '' ">            
+             AND authorName like CONCAT('%', #{keyword}, '%')         
+          </if>        
+       </trim>
+		    
+    </select>
+    
+    <!-- count searched all post -->
+    <select id="count" resultType="integer">
+       select count(*) from board
+       <trim prefix="WHERE" prefixOverrides="AND|OR">         
+          <if test="searchType=='postName' and keyword != null and keyword != '' ">
+             AND postName like CONCAT('%', #{keyword}, '%')
+          </if>
+          <if test="searchType=='content' and keyword != null and keyword != '' ">            
+             AND content like CONCAT('%', #{keyword}, '%')         
+          </if>
+          <if test="searchType=='authorName' and keyword != null and keyword != '' ">            
+             AND authorName like CONCAT('%', #{keyword}, '%')         
+          </if>  
+       </trim>
+    </select>
+    
 	<!-- search post -->
 	<select id="searchCtg" resultType="com.example.demo.board.Board">
 		select b.*,c.categoryID

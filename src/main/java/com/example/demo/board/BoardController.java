@@ -126,5 +126,24 @@ public class BoardController {
 		return url;
 	}
 	
-	
+	@GetMapping("/search")
+	public String search(@RequestParam(value = "categoryID", required = false) Integer categoryID,
+			@RequestParam(value = "order", defaultValue = "visitCnt") String order, @ModelAttribute Search search,
+			Pageable pageable, Model model) {
+
+		// categoryID가 없을 경우에는 전체 카테고리에서 검색을 수행
+		Page<Board> searchResult;
+		if (categoryID != null) {
+			searchResult = boardService.searchCtg(categoryID, search, order, pageable);
+		} else {
+			searchResult = boardService.search(search, pageable);
+		}
+
+		// 검색 결과를 모델에 추가
+		model.addAttribute("posts", searchResult);
+
+		// 검색 결과 페이지로 이동
+		String url = "/BoardListPage/BoardListPageCompany";
+		return url;
+	}
 }
