@@ -22,7 +22,7 @@
 	<select id = "countLike" resultType="int">
 		select count(*)
 		from mydb.like 
-		where userID = 'test1'
+		where userID = #{userID}
 		and postID = #{postID};
 	</select>
 	<!-- 관심 삭제 -->

@@ -86,4 +86,24 @@ public class BoardServiceImpl implements BoardService {
 	public String getCostName(Integer costID) {
 		return boardMapper.getCostName(costID);
 	}
+
+	@Override
+	public List<Board> getAllPostsByLatest() {
+		return boardMapper.getPostLate();
+	}
+
+	@Override
+	public List<Board> getAllPostsByViews() {
+		return boardMapper.getPostView();
+	}
+
+	@Override
+	public List<Board> getAllPostsByEnd() {
+		return boardMapper.getPostEnd();
+	}
+
+	@Override
+	public List<Board> getPostsViewCategory(Integer categoryID) {
+		return boardMapper.getPostsViewCategory(categoryID);
+	}
 }

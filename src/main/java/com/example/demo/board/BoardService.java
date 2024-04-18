@@ -30,6 +30,14 @@ public interface BoardService {
 	public Page<Board> search(Search search, Pageable pageable);
 
 	public String getCostName(Integer costID);
+
+	public List<Board> getAllPostsByLatest();
+
+	public List<Board> getAllPostsByViews();
+
+	public List<Board> getAllPostsByEnd();
+
+	public List<Board> getPostsViewCategory(Integer categoryID);
 	
 	
 }

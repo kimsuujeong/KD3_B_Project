@@ -36,8 +36,8 @@ public class LikeMapper {
 	public int countLike(Integer postID, String userID) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("postID", postID);
 		map.put("userID", userID);
+		map.put("postID", postID);
 		return sqlSession.selectOne("like.countLike", map);
 	}
 }
