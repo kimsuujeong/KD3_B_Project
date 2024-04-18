@@ -120,8 +120,22 @@ public class BoardController {
 			@ModelAttribute Search search, Pageable pageable) {
 		// 검색한 결과 게시물 가져오기
 		Page<Board> searchPost = boardService.searchCtg(categoryID, search, order, pageable);
+		List<String> imageLinks = new ArrayList<>();
+	    for (Board post : searchPost) {
+	        if (post.getFileID() != null) {
+	            // 파일아이디가 있을때만 이미지 정보 가져옴
+	            ImageFile file = boardService.getImageFile(post.getFileID());
+	            // 이미지 정보로 주소 가져오기
+	            String fileLink = fileService.getDownLink(file.getSaveImName());
+	            imageLinks.add(fileLink);
+	        } else {
+	            // 이미지가 없는 경우 빈 문자열을 추가
+	            imageLinks.add("");
+	        }
+	    }
+		
 		model.addAttribute("posts", searchPost);
-
+		model.addAttribute("imageLinks", imageLinks);
 		String url = (categoryID==1) ? "/BoardListPage/BoardListPageCompany" : "/BoardListPage/BoardListPageArtist";
 		return url;
 	}
@@ -133,15 +147,27 @@ public class BoardController {
 
 		// categoryID가 없을 경우에는 전체 카테고리에서 검색을 수행
 		Page<Board> searchResult;
+		List<String> imageLinks = new ArrayList<>();
 		if (categoryID != null) {
 			searchResult = boardService.searchCtg(categoryID, search, order, pageable);
 		} else {
 			searchResult = boardService.search(search, pageable);
 		}
-
+		for (Board post : searchResult) {
+	        if (post.getFileID() != null) {
+	            // 파일아이디가 있을때만 이미지 정보 가져옴
+	            ImageFile file = boardService.getImageFile(post.getFileID());
+	            // 이미지 정보로 주소 가져오기
+	            String fileLink = fileService.getDownLink(file.getSaveImName());
+	            imageLinks.add(fileLink);
+	        } else {
+	            // 이미지가 없는 경우 빈 문자열을 추가
+	            imageLinks.add("");
+	        }
+	    }
 		// 검색 결과를 모델에 추가
 		model.addAttribute("posts", searchResult);
-
+		model.addAttribute("imageLinks", imageLinks);
 		// 검색 결과 페이지로 이동
 		String url = "/BoardListPage/BoardListPageCompany";
 		return url;

@@ -22,7 +22,7 @@
 				<!-- 리스트 위치가 어긋나있는거 바로잡음 -20240415허서진 -->
 				<nav> <br>
 					<ul class="list">
-						<th:block th:if="${session['loggedInUser'] != null and !isAdmin}">
+						<th:block th:if="${session['loggedInUser'] != null and (isAdmin == null or !isAdmin)}">
 							<li><a class="B" th:href="@{/userUpdate}" target="_self">- 내정보 수정</a></li> <br>
 							<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
 							<li><a class="C" th:href="@{/authn}" target="_self">- 관계자 인증</a></li><br>
@@ -58,7 +58,7 @@
 
 			<div class="board-content">
 				<div class="box">
-					<div class="box1">
+					<div class="box2">
 						<h4>기 업 인</h4>
 						<a th:href="@{/authn/request/company}">인증하기</a>
 						<p th:if="${message1}" th:text="${message1}"></p>
