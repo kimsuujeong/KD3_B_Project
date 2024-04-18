@@ -53,6 +53,11 @@
   header >ul>li>a:hover{
     border-bottom: 1px solid gray;
   }
+
+  .header .navbar .link1 .mypage span{
+    font-weight: bold
+}
+
   @media screen and(max-width:600px){
     header{
       flex-direction: column;

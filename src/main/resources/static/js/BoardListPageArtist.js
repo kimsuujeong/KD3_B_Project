@@ -47,7 +47,7 @@ function backBtn(){
 };
 
 function nextBtn(){
-    if(currentValue < 6){
+    if(currentValue < 2){
         for(let l of link){
             l.classList.remove("active");
         }
