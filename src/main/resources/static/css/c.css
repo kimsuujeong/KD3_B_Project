@@ -24,10 +24,13 @@ h2 {
   text-align: center;
 }
 .contents {
-  width: 800px;
-  height: 300px;
+  width: 90vw;
+  height: 75vh;
   overflow: auto;  
   border: 1px solid black;
   padding: 10px;
+  box-shadow: 3px 3px 15px 2px var(--light-grey-color);
 }
+
+
 

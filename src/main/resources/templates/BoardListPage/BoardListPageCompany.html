@@ -59,6 +59,7 @@
     
 
     <!-- tagAndContent Start-->
+
     <section class="tagAndContent">     
 
         <!-- content-list Start -->
@@ -96,7 +97,7 @@
 
 					<li class="page-item" th:classappend="${!posts.hasPrevious} ? 'disabled'">
 						<a class="page-link" th:href="@{|?page=${posts.number-1}|}">
-						    <button class="btn1"><i class="fa-solid fa-angle-left"></i>이전</button>
+						    <button class="btn1"><i class="fa-solid fa-angle-left"></i></button>
 						</a>
 					</li>
 					<li th:each="page: ${#numbers.sequence(0, posts.totalPages-1)}"
@@ -107,7 +108,7 @@
 					</li>
 					<li class="page-item" th:classappend="${!posts.hasNext} ? 'disabled'">
 						<a class="page-link" th:href="@{|?page=${posts.number+1}|}">
-							<button class="btn2">다음<i class="fa-solid fa-angle-right"></i></button>
+							<button class="btn2"><i class="fa-solid fa-angle-right"></i></button>
 						</a>
 					</li>
                 </ul>

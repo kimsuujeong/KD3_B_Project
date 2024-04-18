@@ -116,6 +116,7 @@ max-width: 400px;
 margin: 10px auto;
 padding: 1rem;
 background-color: transparent; 
+font-size: 1.6rem;
 }
 
 
@@ -161,6 +162,7 @@ background-color: transparent;
   background-color: #03c75a;
   color: white;
   line-height: 1;
+  cursor: pointer;
 }
 
 .email_Check {
@@ -185,6 +187,7 @@ background-color: transparent;
   background-color: #03c75a;
   color: white;
   line-height: 1;
+  cursor: pointer;
 }
 
 .join_btn {
@@ -196,6 +199,8 @@ background-color: transparent;
   background-color: #03c75a;
   color: white;
   margin-top: 20px;
+  font-size: 1.7rem;
+  cursor: pointer;
 }
 
 #id,
