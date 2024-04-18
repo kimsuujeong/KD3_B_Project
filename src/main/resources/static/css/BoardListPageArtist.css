@@ -443,6 +443,11 @@ span {
     background-repeat: no-repeat;
 }
 
+.pagination-ul li.none{
+    display: none;
+}
+
+
 .btn1, .btn2{
     /* display: inline-flex;
     align-items: center;
