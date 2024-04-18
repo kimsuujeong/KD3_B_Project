@@ -68,6 +68,10 @@ body{
 
 }
 
+.header .navbar .link1 .mypage span{
+  font-weight: bold
+}
+
 .header .navbar a{
   color: var(--black-color);
 }
@@ -104,7 +108,7 @@ body{
   font-size: 2rem;
   width: 20vw;
   /* height: 100vh; */
-  height: 1350px;
+  /* height: 1350px; */
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */

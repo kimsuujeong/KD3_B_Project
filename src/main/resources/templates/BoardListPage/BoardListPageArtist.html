@@ -78,7 +78,7 @@
                     <!--<img th:src="${imageLinks[__${index.index}__]}">-->
 					<img th:if="${imageLinks != null and imageLinks.size() > index.index}" th:src="${imageLinks[index.index]}" alt="이미지">
 					<div th:text="${post.eventStart}"></div>
-					<div th:text="${costs[__${index.index}__]}"></div>
+					<div th:if="${costs != null and costs.size() > index.index}" th:text="${costs[index.index]}"></div>
                     <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
 					</a>
                 </div>                
@@ -90,21 +90,28 @@
                 </a>
             </div>
     
+	<!-- 게시물 목록이 비어있지 않는 경우에 페이징 UI표시 -->
       <div class="pagination" th:if="${!posts.isEmpty()}">
                 <ul class="pagination-ul">
 
-					<li class="page-item" th:classappend="${!posts.hasPrevious} ? 'disabled'">
-						<a class="page-link" th:href="@{|?page=${posts.number-1}|}">
+					<!-- 이전 페이지 버튼 현재 페이지가 첫 페이지일 경우 none 클래스 삽입해서 비활성화 -->
+					<li class="page-item" th:classappend="${!posts.hasPrevious} ? 'none'">
+						<!-- 이전페이지로 보내주는 링크 생성 -->
+						<a class="page-link" 
+						th:href="@{|?page=${posts.number-1}|}">
 						    <button class="btn1"><i class="fa-solid fa-angle-left"></i></button>
 						</a>
 					</li>
+					<!-- 현재 페이지 번호에 active클래스 추가하여 강조 -->
 					<li th:each="page: ${#numbers.sequence(0, posts.totalPages-1)}"
 						th:if="${page >= posts.number-2 and page <= posts.number+2}"
 						th:classappend="${page == posts.number} ? 'active'" 
 						class="page-item" style="margin: 0 5px;">
 						<a th:text="${page+1}" class="page-link" th:href="@{|?page=${page}|}"></a>
 					</li>
-					<li class="page-item" th:classappend="${!posts.hasNext} ? 'disabled'">
+					<!-- 다음 페이지 버튼 현재 페이지가 마지막 페이지일 경우 none 클래스 삽입해서 비활성화 -->
+					<li class="page-item" th:classappend="${!posts.hasNext} ? 'none'">
+						<!-- 다음페이지로 보내주는 링크 생성 -->
 						<a class="page-link" th:href="@{|?page=${posts.number+1}|}">
 							<button class="btn2"><i class="fa-solid fa-angle-right"></i></button>
 						</a>
@@ -113,6 +120,7 @@
                 
             </div>
         </div>
+		<!-- 페이징 수정 -20240418허서진 -->
 
 
     </section>

@@ -47,7 +47,7 @@
 		where userID=#{userID}
 	</delete>
 	<delete id="deleteLikeUser" >
-		delete from like
+		delete from mydb.like
 		where userID=#{userID}
 	</delete>
 	<delete id="deleteAuthReqUser" >

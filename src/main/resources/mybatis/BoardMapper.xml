@@ -4,7 +4,7 @@
 
 	<!-- findall board -->
 	<select id="findAll" resultType="com.example.demo.board.Board">
-		SELECT b.*, c.categoryName
+		SELECT b.*, c.categoryName, b.category_categoryID as categoryID
 		FROM board b
 		JOIN category c ON b.category_categoryID = c.categoryID
 	</select>
@@ -175,4 +175,26 @@
 			</if>
 		</trim>
 	</select>
+	
+	<select id="getPostLate" resultType="com.example.demo.board.Board">
+	    SELECT * FROM board
+	    ORDER BY writeDate DESC
+	</select>
+	
+	<select id="getPostView" resultType="com.example.demo.board.Board">
+	    SELECT * FROM board
+	    ORDER BY visitCnt DESC
+	</select>
+	
+	<select id="getPostEnd" resultType="com.example.demo.board.Board">
+	    SELECT * FROM board
+	    ORDER BY eventEnd DESC
+	</select>
+	
+	<select id="getPostsVC" resultType="com.example.demo.board.Board">
+	    SELECT * FROM board
+	    where category_categoryID=#{categoryID}
+	    ORDER BY visitCnt DESC
+	</select>
+	
 </mapper>

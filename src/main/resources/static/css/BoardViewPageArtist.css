@@ -74,6 +74,11 @@
     color: var(--green-color);
     transition: all 0.3s;
 }
+
+.header .navbar .link1 .mypage span{
+    font-weight: bold
+}
+
 .header .navbar .link1 .mypage:hover{
     color: var(--black-color);
 }
@@ -358,6 +363,13 @@
 
 .like-btn div{
     padding: 0 1rem;
+}
+
+.like-cnt{
+    background-color: var(--white-color);
+    color: var(--green-color);
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
 .gofund-btn{
