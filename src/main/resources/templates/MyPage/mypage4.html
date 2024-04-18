@@ -50,7 +50,7 @@
 						<h3> 내 글 관리</h3>
 					</span></div>
 				<div class="list-btn">
-					<span class="a"> ▷ 총 12개의 게시물이 있습니다.</span>
+					<!--<span class="a"> ▷ 총 12개의 게시물이 있습니다.</span>-->
 					<!-- <a href="#">추천순</a>
                     <a href="#">업데이트순</a>
                     <a href="#">모집 마감일순</a> -->
@@ -58,87 +58,16 @@
 			</div>
 			<!-- <hr class ="hr1" noshade>  -->
 			<div class="board-content">
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
+				<div th:each="post, index : ${userPosts}" class="carousel-box">
+					<img th:src="${imageLinks[__${index.index}__]}" alt="img">
+					<div class="startDate" th:text="${post.eventStart}"></div>
+					<div class="title" th:text="${post.postName}"></div>
 					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
+						<!-- 추가된 부분: 게시물에 대한 좋아요 수와 삭제 링크 -->
+						<div class="visit" th:text="${post.visitCnt}"><span>조회</span></div>
 					</div>
 				</div>
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
-					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
-					</div>
-				</div>
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
-					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
-					</div>
-				</div>
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
-					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
-					</div>
-				</div>
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
-					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
-					</div>
-				</div>
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
-					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
-					</div>
-				</div>
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
-					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
-					</div>
-				</div>
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
-					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
-					</div>
-				</div>
-				<div class="carousel-box">
-					<img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-					<div class="startDate">03월 27일 (수)</div>
-					<div class="title">제 7회 서울인구심포지엄</div>
-					<div class="space-between">
-						<div class="cost">무료</div>
-						<div class="visit"><span>조회</span><span>500</span></div>
-					</div>
-				</div>
+				
 
 			</div>
 			<!-- js 삽입이 안되어있음 나중에 페이징 관련 js 추가할것  -->

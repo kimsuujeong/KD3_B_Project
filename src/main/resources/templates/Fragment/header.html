@@ -37,7 +37,7 @@
 					<th:block th:if="${session['loggedInUser'] == null}">
                         <a th:href="@{/login}">로그인</a>
                         <a th:href="@{/joinForm}">회원가입</a>
-                        <a th:href="@{/savelist">관심목록</a>
+                        <a th:href="@{/savelist}">관심목록</a>
                     </th:block>
                     <!-- Check if user is logged out -->
                     <th:block th:if="${session['loggedInUser'] != null and !isAdmin}">
