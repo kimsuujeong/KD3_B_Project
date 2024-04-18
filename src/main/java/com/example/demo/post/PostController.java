@@ -46,23 +46,23 @@ public class PostController {
 	@GetMapping(value = "/register/new/{categoryID}")
 	public String writePost(@PathVariable(name = "categoryID") Integer categoryID, 
 			HttpSession session,Model model) {
-		Board board=new Board();
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		Board board=new Board();
 	    
-	    // 사용자가 관리자인지 여부를 확인합니다.
+	    // 사용자가 관리자인지 관계자인지 여부를 확인합니다.
 	    boolean isAuth = false;
-	    if (loggedInUser != null) {
-	        isAuth = adminService.isUserAuth(loggedInUser.getUserID());
-	    }
 	    boolean isAdmin = false;
 	    if (loggedInUser != null) {
+	        isAuth = adminService.isUserAuth(loggedInUser.getUserID());
 	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 	    }
+	    
 	    if(!isAuth) {
-	    	return "redirect:/";
+	    	return "redirect:/authn";
 	    }
 		session.setAttribute("board", board);
 		model.addAttribute("isAdmin", isAdmin);
+		model.addAttribute("isAuth", isAuth);		
 		model.addAttribute("board", board);
 		model.addAttribute("categoryID", categoryID);
 		String url = (categoryID==1) ? "/Write/Companywrite1" : "/Write/Artistwrite1";

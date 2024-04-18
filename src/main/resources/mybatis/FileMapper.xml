@@ -25,10 +25,10 @@
 		WHERE saveName = #{saveName}
 	</select>
 	<!-- 유저아이디로 uuid 안쓰는듯? -->
-	<select id="findSaveNameUserID">
+	<!-- <select id="findSaveNameUserID">
 		SELECT saveName FROM file
 		WHERE userID = #{userID}
-	</select>
+	</select> -->
 	<!-- 유저아이디로 파일 가져오기 -->
 	<select id="getFileUserID">
 		SELECT * FROM file
@@ -52,6 +52,10 @@
 	<!-- 파일아이디로 uuid -->
 	<select id="getsaveNameByFileID" resultType="string">
 		select saveName from file
+		where fileID=#{fileID}
+	</select>
+	<select id="getFileByID" >
+		select * from file
 		where fileID=#{fileID}
 	</select>
 

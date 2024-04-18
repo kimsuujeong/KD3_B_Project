@@ -40,11 +40,11 @@ public class AuthController {
 	    
 	    // 사용자가 관리자인지 여부를 확인합니다.
 		boolean isAdmin = false;
+		isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+		model.addAttribute("isAdmin", isAdmin);
 	    
 	    isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
-	    
 		model.addAttribute("loggedInUser", loggedInUser);
-		model.addAttribute("isAdmin", isAdmin);
 		return "/MyPage/mypage3";
 	}
 	
@@ -57,32 +57,29 @@ public class AuthController {
 			return "redirect:/login";
 		}
 		boolean isAdmin = false;
-	    
-	    isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
-	    
-		model.addAttribute("loggedInUser", loggedInUser);
+		isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 		model.addAttribute("isAdmin", isAdmin);
+
+		model.addAttribute("loggedInUser", loggedInUser);
 		
 	    return "/MyPage/mypage3"; 
 
 	}
 
-	// 기업 인증 작성폼
+	// 기업 인증 작성 
 	@GetMapping("/authn/request/company")
 	public String authRequestCompany(HttpSession session, Model model) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
-
+		
 		if (loggedInUser == null) {
 			return "redirect:/login";
 		}
 		boolean isAdmin = false;
-	    
-	    isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
-	    
+		isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+		model.addAttribute("isAdmin", isAdmin);
 		// 기존 기업 인증 신청내역 확인
 		AuthRequest existingRequest = authService.getAuthRequestUserIDType(loggedInUser.getUserID(), 1);
-		
-		if (existingRequest != null) {// 이미 있다면 작성폼으로 가지않음
+		if (existingRequest != null) {// 이미 있다면 작성폼으로 가지 않음
 	        if ("확인중".equals(existingRequest.getStatus())) {
 	            model.addAttribute("message1", "이미 기업 인증 요청이 진행 중입니다.");
 	            return "/MyPage/mypage3";
@@ -92,11 +89,11 @@ public class AuthController {
 	        }
 //	        return "redirect:/authn";
 	    }
-		model.addAttribute("isAdmin", isAdmin);
 		
-		model.addAttribute("entercer", new AuthRequest());
-		return "/MyPage/entercer";
+		model.addAttribute("artistcer", new AuthRequest());
+		return "/MyPage/artistcer";
 	}
+	// 예술인증 작성
 	@GetMapping("/authn/request/artist")
 	public String authRequestArtist(HttpSession session, Model model) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
