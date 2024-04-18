@@ -77,6 +77,15 @@ public class BoardMapper {
 		return new PageImpl<>(searchCResults, pageable, total);
 	}
 	
+	public Page<Board> search(Search search, Pageable pageable) {
+		int offset = pageable.getPageNumber() * pageable.getPageSize();
+		RowBounds rowBounds = new RowBounds(offset, pageable.getPageSize());
+		List<Board> searchResults = sqlSession.selectList("search", search, rowBounds);
+		int total = sqlSession.selectOne("count", search);
+
+		return new PageImpl<>(searchResults, pageable, total);
+	}
+	
 	// 이미지 정보 가져오기
 	public ImageFile getImageFile(Integer fileID) {
 		return sqlSession.selectOne("getImageFile", fileID);

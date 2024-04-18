@@ -75,4 +75,10 @@ public class BoardServiceImpl implements BoardService {
 	public Board getPostByLikeID(Integer postID) {
 		return boardMapper.getPostByLikeID(postID);
 	}
+
+	@Override
+	public Page<Board> search(Search search, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return boardMapper.search(search, pageable);
+	}
 }
