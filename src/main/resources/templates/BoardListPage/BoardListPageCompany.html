@@ -78,11 +78,9 @@
 				<div class="carousel-box" th:each="post, index: ${posts}"><a th:href="@{|/board/${categoryID}/${post.postID}|}">
                 	<input type="hidden" th:value="${post.postID}">
                 	<input type="hidden" id="categoryID" th:value="${categoryID}" />
-                    <img th:src="${imageLinks[__${index.index}__]}">
-
-                    <div class="startDate" th:text="${post.eventStart}"></div>
-					          <div th:text="${costs[__${index.index}__]}"></div>
-
+					<img th:if="${imageLinks != null and imageLinks.size() > index.index}" th:src="${imageLinks[index.index]}" alt="이미지">
+					<div th:text="${post.eventStart}"></div>
+					<div th:if="${costs != null and costs.size() > index.index}" th:text="${costs[index.index]}"></div>
                     <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
             
                 </div>            

@@ -24,13 +24,13 @@
         <ul>
           <li><a href="/login">로그인</a></li>
           <li><a href="/joinForm">회원가입</a></li>
-          <li><a href="#">관심목록</a></li>
+          <li><a href="/savelist">관심목록</a></li>
         </ul>
       </th:block>
       <!-- Check if user is logged out -->
       <th:block th:if="${session['loggedInUser'] != null}">
         <ul>
-          <li><a href="/mypage/userupdate" class="mypage"><span>OO</span>님 안녕하세요</a></li>
+          <li><a th:href="@{/userUpdate}" class="mypage"><span th:text="${session['loggedInUser'].userName}"></span>님 안녕하세요</a></li>
           <li><a href="/savelist">관심목록</a></li>
           <li><a href="/logout">로그아웃</a></li>
         </ul>
