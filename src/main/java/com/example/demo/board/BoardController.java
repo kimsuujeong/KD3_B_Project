@@ -55,7 +55,7 @@ public class BoardController {
 		List<String> imageLinkLate = getImageLinks(postsByLatest);
 		List<String> imageLinkView = getImageLinks(postsByViews);
 		List<String> imageLinkEnd = getImageLinks(postsByEnd);
-
+		
 //		model.addAttribute("posts", posts);
 //		model.addAttribute("imageLinks", imageLinks);
 		model.addAttribute("postsByLatest", postsByLatest);

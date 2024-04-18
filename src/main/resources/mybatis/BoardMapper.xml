@@ -177,22 +177,22 @@
 	</select>
 	
 	<select id="getPostLate" resultType="com.example.demo.board.Board">
-	    SELECT * FROM board
+	    SELECT b.*,b.category_categoryID as categoryID FROM board b
 	    ORDER BY writeDate DESC
 	</select>
 	
 	<select id="getPostView" resultType="com.example.demo.board.Board">
-	    SELECT * FROM board
+	    SELECT b.*,b.category_categoryID as categoryID FROM board b
 	    ORDER BY visitCnt DESC
 	</select>
 	
 	<select id="getPostEnd" resultType="com.example.demo.board.Board">
-	    SELECT * FROM board
+	    SELECT b.*,b.category_categoryID as categoryID FROM board b
 	    ORDER BY eventEnd DESC
 	</select>
 	
 	<select id="getPostsVC" resultType="com.example.demo.board.Board">
-	    SELECT * FROM board
+	    SELECT b.*,b.category_categoryID as categoryID FROM board b
 	    where category_categoryID=#{categoryID}
 	    ORDER BY visitCnt DESC
 	</select>

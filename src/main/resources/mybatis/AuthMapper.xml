@@ -13,6 +13,7 @@
 	<select id="getAuthreqeust" resultType="com.example.demo.auth.AuthRequest">
 	    SELECT * FROM authrequest 
 	    WHERE userID = #{userID} AND authorizeID = #{authorizeID}
+	    and (status='확인중' or status='수락')
 	</select>
 	<!-- 권한 요청한 사람 이메일 가져오기 -->
 	<select id="getAuthrequestEmail" resultType="String">
