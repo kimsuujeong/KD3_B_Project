@@ -94,7 +94,13 @@ public class FileServiceImpl implements FileService {
 	        return "파일 입출력에 오류가 발생했습니다";
 	    }
 	}
-
+	
+	// 파일정보 가져오기
+	@Override
+	public UploadFile getFileByID(Integer fileID) {
+		return fileMapper.getFileByID(fileID);
+	}
+	
 	// 파일의 링크 가져오기
 	@Override
 	public String getDownLink(String saveName) {
@@ -288,6 +294,7 @@ public class FileServiceImpl implements FileService {
 		}
 	}
 
+	
 	
 
 	

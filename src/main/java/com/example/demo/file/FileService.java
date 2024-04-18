@@ -24,6 +24,8 @@ public interface FileService {
 
 	Integer findImageFileID(String saveName);
 
+	UploadFile getFileByID(Integer fileID);
+
 	
 	
 }

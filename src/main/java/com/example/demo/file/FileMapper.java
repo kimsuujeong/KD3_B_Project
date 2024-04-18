@@ -71,6 +71,10 @@ public class FileMapper {
 		return session.selectOne("getsaveNameByFileID", fileID);
 	}
 
+	public UploadFile getFileByID(Integer fileID) {
+		return session.selectOne("getFileByID", fileID);
+	}
+
 	
 	
 }
