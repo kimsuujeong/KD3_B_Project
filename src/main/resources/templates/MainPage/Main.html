@@ -124,43 +124,6 @@
     </section>
 
     <div class="empty"></div>
-    
-    <!-- Recommendation project content -->
-    <!--<section class="editors-pick">
-        <div class="bordelist">
-            <div>이런 프로젝트는 어떠세요?</div>
-            <div class="bordelist-explain">
-                지금 가장 추천하는 행사를 만나보세요!
-            </div>
-        </div>
-        
-        <div class="readmore">
-            <a href="#">
-                <span>더 많은 행사 보기 </span><i class="fa-solid fa-angle-right"></i>
-            </a>
-        </div>
-    </section>
-
-     scroll content 
-    <section class="scroll-content">
-        <div class="wrapper">
-            <div class="carousel">
-				<div class="carousel-box" th:each="post, index: ${posts}">
-					<a th:href="@{|/board/${categoryID}/${post.postID}|}">
-	                	<input type="hidden" th:value="${post.postID}">
-	                	<input type="hidden" id="categoryID" th:value="${categoryID}" />
-						<img th:if="${imageLinks != null and imageLinks.size() > index.index}" th:src="${imageLinks[index.index]}" alt="이미지">
-						<div th:text="${post.eventStart}"></div>
-						<div th:if="${costs != null and costs.size() > index.index}" th:text="${costs[index.index]}"></div>
-	                    <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
-					</a>
-                </div>   
-            
-            </div>
-        </div>
-    </section>
-
-    <div class="empty"></div>-->
 
     <!-- New project content -->
     <section class="editors-pick">
@@ -183,10 +146,10 @@
         <div class="wrapper">
             <div class="carousel">
 				<div class="carousel-box" th:each="post, index: ${postsByLatest}">
-					<a th:href="@{|/board/${categoryID}/${post.postID}|}">
+					<a th:href="@{|/board/${post.categoryID}/${post.postID}|}">
 				
 	                	<input type="hidden" th:value="${post.postID}">
-	                	<input type="hidden" id="categoryID" th:value="${categoryID}" />
+	                	<input type="hidden" id="categoryID" th:value="${post.categoryID}" />
 						<img th:if="${imageLinkLate != null and imageLinkLate.size() > index.index}" th:src="${imageLinkLate[index.index]}" alt="이미지">
 						<div th:text="${post.eventStart}"></div>
 	                    <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
@@ -220,10 +183,10 @@
         <div class="wrapper">
             <div class="carousel">
 				<div class="carousel-box" th:each="post, index: ${postsByEnd}">
-					<a th:href="@{|/board/${categoryID}/${post.postID}|}">
+					<a th:href="@{|/board/${post.categoryID}/${post.postID}|}">
 				
 	                	<input type="hidden" th:value="${post.postID}">
-	                	<input type="hidden" id="categoryID" th:value="${categoryID}" />
+	                	<input type="hidden" id="categoryID" th:value="${post.categoryID}" />
 						<img th:if="${imageLinkEnd != null and 	imageLinkEnd.size() > index.index}" th:src="${imageLinkEnd[index.index]}" alt="이미지">
 						<div th:text="${post.eventStart}"></div>
 	                    <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
