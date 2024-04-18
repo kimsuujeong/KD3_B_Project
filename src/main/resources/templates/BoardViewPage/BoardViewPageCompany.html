@@ -58,7 +58,7 @@
                 
                 <div class="title">
                     <div class="content-tittle" th:text="${post.postName}"></div>
-					<div class="cost" th:text="${cost}"></div>
+					<div class="cost">#<span th:text="${cost}"></span></div>
                 </div>
                 <div class="fundperiod">
                     <span class="time-explain">행사 기간</span><br><br><span id="evtStart" th:text="${post.eventStart}"></span>&nbsp;&nbsp;~ &nbsp;&nbsp;<span id="evtEnd" th:text="${post.eventEnd}"></span>

@@ -146,6 +146,13 @@
     font-weight: bold;
 }
 
+.cost{
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 1rem;
+    color: var(--green-color);
+}
+
 .visit-cnt{
     font-size: 1.6rem;
     color: var(--grey-color);
