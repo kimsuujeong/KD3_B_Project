@@ -73,7 +73,7 @@
                 </div>
                 
             </div>
-            <div class="pagination">
+            <!--<div class="pagination">
                 <button class="btn1" onclick="backBtn()"><i class="fa-solid fa-angle-left"></i>이전</button>
                 <ul class="pagination-ul">
                     <li class="link active" value="1" onclick="activeLink()">1</li>
@@ -83,7 +83,7 @@
                     <li class="link" value="5" onclick="activeLink()">5</li>
                 </ul>
                 <button class="btn2" onclick="nextBtn()">다음<i class="fa-solid fa-angle-right"></i></button>
-            </div>
+            </div>-->
         </div>
         <!-- content-list End -->
 
@@ -94,38 +94,5 @@
     <!-- footer start -->
 	<div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
-
-    <script th:src="@{/js/BorderListPageCompany.js}"></script>
-    <script>
-        $(function(){
-           $("#btnList").click(function(){
-              location.href="/board";
-           });
-        
-           $("#btnDelete").click(function(){
-              if(confirm("관심 목록을 삭제하시겠습니까?")){
-                 location.href="/like/deleteAll";
-              }
-           });
-        
-           $("a.deleteLink").click(function(e){
-              if(!confirm("삭제하시겠습니까?")){
-                 e.preventDefault();
-              }
-           });
-           
-           // 관심 목록 비었을 때 실행
-           document.addEventListener('DOMContentLoaded', () => {
-                   const emptyMessage = document.getElementById('emptyMessage');
-                   const list = document.getElementById('list');
-           
-                   if (list.children.length === 0) {
-                       emptyMessage.style.display = 'block';
-                   } else {
-                       emptyMessage.style.display = 'none';
-                   }
-               });
-        });
-        </script>
 </body>
 </html>

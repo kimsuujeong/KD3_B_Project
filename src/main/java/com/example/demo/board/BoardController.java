@@ -47,12 +47,58 @@ public class BoardController {
 	    if (loggedInUser != null) {
 	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 	    }
-		List<Board> posts = boardService.getAllPosts();
-		model.addAttribute("posts", posts);
+//		List<Board> posts = boardService.getAllPosts();//모든 게시물
+		List<Board> postsByLatest = boardService.getAllPostsByLatest(); // 최신순
+	    List<Board> postsByViews = boardService.getAllPostsByViews(); // 조회수별
+	    List<Board> postsByEnd = boardService.getAllPostsByEnd(); // 마감임박	    
+//		List<String> imageLinks = new ArrayList<>();
+		List<String> imageLinkLate = getImageLinks(postsByLatest);
+		List<String> imageLinkView = getImageLinks(postsByViews);
+		List<String> imageLinkEnd = getImageLinks(postsByEnd);
+
+//		model.addAttribute("posts", posts);
+//		model.addAttribute("imageLinks", imageLinks);
+		model.addAttribute("postsByLatest", postsByLatest);
+	    model.addAttribute("postsByViews", postsByViews);
+	    model.addAttribute("postsByEnd", postsByEnd);
+	    model.addAttribute("imageLinkLate", imageLinkLate);
+	    model.addAttribute("imageLinkView", imageLinkView);
+	    model.addAttribute("imageLinkEnd", imageLinkEnd);
 		model.addAttribute("isAdmin", isAdmin);
 		return "/MainPage/Main";
 	}
-
+	// 이미지 링크 목록을 가져오는 메서드
+	private List<String> getImageLinks(List<Board> posts) {
+	    List<String> imageLinks = new ArrayList<>();
+	    for (Board post : posts) {
+	        String fileLink = ""; // 이미지 링크 초기화
+	        if (post.getFileID() != null) {// 파일아이디가 있을때만 가져옴
+	            // board에 fileID로 이미지 정보 가져오기
+	            ImageFile file = boardService.getImageFile(post.getFileID());
+	            if (file != null) {
+	                // 이미지 정보로 주소 가져오기
+	                fileLink = fileService.getDownLink(file.getSaveImName());
+	            }
+	        }
+	        imageLinks.add(fileLink); // 이미지 링크 목록에 추가
+	    }
+	    return imageLinks;
+	}
+	
+	private List<String> getCostName(List<Board> posts) {
+		List<String> costs=new ArrayList<>();
+		for (Board post : posts) {
+			if(post.getCostID()!=null) {
+		    	Integer costID=post.getCostID();
+		    	String costName=boardService.getCostName(costID);
+		    	costs.add(costName);
+	    	}else {
+	    		costs.add("");
+	    	} 
+		}
+		return costs;
+	}
+	
 //	board page separate categoryId
 	@GetMapping("/board/{categoryID}")
 	public String showBoard3(@PathVariable(name = "categoryID") Integer categoryID, 
@@ -78,10 +124,15 @@ public class BoardController {
 	            // 이미지가 없는 경우 빈 문자열을 추가합니다.
 	            imageLinks.add("");
 	        }
-	    	Integer costID=post.getCostID();
-	    	String costName=boardService.getCostName(costID);
-	    	costs.add(costName);
+	    	if(post.getCostID()!=null) {
+		    	Integer costID=post.getCostID();
+		    	String costName=boardService.getCostName(costID);
+		    	costs.add(costName);
+	    	}else {
+	    		costs.add("");
+	    	}
 	    }
+		
 	    model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("posts", posts);
 		model.addAttribute("imageLinks", imageLinks);
@@ -109,9 +160,18 @@ public class BoardController {
 		String fileLink=fileService.getDownLink(file.getSaveImName());
 		// 조회수 증가
 		boardService.visitCnt(postID);
-		
+		// 조회수+카테고리 아이디 별 게시물
+		List<Board> postsByVC = boardService.getPostsViewCategory(categoryID);
+		List<String> imageLinkVC = getImageLinks(postsByVC);
+		List<String> costs = getCostName(postsByVC);
+		Integer costID=post.getCostID();
+		String costName=boardService.getCostName(costID);
+		model.addAttribute("postsByViews", postsByVC);
+		model.addAttribute("imageLinkView", imageLinkVC);
 		model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("post", post);
+		model.addAttribute("cost", costName);
+		model.addAttribute("costs", costs);
 		model.addAttribute("image", fileLink);
 		
 		String url = (categoryID==1) ? "/BoardViewPage/BoardViewPageCompany" : "/BoardViewPage/BoardViewPageArtist";

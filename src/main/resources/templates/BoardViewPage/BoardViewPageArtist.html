@@ -56,6 +56,7 @@
                 
                 <div class="title">
                     <div class="content-tittle" th:text="${post.postName}"></div>
+					<div class="cost" th:text="${cost}"></div>
                 </div>
                 <div class="fundperiod">
                     <span class="time-explain">펀딩 기간</span><br><br><span id="evtStart" th:text="${post.eventStart}"></span>&nbsp;&nbsp;~ &nbsp;&nbsp;<span id="evtEnd" th:text="${post.eventEnd}"></span>
@@ -64,7 +65,7 @@
                     <div class="like-btn">
                        <!-- <i class="fa-regular fa-heart"></i>
                         <div class="like-cnt">81</div>-->
-						<form name="form1" method="post" th:action="@{/savelist/insert}">
+						<form name="likeform" method="post" th:action="@{/savelist/insert}">
 	                        <input type="hidden" name="postID" th:value="${postID}">                  
 	                        <button type="submit" class="like-cnt" >♥관심등록</button>
 	                    </form>
@@ -105,78 +106,18 @@
 <section class="scroll-content">
     <div class="wrapper">
         <div class="carousel">
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-1.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </a>
-            </div>
-        
+           
+			<div class="carousel-box" th:each="post, index: ${postsByViews}">
+				<a th:href="@{|/board/${post.categoryID}/${post.postID}|}">
+                	<input type="hidden" th:value="${post.postID}">
+                	<input type="hidden" id="categoryID" th:value="${post.categoryID}" />
+					<img th:if="${imageLinkView != null and imageLinkView.size() > index.index}" th:src="${imageLinkView[index.index]}" alt="이미지">
+					<div th:text="${post.eventStart}"></div>
+					<div th:if="${costs != null and costs.size() > index.index}" th:text="${costs[index.index]}"></div>
+                    <div class="title"><a th:href="@{|/board/${categoryID}/${post.postID}|}" th:text="${post.postName}"></a></div>
+				</a>
+            </div> 
             
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-2.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </a>
-            </div>
-            
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-3.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </a>
-            </div>
-            
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-4.png}" alt="img">
-                <div class="startDate">03월 27일 (수)</div>
-                <div class="title">제 7회 서울인구심포지엄</div>
-                </a>
-            </div>
-            
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-5.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </a>
-            </div>
-            
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-6.png}" alt="img">
-                <div class="startDate">03월 27일 (수)</div>
-                <div class="title">제 7회 서울인구심포지엄</div>
-                </a>
-            </div>
-            
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-7.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </a>
-            </div>
-            
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-8.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </a>
-            </div>
-            
-            <div class="carousel-box">
-                <a href="#">
-                    <img th:src="@{/images/scrollImgExam/scroll-9.png}" alt="img">
-                    <div class="startDate">03월 27일 (수)</div>
-                    <div class="title">제 7회 서울인구심포지엄</div>
-                </a>                    
-            </div>
 
         </div>
 
@@ -193,5 +134,6 @@
 <div th:replace="~{/Fragment/footer :: footerFragment}"></div>
 
 <script th:src="@{/js/BoardViewPageArtist.js}"></script> 
+
 </body>
 </html>

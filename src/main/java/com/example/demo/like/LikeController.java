@@ -99,16 +99,19 @@ public class LikeController {
 
 		
 		like.setUserID(userID);
-		
+		Integer postID=like.getPostID();
+		Board post= boardService.getPostById(postID);
 		// 관심 목록에 있는지 검사
 		int count = likeService.countLike(like.getPostID(), userID);
+		System.out.println(count);
 		if(count == 0) {
 			likeService.insert(like);
+			return "redirect:/board/"+post.getCategoryID()+"/"+post.getPostID();
 		} else {
-			return "/TestHtml/board/like_popup";
+			return "redirect:/board/"+post.getCategoryID()+"/"+post.getPostID();
 		}
 	
-		return "redirect:/savelist";
+//		return "redirect:/savelist";
 	}
 	
 	// 관심 목록 삭제
