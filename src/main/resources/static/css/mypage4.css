@@ -97,31 +97,6 @@ body{
   /* background-color: rgb(235, 235, 235); */
 }
 
-/* dropdown-menu */
-/* 좀 더 괜찮게 다듬을 필요 있음 */
-.dropdown li{
-  display: block;
-  background-color: var(--white-color);
-  margin: 2rem 0rem;
-}
-
-.dropdown{
-  width: auto;
-  background-color: var(--white-color);
-  position: absolute;
-  z-index: 999;
-  display: none;
-  padding: 1rem;
-  margin-right: 2rem;
-}
-
-.category-list:hover .dropdown{
-  display: block;
-}
-
-.category-list:hover{
-  color: var(--green-color);
-}
 /* header End*/
 
 
@@ -133,7 +108,7 @@ body{
   font-size: 2rem;
   width: 20vw;
   /* height: 100vh; */
-  height: 1350px;
+  height: 100%;
   padding: 40px; /* 내부 패딩 설정 */
   float: left; /* 왼쪽으로 부유 */
   box-sizing: border-box; /* 패딩과 테두리를 요소의 크기에 포함 */
@@ -173,12 +148,13 @@ body{
 }
 /* select-tag Start */
 .Contents{
-  background-color: #fff;
+  background-color: var(--white-color);
   width: 85vw;
   margin: 0 auto;
   align-items: center;   
   display: flex; 
   align-items: flex-start;
+  height: 100%;
 }
 .content-list{
   /* background-color: goldenrod; */
@@ -217,8 +193,9 @@ body{
   display: flex;
   flex-wrap: wrap;
   height: 850px;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 1rem;
+  margin-left: 4rem;
 }
 
 .carousel-box{
@@ -330,6 +307,9 @@ ul li.active{
 
 /* tagAndContent End */
 
+.empty{
+  padding: 4rem;
+}
 
 
 
