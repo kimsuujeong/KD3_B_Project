@@ -10,7 +10,7 @@
 	</select>
 	<select id="findAllPage"
 		resultType="com.example.demo.board.Board">
-		SELECT b.*, c.categoryName
+		SELECT b.*, c.categoryName, b.category_categoryID as categoryID
 		FROM board b
 		JOIN category c ON b.category_categoryID = c.categoryID
 	</select>
@@ -69,7 +69,7 @@
 	</select>
 	<!-- postID로 정보 가져오기 -->
 	<select id="getPostByLikeID">
-		select * from board
+		select b.*,b.category_categoryID as categoryID from board b
 		where postID=#{postID}
 	</select>
 	
