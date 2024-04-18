@@ -63,12 +63,14 @@ public class BoardController {
 	    if (loggedInUser != null) {
 	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 	    }
-//		all post view
+		// 카테고리 아이디별로 게시물 보이기
 		Page<Board> posts = this.boardService.getPostsByCategoryId(categoryID, page);
 		List<String> imageLinks = new ArrayList<>();
 	    for (Board post : posts) {
-	    	if (post.getFileID() != null) {
+	    	if (post.getFileID() != null) {// 파일아이디가 있을때만 가져옴
+	    		// board에 fileID로 이미지 정보 가져오기
 	            ImageFile file = boardService.getImageFile(post.getFileID());
+	            // 이미지 정보로 주소 가져오기
 	            String fileLink = fileService.getDownLink(file.getSaveImName());
 	            imageLinks.add(fileLink);
 	        } else {
@@ -76,11 +78,11 @@ public class BoardController {
 	            imageLinks.add("");
 	        }
 	    }
-//	    System.out.println(posts.getContent());
-	    System.out.println(imageLinks);
+
 	    model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("posts", posts);
 		model.addAttribute("imageLinks", imageLinks);
+		
 		String url = (categoryID==1) ? "/BoardListPage/BoardListPageCompany" : "/BoardListPage/BoardListPageArtist";
 		return url;
 	}
@@ -95,18 +97,19 @@ public class BoardController {
 	    if (loggedInUser != null) {
 	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 	    }
+	    // postID에 따른 게시물 정보
 		Board post = (Board) boardService.getPostById(postID);
-		if(loggedInUser!=null) {			
-			System.out.println(loggedInUser.getUserID());
-		}
+		// 게시물의 파일아이디로 이미지 정보 가져오기
 		ImageFile file=boardService.getImageFile(post.getFileID());
+		// 이미지 주소 가져오기
 		String fileLink=fileService.getDownLink(file.getSaveImName());
-		System.out.println(file);
-		System.out.println(fileLink);
+		// 조회수 증가
 		boardService.visitCnt(postID);
+		
 		model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("post", post);
 		model.addAttribute("image", fileLink);
+		
 		String url = (categoryID==1) ? "/BoardViewPage/BoardViewPageCompany" : "/BoardViewPage/BoardViewPageArtist";
 		return url;
 	}
@@ -115,7 +118,7 @@ public class BoardController {
 	public String search(@PathVariable(name = "categoryID") Integer categoryID, Model model,
 			@RequestParam(value="order", defaultValue="visitCnt") String order, 
 			@ModelAttribute Search search, Pageable pageable) {
-		
+		// 검색한 결과 게시물 가져오기
 		Page<Board> searchPost = boardService.searchCtg(categoryID, search, order, pageable);
 		model.addAttribute("posts", searchPost);
 

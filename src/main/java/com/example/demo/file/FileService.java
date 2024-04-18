@@ -2,8 +2,6 @@ package com.example.demo.file;
 
 import java.util.List;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import com.example.demo.post.ImageFile;
 
 public interface FileService {
@@ -25,9 +23,6 @@ public interface FileService {
 	String getLinkByFileID(Integer fileID);
 
 	Integer findImageFileID(String saveName);
-
-	String uploadImageForCKEditor(MultipartFile file);
-
 
 	
 	

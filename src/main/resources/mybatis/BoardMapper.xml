@@ -26,15 +26,10 @@
 	<select id="getPostById"
 		resultType="com.example.demo.board.Board" >
 		SELECT b.*, u.userID as userID, c.categoryID,c.categoryName
-		
 	    FROM board b
 	    left JOIN user u ON u.userID = b.user_userID
 	    left JOIN category c ON c.categoryID = b.category_categoryID
 	    WHERE b.postID = #{postID} 
-		<!-- select postID,authorName,authorLink,postName,content,visitCnt, 
-		writeDate,endDate,eventStart,eventEnd,user_userID,
-		category_categoryID,fileID,costID
-		from board where postID=#{postID} -->
 	</select>
 
 	<!-- post write -->
@@ -58,21 +53,21 @@
 		costID=#{costID}
 		where postID = #{postID}
 	</update>
-
+	<!-- 조회수 추가 -->
 	<update id="visitCnt">
 		update board set visitCnt=visitCnt+1 where postID=#{postID};
 	</update>
-
+	<!-- 카테고리별 게시물 -->
 	<select id="countAll">
 		select count(*) from board
 		where category_categoryID = #{categoryID};
 	</select>
-	
+	<!-- 파일아이디로 이미지정보 가져오기 -->
 	<select id="getImageFile">
 		select * from image
 		where imageID = #{fileID};
 	</select>
-
+	<!-- postID로 정보 가져오기 -->
 	<select id="getPostByLikeID">
 		select * from board
 		where postID=#{postID}

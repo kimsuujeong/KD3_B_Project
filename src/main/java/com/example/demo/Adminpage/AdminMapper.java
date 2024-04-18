@@ -49,7 +49,8 @@ public class AdminMapper {
 	public void deleteAuthRequest(Integer requestID) {
 		session.delete("deleteAuthRequest", requestID);
 	}
-
+	
+	// 신청아이디로 유저의 이메일 가져오기
 	public String getAuthrequestEmail(Integer requestID) {
 		return session.selectOne("getAuthrequestEmail",requestID);
 	}
