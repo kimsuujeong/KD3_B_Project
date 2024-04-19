@@ -18,10 +18,10 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper boardMapper;
 	
 	// 모든 게시물 가져오기
-	@Override
-	public List<Board> getAllPosts() {
-		return boardMapper.findAll();
-	}
+//	@Override
+//	public List<Board> getAllPosts() {
+//		return boardMapper.findAll();
+//	}
 
 	// 카테고리 아이디별 게시물 가져오기
 	@Override
@@ -53,10 +53,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	// 목록 가져오기
-	@Override
-	public Page<Board> getList(Pageable page, Integer categoryID) {
-		return boardMapper.getList(page, categoryID);
-	}
+//	@Override
+//	public Page<Board> getList(Pageable page, Integer categoryID) {
+//		return boardMapper.getList(page, categoryID);
+//	}
 
 	// 검색 목록 가져오기
 	@Override

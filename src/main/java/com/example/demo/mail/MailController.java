@@ -98,8 +98,6 @@ public class MailController {
 
 		boolean isMatch = userNumber.equals(String.valueOf(number));
 
-		System.out.println("성공했습니다.");
-
 		return ResponseEntity.ok(isMatch);
 
 	}

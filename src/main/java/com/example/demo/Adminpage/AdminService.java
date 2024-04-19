@@ -8,7 +8,7 @@ public interface AdminService {
 
 	boolean isUserAdmin(String userID);
 
-	List<AuthRequest> getAllAuthRequests();
+//	List<AuthRequest> getAllAuthRequests();
 
 	void approveRequest(Integer requestID);
 

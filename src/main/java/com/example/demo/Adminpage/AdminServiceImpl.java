@@ -40,10 +40,10 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	// 모든 신청 리스트 -- 이제 안씀
-	@Override
-	public List<AuthRequest> getAllAuthRequests() {
-		return adminMapper.getAllAuthReq();
-	}
+//	@Override
+//	public List<AuthRequest> getAllAuthRequests() {
+//		return adminMapper.getAllAuthReq();
+//	}
 	
 	// 신청리스트에 status가 확인중인 것만 가져옴
 	@Override

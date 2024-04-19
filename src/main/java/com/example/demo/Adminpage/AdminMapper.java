@@ -20,10 +20,10 @@ public class AdminMapper {
 		return session.selectList("admincheck", userID);
 	}
 
-	// 모든 신청리스트 -- 이제 안씀
-	public List<AuthRequest> getAllAuthReq() {
-		return session.selectList("getAllAuthReq");
-	}
+//	// 모든 신청리스트 -- 이제 안씀
+//	public List<AuthRequest> getAllAuthReq() {
+//		return session.selectList("getAllAuthReq");
+//	}
 
 	// 신청리스트를 status에 따라 걸러서 가져옴
 	public List<AuthRequest> getAuthReqStatus() {
@@ -45,10 +45,10 @@ public class AdminMapper {
 		session.insert("insertAuthUser", authorizedUser);
 	}
 
-	// 신청 리스트 삭제 -- 이제 안씀 status만 변경하고 놔두기로해서
-	public void deleteAuthRequest(Integer requestID) {
-		session.delete("deleteAuthRequest", requestID);
-	}
+//	// 신청 리스트 삭제 -- 이제 안씀 status만 변경하고 놔두기로해서
+//	public void deleteAuthRequest(Integer requestID) {
+//		session.delete("deleteAuthRequest", requestID);
+//	}
 	
 	// 신청아이디로 유저의 이메일 가져오기
 	public String getAuthrequestEmail(Integer requestID) {

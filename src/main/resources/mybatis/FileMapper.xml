@@ -10,20 +10,20 @@
 		#{userID} , now())
 	</insert>
 	<!-- 파일 삭제 -->
-	<delete id="deleteFile">
+	<!-- <delete id="deleteFile">
 		delete from file
 		where saveName=#{saveName}
-	</delete>
+	</delete> -->
 	<!-- 모든 파일 -->
-	<select id="getAllFiles">
+	<!-- <select id="getAllFiles">
 		select oriName
 		from file;
-	</select>
-	<!-- 안쓰는듯 -->
-	<select id="findSaveName">
+	</select> -->
+	<!-- 안씀 잘못 적음 -->
+	<!-- <select id="findSaveName">
 		SELECT saveName FROM file
 		WHERE saveName = #{saveName}
-	</select>
+	</select> -->
 	<!-- 유저아이디로 uuid 안쓰는듯? -->
 	<!-- <select id="findSaveNameUserID">
 		SELECT saveName FROM file
@@ -40,20 +40,20 @@
 		where saveName=#{saveName}
 	</select>
 	<!-- 파일 아이디로 path  -->
-	<select id="getPathFileID" resultType="string">
+	<!-- <select id="getPathFileID" resultType="string">
 		select path from file
 		where fileID=#{fileID}
-	</select>
+	</select> -->
 	<!-- 파일 아이디로 원래이름  -->
-	<select id="getNameFileID" resultType="string">
+	<!-- <select id="getNameFileID" resultType="string">
 		select oriName from file
 		where fileID=#{fileID}
-	</select>
+	</select> -->
 	<!-- 파일아이디로 uuid -->
-	<select id="getsaveNameByFileID" resultType="string">
+	<!-- <select id="getsaveNameByFileID" resultType="string">
 		select saveName from file
 		where fileID=#{fileID}
-	</select>
+	</select> -->
 	<select id="getFileByID" >
 		select * from file
 		where fileID=#{fileID}

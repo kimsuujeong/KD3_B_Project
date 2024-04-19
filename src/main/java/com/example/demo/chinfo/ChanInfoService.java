@@ -8,6 +8,6 @@ public interface ChanInfoService {
 
 	void updatePw(User loggedUser);
 
-	int checkpw(String userID, String oldPw);
+//	int checkpw(String userID, String oldPw);
 	
 }

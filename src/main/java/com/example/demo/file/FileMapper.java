@@ -19,26 +19,26 @@ public class FileMapper {
 		session.insert("insertFile",file);
 	}
 
-	// uuid로 파일 삭제
-	public void deleteFileSaveName(String saveName) {
-		session.delete("deleteFile",saveName);
-	}
+//	// uuid로 파일 삭제
+//	public void deleteFileSaveName(String saveName) {
+//		session.delete("deleteFile",saveName);
+//	}
 
-	// 모든 파일 가져오기
-	public List<UploadFile> getAllFiles() {
-		
-		return session.selectList("getAllFiles");
-	}
+//	// 모든 파일 가져오기
+//	public List<UploadFile> getAllFiles() {
+//		
+//		return session.selectList("getAllFiles");
+//	}
 
-	// uuid로 정보 가져오기 -- ?안쓰는듯
-	public String findSaveName(String uuid) {
-		return session.selectOne("findSaveName",uuid);
-	}
+//	// uuid로 정보 가져오기 -- ?안쓰는듯
+//	public String findSaveName(String uuid) {
+//		return session.selectOne("findSaveName",uuid);
+//	}
 
-	// 유저아이디로 uuid가져오기 -- ?
-	public String findSaveNameUserID(String userID) {
-		return session.selectOne("findSaveNameUserID",userID);
-	}
+//	// 유저아이디로 uuid가져오기 -- ?
+//	public String findSaveNameUserID(String userID) {
+//		return session.selectOne("findSaveNameUserID",userID);
+//	}
 
 	public List<UploadFile> getFileUserID(String userID) {
 		return session.selectList("getFileUserID",userID);
@@ -49,12 +49,12 @@ public class FileMapper {
 		return session.selectOne("findFileID", saveName);
 	}
 
-	// 링크 만들기
-	public String getLinkByFileID(Integer fileID) {
-		String path=session.selectOne("getPathFileID", fileID);
-		String name=session.selectOne("getNameFileID", fileID);
-		return path+"/"+name;
-	}
+//	// 링크 만들기 -- 안씀
+//	public String getLinkByFileID(Integer fileID) {
+//		String path=session.selectOne("getPathFileID", fileID);
+//		String name=session.selectOne("getNameFileID", fileID);
+//		return path+"/"+name;
+//	}
 
 	// board에 image 파일 
 	public void insertImFile(ImageFile fileInfo) {
@@ -66,10 +66,10 @@ public class FileMapper {
 		return session.selectOne("findImageFileID", saveName);
 	}
 
-	// 파일아이디로 uuid가져오기
-	public String getSaveNameFileID(Integer fileID) {
-		return session.selectOne("getsaveNameByFileID", fileID);
-	}
+//	// 파일아이디로 uuid가져오기
+//	public String getSaveNameFileID(Integer fileID) {
+//		return session.selectOne("getsaveNameByFileID", fileID);
+//	}
 
 	public UploadFile getFileByID(Integer fileID) {
 		return session.selectOne("getFileByID", fileID);
