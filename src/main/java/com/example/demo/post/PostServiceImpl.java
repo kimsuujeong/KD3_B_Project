@@ -19,17 +19,17 @@ public class PostServiceImpl implements PostService {
 	@Autowired
 	FileService fileService;
 	
-	public List<Board> getBoardList() {
-		List<Board> boardList = Collections.emptyList();
-
-		int boardTotalCount = postMapper.selectBoardTotalCount();
-
-		if (boardTotalCount > 0) {
-			boardList = postMapper.selectBoardList();
-		}
-
-		return boardList;
-	}
+//	public List<Board> getBoardList() {
+//		List<Board> boardList = Collections.emptyList();
+//
+//		int boardTotalCount = postMapper.selectBoardTotalCount();
+//
+//		if (boardTotalCount > 0) {
+//			boardList = postMapper.selectBoardList();
+//		}
+//
+//		return boardList;
+//	}
 
 	// 게시물 저장
 	public void saveBoard(Board board) {
@@ -50,11 +50,11 @@ public class PostServiceImpl implements PostService {
 		postMapper.insert(board);
 	}
 
-	// board detail
-	public Board getBoardDetail(Integer postID) {
-		// TODO Auto-generated method stub
-		return postMapper.selectBoardDetail(postID);
-	}
+//	// board detail
+//	public Board getBoardDetail(Integer postID) {
+//		// TODO Auto-generated method stub
+//		return postMapper.selectBoardDetail(postID);
+//	}
 
 	// board delete
 	public void delete(Integer postID) {

@@ -15,18 +15,18 @@ public class PostMapper {
 	@Autowired
 	SqlSession sqlSession;
 
-	// 모든 게시물
-	public List<Board> findAll() {
-		return sqlSession.selectList("findAll");
-	}
+//	// 모든 게시물
+//	public List<Board> findAll() {
+//		return sqlSession.selectList("findAll");
+//	}
 	// 게시물 저장
 	public void save(Board board) {
 		sqlSession.insert("save", board);
 	}
-	// postID로 게시물 정보가져오기
-	public Board selectBoardDetail(Integer postID) {
-		return sqlSession.selectOne("selectBoardDetail", postID);
-	}
+//	// postID로 게시물 정보가져오기
+//	public Board selectBoardDetail(Integer postID) {
+//		return sqlSession.selectOne("selectBoardDetail", postID);
+//	}
 	// 게시물 저장
 	public void insert(Board board) {
 		sqlSession.insert("insert_post", board);
@@ -36,13 +36,13 @@ public class PostMapper {
 		sqlSession.update("update_post", board);
 	}
 	// 전체 게시물 수
-	public int selectBoardTotalCount() {
-		return sqlSession.selectOne("selectBoardTotalCount");
-	}
-	// 게시물 리스트
-	public List<Board> selectBoardList() {
-		return sqlSession.selectList("selectBoardList");
-	}
+//	public int selectBoardTotalCount() {
+//		return sqlSession.selectOne("selectBoardTotalCount");
+//	}
+//	// 게시물 리스트
+//	public List<Board> selectBoardList() {
+//		return sqlSession.selectList("selectBoardList");
+//	}
 	// 조회수
 	public void visitCnt(@Param("postID") Integer postID) {
 		sqlSession.update("visitCnt",postID);

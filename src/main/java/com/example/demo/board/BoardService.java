@@ -9,7 +9,7 @@ import com.example.demo.post.ImageFile;
 
 public interface BoardService {
 
-	public List<Board> getAllPosts();
+//	public List<Board> getAllPosts();
 	
     Page<Board> getPostsByCategoryId(Integer categoryId, Pageable pageable);
 	
@@ -19,7 +19,7 @@ public interface BoardService {
 	
 	public int countAll(Integer categoryId);
 	
-	public Page<Board> getList(Pageable page, Integer categoryID);
+//	public Page<Board> getList(Pageable page, Integer categoryID);
 	
 	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable);
 

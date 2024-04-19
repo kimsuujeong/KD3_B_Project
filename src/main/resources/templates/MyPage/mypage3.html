@@ -30,7 +30,7 @@
 							<li><a class="R" th:href="@{/mypost}" target="_self">- 내 글 관리</a></li> <br>
 						</th:block>
 					
-						<th:block th:if="${session['loggedInUser'] != null and isAdmin}">
+						<th:block th:if="${session['loggedInUser'] != null and (isAdmin==true)}">
 							<li><a class="B" th:href="@{/userUpdate}" target="_self">- 내정보 수정</a></li> <br>
 							<li><a class="A" th:href="@{/savelist}" target="_self">- 관심 목록</a></li> <br>
 							<li><a th:href="@{/admin/auth}" class="select">- 관계자 인증 확인</a></li><br>
@@ -50,11 +50,6 @@
 				<div><span class="title"></span><span>
 						<h3>관계자 인증</h3>
 					</span></div>
-				<!-- <div class="list-btn">
-                    <a href="#">추천순</a>
-                    <a href="#">업데이트순</a>
-                    <a href="#">모집 마감일순</a>
-                </div> -->
 			</div>
 
 			<div class="board-content">

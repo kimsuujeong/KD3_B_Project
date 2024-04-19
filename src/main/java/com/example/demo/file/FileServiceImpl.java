@@ -95,7 +95,7 @@ public class FileServiceImpl implements FileService {
 	    }
 	}
 	
-	// 파일정보 가져오기
+	// 파일아이디로 파일정보 가져오기
 	@Override
 	public UploadFile getFileByID(Integer fileID) {
 		return fileMapper.getFileByID(fileID);
@@ -116,71 +116,71 @@ public class FileServiceImpl implements FileService {
 		return "https://storage.googleapis.com/" + bucketName + "/" + encodedFilename;
 	}
 
-	// 유저아이디로 파일 리스트 가져오기
-	@Override
-	public List<UploadFile> getFilesByUserID(String userID) {
-		return fileMapper.getFileUserID(userID);
-	}
+//	// 유저아이디로 파일 리스트 가져오기
+//	@Override
+//	public List<UploadFile> getFilesByUserID(String userID) {
+//		return fileMapper.getFileUserID(userID);
+//	}
 	
-	// 버킷에서 파일 삭제
-	@Override
-	public void deleteFileBucket(String saveName){
-		try {
-			// 파일 이름 추출
-			String[] part=saveName.split("_");
-			if (part.length < 2) {
-	            throw new IllegalArgumentException("잘못된 파일 이름 형식입니다.");
-	        }
-			String oriName=part[1];
-			System.out.println(oriName);
-			// 저장소 정보
-			String keyFileName = "projectb-419201-70f6627fba41.json";
-			InputStream keyFile = ResourceUtils.getURL("classpath:" + keyFileName).openStream();
-		    Storage storage = StorageOptions.newBuilder().setCredentials(GoogleCredentials.fromStream(keyFile)).build()
-		            .getService();
-			
-			BlobId blobId = BlobId.of(bucketName, oriName);
-			
-			// gcp에서 파일 삭제
-			boolean deleted = storage.delete(blobId);
-			if (deleted) {
-	//			fileMapper.deleteFileSaveName(oriName);
-				System.out.println("파일 삭제 성공");
-			} else {
-				throw new IOException("파일 삭제 실패");
-			}
-		}catch (FileNotFoundException e) {
-	        // 파일을 찾을 수 없는 경우
-		    e.printStackTrace();
-	    } catch (IOException e) {
-	        // 파일 삭제 실패한 경우
-	    	e.printStackTrace();
-	    } catch (IllegalArgumentException e) {
-	        // 잘못된 파일 이름 형식인 경우
-	        e.printStackTrace();
-	    }
-		
-	}
+//	// 버킷에서 파일 삭제
+//	@Override
+//	public void deleteFileBucket(String saveName){
+//		try {
+//			// 파일 이름 추출
+//			String[] part=saveName.split("_");
+//			if (part.length < 2) {
+//	            throw new IllegalArgumentException("잘못된 파일 이름 형식입니다.");
+//	        }
+//			String oriName=part[1];
+//			System.out.println(oriName);
+//			// 저장소 정보
+//			String keyFileName = "projectb-419201-70f6627fba41.json";
+//			InputStream keyFile = ResourceUtils.getURL("classpath:" + keyFileName).openStream();
+//		    Storage storage = StorageOptions.newBuilder().setCredentials(GoogleCredentials.fromStream(keyFile)).build()
+//		            .getService();
+//			
+//			BlobId blobId = BlobId.of(bucketName, oriName);
+//			
+//			// gcp에서 파일 삭제
+//			boolean deleted = storage.delete(blobId);
+//			if (deleted) {
+//	//			fileMapper.deleteFileSaveName(oriName);
+//				System.out.println("파일 삭제 성공");
+//			} else {
+//				throw new IOException("파일 삭제 실패");
+//			}
+//		}catch (FileNotFoundException e) {
+//	        // 파일을 찾을 수 없는 경우
+//		    e.printStackTrace();
+//	    } catch (IOException e) {
+//	        // 파일 삭제 실패한 경우
+//	    	e.printStackTrace();
+//	    } catch (IllegalArgumentException e) {
+//	        // 잘못된 파일 이름 형식인 경우
+//	        e.printStackTrace();
+//	    }
+//		
+//	}
 
-	// 데이터베이스에서 파일 정보 삭제
-	@Override
-	public void deleteFileDB(String saveName) {
-		try {
-			// 데이터베이스에서 찾기
-	        String storedSaveName = fileMapper.findSaveName(saveName);
-	        
-	        if (storedSaveName != null) {
-	        	// 데이터베이스 삭제
-	            fileMapper.deleteFileSaveName(storedSaveName);
-//	            System.out.println("데이터베이스에서 파일 삭제했습니다.");
-	        } else {
-//	            System.out.println("UUID에 해당하는 파일이 데이터베이스에 없습니다.");
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-//	        throw new RuntimeException("데이터베이스에서 파일을 삭제하는 동안 오류가 발생했습니다.");
-	    }
-	}
+//	// 데이터베이스에서 파일 정보 삭제
+//	@Override
+//	public void deleteFileDB(String saveName) {
+//		try {
+//			// 데이터베이스에서 찾기
+//	        String storedSaveName = fileMapper.findSaveName(saveName);
+//	        
+//	        if (storedSaveName != null) {
+//	        	// 데이터베이스 삭제
+//	            fileMapper.deleteFileSaveName(storedSaveName);
+////	            System.out.println("데이터베이스에서 파일 삭제했습니다.");
+//	        } else {
+////	            System.out.println("UUID에 해당하는 파일이 데이터베이스에 없습니다.");
+//	        }
+//	    } catch (Exception e) {
+//	        e.printStackTrace();
+////	        throw new RuntimeException("데이터베이스에서 파일을 삭제하는 동안 오류가 발생했습니다.");
+//	    }
+//	}
 
 	// 파일 uuid로 파일 아이디 가져오기
 	@Override
@@ -188,16 +188,17 @@ public class FileServiceImpl implements FileService {
 		return fileMapper.findFileID(saveName);
 	}
 
-	// 파일아이디로 가져온 정보로 링크 만드는건데 방식을 바꿔서 안씀
-	@Override
-	public String getLinkByFileID(Integer fileID) {
-		
-		return fileMapper.getLinkByFileID(fileID);
-	}
-	@Override
-	public String getSaveNameByFileID(Integer fileID) {
-		return fileMapper.getSaveNameFileID(fileID);
-	}
+//	// 파일아이디로 가져온 정보로 링크 만드는건데 방식을 바꿔서 안씀
+//	@Override
+//	public String getLinkByFileID(Integer fileID) {
+//		
+//		return fileMapper.getLinkByFileID(fileID);
+//	}
+//	@Override
+//	public String getSaveNameByFileID(Integer fileID) {
+//		return fileMapper.getSaveNameFileID(fileID);
+//	}
+	
 	// board에 파일 넣기
 	@Override
 	public String uploadImFiles(ImageFile imageFile) {

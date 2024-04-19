@@ -102,7 +102,6 @@ public class MailService {
 		} catch (MessagingException e) {
 
 			e.printStackTrace();
-			System.out.println("메일 보내기에 실패했습니다."); // test
 
 		}
 
@@ -127,7 +126,6 @@ public class MailService {
 
 		try {
 
-			System.out.println("메일을 보냈습니다."); // test
 
 			message.setFrom(senderEmail);
 			message.setRecipients(MimeMessage.RecipientType.TO, mail);
@@ -142,7 +140,6 @@ public class MailService {
 		} catch (MessagingException e) {
 
 			e.printStackTrace();
-			System.out.println("메일 보내기에 실패했습니다."); // test
 
 		}
 
@@ -156,7 +153,6 @@ public class MailService {
 		MimeMessage message = CreateRefusalMail(mail);
 		javaMailSender.send(message);
 		
-		System.out.println(mail);
 		
 	}
 }

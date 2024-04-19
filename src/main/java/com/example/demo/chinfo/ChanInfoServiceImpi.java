@@ -23,10 +23,10 @@ public class ChanInfoServiceImpi implements ChanInfoService{
 		chanInMapper.updatePw(user);
 	}
 
-	// 비밀번호 확인
-	@Override
-	public int checkpw(String userID, String oldPw) {
-		return chanInMapper.checkpw(userID,oldPw);
-	}
+//	// 비밀번호 확인
+//	@Override
+//	public int checkpw(String userID, String oldPw) {
+//		return chanInMapper.checkpw(userID,oldPw);
+//	}
 
 }

@@ -56,7 +56,9 @@ public class MypageController { // 관심목록, 인증, 개인정보 수정(비
 	@RequestMapping("/mypost") // 내 글 목록
 	public String userPost(Model model, HttpSession httpSession) {
 		User loggedInUser = (User) httpSession.getAttribute("loggedInUser");
-		
+		if (loggedInUser == null) {
+			return "redirect:/login";
+		}
 		// 사용자가 관리자인지 여부를 확인합니다.
 		boolean isAdmin = false;
 		if (loggedInUser != null) {
