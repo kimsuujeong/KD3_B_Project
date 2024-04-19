@@ -152,12 +152,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 		try {
 
-			System.out.println("입력한 토큰: " + token);
-
-			System.out.println("getKeyTest: " + getKey);
-
-			System.out.println("아까 받은 이메일임: " + Email);
-
 			if (getKey == null) {
 
 				response.put("redirectUrl", "http://localhost:8085/cerid");
@@ -174,8 +168,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 				this.IdForEmail = getKey;
 
-				System.out.println(IdForEmail);
-
 				return ResponseEntity.ok().body(response);
 
 			} else {
@@ -188,9 +180,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 			}
 
 		} catch (Exception e) {
-
-			// TODO: handle exception
-			System.out.println("존재하지 않는 토큰 입니다.");
 
 		}
 
@@ -275,12 +264,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 		try {
 
-			System.out.println("입력한 토큰: " + token);
-
-			System.out.println("getKeyTest: " + getKey);
-
-			System.out.println("아까 받은 이메일임: " + Email);
-
 			if (getKey == null) {
 
 				response.put("redirectUrl", "http://localhost:8085/cerpw");
@@ -297,8 +280,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 
 				pwEmail = Email;
 
-				System.out.println(pwEmail);
-
 				return ResponseEntity.ok().body(response);
 
 			} else {
@@ -311,8 +292,6 @@ public class UserController { // 로그인, 아이디&비밀번호 찾기
 			}
 
 		} catch (Exception e) {
-
-			System.out.println("존재하지 않는 토큰 입니다.");
 
 		}
 

@@ -146,14 +146,14 @@ public class BoardController {
 	public String showPostDetail(@PathVariable(name = "categoryID") Integer categoryID, 
 			@PathVariable(name = "postID") Integer postID,  Model model,HttpSession session) {
 		User loggedInUser = (User) session.getAttribute("loggedInUser");
+		// postID에 따른 게시물 정보
+		Board post = (Board) boardService.getPostById(postID);
 	    
 	    // 사용자가 관리자인지 여부를 확인합니다.
 	    boolean isAdmin = false;
 	    if (loggedInUser != null) {
-	        isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
+	    	isAdmin = adminService.isUserAdmin(loggedInUser.getUserID());
 	    }
-	    // postID에 따른 게시물 정보
-		Board post = (Board) boardService.getPostById(postID);
 		// 게시물의 파일아이디로 이미지 정보 가져오기
 		ImageFile file=boardService.getImageFile(post.getFileID());
 		// 이미지 주소 가져오기
@@ -163,9 +163,12 @@ public class BoardController {
 		// 조회수+카테고리 아이디 별 게시물
 		List<Board> postsByVC = boardService.getPostsViewCategory(categoryID);
 		List<String> imageLinkVC = getImageLinks(postsByVC);
+		// 비용정보
 		List<String> costs = getCostName(postsByVC);
 		Integer costID=post.getCostID();
 		String costName=boardService.getCostName(costID);
+		
+		
 		model.addAttribute("postsByViews", postsByVC);
 		model.addAttribute("imageLinkView", imageLinkVC);
 		model.addAttribute("isAdmin", isAdmin);

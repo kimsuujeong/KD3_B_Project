@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.board.BoardMapper">
 
-	<!-- findall board -->
-	<select id="findAll" resultType="com.example.demo.board.Board">
+	<!-- findall board 안씀-->
+	<!-- <select id="findAll" resultType="com.example.demo.board.Board">
 		SELECT b.*, c.categoryName, b.category_categoryID as categoryID
 		FROM board b
 		JOIN category c ON b.category_categoryID = c.categoryID
-	</select>
-	<select id="findAllPage"
+	</select> -->
+	<!-- <select id="findAllPage"
 		resultType="com.example.demo.board.Board">
 		SELECT b.*, c.categoryName, b.category_categoryID as categoryID
 		FROM board b
 		JOIN category c ON b.category_categoryID = c.categoryID
-	</select>
+	</select> -->
 	<!-- find categoryID board -->
 	<select id="findByCategoryId"
 		resultType="com.example.demo.board.Board">

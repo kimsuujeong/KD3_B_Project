@@ -10,17 +10,17 @@ public interface FileService {
 	
 	String uploadImFiles(ImageFile imageFile);
 
-	void deleteFileBucket(String saveName);
-	void deleteFileDB(String uuid);
+//	void deleteFileBucket(String saveName);
+//	void deleteFileDB(String uuid);
 
 	String getDownLink(String saveName);
 
-	List<UploadFile> getFilesByUserID(String userID);
+//	List<UploadFile> getFilesByUserID(String userID);
 
 	Integer findFileID(String saveName);
 
-	String getSaveNameByFileID(Integer fileID);
-	String getLinkByFileID(Integer fileID);
+//	String getSaveNameByFileID(Integer fileID);
+//	String getLinkByFileID(Integer fileID);
 
 	Integer findImageFileID(String saveName);
 

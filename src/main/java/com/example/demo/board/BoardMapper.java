@@ -21,9 +21,9 @@ public class BoardMapper {
 	SqlSession sqlSession;
 
 	// 모든 게시물 가져오기
-	public List<Board> findAll() {
-		return sqlSession.selectList("findAll");
-	}
+//	public List<Board> findAll() {
+//		return sqlSession.selectList("findAll");
+//	}
 
 	public List<Board> findAllPage(RowBounds rowBounds) {
 		return sqlSession.selectList("findAllPage", rowBounds);
@@ -55,15 +55,15 @@ public class BoardMapper {
 
 	// 목록 가져오기
 // 	List<Board> getBoardList(Search search);
-	public Page<Board> getList(Pageable page, Integer categoryID) {
-		int total = countAll(categoryID);
-		int offset = page.getPageNumber() * page.getPageSize();
-
-		RowBounds rowBounds = new RowBounds(offset, page.getPageSize());
-		List<Board> content = sqlSession.selectList("findAllPage", null, rowBounds);
-
-		return new PageImpl<>(content, page, total);
-	}
+//	public Page<Board> getList(Pageable page, Integer categoryID) {
+//		int total = countAll(categoryID);
+//		int offset = page.getPageNumber() * page.getPageSize();
+//
+//		RowBounds rowBounds = new RowBounds(offset, page.getPageSize());
+//		List<Board> content = sqlSession.selectList("findAllPage", null, rowBounds);
+//
+//		return new PageImpl<>(content, page, total);
+//	}
 
 	// 검색 목록 가져오기
 	public Page<Board> searchCtg(Integer categoryID, Search search, String order, Pageable pageable) {
